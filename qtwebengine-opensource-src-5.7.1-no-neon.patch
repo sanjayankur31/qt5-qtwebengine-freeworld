@@ -1,0 +1,15 @@
+diff -ur qtwebengine-opensource-src-5.7.1/src/core/gyp_run.pro qtwebengine-opensource-src-5.7.1-no-neon/src/core/gyp_run.pro
+--- qtwebengine-opensource-src-5.7.1/src/core/gyp_run.pro	2016-11-09 06:28:31.000000000 +0100
++++ qtwebengine-opensource-src-5.7.1-no-neon/src/core/gyp_run.pro	2016-12-03 16:36:39.039443117 +0100
+@@ -80,7 +80,10 @@
+         # we use arm_neon_optional for ARMv7 and newer and let chromium decide
+         # about the mfpu option.
+         contains(MFPU, ".*neon.*"): GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=1
+-        else:!lessThan(MARMV, 7): GYP_CONFIG += arm_neon=0 arm_neon_optional=1
++        # Disable NEON entirely for now, because it fails to build:
++        # https://bugzilla.redhat.com/show_bug.cgi?id=1282495
++        # (This line was also missing the required arm_fpu flag, which I added.)
++        # else:!lessThan(MARMV, 7): GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=0 arm_neon_optional=1
+         else: GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=0 arm_neon_optional=0
+     } else {
+         # Chromium defaults to arm_neon=1, Qt does not.

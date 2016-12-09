@@ -1,0 +1,48 @@
+diff -ur qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/base.gypi qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/base.gypi
+--- qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/base.gypi	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/base.gypi	2016-07-17 16:52:03.641799106 +0200
+@@ -634,8 +634,6 @@
+           'third_party/dmg_fp/g_fmt.cc',
+           'third_party/icu/icu_utf.cc',
+           'third_party/icu/icu_utf.h',
+-          'third_party/nspr/prtime.cc',
+-          'third_party/nspr/prtime.h',
+           'third_party/superfasthash/superfasthash.c',
+           'third_party/xdg_mime/xdgmime.h',
+           'thread_task_runner_handle.cc',
+diff -ur qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/BUILD.gn qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn
+--- qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/BUILD.gn	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2016-07-17 16:52:03.642799111 +0200
+@@ -743,8 +743,6 @@
+     "third_party/dmg_fp/g_fmt.cc",
+     "third_party/icu/icu_utf.cc",
+     "third_party/icu/icu_utf.h",
+-    "third_party/nspr/prtime.cc",
+-    "third_party/nspr/prtime.h",
+     "third_party/superfasthash/superfasthash.c",
+     "thread_task_runner_handle.cc",
+     "thread_task_runner_handle.h",
+diff -ur qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc
+--- qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2016-07-17 16:55:11.749868819 +0200
+@@ -7,7 +7,7 @@
+ 
+ #include "base/compiler_specific.h"
+ #include "base/macros.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "base/time/time.h"
+ #include "build/build_config.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+diff -ur qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/time/time.cc qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc
+--- qtwebengine-opensource-src-5.7.0/src/3rdparty/chromium/base/time/time.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc	2016-07-17 16:55:54.895115802 +0200
+@@ -14,7 +14,7 @@
+ #include "base/logging.h"
+ #include "base/macros.h"
+ #include "base/strings/stringprintf.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "build/build_config.h"
+ 
+ namespace base {

@@ -1,0 +1,12 @@
+diff -ur qtwebengine-opensource-src-5.6.0-beta/src/3rdparty/chromium/content/browser/time_zone_monitor.cc qtwebengine-opensource-src-5.6.0-beta-system-icu54/src/3rdparty/chromium/content/browser/time_zone_monitor.cc
+--- qtwebengine-opensource-src-5.6.0-beta/src/3rdparty/chromium/content/browser/time_zone_monitor.cc	2015-12-10 18:17:21.000000000 +0100
++++ qtwebengine-opensource-src-5.6.0-beta-system-icu54/src/3rdparty/chromium/content/browser/time_zone_monitor.cc	2016-01-08 23:40:36.387525597 +0100
+@@ -22,7 +22,7 @@
+ 
+ void TimeZoneMonitor::NotifyRenderers() {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+-#if defined(OS_CHROMEOS) || U_ICU_VERSION_MAJOR_NUM < 54
++#if defined(OS_CHROMEOS) || U_ICU_VERSION_MAJOR_NUM < 55
+   // On CrOS and older ICU versions, ICU's default tz is already set to a new zone.
+   // No need to redetect it with detectHostTimeZone().
+   scoped_ptr<icu::TimeZone> new_zone(icu::TimeZone::createDefault());
