@@ -360,7 +360,7 @@ echo "%{_libdir}/%{name}" \
 %postun -p /sbin/ldconfig
 
 %files
-%license LICENSE.* src/webengine/doc/src/qtwebengine-3rdparty.qdoc
+%license LICENSE.*
 %{_libdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
