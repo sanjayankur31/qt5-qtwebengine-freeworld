@@ -41,7 +41,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.7.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -89,7 +89,7 @@ Patch7:  qtwebengine-opensource-src-5.7.0-webrtc-neon.patch
 Patch8:  qtwebengine-opensource-src-5.6.0-beta-system-icu54.patch
 # fix missing ARM -mfpu setting (see the comment in the no-neon patch above)
 Patch9:  qtwebengine-opensource-src-5.7.1-arm-fpu-fix.patch
-# remove Android depenencies from openmax_dl ARM NEON detection (detect.c)
+# remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 Patch10: qtwebengine-opensource-src-5.7.1-openmax-dl-neon.patch
 # chromium-skia: build SkUtilsArm.cpp also on non-Android ARM
 Patch11: qtwebengine-opensource-src-5.7.1-skia-neon.patch
@@ -283,7 +283,7 @@ Provides: bundled(v8) = 4.9.385.33
 # see src/3rdparty/chromium/v8/src/third_party/fdlibm/README.v8 for the version
 Provides: bundled(fdlibm) = 5.3
 
-%{?_qt5_version:Requires: qt5-qtbase%{?_isa} >= %{_qt5_version}}
+%{?_qt5_version:Requires: qt5-qtbase%{?_isa} = %{_qt5_version}}
 # depend on the official version for data files
 Requires: qt5-qtwebengine%{?_isa} = %{version}
 
@@ -392,6 +392,10 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Dec 10 2016 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.7.1-5
+- Respun tarball (now really includes the page margin fix)
+- Change qt5-qtbase dependency from >= to =
+
 * Sun Dec 04 2016 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.7.1-4
 - Rename to qt5-qtwebengine-freeworld, Require qt5-qtwebengine%%{?isa}
 - Enable use_system_ffmpeg where possible
@@ -407,7 +411,7 @@ echo "%{_libdir}/%{name}" \
 - clean_qtwebengine.sh: Rip out openh264 sources
 - Rebase no-neon patch, add new arm-fpu-fix patch where no-neon not wanted
 - Try enabling arm_neon unconditionally, #1282495 should be fixed even in F23
-- Remove Android depenencies from openmax_dl ARM NEON detection (detect.c)
+- Remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 - Set CFLAGS, unset both CFLAGS and CXXFLAGS between qmake and make
 - chromium-skia: build SkUtilsArm.cpp also on non-Android ARM
 - webrtc: backport CPU feature detection for ARM Linux, enable it for Chromium
