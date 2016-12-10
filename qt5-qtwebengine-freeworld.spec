@@ -5,13 +5,6 @@
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
 
-# define to build docs, need to undef this for bootstrapping
-# where qt5-qttools builds are not yet available
-# only primary archs (for now), allow secondary to bootstrap
-%ifarch %{arm} %{ix86} x86_64
-%global docs 1
-%endif
-
 %if 0%{?fedora} > 23
 # need libvpx >= 1.5.0
 %global use_system_libvpx 1
@@ -362,11 +355,6 @@ export CXXFLAGS
 # workaround, disable parallel compilation as it fails to compile in brew
 make %{?_smp_mflags}
 
-%if 0%{?docs}
-make %{?_smp_mflags} docs
-%endif
-popd
-
 %install
 # install the libraries to a special directory to avoid conflict with official
 # qt5-qtwebengine package (do not install the other files, depend on
@@ -395,6 +383,7 @@ echo "%{_libdir}/%{name}" \
 * Sat Dec 10 2016 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.7.1-5
 - Respun tarball (now really includes the page margin fix)
 - Change qt5-qtbase dependency from >= to =
+- Do not build docs, they are not installed here
 
 * Sun Dec 04 2016 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.7.1-4
 - Rename to qt5-qtwebengine-freeworld, Require qt5-qtwebengine%%{?isa}
