@@ -1,0 +1,362 @@
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/base.gypi qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/base.gypi
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/base.gypi	2016-07-17 16:52:03.641799106 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/base.gypi	2016-07-17 17:20:50.666600419 +0200
+@@ -632,8 +632,6 @@
+           'third_party/dmg_fp/dmg_fp.h',
+           'third_party/dmg_fp/dtoa_wrapper.cc',
+           'third_party/dmg_fp/g_fmt.cc',
+-          'third_party/icu/icu_utf.cc',
+-          'third_party/icu/icu_utf.h',
+           'third_party/superfasthash/superfasthash.c',
+           'third_party/xdg_mime/xdgmime.h',
+           'thread_task_runner_handle.cc',
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2016-07-17 16:52:03.642799111 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn	2016-07-17 17:20:50.667600425 +0200
+@@ -741,8 +741,6 @@
+     "third_party/dmg_fp/dmg_fp.h",
+     "third_party/dmg_fp/dtoa_wrapper.cc",
+     "third_party/dmg_fp/g_fmt.cc",
+-    "third_party/icu/icu_utf.cc",
+-    "third_party/icu/icu_utf.h",
+     "third_party/superfasthash/superfasthash.c",
+     "thread_task_runner_handle.cc",
+     "thread_task_runner_handle.h",
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc	2016-07-17 17:20:50.668600430 +0200
+@@ -18,7 +18,7 @@
+ 
+ #if defined(OS_MACOSX)
+ #include "base/mac/scoped_cftyperef.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ #endif
+ 
+ #if defined(OS_WIN)
+@@ -1138,9 +1138,9 @@
+                                             int* index) {
+   int codepoint = 0;
+   while (*index < length && codepoint == 0) {
+-    // CBU8_NEXT returns a value < 0 in error cases. For purposes of string
++    // U8_NEXT returns a value < 0 in error cases. For purposes of string
+     // comparison, we just use that value and flag it with DCHECK.
+-    CBU8_NEXT(string, *index, length, codepoint);
++    U8_NEXT(string, *index, length, codepoint);
+     DCHECK_GT(codepoint, 0);
+     if (codepoint > 0) {
+       // Check if there is a subtable for this upper byte.
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc	2016-07-17 17:25:23.443128277 +0200
+@@ -15,7 +15,7 @@
+ #include "base/strings/stringprintf.h"
+ #include "base/strings/utf_string_conversion_utils.h"
+ #include "base/strings/utf_string_conversions.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ #include "base/values.h"
+ 
+ namespace base {
+@@ -625,8 +625,8 @@
+   int32_t next_char = 0;
+ 
+   while (CanConsume(1)) {
+-    pos_ = start_pos_ + index_;  // CBU8_NEXT is postcrement.
+-    CBU8_NEXT(start_pos_, index_, length, next_char);
++    pos_ = start_pos_ + index_;  // U8_NEXT is postcrement.
++    U8_NEXT(start_pos_, index_, length, next_char);
+     if (next_char < 0 || !IsValidCharacter(next_char)) {
+       ReportError(JSONReader::JSON_UNSUPPORTED_ENCODING, 1);
+       return false;
+@@ -719,7 +719,7 @@
+           return false;
+       }
+     } else if (next_char == '"') {
+-      --index_;  // Rewind by one because of CBU8_NEXT.
++      --index_;  // Rewind by one because of U8_NEXT.
+       out->Swap(&string);
+       return true;
+     } else {
+@@ -759,10 +759,10 @@
+ 
+   // If this is a high surrogate, consume the next code unit to get the
+   // low surrogate.
+-  if (CBU16_IS_SURROGATE(code_unit16_high)) {
++  if (U16_IS_SURROGATE(code_unit16_high)) {
+     // Make sure this is the high surrogate. If not, it's an encoding
+     // error.
+-    if (!CBU16_IS_SURROGATE_LEAD(code_unit16_high))
++    if (!U16_IS_SURROGATE_LEAD(code_unit16_high))
+       return false;
+ 
+     // Make sure that the token has more characters to consume the
+@@ -779,24 +779,24 @@
+ 
+     NextNChars(3);
+ 
+-    if (!CBU16_IS_TRAIL(code_unit16_low)) {
++    if (!U16_IS_TRAIL(code_unit16_low)) {
+       return false;
+     }
+ 
+     uint32_t code_point =
+-        CBU16_GET_SUPPLEMENTARY(code_unit16_high, code_unit16_low);
++        U16_GET_SUPPLEMENTARY(code_unit16_high, code_unit16_low);
+     if (!IsValidCharacter(code_point))
+       return false;
+ 
+     offset = 0;
+-    CBU8_APPEND_UNSAFE(code_unit8, offset, code_point);
++    U8_APPEND_UNSAFE(code_unit8, offset, code_point);
+   } else {
+     // Not a surrogate.
+-    DCHECK(CBU16_IS_SINGLE(code_unit16_high));
++    DCHECK(U16_IS_SINGLE(code_unit16_high));
+     if (!IsValidCharacter(code_unit16_high))
+       return false;
+ 
+-    CBU8_APPEND_UNSAFE(code_unit8, offset, code_unit16_high);
++    U8_APPEND_UNSAFE(code_unit8, offset, code_unit16_high);
+   }
+ 
+   dest_string->append(code_unit8);
+@@ -813,9 +813,9 @@
+   } else {
+     char utf8_units[4] = { 0 };
+     int offset = 0;
+-    CBU8_APPEND_UNSAFE(utf8_units, offset, point);
++    U8_APPEND_UNSAFE(utf8_units, offset, point);
+     dest->Convert();
+-    // CBU8_APPEND_UNSAFE can overwrite up to 4 bytes, so utf8_units may not be
++    // U8_APPEND_UNSAFE can overwrite up to 4 bytes, so utf8_units may not be
+     // zero terminated at this point.  |offset| contains the correct length.
+     dest->AppendString(std::string(utf8_units, offset));
+   }
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc	2016-07-17 17:20:50.668600430 +0200
+@@ -14,7 +14,7 @@
+ #include "base/strings/stringprintf.h"
+ #include "base/strings/utf_string_conversion_utils.h"
+ #include "base/strings/utf_string_conversions.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ namespace base {
+ 
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc	2016-07-17 17:20:50.669600436 +0200
+@@ -4,13 +4,13 @@
+ 
+ #include "base/strings/pattern.h"
+ 
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ namespace base {
+ 
+ namespace {
+ 
+-static bool IsWildcard(base_icu::UChar32 character) {
++static bool IsWildcard(UChar32 character) {
+   return character == '*' || character == '?';
+ }
+ 
+@@ -37,9 +37,9 @@
+     // Check if the chars match, if so, increment the ptrs.
+     const CHAR* pattern_next = *pattern;
+     const CHAR* string_next = *string;
+-    base_icu::UChar32 pattern_char = next(&pattern_next, pattern_end);
++    UChar32 pattern_char = next(&pattern_next, pattern_end);
+     if (pattern_char == next(&string_next, string_end) &&
+-        pattern_char != CBU_SENTINEL) {
++        pattern_char != U_SENTINEL) {
+       *pattern = pattern_next;
+       *string = string_next;
+     } else {
+@@ -133,20 +133,20 @@
+ }
+ 
+ struct NextCharUTF8 {
+-  base_icu::UChar32 operator()(const char** p, const char* end) {
+-    base_icu::UChar32 c;
++  UChar32 operator()(const char** p, const char* end) {
++    UChar32 c;
+     int offset = 0;
+-    CBU8_NEXT(*p, offset, end - *p, c);
++    U8_NEXT(*p, offset, end - *p, c);
+     *p += offset;
+     return c;
+   }
+ };
+ 
+ struct NextCharUTF16 {
+-  base_icu::UChar32 operator()(const char16** p, const char16* end) {
+-    base_icu::UChar32 c;
++  UChar32 operator()(const char16** p, const char16* end) {
++    UChar32 c;
+     int offset = 0;
+-    CBU16_NEXT(*p, offset, end - *p, c);
++    U16_NEXT(*p, offset, end - *p, c);
+     *p += offset;
+     return c;
+   }
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc	2016-07-17 17:20:50.669600436 +0200
+@@ -8,7 +8,7 @@
+ 
+ #include "base/logging.h"
+ #include "base/strings/string_util.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ namespace base {
+ 
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc	2016-07-17 17:29:39.032552674 +0200
+@@ -26,7 +26,7 @@
+ #include "base/strings/string_split.h"
+ #include "base/strings/utf_string_conversion_utils.h"
+ #include "base/strings/utf_string_conversions.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ #include "build/build_config.h"
+ 
+ namespace base {
+@@ -358,19 +358,19 @@
+   }
+   DCHECK_LE(byte_size,
+             static_cast<uint32_t>(std::numeric_limits<int32_t>::max()));
+-  // Note: This cast is necessary because CBU8_NEXT uses int32_ts.
++  // Note: This cast is necessary because U8_NEXT uses int32_ts.
+   int32_t truncation_length = static_cast<int32_t>(byte_size);
+   int32_t char_index = truncation_length - 1;
+   const char* data = input.data();
+ 
+-  // Using CBU8, we will move backwards from the truncation point
++  // Using U8, we will move backwards from the truncation point
+   // to the beginning of the string looking for a valid UTF8
+   // character.  Once a full UTF8 character is found, we will
+   // truncate the string to the end of that character.
+   while (char_index >= 0) {
+     int32_t prev = char_index;
+-    base_icu::UChar32 code_point = 0;
+-    CBU8_NEXT(data, char_index, truncation_length, code_point);
++    UChar32 code_point = 0;
++    U8_NEXT(data, char_index, truncation_length, code_point);
+     if (!IsValidCharacter(code_point) ||
+         !IsValidCodepoint(code_point)) {
+       char_index = prev - 1;
+@@ -523,7 +523,7 @@
+ 
+   while (char_index < src_len) {
+     int32_t code_point;
+-    CBU8_NEXT(src, char_index, src_len, code_point);
++    U8_NEXT(src, char_index, src_len, code_point);
+     if (!IsValidCharacter(code_point))
+       return false;
+   }
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2016-07-17 17:31:29.363164013 +0200
+@@ -4,7 +4,7 @@
+ 
+ #include "base/strings/utf_string_conversion_utils.h"
+ 
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ namespace base {
+ 
+@@ -18,7 +18,7 @@
+   // use a signed type for code_point.  But this function returns false
+   // on error anyway, so code_point_out is unsigned.
+   int32_t code_point;
+-  CBU8_NEXT(src, *char_index, src_len, code_point);
++  U8_NEXT(src, *char_index, src_len, code_point);
+   *code_point_out = static_cast<uint32_t>(code_point);
+ 
+   // The ICU macro above moves to the next char, we want to point to the last
+@@ -33,16 +33,16 @@
+                           int32_t src_len,
+                           int32_t* char_index,
+                           uint32_t* code_point) {
+-  if (CBU16_IS_SURROGATE(src[*char_index])) {
+-    if (!CBU16_IS_SURROGATE_LEAD(src[*char_index]) ||
++  if (U16_IS_SURROGATE(src[*char_index])) {
++    if (!U16_IS_SURROGATE_LEAD(src[*char_index]) ||
+         *char_index + 1 >= src_len ||
+-        !CBU16_IS_TRAIL(src[*char_index + 1])) {
++        !U16_IS_TRAIL(src[*char_index + 1])) {
+       // Invalid surrogate pair.
+       return false;
+     }
+ 
+     // Valid surrogate pair.
+-    *code_point = CBU16_GET_SUPPLEMENTARY(src[*char_index],
++    *code_point = U16_GET_SUPPLEMENTARY(src[*char_index],
+                                           src[*char_index + 1]);
+     (*char_index)++;
+   } else {
+@@ -76,30 +76,30 @@
+   }
+ 
+ 
+-  // CBU8_APPEND_UNSAFE can append up to 4 bytes.
++  // U8_APPEND_UNSAFE can append up to 4 bytes.
+   size_t char_offset = output->length();
+   size_t original_char_offset = char_offset;
+-  output->resize(char_offset + CBU8_MAX_LENGTH);
++  output->resize(char_offset + U8_MAX_LENGTH);
+ 
+-  CBU8_APPEND_UNSAFE(&(*output)[0], char_offset, code_point);
++  U8_APPEND_UNSAFE(&(*output)[0], char_offset, code_point);
+ 
+-  // CBU8_APPEND_UNSAFE will advance our pointer past the inserted character, so
++  // U8_APPEND_UNSAFE will advance our pointer past the inserted character, so
+   // it will represent the new length of the string.
+   output->resize(char_offset);
+   return char_offset - original_char_offset;
+ }
+ 
+ size_t WriteUnicodeCharacter(uint32_t code_point, string16* output) {
+-  if (CBU16_LENGTH(code_point) == 1) {
++  if (U16_LENGTH(code_point) == 1) {
+     // Thie code point is in the Basic Multilingual Plane (BMP).
+     output->push_back(static_cast<char16>(code_point));
+     return 1;
+   }
+   // Non-BMP characters use a double-character encoding.
+   size_t char_offset = output->length();
+-  output->resize(char_offset + CBU16_MAX_LENGTH);
+-  CBU16_APPEND_UNSAFE(&(*output)[0], char_offset, code_point);
+-  return CBU16_MAX_LENGTH;
++  output->resize(char_offset + U16_MAX_LENGTH);
++  U16_APPEND_UNSAFE(&(*output)[0], char_offset, code_point);
++  return U16_MAX_LENGTH;
+ }
+ 
+ // Generalized Unicode converter -----------------------------------------------
+diff -ur qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc
+--- qtwebengine-opensource-src-5.7.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2016-05-26 15:53:47.000000000 +0200
++++ qtwebengine-opensource-src-5.7.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2016-07-17 17:20:50.687600537 +0200
+@@ -5,13 +5,13 @@
+ #include "ui/gfx/utf16_indexing.h"
+ 
+ #include "base/logging.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ namespace gfx {
+ 
+ bool IsValidCodePointIndex(const base::string16& s, size_t index) {
+   return index == 0 || index == s.length() ||
+-    !(CBU16_IS_TRAIL(s[index]) && CBU16_IS_LEAD(s[index - 1]));
++    !(U16_IS_TRAIL(s[index]) && U16_IS_LEAD(s[index - 1]));
+ }
+ 
+ ptrdiff_t UTF16IndexToOffset(const base::string16& s, size_t base, size_t pos) {
