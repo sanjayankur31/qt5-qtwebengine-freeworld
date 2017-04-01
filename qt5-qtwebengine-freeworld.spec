@@ -33,8 +33,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.7.1
-Release: 6%{?dist}
+Version: 5.8.0
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -62,47 +62,59 @@ Patch3:  qtwebengine-opensource-src-5.7.1-no-neon.patch
 # use the system NSPR prtime (based on Debian patch)
 # We already depend on NSPR, so it is useless to copy these functions here.
 # Debian uses this just fine, and I don't see relevant modifications either.
-Patch4:  qtwebengine-opensource-src-5.7.0-system-nspr-prtime.patch
+Patch4:  qtwebengine-opensource-src-5.8.0-system-nspr-prtime.patch
 # use the system ICU UTF functions
 # We already depend on ICU, so it is useless to copy these functions here.
 # I checked the history of that directory, and other than the renames I am
 # undoing, there were no modifications at all. Must be applied after Patch5.
-Patch5:  qtwebengine-opensource-src-5.7.0-system-icu-utf.patch
+Patch5:  qtwebengine-opensource-src-5.8.0-system-icu-utf.patch
 # do not require SSE2 on i686
 # cumulative revert of upstream reviews 187423002, 308003004, 511773002 (parts
 # relevant to QtWebEngine only), 516543004, 1152053004 and 1161853008, along
 # with some custom fixes and improvements
 # also build V8 shared and twice on i686 (once for x87, once for SSE2)
-Patch6:  qtwebengine-opensource-src-5.7.0-no-sse2.patch
+# TODO: For 5.9, we will need the GN files updated (where not done yet), too.
+Patch6:  qtwebengine-opensource-src-5.8.0-no-sse2.patch
 # fix ARM NEON handling in webrtc gyp files
 # Fix video_processing.gypi to only build NEON files when actually requested
 # (i.e., not if arm_neon=0 arm_neon_optional=0).
 Patch7:  qtwebengine-opensource-src-5.7.0-webrtc-neon.patch
-# don't require the time zone detection API backported from ICU 55 (thanks spot)
-Patch8:  qtwebengine-opensource-src-5.6.0-beta-system-icu54.patch
 # fix missing ARM -mfpu setting (see the comment in the no-neon patch above)
 Patch9:  qtwebengine-opensource-src-5.7.1-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 Patch10: qtwebengine-opensource-src-5.7.1-openmax-dl-neon.patch
 # chromium-skia: build SkUtilsArm.cpp also on non-Android ARM
 Patch11: qtwebengine-opensource-src-5.7.1-skia-neon.patch
-# webrtc: backport https://codereview.webrtc.org/1820133002/ "Implement CPU
-# feature detection for ARM Linux." and enable the detection also for Chromium
-Patch12: qtwebengine-opensource-src-5.7.1-webrtc-neon-detect.patch
+# webrtc: enable the CPU feature detection for ARM Linux also for Chromium
+Patch12: qtwebengine-opensource-src-5.8.0-webrtc-neon-detect.patch
+# fix FTBFS in V8 with GCC 7 (by Ben Noordhuis, backported from Chromium RPM)
+Patch13: qtwebengine-opensource-src-5.8.0-v8-gcc7.patch
+# fix FTBFS in PDFium with GCC 7: backport upstream cleanup removing that code
+# https://codereview.chromium.org/2154503002
+Patch14: qtwebengine-opensource-src-5.8.0-pdfium-gcc7.patch
+# fix FTBFS in the WTF part of Blink/WebKit with GCC 7
+Patch15: qtwebengine-opensource-src-5.8.0-wtf-gcc7.patch
+# FTBFS using qt < 5.8
+Patch20:  qtwebengine-opensource-src-5.8.0-qt57.patch
+
+%if 0%{?fedora} && 0%{?fedora} < 25
+# work around missing qt5_qtwebengine_arches macro on F24
+%{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
+%endif
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
 
-BuildRequires: qt5-qtbase-devel >= %{version}
+BuildRequires: qt5-qtbase-devel
 BuildRequires: qt5-qtbase-private-devel
 # TODO: check of = is really needed or if >= would be good enough -- rex
 %{?_qt5:Requires: %{_qt5}%{?_isa} = %{_qt5_version}}
-BuildRequires: qt5-qtdeclarative-devel >= %{version}
-BuildRequires: qt5-qtxmlpatterns-devel >= %{version}
-BuildRequires: qt5-qtlocation-devel >= %{version}
-BuildRequires: qt5-qtsensors-devel >= %{version}
-BuildRequires: qt5-qtwebchannel-devel >= %{version}
-BuildRequires: qt5-qttools-static >= %{version}
+BuildRequires: qt5-qtdeclarative-devel
+BuildRequires: qt5-qtxmlpatterns-devel
+BuildRequires: qt5-qtlocation-devel
+BuildRequires: qt5-qtsensors-devel
+BuildRequires: qt5-qtwebchannel-devel
+BuildRequires: qt5-qttools-static
 BuildRequires: ninja-build
 BuildRequires: cmake
 BuildRequires: bison
@@ -184,9 +196,11 @@ BuildRequires: pkgconfig(vpx) >= 1.5.0
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes are backported, see:
-# http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=49-based
-Provides: bundled(chromium) = 49
+# Some security fixes (up to version 55.0.2883.75) are backported, see:
+# http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=53-based
+# see dist/changes-5.8.0 for the version numbers (base, security fixes) and for
+# a list of CVEs fixed by the added security backports
+Provides: bundled(chromium) = 53.0.2785.148
 
 # Bundled in src/3rdparty/chromium/third_party:
 # Check src/3rdparty/chromium/third_party/*/README.chromium for version numbers,
@@ -211,7 +225,7 @@ Provides: bundled(iccjpeg)
 Provides: bundled(khronos_headers)
 # bundled as "leveldatabase"
 Provides: bundled(leveldb)
-Provides: bundled(libjingle) = 11250
+Provides: bundled(libjingle) = 12750
 %if !0%{?use_system_libvpx}
 # bundled as "libvpx_new"
 # the version in README.chromium is wrong, see
@@ -223,7 +237,7 @@ Provides: bundled(libvpx) = 1.5.0
 Provides: bundled(libwebp) = 0.5.0
 %endif
 Provides: bundled(libXNVCtrl) = 302.17
-Provides: bundled(libyuv) = 1563
+Provides: bundled(libyuv) = 1579
 Provides: bundled(modp_b64)
 Provides: bundled(mojo)
 # headers only
@@ -271,7 +285,7 @@ Provides: bundled(nsURLParsers)
 
 # Bundled outside of third_party, apparently not considered as such by Chromium:
 # see src/3rdparty/chromium/v8/include/v8_version.h for the version number
-Provides: bundled(v8) = 4.9.385.33
+Provides: bundled(v8) = 5.3.332.47
 # bundled by v8 (src/3rdparty/chromium/v8/src/third_party/fdlibm)
 # see src/3rdparty/chromium/v8/src/third_party/fdlibm/README.v8 for the version
 Provides: bundled(fdlibm) = 5.3
@@ -301,10 +315,13 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch5 -p1 -b .system-icu-utf
 %patch6 -p1 -b .no-sse2
 %patch7 -p1 -b .webrtc-neon
-%patch8 -p1 -b .system-icu54
 %patch10 -p1 -b .openmax-dl-neon
 %patch11 -p1 -b .skia-neon
 %patch12 -p1 -b .webrtc-neon-detect
+%patch13 -p1 -b .v8-gcc7
+%patch14 -p1 -b .pdfium-gcc7
+%patch15 -p1 -b .wtf-gcc7
+%patch20 -p1 -b .qt57
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -321,6 +338,14 @@ cp -bv /usr/include/re2/*.h src/3rdparty/chromium/third_party/re2/src/re2/
 # most arches run out of memory with full debuginfo, so use -g1 on non-x86_64
 sed -i -e 's/=-g$/=-g1/g' src/core/gyp_run.pro
 %endif
+
+# generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
+pushd src/3rdparty
+python chromium/tools/licenses.py \
+  --file-template ../../tools/about_credits.tmpl \
+  --entry-template ../../tools/about_credits_entry.tmpl \
+  credits >../webengine/doc/src/qtwebengine-3rdparty.qdoc
+popd
 
 # copy the Chromium license so it is installed with the appropriate name
 cp -p src/3rdparty/chromium/LICENSE LICENSE.Chromium
@@ -344,7 +369,7 @@ mkdir %{_target_platform}
 pushd %{_target_platform}
 
 %{qmake_qt5} CONFIG+="webcore_debug v8base_debug force_debug_info" \
-  WEBENGINE_CONFIG+="use_system_icu use_system_protobuf %{?system_ffmpeg_flag} use_proprietary_codecs" ..
+  WEBENGINE_CONFIG+="use_system_icu use_system_protobuf %{?system_ffmpeg_flag} use_spellchecker use_proprietary_codecs" ..
 
 # if we keep these set here, gyp picks up duplicate flags
 unset CFLAGS
@@ -352,7 +377,6 @@ export CFLAGS
 unset CXXFLAGS
 export CXXFLAGS
 
-# workaround, disable parallel compilation as it fails to compile in brew
 make %{?_smp_mflags}
 
 %install
@@ -380,6 +404,21 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Apr 01 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.8.0-1
+- Update to 5.8.0
+- Update version numbers of bundled stuff
+- Rebase (unfuzz) system-nspr-prtime and system-icu-utf patches
+- Drop system-icu54 patch, ICU 5.4 no longer supported
+- Rebase the webrtc-neon-detect patch (backported portions no longer needed)
+- Rebase the no-sse2 patch
+- Fix FTBFS in V8 with GCC 7 (by Ben Noordhuis, backported from Chromium RPM)
+- Fix FTBFS in PDFium with GCC 7: backport upstream cleanup removing that code
+- Fix FTBFS in the WTF part of Blink/WebKit with GCC 7
+- Generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
+- Work around missing qt5_qtwebengine_arches macro on F24
+- Make buildable against qt5 < 5.8 too (Rex Dieter)
+- Enable use_spellchecker explicitly so that it is also enabled on Qt 5.7
+
 * Mon Mar 20 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 5.7.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 

@@ -1,0 +1,71 @@
+diff -ur qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects-body-descriptors.h qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects-body-descriptors.h
+--- qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects-body-descriptors.h	2017-01-03 10:28:53.000000000 +0100
++++ qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects-body-descriptors.h	2017-03-06 02:05:57.848394582 +0100
+@@ -99,7 +99,7 @@
+ 
+   template <typename StaticVisitor>
+   static inline void IterateBody(HeapObject* obj, int object_size) {
+-    IterateBody(obj);
++    IterateBody<StaticVisitor>(obj);
+   }
+ };
+ 
+diff -ur qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects.h qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects.h
+--- qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects.h	2017-01-03 10:28:53.000000000 +0100
++++ qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects.h	2017-03-06 02:05:57.990392454 +0100
+@@ -3193,22 +3193,10 @@
+  public:
+   typedef Shape ShapeT;
+ 
+-  // Wrapper methods
+-  inline uint32_t Hash(Key key) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHash(key, GetHeap()->HashSeed());
+-    } else {
+-      return Shape::Hash(key);
+-    }
+-  }
+-
+-  inline uint32_t HashForObject(Key key, Object* object) {
+-    if (Shape::UsesSeed) {
+-      return Shape::SeededHashForObject(key, GetHeap()->HashSeed(), object);
+-    } else {
+-      return Shape::HashForObject(key, object);
+-    }
+-  }
++  // Wrapper methods.  Defined in src/objects-inl.h
++  // to break a cycle with src/heap/heap.h.
++  inline uint32_t Hash(Key key);
++  inline uint32_t HashForObject(Key key, Object* object);
+ 
+   // Returns a new HashTable object.
+   MUST_USE_RESULT static Handle<Derived> New(
+diff -ur qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects-inl.h qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects-inl.h
+--- qtwebengine-opensource-src-5.8.0/src/3rdparty/chromium/v8/src/objects-inl.h	2017-01-03 10:28:53.000000000 +0100
++++ qtwebengine-opensource-src-5.8.0-gcc7/src/3rdparty/chromium/v8/src/objects-inl.h	2017-03-06 02:05:57.992392424 +0100
+@@ -38,6 +38,25 @@
+ namespace v8 {
+ namespace internal {
+ 
++template <typename Derived, typename Shape, typename Key>
++uint32_t HashTable<Derived, Shape, Key>::Hash(Key key) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHash(key, GetHeap()->HashSeed());
++  } else {
++    return Shape::Hash(key);
++  }
++}
++
++template <typename Derived, typename Shape, typename Key>
++uint32_t HashTable<Derived, Shape, Key>::HashForObject(Key key,
++                                                       Object* object) {
++  if (Shape::UsesSeed) {
++    return Shape::SeededHashForObject(key, GetHeap()->HashSeed(), object);
++  } else {
++    return Shape::HashForObject(key, object);
++  }
++}
++
+ PropertyDetails::PropertyDetails(Smi* smi) {
+   value_ = smi->value();
+ }

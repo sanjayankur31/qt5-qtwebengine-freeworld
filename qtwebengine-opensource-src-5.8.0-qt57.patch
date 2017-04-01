@@ -1,0 +1,12 @@
+diff -up qtwebengine-opensource-src-5.8.0/src/core/proxy_config_service_qt.cpp.qt58 qtwebengine-opensource-src-5.8.0/src/core/proxy_config_service_qt.cpp
+--- qtwebengine-opensource-src-5.8.0/src/core/proxy_config_service_qt.cpp.qt58	2017-01-03 04:35:11.000000000 -0600
++++ qtwebengine-opensource-src-5.8.0/src/core/proxy_config_service_qt.cpp	2017-03-24 14:43:55.120363292 -0500
+@@ -109,7 +109,7 @@ net::ProxyConfigService::ConfigAvailabil
+     }
+     m_qtApplicationProxy = qtProxy;
+     m_qtProxyConfig = net::ProxyConfig();
+-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+     if (qtProxy.type() == QNetworkProxy::NoProxy
+             && QNetworkProxyFactory::usesSystemConfiguration()) {
+         *config = systemConfig;
