@@ -34,7 +34,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.8.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -95,7 +95,9 @@ Patch14: qtwebengine-opensource-src-5.8.0-pdfium-gcc7.patch
 # fix FTBFS in the WTF part of Blink/WebKit with GCC 7
 Patch15: qtwebengine-opensource-src-5.8.0-wtf-gcc7.patch
 # FTBFS using qt < 5.8
-Patch20:  qtwebengine-opensource-src-5.8.0-qt57.patch
+Patch20: qtwebengine-opensource-src-5.8.0-qt57.patch
+# upstream fix for blank pages when a link opens in a new tab
+Patch100: qtwebengine-opensource-src-5.8.0-fix-open-in-new-tab.patch
 
 %if 0%{?fedora} && 0%{?fedora} < 25
 # work around missing qt5_qtwebengine_arches macro on F24
@@ -322,6 +324,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch14 -p1 -b .pdfium-gcc7
 %patch15 -p1 -b .wtf-gcc7
 %patch20 -p1 -b .qt57
+%patch100 -p1 -b .fix-open-in-new-tab
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -404,6 +407,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Tue Apr 25 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.8.0-2
+- Backport upstream fix for blank pages when a link opens in a new tab
+
 * Sat Apr 01 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.8.0-1
 - Update to 5.8.0
 - Update version numbers of bundled stuff
