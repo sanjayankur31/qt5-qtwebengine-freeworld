@@ -34,7 +34,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.8.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -98,6 +98,8 @@ Patch15: qtwebengine-opensource-src-5.8.0-wtf-gcc7.patch
 Patch20: qtwebengine-opensource-src-5.8.0-qt57.patch
 # upstream fix for blank pages when a link opens in a new tab
 Patch100: qtwebengine-opensource-src-5.8.0-fix-open-in-new-tab.patch
+# upstream fix for non-functional dead keys in text fields
+Patch101: qtwebengine-opensource-src-5.8.0-fix-dead-keys.patch
 
 %if 0%{?fedora} && 0%{?fedora} < 25
 # work around missing qt5_qtwebengine_arches macro on F24
@@ -325,6 +327,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch15 -p1 -b .wtf-gcc7
 %patch20 -p1 -b .qt57
 %patch100 -p1 -b .fix-open-in-new-tab
+%patch101 -p1 -b .fix-dead-keys
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -407,6 +410,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Fri Apr 28 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.8.0-3
+- Backport upstream fix for non-functional dead keys in text fields
+
 * Tue Apr 25 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.8.0-2
 - Backport upstream fix for blank pages when a link opens in a new tab
 
