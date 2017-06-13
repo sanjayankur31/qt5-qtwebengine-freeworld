@@ -416,6 +416,7 @@ echo "%{_libdir}/%{name}" \
 - Backport patch to fix FTBFS with GCC on aarch64 from upstream Chromium
 - Fix src/3rdparty/chromium/build/linux/unbundle/re2.gn
 - Delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn
+- arm-fpu-fix patch: Also build the host tools (i.e., GN) with the correct FPU
 
 * Sun Apr 30 2017 Leigh Scott <leigh123linux@googlemail.com> - 5.8.0-4
 - Rebuild for ffmpeg update
