@@ -1,0 +1,80 @@
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/BUILD.gn qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2017-06-08 10:52:51.565409865 +0200
+@@ -49,6 +49,9 @@
+       "-Wno-char-subscripts",
+     ]
+   }
++  ldflags = [
++    "-lnspr4",
++  ]
+ }
+ 
+ config("base_implementation") {
+@@ -833,8 +836,6 @@
+     "third_party/dmg_fp/g_fmt.cc",
+     "third_party/icu/icu_utf.cc",
+     "third_party/icu/icu_utf.h",
+-    "third_party/nspr/prtime.cc",
+-    "third_party/nspr/prtime.h",
+     "third_party/superfasthash/superfasthash.c",
+     "threading/non_thread_safe.h",
+     "threading/non_thread_safe_impl.cc",
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2017-06-08 10:58:06.743413247 +0200
+@@ -7,7 +7,7 @@
+ 
+ #include "base/compiler_specific.h"
+ #include "base/macros.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "base/time/time.h"
+ #include "build/build_config.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/time/time.cc qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/time/time.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc	2017-06-08 10:58:09.557373071 +0200
+@@ -14,7 +14,7 @@
+ #include "base/logging.h"
+ #include "base/macros.h"
+ #include "base/strings/stringprintf.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "build/build_config.h"
+ 
+ namespace base {
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-06-08 10:55:05.945934291 +0200
+@@ -473,7 +473,6 @@
+       'base/third_party/dmg_fp/dtoa_wrapper.cc',
+       'base/third_party/dmg_fp/g_fmt.cc',
+       'base/third_party/icu/icu_utf.cc',
+-      'base/third_party/nspr/prtime.cc',
+       'base/threading/non_thread_safe_impl.cc',
+       'base/threading/post_task_and_reply_impl.cc',
+       'base/threading/sequenced_task_runner_handle.cc',
+@@ -575,7 +574,7 @@
+     }
+ 
+   if is_linux:
+-    libs.extend(['-lrt'])
++    libs.extend(['-lrt', '-lnspr4'])
+     ldflags.extend(['-pthread'])
+ 
+     static_libraries['xdg_user_dirs'] = {
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/tools/gn/BUILD.gn qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-06-10 22:18:26.863178931 +0200
+@@ -274,6 +274,10 @@
+     "//build/config/sanitizers:deps",
+     "//build/win:default_exe_manifest",
+   ]
++
++  libs = [
++    "nspr4",
++  ]
+ }
+ 
+ test("gn_unittests") {

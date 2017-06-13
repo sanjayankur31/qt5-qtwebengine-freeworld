@@ -1,0 +1,12 @@
+diff -ur qtwebengine-opensource-src-5.9.0/src/buildtools/gn.pro qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose/src/buildtools/gn.pro
+--- qtwebengine-opensource-src-5.9.0/src/buildtools/gn.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose/src/buildtools/gn.pro	2017-06-10 15:24:55.426814326 +0200
+@@ -20,7 +20,7 @@
+             src_3rd_party_dir = $$absolute_path("$${getChromiumSrcDir()}/../", "$$QTWEBENGINE_ROOT")
+             gn_bootstrap = $$system_path($$absolute_path(chromium/tools/gn/bootstrap/bootstrap.py, $$src_3rd_party_dir))
+             gn_args = $$system_quote($$gn_args)
+-            gn_configure = $$system_quote($$gn_bootstrap) --shadow --gn-gen-args=$$gn_args $$ninja_path
++            gn_configure = $$system_quote($$gn_bootstrap) --verbose --shadow --gn-gen-args=$$gn_args $$ninja_path
+             !system("cd $$system_quote($$system_path($$dirname(out))) && $$pythonPathForSystem() $$gn_configure") {
+                 error("GN build error!")
+             }

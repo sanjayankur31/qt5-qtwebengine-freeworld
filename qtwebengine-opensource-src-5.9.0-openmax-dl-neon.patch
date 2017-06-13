@@ -1,25 +1,19 @@
-diff -ur qtwebengine-opensource-src-5.7.1/src/3rdparty/chromium/third_party/openmax_dl/dl/dl.gyp qtwebengine-opensource-src-5.7.1-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/dl.gyp
---- qtwebengine-opensource-src-5.7.1/src/3rdparty/chromium/third_party/openmax_dl/dl/dl.gyp	2016-11-07 15:46:18.000000000 +0100
-+++ qtwebengine-opensource-src-5.7.1-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/dl.gyp	2016-12-03 22:50:19.369158276 +0100
-@@ -219,15 +219,6 @@
-           'conditions': [
-             ['arm_neon_optional==1', {
-               # Run-time NEON detection.
--              'dependencies': [
--                '../../../build/android/ndk.gyp:cpu_features',
--              ],
--              'link_settings' : {
--                'libraries': [
--                  # To get the __android_log_print routine
--                  '-llog',
--                ],
--              },
-               'sources': [
-                 # Detection routine
-                 'sp/src/arm/detect.c',
-diff -ur qtwebengine-opensource-src-5.7.1/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c qtwebengine-opensource-src-5.7.1-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
---- qtwebengine-opensource-src-5.7.1/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2016-11-07 15:46:18.000000000 +0100
-+++ qtwebengine-opensource-src-5.7.1-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2016-12-03 22:48:13.745095083 +0100
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn	2017-06-10 02:41:10.317340598 +0200
+@@ -196,9 +196,6 @@
+     ]
+     if (arm_optionally_use_neon) {
+       # Run-time NEON detection.
+-      deps = [ "//third_party/android_tools:cpu_features" ]
+-      # To get the __android_log_print routine
+-      libs = [ "log" ]
+       # Detection routine
+       sources += [ "sp/src/arm/detect.c" ]
+     }
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2017-06-10 02:38:30.593809570 +0200
 @@ -9,13 +9,57 @@
   *
   */

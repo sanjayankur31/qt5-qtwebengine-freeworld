@@ -1,0 +1,11 @@
+diff -ur qtwebengine-opensource-src-5.9.0/src/core/config/linux.pri qtwebengine-opensource-src-5.9.0-arm-fpu-fix/src/core/config/linux.pri
+--- qtwebengine-opensource-src-5.9.0/src/core/config/linux.pri	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-arm-fpu-fix/src/core/config/linux.pri	2017-06-10 02:32:09.984692943 +0200
+@@ -64,6 +64,7 @@
+         gn_args += arm_use_neon=true
+     } else {
+         MFPU = $$extractCFlag("-mfpu=.*")
++        !isEmpty(MFPU): gn_args += arm_fpu=\"$$MFPU\"
+         !isEmpty(MFPU):contains(MFPU, ".*neon.*") {
+             gn_args += arm_use_neon=true
+         } else {

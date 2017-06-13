@@ -1,0 +1,3108 @@
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webengine/customdialogs/customdialogs.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/customdialogs/customdialogs.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webengine/customdialogs/customdialogs.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/customdialogs/customdialogs.pro	2017-06-12 20:48:36.743167401 +0200
+@@ -1,5 +1,7 @@
+ QT += webengine
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS += \
+     server.h
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webengine/minimal/minimal.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/minimal/minimal.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webengine/minimal/minimal.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/minimal/minimal.pro	2017-06-12 20:48:02.646665156 +0200
+@@ -2,6 +2,8 @@
+ 
+ QT += webengine
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ SOURCES += main.cpp
+ 
+ RESOURCES += qml.qrc
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webengine/quicknanobrowser/quicknanobrowser.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2017-06-12 20:48:24.553340621 +0200
+@@ -20,5 +20,7 @@
+     QT += widgets # QApplication is required to get native styling with QtQuickControls
+ }
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ target.path = $$[QT_INSTALL_EXAMPLES]/webengine/quicknanobrowser
+ INSTALLS += target
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webengine/recipebrowser/recipebrowser.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webengine/recipebrowser/recipebrowser.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro	2017-06-12 20:48:31.672239461 +0200
+@@ -2,6 +2,8 @@
+ 
+ QT += quick qml quickcontrols2 webengine
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ cross_compile {
+   posix|qnx|linux: DEFINES += QTWEBENGINE_RECIPE_BROWSER_EMBEDDED
+ }
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2017-06-12 20:47:51.870824827 +0200
+@@ -1,5 +1,7 @@
+ QT      +=  webenginewidgets
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS =   mainwindow.h
+ SOURCES =   main.cpp \
+             mainwindow.cpp
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2017-06-12 20:47:00.603584486 +0200
+@@ -3,6 +3,8 @@
+ TEMPLATE = app
+ CONFIG += c++11
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ SOURCES += \
+     main.cpp\
+     mainwindow.cpp
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/demobrowser/demobrowser.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/demobrowser/demobrowser.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/demobrowser/demobrowser.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/demobrowser/demobrowser.pro	2017-06-12 20:47:26.036207636 +0200
+@@ -3,6 +3,8 @@
+ QT += webenginewidgets network widgets printsupport
+ CONFIG += c++11
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ qtHaveModule(uitools):!embedded: QT += uitools
+ else: DEFINES += QT_NO_UITOOLS
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/markdowneditor/markdowneditor.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2017-06-12 20:47:36.026059609 +0200
+@@ -3,6 +3,8 @@
+ QT += webenginewidgets webchannel
+ CONFIG += c++11
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS += \
+     mainwindow.h \
+     previewpage.h \
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/minimal/minimal.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/minimal/minimal.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/minimal/minimal.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/minimal/minimal.pro	2017-06-12 20:46:13.714279273 +0200
+@@ -2,6 +2,8 @@
+ 
+ QT += webenginewidgets
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ SOURCES += main.cpp
+ 
+ target.path = $$[QT_INSTALL_EXAMPLES]/webenginewidgets/minimal
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/simplebrowser/simplebrowser.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2017-06-12 20:47:31.059133208 +0200
+@@ -3,6 +3,8 @@
+ QT += webenginewidgets
+ CONFIG += c++11
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS += \
+     browser.h \
+     browserwindow.h \
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/spellchecker/spellchecker.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/spellchecker/spellchecker.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro	2017-06-12 20:47:46.165909361 +0200
+@@ -7,6 +7,8 @@
+     error("Spellcheck example can not be built when using native OS dictionaries.")
+ }
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS += \
+     webview.h
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/videoplayer/videoplayer.pro qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro
+--- qtwebengine-opensource-src-5.9.0/examples/webenginewidgets/videoplayer/videoplayer.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro	2017-06-12 20:47:20.160294702 +0200
+@@ -2,6 +2,8 @@
+ 
+ QT += webenginewidgets
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../../../src/core/Release
++
+ HEADERS += \
+     mainwindow.h \
+     fullscreenwindow.h \
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/config/compiler/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2017-06-08 23:09:28.104582812 +0200
+@@ -533,13 +533,6 @@
+     } else if (current_cpu == "x86") {
+       cflags += [ "-m32" ]
+       ldflags += [ "-m32" ]
+-      if (!is_nacl) {
+-        cflags += [
+-          "-msse2",
+-          "-mfpmath=sse",
+-          "-mmmx",
+-        ]
+-      }
+     } else if (current_cpu == "arm") {
+       if (is_clang && !is_android && !is_nacl) {
+         cflags += [ "--target=arm-linux-gnueabihf" ]
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/config/v8_target_cpu.gni qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2017-06-10 01:42:15.216049690 +0200
+@@ -59,3 +59,11 @@
+   # It should never be explicitly set by the user.
+   v8_current_cpu = v8_target_cpu
+ }
++
++if (v8_current_cpu == "x86") {
++  # If we are not building for the x86_sse2 toolchain, we actually want to build
++  # the "x87" backend instead.
++  if (current_toolchain != "//build/toolchain/linux:x86_sse2") {
++    v8_current_cpu = "x87"
++  }
++}
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2017-06-10 16:24:14.175128763 +0200
+@@ -213,6 +213,10 @@
+       extra_ldflags = ""
+     }
+ 
++    if (defined(invoker.shlib_subdir)) {
++      shlib_subdir = invoker.shlib_subdir
++    }
++
+     # These library switches can apply to all tools below.
+     lib_switch = "-l"
+     lib_dir_switch = "-L"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2017-06-10 02:09:47.874494730 +0200
+@@ -78,6 +78,26 @@
+   }
+ }
+ 
++gcc_toolchain("x86_sse2") {
++  cc = "gcc"
++  cxx = "g++"
++
++  readelf = "readelf"
++  nm = "nm"
++  ar = "ar"
++  ld = cxx
++
++  extra_cflags = "-msse2 -mfpmath=sse"
++  extra_cxxflags = "-msse2 -mfpmath=sse"
++  shlib_subdir = "lib/sse2"
++
++  toolchain_args = {
++    current_cpu = "x86"
++    current_os = "linux"
++    is_clang = false
++  }
++}
++
+ clang_toolchain("clang_x64") {
+   toolchain_args = {
+     current_cpu = "x64"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/cc/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/cc/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/cc/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/cc/BUILD.gn	2017-06-08 23:12:50.719511297 +0200
+@@ -567,13 +567,6 @@
+     "trees/tree_synchronizer.h",
+   ]
+ 
+-  if (current_cpu == "x86" || current_cpu == "x64") {
+-    sources += [
+-      "raster/texture_compressor_etc1_sse.cc",
+-      "raster/texture_compressor_etc1_sse.h",
+-    ]
+-  }
+-
+   configs += [ "//build/config:precompiled_headers" ]
+ 
+   public_deps = [
+@@ -583,6 +576,7 @@
+   deps = [
+     "//base",
+     "//base/third_party/dynamic_annotations",
++    "//cc:cc_opts",
+     "//cc/proto",
+     "//cc/surfaces:surface_id",
+     "//gpu",
+@@ -612,6 +606,36 @@
+   }
+ }
+ 
++source_set("cc_opts") {
++  public_deps = [
++    "//cc:cc_opts_sse",
++  ]
++}
++
++source_set("cc_opts_sse") {
++  if (current_cpu == "x86" || current_cpu == "x64") {
++    deps = [
++      "//base",
++    ]
++
++    defines = [ "CC_IMPLEMENTATION=1" ]
++
++    if (!is_debug && (is_win || is_android)) {
++      configs -= [ "//build/config/compiler:optimize" ]
++      configs += [ "//build/config/compiler:optimize_max" ]
++    }
++
++    sources = [
++      "raster/texture_compressor.h",
++      "raster/texture_compressor_etc1.h",
++      "raster/texture_compressor_etc1_sse.cc",
++      "raster/texture_compressor_etc1_sse.h",
++    ]
++
++    cflags = [ "-msse2" ]
++  }
++}
++
+ static_library("test_support") {
+   testonly = true
+   sources = [
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/content/renderer/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/content/renderer/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn	2017-06-12 14:19:26.095936011 +0200
+@@ -468,6 +468,13 @@
+     "//ui/surface",
+     "//v8",
+   ]
++
++  if (current_cpu == "x86") {
++    deps += [
++      "//v8(//build/toolchain/linux:x86_sse2)",
++    ]
++  }
++
+   allow_circular_includes_from = []
+ 
+   if (use_aura && !use_qt) {
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn	2017-06-08 22:49:57.484256877 +0200
+@@ -336,13 +336,13 @@
+   }
+ 
+   if (current_cpu == "x86" || current_cpu == "x64") {
+-    sources += [
+-      "simd/convert_rgb_to_yuv_sse2.cc",
+-      "simd/convert_rgb_to_yuv_ssse3.cc",
+-      "simd/convert_yuv_to_rgb_x86.cc",
+-      "simd/filter_yuv_sse2.cc",
++    sources += [ "simd/convert_yuv_to_rgb_x86.cc" ]
++    deps += [
++      ":media_yasm",
++      ":media_mmx",
++      ":media_sse",
++      ":media_sse2",
+     ]
+-    deps += [ ":media_yasm" ]
+   }
+ 
+   if (is_linux || is_win) {
+@@ -539,10 +539,47 @@
+ }
+ 
+ if (current_cpu == "x86" || current_cpu == "x64") {
++  source_set("media_mmx") {
++    sources = [ "simd/filter_yuv_mmx.cc" ]
++    configs += [ "//media:media_config" ]
++    if (!is_win) {
++      cflags = [ "-mmmx" ]
++    }
++  }
++
++  source_set("media_sse") {
++    sources = [
++      "simd/sinc_resampler_sse.cc",
++    ]
++    configs += [
++      "//media:media_config",
++      "//media:media_implementation",
++    ]
++    if (!is_win) {
++      cflags = [ "-msse" ]
++    }
++  }
++
++  source_set("media_sse2") {
++    sources = [
++      "simd/convert_rgb_to_yuv_sse2.cc",
++      "simd/convert_rgb_to_yuv_ssse3.cc",
++      "simd/filter_yuv_sse2.cc",
++    ]
++    configs += [
++      "//media:media_config",
++      "//media:media_implementation",
++    ]
++    if (!is_win) {
++      cflags = [ "-msse2" ]
++    }
++  }
++
+   import("//third_party/yasm/yasm_assemble.gni")
+   yasm_assemble("media_yasm") {
+     sources = [
+       "simd/convert_rgb_to_yuv_ssse3.asm",
++      "simd/convert_yuv_to_rgb_mmx.asm",
+       "simd/convert_yuv_to_rgb_sse.asm",
+       "simd/convert_yuva_to_argb_mmx.asm",
+       "simd/empty_register_state_mmx.asm",
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/media.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/media.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/media.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/media.cc	2017-06-08 22:49:57.484256877 +0200
+@@ -10,6 +10,8 @@
+ #include "base/metrics/field_trial.h"
+ #include "base/trace_event/trace_event.h"
+ #include "media/base/media_switches.h"
++#include "media/base/sinc_resampler.h"
++#include "media/base/vector_math.h"
+ #include "media/base/yuv_convert.h"
+ 
+ #if defined(OS_ANDROID)
+@@ -40,6 +42,8 @@
+     TRACE_EVENT_WARMUP_CATEGORY("media");
+ 
+     // Perform initialization of libraries which require runtime CPU detection.
++    vector_math::Initialize();
++    SincResampler::InitializeCPUSpecificFeatures();
+     InitializeCPUSpecificYUVConversions();
+ 
+ #if !defined(MEDIA_DISABLE_FFMPEG)
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb.h	2017-06-08 22:49:57.643254478 +0200
+@@ -65,6 +65,17 @@
+                                         int rgbstride,
+                                         YUVType yuv_type);
+ 
++MEDIA_EXPORT void ConvertYUVToRGB32_MMX(const uint8_t* yplane,
++                                        const uint8_t* uplane,
++                                        const uint8_t* vplane,
++                                        uint8_t* rgbframe,
++                                        int width,
++                                        int height,
++                                        int ystride,
++                                        int uvstride,
++                                        int rgbstride,
++                                        YUVType yuv_type);
++
+ MEDIA_EXPORT void ConvertYUVAToARGB_MMX(const uint8_t* yplane,
+                                         const uint8_t* uplane,
+                                         const uint8_t* vplane,
+@@ -124,6 +135,13 @@
+                                            ptrdiff_t width,
+                                            const int16_t* convert_table);
+ 
++MEDIA_EXPORT void ConvertYUVToRGB32Row_MMX(const uint8_t* yplane,
++                                           const uint8_t* uplane,
++                                           const uint8_t* vplane,
++                                           uint8_t* rgbframe,
++                                           ptrdiff_t width,
++                                           const int16_t* convert_table);
++
+ MEDIA_EXPORT void ConvertYUVToRGB32Row_SSE(const uint8_t* yplane,
+                                            const uint8_t* uplane,
+                                            const uint8_t* vplane,
+@@ -131,6 +149,14 @@
+                                            ptrdiff_t width,
+                                            const int16_t* convert_table);
+ 
++MEDIA_EXPORT void ScaleYUVToRGB32Row_MMX(const uint8_t* y_buf,
++                                         const uint8_t* u_buf,
++                                         const uint8_t* v_buf,
++                                         uint8_t* rgb_buf,
++                                         ptrdiff_t width,
++                                         ptrdiff_t source_dx,
++                                         const int16_t* convert_table);
++
+ MEDIA_EXPORT void ScaleYUVToRGB32Row_SSE(const uint8_t* y_buf,
+                                          const uint8_t* u_buf,
+                                          const uint8_t* v_buf,
+@@ -147,6 +173,14 @@
+                                               ptrdiff_t source_dx,
+                                               const int16_t* convert_table);
+ 
++MEDIA_EXPORT void LinearScaleYUVToRGB32Row_MMX(const uint8_t* y_buf,
++                                               const uint8_t* u_buf,
++                                               const uint8_t* v_buf,
++                                               uint8_t* rgb_buf,
++                                               ptrdiff_t width,
++                                               ptrdiff_t source_dx,
++                                               const int16_t* convert_table);
++
+ MEDIA_EXPORT void LinearScaleYUVToRGB32Row_SSE(const uint8_t* y_buf,
+                                                const uint8_t* u_buf,
+                                                const uint8_t* v_buf,
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_mmx.asm qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_mmx.asm
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_mmx.asm	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_mmx.asm	2017-06-08 22:49:57.698253649 +0200
+@@ -0,0 +1,23 @@
++; Copyright (c) 2011 The Chromium Authors. All rights reserved.
++; Use of this source code is governed by a BSD-style license that can be
++; found in the LICENSE file.
++
++%include "third_party/x86inc/x86inc.asm"
++
++;
++; This file uses MMX instructions.
++;
++  SECTION_TEXT
++  CPU       MMX
++
++; Use movq to save the output.
++%define MOVQ movq
++
++; extern "C" void ConvertYUVToRGB32Row_MMX(const uint8* y_buf,
++;                                          const uint8* u_buf,
++;                                          const uint8* v_buf,
++;                                          uint8* rgb_buf,
++;                                          ptrdiff_t width,
++;                                          const int16* convert_table);
++%define SYMBOL ConvertYUVToRGB32Row_MMX
++%include "convert_yuv_to_rgb_mmx.inc"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_x86.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_x86.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_x86.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/convert_yuv_to_rgb_x86.cc	2017-06-08 22:49:57.699253634 +0200
+@@ -47,6 +47,34 @@
+   EmptyRegisterState();
+ }
+ 
++void ConvertYUVToRGB32_MMX(const uint8_t* yplane,
++                           const uint8_t* uplane,
++                           const uint8_t* vplane,
++                           uint8_t* rgbframe,
++                           int width,
++                           int height,
++                           int ystride,
++                           int uvstride,
++                           int rgbstride,
++                           YUVType yuv_type) {
++  unsigned int y_shift = GetVerticalShift(yuv_type);
++  for (int y = 0; y < height; ++y) {
++    uint8_t* rgb_row = rgbframe + y * rgbstride;
++    const uint8_t* y_ptr = yplane + y * ystride;
++    const uint8_t* u_ptr = uplane + (y >> y_shift) * uvstride;
++    const uint8_t* v_ptr = vplane + (y >> y_shift) * uvstride;
++
++    ConvertYUVToRGB32Row_MMX(y_ptr,
++                             u_ptr,
++                             v_ptr,
++                             rgb_row,
++                             width,
++                             GetLookupTable(yuv_type));
++  }
++
++  EmptyRegisterState();
++}
++
+ void ConvertYUVToRGB32_SSE(const uint8_t* yplane,
+                            const uint8_t* uplane,
+                            const uint8_t* vplane,
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/filter_yuv.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/filter_yuv.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/filter_yuv.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/filter_yuv.h	2017-06-08 22:49:57.699253634 +0200
+@@ -20,6 +20,12 @@
+                                   int source_width,
+                                   uint8_t source_y_fraction);
+ 
++MEDIA_EXPORT void FilterYUVRows_MMX(uint8_t* ybuf,
++                                    const uint8_t* y0_ptr,
++                                    const uint8_t* y1_ptr,
++                                    int source_width,
++                                    uint8_t source_y_fraction);
++
+ MEDIA_EXPORT void FilterYUVRows_SSE2(uint8_t* ybuf,
+                                      const uint8_t* y0_ptr,
+                                      const uint8_t* y1_ptr,
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/filter_yuv_mmx.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/filter_yuv_mmx.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/filter_yuv_mmx.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/filter_yuv_mmx.cc	2017-06-08 22:49:57.699253634 +0200
+@@ -0,0 +1,79 @@
++// Copyright (c) 2011 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#if defined(_MSC_VER)
++#include <intrin.h>
++#else
++#include <mmintrin.h>
++#endif
++
++#include "build/build_config.h"
++#include "media/base/simd/filter_yuv.h"
++
++namespace media {
++
++#if defined(COMPILER_MSVC)
++// Warning 4799 is about calling emms before the function exits.
++// We calls emms in a frame level so suppress this warning.
++#pragma warning(push)
++#pragma warning(disable: 4799)
++#endif
++
++void FilterYUVRows_MMX(uint8_t* dest,
++                       const uint8_t* src0,
++                       const uint8_t* src1,
++                       int width,
++                       uint8_t fraction) {
++  int pixel = 0;
++
++  // Process the unaligned bytes first.
++  int unaligned_width =
++      (8 - (reinterpret_cast<uintptr_t>(dest) & 7)) & 7;
++  while (pixel < width && pixel < unaligned_width) {
++    dest[pixel] = (src0[pixel] * (256 - fraction) +
++                   src1[pixel] * fraction) >> 8;
++    ++pixel;
++  }
++
++  __m64 zero = _mm_setzero_si64();
++  __m64 src1_fraction = _mm_set1_pi16(fraction);
++  __m64 src0_fraction = _mm_set1_pi16(256 - fraction);
++  const __m64* src0_64 = reinterpret_cast<const __m64*>(src0 + pixel);
++  const __m64* src1_64 = reinterpret_cast<const __m64*>(src1 + pixel);
++  __m64* dest64 = reinterpret_cast<__m64*>(dest + pixel);
++  __m64* end64 = reinterpret_cast<__m64*>(
++      reinterpret_cast<uintptr_t>(dest + width) & ~7);
++
++  while (dest64 < end64) {
++    __m64 src0 = *src0_64++;
++    __m64 src1 = *src1_64++;
++    __m64 src2 = _mm_unpackhi_pi8(src0, zero);
++    __m64 src3 = _mm_unpackhi_pi8(src1, zero);
++    src0 = _mm_unpacklo_pi8(src0, zero);
++    src1 = _mm_unpacklo_pi8(src1, zero);
++    src0 = _mm_mullo_pi16(src0, src0_fraction);
++    src1 = _mm_mullo_pi16(src1, src1_fraction);
++    src2 = _mm_mullo_pi16(src2, src0_fraction);
++    src3 = _mm_mullo_pi16(src3, src1_fraction);
++    src0 = _mm_add_pi16(src0, src1);
++    src2 = _mm_add_pi16(src2, src3);
++    src0 = _mm_srli_pi16(src0, 8);
++    src2 = _mm_srli_pi16(src2, 8);
++    src0 = _mm_packs_pu16(src0, src2);
++    *dest64++ = src0;
++    pixel += 8;
++  }
++
++  while (pixel < width) {
++    dest[pixel] = (src0[pixel] * (256 - fraction) +
++                   src1[pixel] * fraction) >> 8;
++    ++pixel;
++  }
++}
++
++#if defined(COMPILER_MSVC)
++#pragma warning(pop)
++#endif
++
++}  // namespace media
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/sinc_resampler_sse.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/sinc_resampler_sse.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/sinc_resampler_sse.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/sinc_resampler_sse.cc	2017-06-08 22:49:57.699253634 +0200
+@@ -0,0 +1,50 @@
++// Copyright 2013 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "media/base/sinc_resampler.h"
++
++#include <xmmintrin.h>
++
++namespace media {
++
++float SincResampler::Convolve_SSE(const float* input_ptr, const float* k1,
++                                  const float* k2,
++                                  double kernel_interpolation_factor) {
++  __m128 m_input;
++  __m128 m_sums1 = _mm_setzero_ps();
++  __m128 m_sums2 = _mm_setzero_ps();
++
++  // Based on |input_ptr| alignment, we need to use loadu or load.  Unrolling
++  // these loops hurt performance in local testing.
++  if (reinterpret_cast<uintptr_t>(input_ptr) & 0x0F) {
++    for (int i = 0; i < kKernelSize; i += 4) {
++      m_input = _mm_loadu_ps(input_ptr + i);
++      m_sums1 = _mm_add_ps(m_sums1, _mm_mul_ps(m_input, _mm_load_ps(k1 + i)));
++      m_sums2 = _mm_add_ps(m_sums2, _mm_mul_ps(m_input, _mm_load_ps(k2 + i)));
++    }
++  } else {
++    for (int i = 0; i < kKernelSize; i += 4) {
++      m_input = _mm_load_ps(input_ptr + i);
++      m_sums1 = _mm_add_ps(m_sums1, _mm_mul_ps(m_input, _mm_load_ps(k1 + i)));
++      m_sums2 = _mm_add_ps(m_sums2, _mm_mul_ps(m_input, _mm_load_ps(k2 + i)));
++    }
++  }
++
++  // Linearly interpolate the two "convolutions".
++  m_sums1 = _mm_mul_ps(m_sums1, _mm_set_ps1(
++      static_cast<float>(1.0 - kernel_interpolation_factor)));
++  m_sums2 = _mm_mul_ps(m_sums2, _mm_set_ps1(
++      static_cast<float>(kernel_interpolation_factor)));
++  m_sums1 = _mm_add_ps(m_sums1, m_sums2);
++
++  // Sum components together.
++  float result;
++  m_sums2 = _mm_add_ps(_mm_movehl_ps(m_sums1, m_sums1), m_sums1);
++  _mm_store_ss(&result, _mm_add_ss(m_sums2, _mm_shuffle_ps(
++      m_sums2, m_sums2, 1)));
++
++  return result;
++}
++
++}  // namespace media
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/vector_math_sse.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/vector_math_sse.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/simd/vector_math_sse.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/simd/vector_math_sse.cc	2017-06-08 22:49:57.700253619 +0200
+@@ -0,0 +1,118 @@
++// Copyright 2013 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "media/base/vector_math_testing.h"
++
++#include <algorithm>
++
++#include <xmmintrin.h>  // NOLINT
++
++namespace media {
++namespace vector_math {
++
++void FMUL_SSE(const float src[], float scale, int len, float dest[]) {
++  const int rem = len % 4;
++  const int last_index = len - rem;
++  __m128 m_scale = _mm_set_ps1(scale);
++  for (int i = 0; i < last_index; i += 4)
++    _mm_store_ps(dest + i, _mm_mul_ps(_mm_load_ps(src + i), m_scale));
++
++  // Handle any remaining values that wouldn't fit in an SSE pass.
++  for (int i = last_index; i < len; ++i)
++    dest[i] = src[i] * scale;
++}
++
++void FMAC_SSE(const float src[], float scale, int len, float dest[]) {
++  const int rem = len % 4;
++  const int last_index = len - rem;
++  __m128 m_scale = _mm_set_ps1(scale);
++  for (int i = 0; i < last_index; i += 4) {
++    _mm_store_ps(dest + i, _mm_add_ps(_mm_load_ps(dest + i),
++                 _mm_mul_ps(_mm_load_ps(src + i), m_scale)));
++  }
++
++  // Handle any remaining values that wouldn't fit in an SSE pass.
++  for (int i = last_index; i < len; ++i)
++    dest[i] += src[i] * scale;
++}
++
++// Convenience macro to extract float 0 through 3 from the vector |a|.  This is
++// needed because compilers other than clang don't support access via
++// operator[]().
++#define EXTRACT_FLOAT(a, i) \
++    (i == 0 ? \
++         _mm_cvtss_f32(a) : \
++         _mm_cvtss_f32(_mm_shuffle_ps(a, a, i)))
++
++std::pair<float, float> EWMAAndMaxPower_SSE(
++    float initial_value, const float src[], int len, float smoothing_factor) {
++  // When the recurrence is unrolled, we see that we can split it into 4
++  // separate lanes of evaluation:
++  //
++  // y[n] = a(S[n]^2) + (1-a)(y[n-1])
++  //      = a(S[n]^2) + (1-a)^1(aS[n-1]^2) + (1-a)^2(aS[n-2]^2) + ...
++  //      = z[n] + (1-a)^1(z[n-1]) + (1-a)^2(z[n-2]) + (1-a)^3(z[n-3])
++  //
++  // where z[n] = a(S[n]^2) + (1-a)^4(z[n-4]) + (1-a)^8(z[n-8]) + ...
++  //
++  // Thus, the strategy here is to compute z[n], z[n-1], z[n-2], and z[n-3] in
++  // each of the 4 lanes, and then combine them to give y[n].
++
++  const int rem = len % 4;
++  const int last_index = len - rem;
++
++  const __m128 smoothing_factor_x4 = _mm_set_ps1(smoothing_factor);
++  const float weight_prev = 1.0f - smoothing_factor;
++  const __m128 weight_prev_x4 = _mm_set_ps1(weight_prev);
++  const __m128 weight_prev_squared_x4 =
++      _mm_mul_ps(weight_prev_x4, weight_prev_x4);
++  const __m128 weight_prev_4th_x4 =
++      _mm_mul_ps(weight_prev_squared_x4, weight_prev_squared_x4);
++
++  // Compute z[n], z[n-1], z[n-2], and z[n-3] in parallel in lanes 3, 2, 1 and
++  // 0, respectively.
++  __m128 max_x4 = _mm_setzero_ps();
++  __m128 ewma_x4 = _mm_setr_ps(0.0f, 0.0f, 0.0f, initial_value);
++  int i;
++  for (i = 0; i < last_index; i += 4) {
++    ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_4th_x4);
++    const __m128 sample_x4 = _mm_load_ps(src + i);
++    const __m128 sample_squared_x4 = _mm_mul_ps(sample_x4, sample_x4);
++    max_x4 = _mm_max_ps(max_x4, sample_squared_x4);
++    // Note: The compiler optimizes this to a single multiply-and-accumulate
++    // instruction:
++    ewma_x4 = _mm_add_ps(ewma_x4,
++                         _mm_mul_ps(sample_squared_x4, smoothing_factor_x4));
++  }
++
++  // y[n] = z[n] + (1-a)^1(z[n-1]) + (1-a)^2(z[n-2]) + (1-a)^3(z[n-3])
++  float ewma = EXTRACT_FLOAT(ewma_x4, 3);
++  ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_x4);
++  ewma += EXTRACT_FLOAT(ewma_x4, 2);
++  ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_x4);
++  ewma += EXTRACT_FLOAT(ewma_x4, 1);
++  ewma_x4 = _mm_mul_ss(ewma_x4, weight_prev_x4);
++  ewma += EXTRACT_FLOAT(ewma_x4, 0);
++
++  // Fold the maximums together to get the overall maximum.
++  max_x4 = _mm_max_ps(max_x4,
++                      _mm_shuffle_ps(max_x4, max_x4, _MM_SHUFFLE(3, 3, 1, 1)));
++  max_x4 = _mm_max_ss(max_x4, _mm_shuffle_ps(max_x4, max_x4, 2));
++
++  std::pair<float, float> result(ewma, EXTRACT_FLOAT(max_x4, 0));
++
++  // Handle remaining values at the end of |src|.
++  for (; i < len; ++i) {
++    result.first *= weight_prev;
++    const float sample = src[i];
++    const float sample_squared = sample * sample;
++    result.first += sample_squared * smoothing_factor;
++    result.second = std::max(result.second, sample_squared);
++  }
++
++  return result;
++}
++
++}  // namespace vector_math
++}  // namespace media
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc	2017-06-08 22:49:57.700253619 +0200
+@@ -81,17 +81,12 @@
+ #include <cmath>
+ #include <limits>
+ 
++#include "base/cpu.h"
+ #include "base/logging.h"
+ #include "build/build_config.h"
+ 
+-#if defined(ARCH_CPU_X86_FAMILY)
+-#include <xmmintrin.h>
+-#define CONVOLVE_FUNC Convolve_SSE
+-#elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
++#if defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+ #include <arm_neon.h>
+-#define CONVOLVE_FUNC Convolve_NEON
+-#else
+-#define CONVOLVE_FUNC Convolve_C
+ #endif
+ 
+ namespace media {
+@@ -112,10 +107,41 @@
+   return sinc_scale_factor;
+ }
+ 
++#undef CONVOLVE_FUNC
++
+ static int CalculateChunkSize(int block_size_, double io_ratio) {
+   return block_size_ / io_ratio;
+ }
+ 
++// If we know the minimum architecture at compile time, avoid CPU detection.
++// Force NaCl code to use C routines since (at present) nothing there uses these
++// methods and plumbing the -msse built library is non-trivial.
++#if defined(ARCH_CPU_X86_FAMILY) && !defined(OS_NACL)
++#if defined(__SSE__)
++#define CONVOLVE_FUNC Convolve_SSE
++void SincResampler::InitializeCPUSpecificFeatures() {}
++#else
++// X86 CPU detection required.  Functions will be set by
++// InitializeCPUSpecificFeatures().
++#define CONVOLVE_FUNC g_convolve_proc_
++
++typedef float (*ConvolveProc)(const float*, const float*, const float*, double);
++static ConvolveProc g_convolve_proc_ = NULL;
++
++void SincResampler::InitializeCPUSpecificFeatures() {
++  CHECK(!g_convolve_proc_);
++  g_convolve_proc_ = base::CPU().has_sse() ? Convolve_SSE : Convolve_C;
++}
++#endif
++#elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
++#define CONVOLVE_FUNC Convolve_NEON
++void SincResampler::InitializeCPUSpecificFeatures() {}
++#else
++// Unknown architecture.
++#define CONVOLVE_FUNC Convolve_C
++void SincResampler::InitializeCPUSpecificFeatures() {}
++#endif
++
+ SincResampler::SincResampler(double io_sample_rate_ratio,
+                              int request_frames,
+                              const ReadCB& read_cb)
+@@ -328,46 +354,7 @@
+       kernel_interpolation_factor * sum2);
+ }
+ 
+-#if defined(ARCH_CPU_X86_FAMILY)
+-float SincResampler::Convolve_SSE(const float* input_ptr, const float* k1,
+-                                  const float* k2,
+-                                  double kernel_interpolation_factor) {
+-  __m128 m_input;
+-  __m128 m_sums1 = _mm_setzero_ps();
+-  __m128 m_sums2 = _mm_setzero_ps();
+-
+-  // Based on |input_ptr| alignment, we need to use loadu or load.  Unrolling
+-  // these loops hurt performance in local testing.
+-  if (reinterpret_cast<uintptr_t>(input_ptr) & 0x0F) {
+-    for (int i = 0; i < kKernelSize; i += 4) {
+-      m_input = _mm_loadu_ps(input_ptr + i);
+-      m_sums1 = _mm_add_ps(m_sums1, _mm_mul_ps(m_input, _mm_load_ps(k1 + i)));
+-      m_sums2 = _mm_add_ps(m_sums2, _mm_mul_ps(m_input, _mm_load_ps(k2 + i)));
+-    }
+-  } else {
+-    for (int i = 0; i < kKernelSize; i += 4) {
+-      m_input = _mm_load_ps(input_ptr + i);
+-      m_sums1 = _mm_add_ps(m_sums1, _mm_mul_ps(m_input, _mm_load_ps(k1 + i)));
+-      m_sums2 = _mm_add_ps(m_sums2, _mm_mul_ps(m_input, _mm_load_ps(k2 + i)));
+-    }
+-  }
+-
+-  // Linearly interpolate the two "convolutions".
+-  m_sums1 = _mm_mul_ps(m_sums1, _mm_set_ps1(
+-      static_cast<float>(1.0 - kernel_interpolation_factor)));
+-  m_sums2 = _mm_mul_ps(m_sums2, _mm_set_ps1(
+-      static_cast<float>(kernel_interpolation_factor)));
+-  m_sums1 = _mm_add_ps(m_sums1, m_sums2);
+-
+-  // Sum components together.
+-  float result;
+-  m_sums2 = _mm_add_ps(_mm_movehl_ps(m_sums1, m_sums1), m_sums1);
+-  _mm_store_ss(&result, _mm_add_ss(m_sums2, _mm_shuffle_ps(
+-      m_sums2, m_sums2, 1)));
+-
+-  return result;
+-}
+-#elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
++#if defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+ float SincResampler::Convolve_NEON(const float* input_ptr, const float* k1,
+                                    const float* k2,
+                                    double kernel_interpolation_factor) {
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h	2017-06-08 22:49:57.700253619 +0200
+@@ -36,6 +36,10 @@
+     kKernelStorageSize = kKernelSize * (kKernelOffsetCount + 1),
+   };
+ 
++  // Selects runtime specific CPU features like SSE.  Must be called before
++  // using SincResampler.
++  static void InitializeCPUSpecificFeatures();
++
+   // Callback type for providing more data into the resampler.  Expects |frames|
+   // of data to be rendered into |destination|; zero padded if not enough frames
+   // are available to satisfy the request.
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2017-06-08 22:49:57.701253604 +0200
+@@ -4,6 +4,7 @@
+ 
+ #include "base/bind.h"
+ #include "base/bind_helpers.h"
++#include "base/cpu.h"
+ #include "base/time/time.h"
+ #include "build/build_config.h"
+ #include "media/base/sinc_resampler.h"
+@@ -61,6 +62,9 @@
+       &resampler, SincResampler::Convolve_C, true, "unoptimized_aligned");
+ 
+ #if defined(CONVOLVE_FUNC)
++#if defined(ARCH_CPU_X86_FAMILY)
++  ASSERT_TRUE(base::CPU().has_sse());
++#endif
+   RunConvolveBenchmark(
+       &resampler, SincResampler::CONVOLVE_FUNC, true, "optimized_aligned");
+   RunConvolveBenchmark(
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2017-06-08 22:49:57.701253604 +0200
+@@ -10,6 +10,7 @@
+ 
+ #include "base/bind.h"
+ #include "base/bind_helpers.h"
++#include "base/cpu.h"
+ #include "base/macros.h"
+ #include "base/strings/string_number_conversions.h"
+ #include "base/time/time.h"
+@@ -166,6 +167,10 @@
+ static const double kKernelInterpolationFactor = 0.5;
+ 
+ TEST(SincResamplerTest, Convolve) {
++#if defined(ARCH_CPU_X86_FAMILY)
++  ASSERT_TRUE(base::CPU().has_sse());
++#endif
++
+   // Initialize a dummy resampler.
+   MockSource mock_source;
+   SincResampler resampler(
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc	2017-06-08 22:49:57.701253604 +0200
+@@ -7,12 +7,17 @@
+ 
+ #include <algorithm>
+ 
++#include "base/cpu.h"
+ #include "base/logging.h"
+ #include "build/build_config.h"
+ 
++namespace media {
++namespace vector_math {
++
++// If we know the minimum architecture at compile time, avoid CPU detection.
+ // NaCl does not allow intrinsics.
+ #if defined(ARCH_CPU_X86_FAMILY) && !defined(OS_NACL)
+-#include <xmmintrin.h>
++#if defined(__SSE__)
+ // Don't use custom SSE versions where the auto-vectorized C version performs
+ // better, which is anywhere clang is used.
+ #if !defined(__clang__)
+@@ -23,20 +28,52 @@
+ #define FMUL_FUNC FMUL_C
+ #endif
+ #define EWMAAndMaxPower_FUNC EWMAAndMaxPower_SSE
++void Initialize() {}
++#else
++// X86 CPU detection required.  Functions will be set by Initialize().
++#if !defined(__clang__)
++#define FMAC_FUNC g_fmac_proc_
++#define FMUL_FUNC g_fmul_proc_
++#else
++#define FMAC_FUNC FMAC_C
++#define FMUL_FUNC FMUL_C
++#endif
++#define EWMAAndMaxPower_FUNC g_ewma_power_proc_
++
++#if !defined(__clang__)
++typedef void (*MathProc)(const float src[], float scale, int len, float dest[]);
++static MathProc g_fmac_proc_ = NULL;
++static MathProc g_fmul_proc_ = NULL;
++#endif
++typedef std::pair<float, float> (*EWMAAndMaxPowerProc)(
++    float initial_value, const float src[], int len, float smoothing_factor);
++static EWMAAndMaxPowerProc g_ewma_power_proc_ = NULL;
++
++void Initialize() {
++  CHECK(!g_fmac_proc_);
++  CHECK(!g_fmul_proc_);
++  CHECK(!g_ewma_power_proc_);
++  const bool kUseSSE = base::CPU().has_sse();
++#if !defined(__clang__)
++  g_fmac_proc_ = kUseSSE ? FMAC_SSE : FMAC_C;
++  g_fmul_proc_ = kUseSSE ? FMUL_SSE : FMUL_C;
++#endif
++  g_ewma_power_proc_ = kUseSSE ? EWMAAndMaxPower_SSE : EWMAAndMaxPower_C;
++}
++#endif
+ #elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+ #include <arm_neon.h>
+ #define FMAC_FUNC FMAC_NEON
+ #define FMUL_FUNC FMUL_NEON
+ #define EWMAAndMaxPower_FUNC EWMAAndMaxPower_NEON
++void Initialize() {}
+ #else
+ #define FMAC_FUNC FMAC_C
+ #define FMUL_FUNC FMUL_C
+ #define EWMAAndMaxPower_FUNC EWMAAndMaxPower_C
++void Initialize() {}
+ #endif
+ 
+-namespace media {
+-namespace vector_math {
+-
+ void FMAC(const float src[], float scale, int len, float dest[]) {
+   // Ensure |src| and |dest| are 16-byte aligned.
+   DCHECK_EQ(0u, reinterpret_cast<uintptr_t>(src) & (kRequiredAlignment - 1));
+@@ -89,111 +126,6 @@
+   return result;
+ }
+ 
+-#if defined(ARCH_CPU_X86_FAMILY) && !defined(OS_NACL)
+-void FMUL_SSE(const float src[], float scale, int len, float dest[]) {
+-  const int rem = len % 4;
+-  const int last_index = len - rem;
+-  __m128 m_scale = _mm_set_ps1(scale);
+-  for (int i = 0; i < last_index; i += 4)
+-    _mm_store_ps(dest + i, _mm_mul_ps(_mm_load_ps(src + i), m_scale));
+-
+-  // Handle any remaining values that wouldn't fit in an SSE pass.
+-  for (int i = last_index; i < len; ++i)
+-    dest[i] = src[i] * scale;
+-}
+-
+-void FMAC_SSE(const float src[], float scale, int len, float dest[]) {
+-  const int rem = len % 4;
+-  const int last_index = len - rem;
+-  __m128 m_scale = _mm_set_ps1(scale);
+-  for (int i = 0; i < last_index; i += 4) {
+-    _mm_store_ps(dest + i, _mm_add_ps(_mm_load_ps(dest + i),
+-                 _mm_mul_ps(_mm_load_ps(src + i), m_scale)));
+-  }
+-
+-  // Handle any remaining values that wouldn't fit in an SSE pass.
+-  for (int i = last_index; i < len; ++i)
+-    dest[i] += src[i] * scale;
+-}
+-
+-// Convenience macro to extract float 0 through 3 from the vector |a|.  This is
+-// needed because compilers other than clang don't support access via
+-// operator[]().
+-#define EXTRACT_FLOAT(a, i) \
+-    (i == 0 ? \
+-         _mm_cvtss_f32(a) : \
+-         _mm_cvtss_f32(_mm_shuffle_ps(a, a, i)))
+-
+-std::pair<float, float> EWMAAndMaxPower_SSE(
+-    float initial_value, const float src[], int len, float smoothing_factor) {
+-  // When the recurrence is unrolled, we see that we can split it into 4
+-  // separate lanes of evaluation:
+-  //
+-  // y[n] = a(S[n]^2) + (1-a)(y[n-1])
+-  //      = a(S[n]^2) + (1-a)^1(aS[n-1]^2) + (1-a)^2(aS[n-2]^2) + ...
+-  //      = z[n] + (1-a)^1(z[n-1]) + (1-a)^2(z[n-2]) + (1-a)^3(z[n-3])
+-  //
+-  // where z[n] = a(S[n]^2) + (1-a)^4(z[n-4]) + (1-a)^8(z[n-8]) + ...
+-  //
+-  // Thus, the strategy here is to compute z[n], z[n-1], z[n-2], and z[n-3] in
+-  // each of the 4 lanes, and then combine them to give y[n].
+-
+-  const int rem = len % 4;
+-  const int last_index = len - rem;
+-
+-  const __m128 smoothing_factor_x4 = _mm_set_ps1(smoothing_factor);
+-  const float weight_prev = 1.0f - smoothing_factor;
+-  const __m128 weight_prev_x4 = _mm_set_ps1(weight_prev);
+-  const __m128 weight_prev_squared_x4 =
+-      _mm_mul_ps(weight_prev_x4, weight_prev_x4);
+-  const __m128 weight_prev_4th_x4 =
+-      _mm_mul_ps(weight_prev_squared_x4, weight_prev_squared_x4);
+-
+-  // Compute z[n], z[n-1], z[n-2], and z[n-3] in parallel in lanes 3, 2, 1 and
+-  // 0, respectively.
+-  __m128 max_x4 = _mm_setzero_ps();
+-  __m128 ewma_x4 = _mm_setr_ps(0.0f, 0.0f, 0.0f, initial_value);
+-  int i;
+-  for (i = 0; i < last_index; i += 4) {
+-    ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_4th_x4);
+-    const __m128 sample_x4 = _mm_load_ps(src + i);
+-    const __m128 sample_squared_x4 = _mm_mul_ps(sample_x4, sample_x4);
+-    max_x4 = _mm_max_ps(max_x4, sample_squared_x4);
+-    // Note: The compiler optimizes this to a single multiply-and-accumulate
+-    // instruction:
+-    ewma_x4 = _mm_add_ps(ewma_x4,
+-                         _mm_mul_ps(sample_squared_x4, smoothing_factor_x4));
+-  }
+-
+-  // y[n] = z[n] + (1-a)^1(z[n-1]) + (1-a)^2(z[n-2]) + (1-a)^3(z[n-3])
+-  float ewma = EXTRACT_FLOAT(ewma_x4, 3);
+-  ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_x4);
+-  ewma += EXTRACT_FLOAT(ewma_x4, 2);
+-  ewma_x4 = _mm_mul_ps(ewma_x4, weight_prev_x4);
+-  ewma += EXTRACT_FLOAT(ewma_x4, 1);
+-  ewma_x4 = _mm_mul_ss(ewma_x4, weight_prev_x4);
+-  ewma += EXTRACT_FLOAT(ewma_x4, 0);
+-
+-  // Fold the maximums together to get the overall maximum.
+-  max_x4 = _mm_max_ps(max_x4,
+-                      _mm_shuffle_ps(max_x4, max_x4, _MM_SHUFFLE(3, 3, 1, 1)));
+-  max_x4 = _mm_max_ss(max_x4, _mm_shuffle_ps(max_x4, max_x4, 2));
+-
+-  std::pair<float, float> result(ewma, EXTRACT_FLOAT(max_x4, 0));
+-
+-  // Handle remaining values at the end of |src|.
+-  for (; i < len; ++i) {
+-    result.first *= weight_prev;
+-    const float sample = src[i];
+-    const float sample_squared = sample * sample;
+-    result.first += sample_squared * smoothing_factor;
+-    result.second = std::max(result.second, sample_squared);
+-  }
+-
+-  return result;
+-}
+-#endif
+-
+ #if defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+ void FMAC_NEON(const float src[], float scale, int len, float dest[]) {
+   const int rem = len % 4;
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.h	2017-06-08 22:49:57.701253604 +0200
+@@ -15,6 +15,11 @@
+ // Required alignment for inputs and outputs to all vector math functions
+ enum { kRequiredAlignment = 16 };
+ 
++// Selects runtime specific optimizations such as SSE.  Must be called prior to
++// calling FMAC() or FMUL().  Called during media library initialization; most
++// users should never have to call this.
++MEDIA_EXPORT void Initialize();
++
+ // Multiply each element of |src| (up to |len|) by |scale| and add to |dest|.
+ // |src| and |dest| must be aligned by kRequiredAlignment.
+ MEDIA_EXPORT void FMAC(const float src[], float scale, int len, float dest[]);
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_perftest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2017-06-08 22:49:57.702253589 +0200
+@@ -5,6 +5,7 @@
+ #include <memory>
+ 
+ #include "base/macros.h"
++#include "base/cpu.h"
+ #include "base/memory/aligned_memory.h"
+ #include "base/time/time.h"
+ #include "build/build_config.h"
+@@ -82,15 +83,11 @@
+   DISALLOW_COPY_AND_ASSIGN(VectorMathPerfTest);
+ };
+ 
+-// Define platform dependent function names for SIMD optimized methods.
++// Define platform independent function name for FMAC* perf tests.
+ #if defined(ARCH_CPU_X86_FAMILY)
+ #define FMAC_FUNC FMAC_SSE
+-#define FMUL_FUNC FMUL_SSE
+-#define EWMAAndMaxPower_FUNC EWMAAndMaxPower_SSE
+ #elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+ #define FMAC_FUNC FMAC_NEON
+-#define FMUL_FUNC FMUL_NEON
+-#define EWMAAndMaxPower_FUNC EWMAAndMaxPower_NEON
+ #endif
+ 
+ // Benchmark for each optimized vector_math::FMAC() method.
+@@ -99,6 +96,9 @@
+   RunBenchmark(
+       vector_math::FMAC_C, true, "vector_math_fmac", "unoptimized");
+ #if defined(FMAC_FUNC)
++#if defined(ARCH_CPU_X86_FAMILY)
++  ASSERT_TRUE(base::CPU().has_sse());
++#endif
+   // Benchmark FMAC_FUNC() with unaligned size.
+   ASSERT_NE((kVectorSize - 1) % (vector_math::kRequiredAlignment /
+                                  sizeof(float)), 0U);
+@@ -112,12 +112,24 @@
+ #endif
+ }
+ 
++#undef FMAC_FUNC
++
++// Define platform independent function name for FMULBenchmark* tests.
++#if defined(ARCH_CPU_X86_FAMILY)
++#define FMUL_FUNC FMUL_SSE
++#elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
++#define FMUL_FUNC FMUL_NEON
++#endif
++
+ // Benchmark for each optimized vector_math::FMUL() method.
+ TEST_F(VectorMathPerfTest, FMUL) {
+   // Benchmark FMUL_C().
+   RunBenchmark(
+       vector_math::FMUL_C, true, "vector_math_fmul", "unoptimized");
+ #if defined(FMUL_FUNC)
++#if defined(ARCH_CPU_X86_FAMILY)
++  ASSERT_TRUE(base::CPU().has_sse());
++#endif
+   // Benchmark FMUL_FUNC() with unaligned size.
+   ASSERT_NE((kVectorSize - 1) % (vector_math::kRequiredAlignment /
+                                  sizeof(float)), 0U);
+@@ -131,6 +143,14 @@
+ #endif
+ }
+ 
++#undef FMUL_FUNC
++
++#if defined(ARCH_CPU_X86_FAMILY)
++#define EWMAAndMaxPower_FUNC EWMAAndMaxPower_SSE
++#elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
++#define EWMAAndMaxPower_FUNC EWMAAndMaxPower_NEON
++#endif
++
+ // Benchmark for each optimized vector_math::EWMAAndMaxPower() method.
+ TEST_F(VectorMathPerfTest, EWMAAndMaxPower) {
+   // Benchmark EWMAAndMaxPower_C().
+@@ -139,6 +159,9 @@
+                "vector_math_ewma_and_max_power",
+                "unoptimized");
+ #if defined(EWMAAndMaxPower_FUNC)
++#if defined(ARCH_CPU_X86_FAMILY)
++  ASSERT_TRUE(base::CPU().has_sse());
++#endif
+   // Benchmark EWMAAndMaxPower_FUNC() with unaligned size.
+   ASSERT_NE((kVectorSize - 1) % (vector_math::kRequiredAlignment /
+                                  sizeof(float)), 0U);
+@@ -156,4 +179,6 @@
+ #endif
+ }
+ 
++#undef EWMAAndMaxPower_FUNC
++
+ } // namespace media
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_testing.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_testing.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h	2017-06-08 22:49:57.702253589 +0200
+@@ -19,7 +19,7 @@
+ MEDIA_EXPORT std::pair<float, float> EWMAAndMaxPower_C(
+     float initial_value, const float src[], int len, float smoothing_factor);
+ 
+-#if defined(ARCH_CPU_X86_FAMILY) && !defined(OS_NACL)
++#if defined(ARCH_CPU_X86_FAMILY)
+ MEDIA_EXPORT void FMAC_SSE(const float src[], float scale, int len,
+                            float dest[]);
+ MEDIA_EXPORT void FMUL_SSE(const float src[], float scale, int len,
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_unittest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2017-06-08 22:49:57.702253589 +0200
+@@ -9,6 +9,7 @@
+ #include <memory>
+ 
+ #include "base/macros.h"
++#include "base/cpu.h"
+ #include "base/memory/aligned_memory.h"
+ #include "base/strings/string_number_conversions.h"
+ #include "base/strings/stringize_macros.h"
+@@ -78,6 +79,7 @@
+ 
+ #if defined(ARCH_CPU_X86_FAMILY)
+   {
++    ASSERT_TRUE(base::CPU().has_sse());
+     SCOPED_TRACE("FMAC_SSE");
+     FillTestVectors(kInputFillValue, kOutputFillValue);
+     vector_math::FMAC_SSE(
+@@ -119,6 +121,7 @@
+ 
+ #if defined(ARCH_CPU_X86_FAMILY)
+   {
++    ASSERT_TRUE(base::CPU().has_sse());
+     SCOPED_TRACE("FMUL_SSE");
+     FillTestVectors(kInputFillValue, kOutputFillValue);
+     vector_math::FMUL_SSE(
+@@ -227,6 +230,7 @@
+ 
+ #if defined(ARCH_CPU_X86_FAMILY)
+     {
++      ASSERT_TRUE(base::CPU().has_sse());
+       SCOPED_TRACE("EWMAAndMaxPower_SSE");
+       const std::pair<float, float>& result = vector_math::EWMAAndMaxPower_SSE(
+           initial_value_, data_.get(), data_len_, smoothing_factor_);
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert.cc	2017-06-08 22:49:57.703253573 +0200
+@@ -32,7 +32,7 @@
+ #include "media/base/simd/convert_yuv_to_rgb.h"
+ #include "media/base/simd/filter_yuv.h"
+ 
+-#if defined(ARCH_CPU_X86_FAMILY)
++#if defined(ARCH_CPU_X86_FAMILY) && defined(__MMX__)
+ #if defined(COMPILER_MSVC)
+ #include <intrin.h>
+ #else
+@@ -133,7 +133,7 @@
+ 
+ // Empty SIMD registers state after using them.
+ void EmptyRegisterStateStub() {}
+-#if defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
++#if defined(MEDIA_MMX_INTRINSICS_AVAILABLE) && defined(__MMX__)
+ void EmptyRegisterStateIntrinsic() { _mm_empty(); }
+ #endif
+ typedef void (*EmptyRegisterStateProc)();
+@@ -247,34 +247,46 @@
+   // Assembly code confuses MemorySanitizer. Also not available in iOS builds.
+ #if defined(ARCH_CPU_X86_FAMILY) && !defined(MEMORY_SANITIZER) && \
+     !defined(OS_IOS)
+-  g_convert_yuva_to_argb_proc_ = ConvertYUVAToARGB_MMX;
++  base::CPU cpu;
++  if (cpu.has_mmx()) {
++    g_convert_yuv_to_rgb32_row_proc_ = ConvertYUVToRGB32Row_MMX;
++    g_scale_yuv_to_rgb32_row_proc_ = ScaleYUVToRGB32Row_MMX;
++    g_convert_yuv_to_rgb32_proc_ = ConvertYUVToRGB32_MMX;
++    g_convert_yuva_to_argb_proc_ = ConvertYUVAToARGB_MMX;
++    g_linear_scale_yuv_to_rgb32_row_proc_ = LinearScaleYUVToRGB32Row_MMX;
+ 
+ #if defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
+-  g_empty_register_state_proc_ = EmptyRegisterStateIntrinsic;
++    g_filter_yuv_rows_proc_ = FilterYUVRows_MMX;
++#endif
++#if defined(MEDIA_MMX_INTRINSICS_AVAILABLE) && defined(__MMX__)
++    g_empty_register_state_proc_ = EmptyRegisterStateIntrinsic;
+ #else
+-  g_empty_register_state_proc_ = EmptyRegisterState_MMX;
++    g_empty_register_state_proc_ = EmptyRegisterState_MMX;
+ #endif
++  }
+ 
+-  g_convert_yuv_to_rgb32_row_proc_ = ConvertYUVToRGB32Row_SSE;
+-  g_convert_yuv_to_rgb32_proc_ = ConvertYUVToRGB32_SSE;
++  if (cpu.has_sse()) {
++    g_convert_yuv_to_rgb32_row_proc_ = ConvertYUVToRGB32Row_SSE;
++    g_scale_yuv_to_rgb32_row_proc_ = ScaleYUVToRGB32Row_SSE;
++    g_linear_scale_yuv_to_rgb32_row_proc_ = LinearScaleYUVToRGB32Row_SSE;
++    g_convert_yuv_to_rgb32_proc_ = ConvertYUVToRGB32_SSE;
++  }
+ 
+-  g_filter_yuv_rows_proc_ = FilterYUVRows_SSE2;
+-  g_convert_rgb32_to_yuv_proc_ = ConvertRGB32ToYUV_SSE2;
++  if (cpu.has_sse2()) {
++    g_filter_yuv_rows_proc_ = FilterYUVRows_SSE2;
++    g_convert_rgb32_to_yuv_proc_ = ConvertRGB32ToYUV_SSE2;
+ 
+ #if defined(ARCH_CPU_X86_64)
+-  g_scale_yuv_to_rgb32_row_proc_ = ScaleYUVToRGB32Row_SSE2_X64;
++    g_scale_yuv_to_rgb32_row_proc_ = ScaleYUVToRGB32Row_SSE2_X64;
+ 
+-  // Technically this should be in the MMX section, but MSVC will optimize out
+-  // the export of LinearScaleYUVToRGB32Row_MMX, which is required by the unit
+-  // tests, if that decision can be made at compile time.  Since all X64 CPUs
+-  // have SSE2, we can hack around this by making the selection here.
+-  g_linear_scale_yuv_to_rgb32_row_proc_ = LinearScaleYUVToRGB32Row_MMX_X64;
+-#else
+-  g_scale_yuv_to_rgb32_row_proc_ = ScaleYUVToRGB32Row_SSE;
+-  g_linear_scale_yuv_to_rgb32_row_proc_ = LinearScaleYUVToRGB32Row_SSE;
++    // Technically this should be in the MMX section, but MSVC will optimize out
++    // the export of LinearScaleYUVToRGB32Row_MMX, which is required by the unit
++    // tests, if that decision can be made at compile time.  Since all X64 CPUs
++    // have SSE2, we can hack around this by making the selection here.
++    g_linear_scale_yuv_to_rgb32_row_proc_ = LinearScaleYUVToRGB32Row_MMX_X64;
+ #endif
++  }
+ 
+-  base::CPU cpu;
+   if (cpu.has_ssse3()) {
+     g_convert_rgb24_to_yuv_proc_ = &ConvertRGB24ToYUV_SSSE3;
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert_perftest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert_perftest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert_perftest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert_perftest.cc	2017-06-08 22:49:57.703253573 +0200
+@@ -71,6 +71,29 @@
+   DISALLOW_COPY_AND_ASSIGN(YUVConvertPerfTest);
+ };
+ 
++TEST_F(YUVConvertPerfTest, ConvertYUVToRGB32Row_MMX) {
++  ASSERT_TRUE(base::CPU().has_mmx());
++
++  base::TimeTicks start = base::TimeTicks::Now();
++  for (int i = 0; i < kPerfTestIterations; ++i) {
++    for (int row = 0; row < kSourceHeight; ++row) {
++      int chroma_row = row / 2;
++      ConvertYUVToRGB32Row_MMX(
++          yuv_bytes_.get() + row * kSourceWidth,
++          yuv_bytes_.get() + kSourceUOffset + (chroma_row * kSourceWidth / 2),
++          yuv_bytes_.get() + kSourceVOffset + (chroma_row * kSourceWidth / 2),
++          rgb_bytes_converted_.get(),
++          kWidth,
++          GetLookupTable(YV12));
++    }
++  }
++  media::EmptyRegisterState();
++  double total_time_seconds = (base::TimeTicks::Now() - start).InSecondsF();
++  perf_test::PrintResult(
++      "yuv_convert_perftest", "", "ConvertYUVToRGB32Row_MMX",
++      kPerfTestIterations / total_time_seconds, "runs/s", true);
++}
++
+ TEST_F(YUVConvertPerfTest, ConvertYUVToRGB32Row_SSE) {
+   ASSERT_TRUE(base::CPU().has_sse());
+ 
+@@ -161,9 +184,32 @@
+ }
+ #endif
+ 
+-// 64-bit release + component builds on Windows are too smart and optimizes
+-// away the function being tested.
+-#if defined(OS_WIN) && (defined(ARCH_CPU_X86) || !defined(COMPONENT_BUILD))
++TEST_F(YUVConvertPerfTest, ScaleYUVToRGB32Row_MMX) {
++  ASSERT_TRUE(base::CPU().has_mmx());
++
++  const int kSourceDx = 80000;  // This value means a scale down.
++
++  base::TimeTicks start = base::TimeTicks::Now();
++  for (int i = 0; i < kPerfTestIterations; ++i) {
++    for (int row = 0; row < kSourceHeight; ++row) {
++      int chroma_row = row / 2;
++      ScaleYUVToRGB32Row_MMX(
++          yuv_bytes_.get() + row * kSourceWidth,
++          yuv_bytes_.get() + kSourceUOffset + (chroma_row * kSourceWidth / 2),
++          yuv_bytes_.get() + kSourceVOffset + (chroma_row * kSourceWidth / 2),
++          rgb_bytes_converted_.get(),
++          kWidth,
++          kSourceDx,
++          GetLookupTable(YV12));
++    }
++  }
++  media::EmptyRegisterState();
++  double total_time_seconds = (base::TimeTicks::Now() - start).InSecondsF();
++  perf_test::PrintResult(
++      "yuv_convert_perftest", "", "ScaleYUVToRGB32Row_MMX",
++      kPerfTestIterations / total_time_seconds, "runs/s", true);
++}
++
+ TEST_F(YUVConvertPerfTest, ScaleYUVToRGB32Row_SSE) {
+   ASSERT_TRUE(base::CPU().has_sse());
+ 
+@@ -190,6 +236,32 @@
+       kPerfTestIterations / total_time_seconds, "runs/s", true);
+ }
+ 
++TEST_F(YUVConvertPerfTest, LinearScaleYUVToRGB32Row_MMX) {
++  ASSERT_TRUE(base::CPU().has_mmx());
++
++  const int kSourceDx = 80000;  // This value means a scale down.
++
++  base::TimeTicks start = base::TimeTicks::Now();
++  for (int i = 0; i < kPerfTestIterations; ++i) {
++    for (int row = 0; row < kSourceHeight; ++row) {
++      int chroma_row = row / 2;
++      LinearScaleYUVToRGB32Row_MMX(
++          yuv_bytes_.get() + row * kSourceWidth,
++          yuv_bytes_.get() + kSourceUOffset + (chroma_row * kSourceWidth / 2),
++          yuv_bytes_.get() + kSourceVOffset + (chroma_row * kSourceWidth / 2),
++          rgb_bytes_converted_.get(),
++          kWidth,
++          kSourceDx,
++          GetLookupTable(YV12));
++    }
++  }
++  media::EmptyRegisterState();
++  double total_time_seconds = (base::TimeTicks::Now() - start).InSecondsF();
++  perf_test::PrintResult(
++      "yuv_convert_perftest", "", "LinearScaleYUVToRGB32Row_MMX",
++      kPerfTestIterations / total_time_seconds, "runs/s", true);
++}
++
+ TEST_F(YUVConvertPerfTest, LinearScaleYUVToRGB32Row_SSE) {
+   ASSERT_TRUE(base::CPU().has_sse());
+ 
+@@ -215,7 +287,6 @@
+       "yuv_convert_perftest", "", "LinearScaleYUVToRGB32Row_SSE",
+       kPerfTestIterations / total_time_seconds, "runs/s", true);
+ }
+-#endif  // defined(OS_WIN) && (ARCH_CPU_X86 || COMPONENT_BUILD)
+ 
+ #endif  // !defined(ARCH_CPU_ARM_FAMILY) && !defined(ARCH_CPU_MIPS_FAMILY)
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert_unittest.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert_unittest.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/base/yuv_convert_unittest.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/base/yuv_convert_unittest.cc	2017-06-08 22:49:57.703253573 +0200
+@@ -643,6 +643,37 @@
+   EXPECT_EQ(0, error);
+ }
+ 
++TEST(YUVConvertTest, ConvertYUVToRGB32Row_MMX) {
++  base::CPU cpu;
++  if (!cpu.has_mmx()) {
++    LOG(WARNING) << "System not supported. Test skipped.";
++    return;
++  }
++
++  scoped_ptr<uint8[]> yuv_bytes(new uint8[kYUV12Size]);
++  scoped_ptr<uint8[]> rgb_bytes_reference(new uint8[kRGBSize]);
++  scoped_ptr<uint8[]> rgb_bytes_converted(new uint8[kRGBSize]);
++  ReadYV12Data(&yuv_bytes);
++
++  const int kWidth = 167;
++  ConvertYUVToRGB32Row_C(yuv_bytes.get(),
++                         yuv_bytes.get() + kSourceUOffset,
++                         yuv_bytes.get() + kSourceVOffset,
++                         rgb_bytes_reference.get(),
++                         kWidth,
++                         GetLookupTable(YV12));
++  ConvertYUVToRGB32Row_MMX(yuv_bytes.get(),
++                           yuv_bytes.get() + kSourceUOffset,
++                           yuv_bytes.get() + kSourceVOffset,
++                           rgb_bytes_converted.get(),
++                           kWidth,
++                           GetLookupTable(YV12));
++  media::EmptyRegisterState();
++  EXPECT_EQ(0, memcmp(rgb_bytes_reference.get(),
++                      rgb_bytes_converted.get(),
++                      kWidth * kBpp));
++}
++
+ TEST(YUVConvertTest, ConvertYUVToRGB32Row_SSE) {
+   base::CPU cpu;
+   if (!cpu.has_sse()) {
+@@ -674,9 +705,40 @@
+                       kWidth * kBpp));
+ }
+ 
+-// 64-bit release + component builds on Windows are too smart and optimizes
+-// away the function being tested.
+-#if defined(OS_WIN) && (defined(ARCH_CPU_X86) || !defined(COMPONENT_BUILD))
++TEST(YUVConvertTest, ScaleYUVToRGB32Row_MMX) {
++  base::CPU cpu;
++  if (!cpu.has_mmx()) {
++    LOG(WARNING) << "System not supported. Test skipped.";
++    return;
++  }
++
++  scoped_ptr<uint8[]> yuv_bytes(new uint8[kYUV12Size]);
++  scoped_ptr<uint8[]> rgb_bytes_reference(new uint8[kRGBSize]);
++  scoped_ptr<uint8[]> rgb_bytes_converted(new uint8[kRGBSize]);
++  ReadYV12Data(&yuv_bytes);
++
++  const int kWidth = 167;
++  const int kSourceDx = 80000;  // This value means a scale down.
++  ScaleYUVToRGB32Row_C(yuv_bytes.get(),
++                       yuv_bytes.get() + kSourceUOffset,
++                       yuv_bytes.get() + kSourceVOffset,
++                       rgb_bytes_reference.get(),
++                       kWidth,
++                       kSourceDx,
++                       GetLookupTable(YV12));
++  ScaleYUVToRGB32Row_MMX(yuv_bytes.get(),
++                         yuv_bytes.get() + kSourceUOffset,
++                         yuv_bytes.get() + kSourceVOffset,
++                         rgb_bytes_converted.get(),
++                         kWidth,
++                         kSourceDx,
++                         GetLookupTable(YV12));
++  media::EmptyRegisterState();
++  EXPECT_EQ(0, memcmp(rgb_bytes_reference.get(),
++                      rgb_bytes_converted.get(),
++                      kWidth * kBpp));
++}
++
+ TEST(YUVConvertTest, ScaleYUVToRGB32Row_SSE) {
+   base::CPU cpu;
+   if (!cpu.has_sse()) {
+@@ -711,6 +773,40 @@
+                       kWidth * kBpp));
+ }
+ 
++TEST(YUVConvertTest, LinearScaleYUVToRGB32Row_MMX) {
++  base::CPU cpu;
++  if (!cpu.has_mmx()) {
++    LOG(WARNING) << "System not supported. Test skipped.";
++    return;
++  }
++
++  scoped_ptr<uint8[]> yuv_bytes(new uint8[kYUV12Size]);
++  scoped_ptr<uint8[]> rgb_bytes_reference(new uint8[kRGBSize]);
++  scoped_ptr<uint8[]> rgb_bytes_converted(new uint8[kRGBSize]);
++  ReadYV12Data(&yuv_bytes);
++
++  const int kWidth = 167;
++  const int kSourceDx = 80000;  // This value means a scale down.
++  LinearScaleYUVToRGB32Row_C(yuv_bytes.get(),
++                             yuv_bytes.get() + kSourceUOffset,
++                             yuv_bytes.get() + kSourceVOffset,
++                             rgb_bytes_reference.get(),
++                             kWidth,
++                             kSourceDx,
++                             GetLookupTable(YV12));
++  LinearScaleYUVToRGB32Row_MMX(yuv_bytes.get(),
++                               yuv_bytes.get() + kSourceUOffset,
++                               yuv_bytes.get() + kSourceVOffset,
++                               rgb_bytes_converted.get(),
++                               kWidth,
++                               kSourceDx,
++                               GetLookupTable(YV12));
++  media::EmptyRegisterState();
++  EXPECT_EQ(0, memcmp(rgb_bytes_reference.get(),
++                      rgb_bytes_converted.get(),
++                      kWidth * kBpp));
++}
++
+ TEST(YUVConvertTest, LinearScaleYUVToRGB32Row_SSE) {
+   base::CPU cpu;
+   if (!cpu.has_sse()) {
+@@ -744,7 +840,6 @@
+                       rgb_bytes_converted.get(),
+                       kWidth * kBpp));
+ }
+-#endif  // defined(OS_WIN) && (ARCH_CPU_X86 || COMPONENT_BUILD)
+ 
+ TEST(YUVConvertTest, FilterYUVRows_C_OutOfBounds) {
+   std::unique_ptr<uint8_t[]> src(new uint8_t[16]);
+@@ -761,6 +856,30 @@
+   }
+ }
+ 
++#if defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
++TEST(YUVConvertTest, FilterYUVRows_MMX_OutOfBounds) {
++  base::CPU cpu;
++  if (!cpu.has_mmx()) {
++    LOG(WARNING) << "System not supported. Test skipped.";
++    return;
++  }
++
++  scoped_ptr<uint8[]> src(new uint8[16]);
++  scoped_ptr<uint8[]> dst(new uint8[16]);
++
++  memset(src.get(), 0xff, 16);
++  memset(dst.get(), 0, 16);
++
++  media::FilterYUVRows_MMX(dst.get(), src.get(), src.get(), 1, 255);
++  media::EmptyRegisterState();
++
++  EXPECT_EQ(255u, dst[0]);
++  for (int i = 1; i < 16; ++i) {
++    EXPECT_EQ(0u, dst[i]);
++  }
++}
++#endif  // defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
++
+ TEST(YUVConvertTest, FilterYUVRows_SSE2_OutOfBounds) {
+   base::CPU cpu;
+   if (!cpu.has_sse2()) {
+@@ -782,6 +901,38 @@
+   }
+ }
+ 
++#if defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
++TEST(YUVConvertTest, FilterYUVRows_MMX_UnalignedDestination) {
++  base::CPU cpu;
++  if (!cpu.has_mmx()) {
++    LOG(WARNING) << "System not supported. Test skipped.";
++    return;
++  }
++
++  const int kSize = 32;
++  scoped_ptr<uint8[]> src(new uint8[kSize]);
++  scoped_ptr<uint8[]> dst_sample(new uint8[kSize]);
++  scoped_ptr<uint8[]> dst(new uint8[kSize]);
++
++  memset(dst_sample.get(), 0, kSize);
++  memset(dst.get(), 0, kSize);
++  for (int i = 0; i < kSize; ++i)
++    src[i] = 100 + i;
++
++  media::FilterYUVRows_C(dst_sample.get(),
++                         src.get(), src.get(), 17, 128);
++
++  // Generate an unaligned output address.
++  uint8* dst_ptr =
++      reinterpret_cast<uint8*>(
++          (reinterpret_cast<uintptr_t>(dst.get() + 8) & ~7) + 1);
++  media::FilterYUVRows_MMX(dst_ptr, src.get(), src.get(), 17, 128);
++  media::EmptyRegisterState();
++
++  EXPECT_EQ(0, memcmp(dst_sample.get(), dst_ptr, 17));
++}
++#endif  // defined(MEDIA_MMX_INTRINSICS_AVAILABLE)
++
+ TEST(YUVConvertTest, FilterYUVRows_SSE2_UnalignedDestination) {
+   base::CPU cpu;
+   if (!cpu.has_sse2()) {
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/BUILD.gn	2017-06-08 22:49:57.704253558 +0200
+@@ -832,6 +832,26 @@
+     "//base",
+     "//ui/gfx/geometry",
+   ]
++  if (current_cpu == "x86" || current_cpu == "x64") {
++    deps += [
++      ":shared_memory_support_sse",
++    ]
++  }
++}
++
++if (current_cpu == "x86" || current_cpu == "x64") {
++  source_set("shared_memory_support_sse") {
++    sources = [
++      "base/simd/vector_math_sse.cc",
++    ]
++    configs += [
++      "//media:media_config",
++      "//media:media_implementation",
++    ]
++    if (!is_win) {
++      cflags = [ "-msse" ]
++    }
++  }
+ }
+ 
+ # TODO(watk): Refactor tests that could be made to run on Android. See
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/filters/wsola_internals.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/media/filters/wsola_internals.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc	2017-06-12 12:30:26.903281839 +0200
+@@ -15,7 +15,7 @@
+ #include "base/logging.h"
+ #include "media/base/audio_bus.h"
+ 
+-#if defined(ARCH_CPU_X86_FAMILY)
++#if defined(ARCH_CPU_X86_FAMILY) && defined(__SSE2__)
+ #define USE_SIMD 1
+ #include <xmmintrin.h>
+ #elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/BUILD.gn	2017-06-11 12:15:56.825339699 +0200
+@@ -231,11 +231,6 @@
+   if (!is_ios) {
+     sources += [ "ext/platform_canvas.cc" ]
+   }
+-  if (!is_ios && (current_cpu == "x86" || current_cpu == "x64")) {
+-    sources += [ "ext/convolver_SSE2.cc" ]
+-  } else if (current_cpu == "mipsel" && mips_dsp_rev >= 2) {
+-    sources += [ "ext/convolver_mips_dspr2.cc" ]
+-  }
+ 
+   # The skia gypi values are relative to the skia_dir, so we need to rebase.
+   sources += skia_core_sources
+@@ -500,6 +495,31 @@
+     }
+   }
+   if (current_cpu == "x86" || current_cpu == "x64") {
++    source_set("skia_opts_sse2") {
++      sources = skia_opts.sse2_sources +
++                [
++                  # Chrome-specific.
++                  "ext/convolver_SSE2.cc",
++                  "ext/convolver_SSE2.h",
++                ]
++      sources -= [
++        # Detection code must not be built with -msse2
++        "//third_party/skia/src/opts/opts_check_x86.cpp",
++      ]
++      if (!is_win || is_clang) {
++        cflags = [ "-msse2" ]
++      }
++      if (is_win) {
++        defines = [ "SK_CPU_SSE_LEVEL=20" ]
++      }
++      visibility = [ ":skia_opts" ]
++      configs -= [ "//build/config/compiler:chromium_code" ]
++      configs += [
++        ":skia_config",
++        ":skia_library_config",
++        "//build/config/compiler:no_chromium_code",
++      ]
++    }
+     source_set("skia_opts_sse3") {
+       sources = skia_opts.ssse3_sources
+       if (!is_win || is_clang) {
+@@ -608,10 +628,13 @@
+   if (skia_build_no_opts) {
+     sources = skia_opts.none_sources
+   } else if (current_cpu == "x86" || current_cpu == "x64") {
+-    sources = skia_opts.sse2_sources
++    sources = [
++      "//third_party/skia/src/opts/opts_check_x86.cpp",
++    ]
+     deps += [
+       ":skia_opts_avx",
+       ":skia_opts_hsw",
++      ":skia_opts_sse2",
+       ":skia_opts_sse3",
+       ":skia_opts_sse41",
+       ":skia_opts_sse42",
+@@ -644,6 +667,13 @@
+ 
+     if (mips_dsp_rev >= 1) {
+       sources = skia_opts.mips_dsp_sources
++      if (mips_dsp_rev >= 2) {
++        sources += [
++          # Chrome-specific.
++          "ext/convolver_mips_dspr2.cc",
++          "ext/convolver_mips_dspr2.h",
++        ]
++      }
+     } else {
+       sources = skia_opts.none_sources
+     }
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/ext/convolver.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/ext/convolver.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc	2017-06-08 22:50:00.933204857 +0200
+@@ -362,10 +362,13 @@
+ 
+ void SetupSIMD(ConvolveProcs *procs) {
+ #ifdef SIMD_SSE2
+-  procs->extra_horizontal_reads = 3;
+-  procs->convolve_vertically = &ConvolveVertically_SSE2;
+-  procs->convolve_4rows_horizontally = &Convolve4RowsHorizontally_SSE2;
+-  procs->convolve_horizontally = &ConvolveHorizontally_SSE2;
++  base::CPU cpu;
++  if (cpu.has_sse2()) {
++    procs->extra_horizontal_reads = 3;
++    procs->convolve_vertically = &ConvolveVertically_SSE2;
++    procs->convolve_4rows_horizontally = &Convolve4RowsHorizontally_SSE2;
++    procs->convolve_horizontally = &ConvolveHorizontally_SSE2;
++  }
+ #elif defined SIMD_MIPS_DSPR2
+   procs->extra_horizontal_reads = 3;
+   procs->convolve_vertically = &ConvolveVertically_mips_dspr2;
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/ext/convolver.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/skia/ext/convolver.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h	2017-06-08 22:50:00.998203877 +0200
+@@ -11,6 +11,7 @@
+ #include <vector>
+ 
+ #include "build/build_config.h"
++#include "base/cpu.h"
+ #include "third_party/skia/include/core/SkSize.h"
+ #include "third_party/skia/include/core/SkTypes.h"
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn	2017-06-11 03:28:05.966523743 +0200
+@@ -160,6 +160,26 @@
+   public_deps = [
+     ":angle_common",
+   ]
++
++  if (current_cpu == "x86") {
++    deps = [
++      ":angle_image_util_x86_sse2",
++    ]
++  }
++}
++
++source_set("angle_image_util_x86_sse2") {
++  configs -= angle_undefine_configs
++  configs += [ ":internal_config" ]
++
++  deps = [
++    ":angle_common",
++  ]
++
++  sources = [
++    "src/image_util/loadimage_SSE2.cpp",
++  ]
++  cflags = [ "-msse2", "-mfpmath=sse" ]
+ }
+ 
+ static_library("translator") {
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2017-06-11 03:04:02.402397018 +0200
+@@ -142,9 +142,42 @@
+     }
+ }
+ 
+-inline bool supportsSSE2()
++#if defined(ANGLE_USE_SSE) && !defined(__x86_64__) && !defined(__SSE2__) && !defined(_MSC_VER)
++
++// From the base/cpu.cc in Chromium, to avoid depending on Chromium headers
++
++#if defined(__pic__) && defined(__i386__)
++
++static inline void __cpuid(int cpu_info[4], int info_type) {
++  __asm__ volatile (
++    "mov %%ebx, %%edi\n"
++    "cpuid\n"
++    "xchg %%edi, %%ebx\n"
++    : "=a"(cpu_info[0]), "=D"(cpu_info[1]), "=c"(cpu_info[2]), "=d"(cpu_info[3])
++    : "a"(info_type)
++  );
++}
++
++#else
++
++static inline void __cpuid(int cpu_info[4], int info_type) {
++  __asm__ volatile (
++    "cpuid\n"
++    : "=a"(cpu_info[0]), "=b"(cpu_info[1]), "=c"(cpu_info[2]), "=d"(cpu_info[3])
++    : "a"(info_type)
++  );
++}
++
++#endif
++
++#endif
++
++static inline bool supportsSSE2()
+ {
+ #if defined(ANGLE_USE_SSE)
++#if defined(__x86_64__) || defined(__SSE2__)
++    return true;
++#else
+     static bool checked = false;
+     static bool supports = false;
+ 
+@@ -153,7 +186,6 @@
+         return supports;
+     }
+ 
+-#if defined(ANGLE_PLATFORM_WINDOWS) && !defined(_M_ARM)
+     {
+         int info[4];
+         __cpuid(info, 0);
+@@ -165,9 +197,9 @@
+             supports = (info[3] >> 26) & 1;
+         }
+     }
+-#endif  // defined(ANGLE_PLATFORM_WINDOWS) && !defined(_M_ARM)
+     checked = true;
+     return supports;
++#endif  // defined(x86_64) || defined(__SSE2__)
+ #else  // defined(ANGLE_USE_SSE)
+     return false;
+ #endif
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/common/platform.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2017-06-11 00:43:54.961552623 +0200
+@@ -81,7 +81,9 @@
+ #include <intrin.h>
+ #define ANGLE_USE_SSE
+ #elif defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
++#if defined(__x86_64__) || defined(__SSE2__)
+ #include <x86intrin.h>
++#endif
+ #define ANGLE_USE_SSE
+ #endif
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2017-06-11 00:58:53.706120530 +0200
+@@ -12,9 +12,17 @@
+ #include "common/platform.h"
+ #include "image_util/imageformats.h"
+ 
++#if defined(BUILD_ONLY_THE_SSE2_PARTS) && !defined(__SSE2__)
++#error SSE2 parts must be built with -msse2
++#endif
++
+ namespace angle
+ {
+ 
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++namespace SSE2 {
++#endif
++
+ void LoadA8ToRGBA8(size_t width,
+                    size_t height,
+                    size_t depth,
+@@ -28,6 +36,11 @@
+ #if defined(ANGLE_USE_SSE)
+     if (gl::supportsSSE2())
+     {
++#if !defined(__x86_64__) && !defined(__SSE2__)
++        angle::SSE2::LoadA8ToRGBA8(width, height, depth, input, inputRowPitch,
++                                   inputDepthPitch, output, outputRowPitch,
++                                   outputDepthPitch);
++#else
+         __m128i zeroWide = _mm_setzero_si128();
+ 
+         for (size_t z = 0; z < depth; z++)
+@@ -68,6 +81,7 @@
+                 }
+             }
+         }
++#endif
+ 
+         return;
+     }
+@@ -89,6 +103,8 @@
+     }
+ }
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ void LoadA8ToBGRA8(size_t width,
+                    size_t height,
+                    size_t depth,
+@@ -584,6 +600,8 @@
+     }
+ }
+ 
++#endif
++
+ void LoadRGBA8ToBGRA8(size_t width,
+                       size_t height,
+                       size_t depth,
+@@ -597,6 +615,11 @@
+ #if defined(ANGLE_USE_SSE)
+     if (gl::supportsSSE2())
+     {
++#if !defined(__x86_64__) && !defined(__SSE2__)
++        angle::SSE2::LoadRGBA8ToBGRA8(width, height, depth, input,
++                                      inputRowPitch, inputDepthPitch, output,
++                                      outputRowPitch, outputDepthPitch);
++#else
+         __m128i brMask = _mm_set1_epi32(0x00ff00ff);
+ 
+         for (size_t z = 0; z < depth; z++)
+@@ -641,6 +664,7 @@
+                 }
+             }
+         }
++#endif
+ 
+         return;
+     }
+@@ -663,6 +687,8 @@
+     }
+ }
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ void LoadRGBA8ToBGRA4(size_t width,
+                       size_t height,
+                       size_t depth,
+@@ -1320,4 +1346,10 @@
+     }
+ }
+ 
++#endif
++
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++} // namespace SSE2
++#endif
++
+ }  // namespace angle
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2017-06-11 00:52:18.251030762 +0200
+@@ -611,6 +611,32 @@
+                             size_t outputRowPitch,
+                             size_t outputDepthPitch);
+ 
++#if defined(__i386__)
++namespace SSE2 {
++
++void LoadA8ToRGBA8(size_t width,
++                   size_t height,
++                   size_t depth,
++                   const uint8_t *input,
++                   size_t inputRowPitch,
++                   size_t inputDepthPitch,
++                   uint8_t *output,
++                   size_t outputRowPitch,
++                   size_t outputDepthPitch);
++
++void LoadRGBA8ToBGRA8(size_t width,
++                      size_t height,
++                      size_t depth,
++                      const uint8_t *input,
++                      size_t inputRowPitch,
++                      size_t inputDepthPitch,
++                      uint8_t *output,
++                      size_t outputRowPitch,
++                      size_t outputDepthPitch);
++
++}
++#endif // defined(__i386__)
++
+ }  // namespace angle
+ 
+ #include "loadimage.inl"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	2017-06-11 00:59:45.318349164 +0200
+@@ -0,0 +1,2 @@
++#define BUILD_ONLY_THE_SSE2_PARTS
++#include "loadimage.cpp"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/qcms/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2017-06-10 21:27:01.666198494 +0200
+@@ -30,8 +30,8 @@
+     ]
+ 
+     if (current_cpu == "x86" || current_cpu == "x64") {
+-      defines = [ "SSE2_ENABLE" ]
+-      sources += [ "src/transform-sse2.c" ]
++      defines = [ "SSE2_ENABLE" ]  # runtime detection
++      deps = [ ":qcms_sse2" ]
+     }
+   }
+ 
+@@ -74,3 +74,15 @@
+     public_configs = [ ":qcms_config" ]
+   }
+ }
++
++source_set("qcms_sse2") {
++  configs -= [ "//build/config/compiler:chromium_code" ]
++  configs += [ "//build/config/compiler:no_chromium_code" ]
++  public_configs = [ ":qcms_config" ]
++
++  if (current_cpu == "x86" || current_cpu == "x64") {
++    defines = [ "SSE2_ENABLE" ]
++    sources = [ "src/transform-sse2.c" ]
++    cflags = [ "-msse2" ]
++  }
++}
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2017-06-08 23:59:48.897938821 +0200
+@@ -31,7 +31,7 @@
+ #include "wtf/MathExtras.h"
+ #include <algorithm>
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+ #include <emmintrin.h>
+ #endif
+ 
+@@ -662,7 +662,7 @@
+     // the next event.
+     if (nextEventType == ParamEvent::LinearRampToValue) {
+       const float valueDelta = value2 - value1;
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+       if (fillToFrame > writeIndex) {
+         // Minimize in-loop operations. Calculate starting value and increment.
+         // Next step: value += inc.
+@@ -841,7 +841,7 @@
+             for (; writeIndex < fillToFrame; ++writeIndex)
+               values[writeIndex] = target;
+           } else {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+             if (fillToFrame > writeIndex) {
+               // Resolve recursion by expanding constants to achieve a 4-step
+               // loop unrolling.
+@@ -959,7 +959,7 @@
+           // Oversampled curve data can be provided if sharp discontinuities are
+           // desired.
+           unsigned k = 0;
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+           if (fillToFrame > writeIndex) {
+             const __m128 vCurveVirtualIndex = _mm_set_ps1(curveVirtualIndex);
+             const __m128 vCurvePointsPerFrame =
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2017-06-09 00:10:04.104673129 +0200
+@@ -26,6 +26,9 @@
+  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++// include this first to get it before the CPU() function-like macro
++#include "base/cpu.h"
++
+ #include "platform/audio/DirectConvolver.h"
+ 
+ #if OS(MACOSX)
+@@ -35,21 +38,47 @@
+ #include "platform/audio/VectorMath.h"
+ #include "wtf/CPU.h"
+ 
+-#if (CPU(X86) || CPU(X86_64)) && !OS(MACOSX)
++#if ((CPU(X86) && defined(__SSE2__)) || CPU(X86_64)) && !OS(MACOSX)
+ #include <emmintrin.h>
+ #endif
+ 
++#if defined(BUILD_ONLY_THE_SSE2_PARTS) && !defined(__SSE2__)
++#error SSE2 parts must be built with -msse2
++#endif
++
+ namespace blink {
+ 
+ using namespace VectorMath;
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ DirectConvolver::DirectConvolver(size_t inputBlockSize)
+-    : m_inputBlockSize(inputBlockSize), m_buffer(inputBlockSize * 2) {}
++    : m_inputBlockSize(inputBlockSize), m_buffer(inputBlockSize * 2) {
++#if CPU(X86)
++  base::CPU cpu;
++  m_haveSSE2 = cpu.has_sse2();
++#endif
++}
++
++#endif
+ 
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++void DirectConvolver::m_processSSE2(AudioFloatArray* convolutionKernel,
++                                    const float* sourceP,
++                                    float* destP,
++                                    size_t framesToProcess) {
++#else
+ void DirectConvolver::process(AudioFloatArray* convolutionKernel,
+                               const float* sourceP,
+                               float* destP,
+                               size_t framesToProcess) {
++#endif
++#if CPU(X86) && !defined(__SSE2__)
++  if (m_haveSSE2) {
++    m_processSSE2(convolutionKernel, sourceP, destP, framesToProcess);
++    return;
++  }
++#endif
+   ASSERT(framesToProcess == m_inputBlockSize);
+   if (framesToProcess != m_inputBlockSize)
+     return;
+@@ -83,7 +112,7 @@
+ #endif  // CPU(X86)
+ #else
+   size_t i = 0;
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   // Convolution using SSE2. Currently only do this if both |kernelSize| and
+   // |framesToProcess| are multiples of 4. If not, use the straightforward loop
+   // below.
+@@ -397,7 +426,7 @@
+       }
+       destP[i++] = sum;
+     }
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   }
+ #endif
+ #endif  // OS(MACOSX)
+@@ -406,8 +435,12 @@
+   memcpy(m_buffer.data(), inputP, sizeof(float) * framesToProcess);
+ }
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ void DirectConvolver::reset() {
+   m_buffer.zero();
+ }
+ 
++#endif
++
+ }  // namespace blink
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2017-06-09 00:07:03.143398606 +0200
+@@ -32,6 +32,7 @@
+ #include "platform/PlatformExport.h"
+ #include "platform/audio/AudioArray.h"
+ #include "wtf/Allocator.h"
++#include "wtf/CPU.h"
+ #include "wtf/Noncopyable.h"
+ 
+ namespace blink {
+@@ -54,6 +55,14 @@
+   size_t m_inputBlockSize;
+ 
+   AudioFloatArray m_buffer;
++
++#if CPU(X86)
++  bool m_haveSSE2;
++  void m_processSSE2(AudioFloatArray* convolutionKernel,
++                     const float* sourceP,
++                     float* destP,
++                     size_t framesToProcess);
++#endif
+ };
+ 
+ }  // namespace blink
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	2017-06-08 22:50:07.966098783 +0200
+@@ -0,0 +1,2 @@
++#define BUILD_ONLY_THE_SSE2_PARTS
++#include "DirectConvolver.cpp"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2017-06-09 00:12:04.250863595 +0200
+@@ -26,15 +26,22 @@
+  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++// include this first to get it before the CPU() function-like macro
++#include "base/cpu.h"
++
+ #include "platform/audio/SincResampler.h"
+ #include "platform/audio/AudioBus.h"
+ #include "wtf/CPU.h"
+ #include "wtf/MathExtras.h"
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+ #include <emmintrin.h>
+ #endif
+ 
++#if defined(BUILD_ONLY_THE_SSE2_PARTS) && !defined(__SSE2__)
++#error SSE2 parts must be built with -msse2
++#endif
++
+ // Input buffer layout, dividing the total buffer into regions (r0 - r5):
+ //
+ // |----------------|-----------------------------------------|----------------|
+@@ -66,6 +73,8 @@
+ 
+ namespace blink {
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ SincResampler::SincResampler(double scaleFactor,
+                              unsigned kernelSize,
+                              unsigned numberOfKernelOffsets)
+@@ -81,6 +90,10 @@
+       m_sourceFramesAvailable(0),
+       m_sourceProvider(nullptr),
+       m_isBufferPrimed(false) {
++#if CPU(X86)
++  base::CPU cpu;
++  m_haveSSE2 = cpu.has_sse2();
++#endif
+   initializeKernel();
+ }
+ 
+@@ -201,9 +214,23 @@
+   }
+ }
+ 
++#endif
++
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++void SincResampler::m_processSSE2(AudioSourceProvider* sourceProvider,
++                                  float* destination,
++                                  size_t framesToProcess) {
++#else
+ void SincResampler::process(AudioSourceProvider* sourceProvider,
+                             float* destination,
+                             size_t framesToProcess) {
++#endif
++#if CPU(X86) && !defined(__SSE2__)
++  if (m_haveSSE2) {
++    m_processSSE2(sourceProvider, destination, framesToProcess);
++    return;
++  }
++#endif
+   bool isGood = sourceProvider && m_blockSize > m_kernelSize &&
+                 m_inputBuffer.size() >= m_blockSize + m_kernelSize &&
+                 !(m_kernelSize % 2);
+@@ -269,7 +296,7 @@
+       {
+         float input;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+         // If the sourceP address is not 16-byte aligned, the first several
+         // frames (at most three) should be processed seperately.
+         while ((reinterpret_cast<uintptr_t>(inputP) & 0x0F) && n) {
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2017-06-09 00:12:54.187111500 +0200
+@@ -33,6 +33,7 @@
+ #include "platform/audio/AudioArray.h"
+ #include "platform/audio/AudioSourceProvider.h"
+ #include "wtf/Allocator.h"
++#include "wtf/CPU.h"
+ #include "wtf/Noncopyable.h"
+ 
+ namespace blink {
+@@ -96,6 +97,13 @@
+ 
+   // The buffer is primed once at the very beginning of processing.
+   bool m_isBufferPrimed;
++
++#if CPU(X86)
++  bool m_haveSSE2;
++  void m_processSSE2(AudioSourceProvider*,
++                     float* destination,
++                     size_t framesToProcess);
++#endif
+ };
+ 
+ }  // namespace blink
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	2017-06-08 22:50:07.967098767 +0200
+@@ -0,0 +1,2 @@
++#define BUILD_ONLY_THE_SSE2_PARTS
++#include "SincResampler.cpp"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2017-06-09 00:26:26.048970670 +0200
+@@ -23,6 +23,9 @@
+  * DAMAGE.
+  */
+ 
++// include this first to get it before the CPU() function-like macro
++#include "base/cpu.h"
++
+ #include "platform/audio/VectorMath.h"
+ #include "wtf/Assertions.h"
+ #include "wtf/CPU.h"
+@@ -33,10 +36,14 @@
+ #include <Accelerate/Accelerate.h>
+ #endif
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+ #include <emmintrin.h>
+ #endif
+ 
++#if defined(BUILD_ONLY_THE_SSE2_PARTS) && !defined(__SSE2__)
++#error SSE2 parts must be built with -msse2
++#endif
++
+ #if HAVE(ARM_NEON_INTRINSICS)
+ #include <arm_neon.h>
+ #endif
+@@ -165,15 +172,30 @@
+ }
+ #else
+ 
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++namespace SSE2 {
++#endif
++
++#if CPU(X86) && !defined(__SSE2__)
++static base::CPU cpu;
++#endif
++
+ void vsma(const float* sourceP,
+           int sourceStride,
+           const float* scale,
+           float* destP,
+           int destStride,
+           size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vsma(sourceP, sourceStride, scale, destP,
++                                  destStride, framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if ((sourceStride == 1) && (destStride == 1)) {
+     float k = *scale;
+ 
+@@ -269,9 +291,16 @@
+            float* destP,
+            int destStride,
+            size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vsmul(sourceP, sourceStride, scale, destP,
++                                   destStride, framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if ((sourceStride == 1) && (destStride == 1)) {
+     float k = *scale;
+ 
+@@ -360,7 +389,7 @@
+       sourceP += sourceStride;
+       destP += destStride;
+     }
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   }
+ #endif
+ }
+@@ -372,9 +401,17 @@
+           float* destP,
+           int destStride,
+           size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vadd(source1P, sourceStride1, source2P,
++                                  sourceStride2, destP, destStride,
++                                  framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if ((sourceStride1 == 1) && (sourceStride2 == 1) && (destStride == 1)) {
+     // If the sourceP address is not 16-byte aligned, the first several frames
+     // (at most three) should be processed separately.
+@@ -501,7 +538,7 @@
+       source2P += sourceStride2;
+       destP += destStride;
+     }
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   }
+ #endif
+ }
+@@ -513,9 +550,17 @@
+           float* destP,
+           int destStride,
+           size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vmul(source1P, sourceStride1, source2P,
++                                  sourceStride2, destP, destStride,
++                                  framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if ((sourceStride1 == 1) && (sourceStride2 == 1) && (destStride == 1)) {
+     // If the source1P address is not 16-byte aligned, the first several frames
+     // (at most three) should be processed separately.
+@@ -614,8 +659,15 @@
+            float* realDestP,
+            float* imagDestP,
+            size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::zvmul(real1P, imag1P, real2P, imag2P, realDestP,
++                                   imagDestP, framesToProcess);
++    return;
++  }
++#endif
+   unsigned i = 0;
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   // Only use the SSE optimization in the very common case that all addresses
+   // are 16-byte aligned.  Otherwise, fall through to the scalar code below.
+   if (!(reinterpret_cast<uintptr_t>(real1P) & 0x0F) &&
+@@ -671,10 +723,17 @@
+             int sourceStride,
+             float* sumP,
+             size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vsvesq(sourceP, sourceStride, sumP,
++                                    framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+   float sum = 0;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if (sourceStride == 1) {
+     // If the sourceP address is not 16-byte aligned, the first several frames
+     // (at most three) should be processed separately.
+@@ -740,10 +799,17 @@
+              int sourceStride,
+              float* maxP,
+              size_t framesToProcess) {
++#if CPU(X86) && !defined(__SSE2__)
++  if (cpu.has_sse2()) {
++    blink::VectorMath::SSE2::vmaxmgv(sourceP, sourceStride, maxP,
++                                     framesToProcess);
++    return;
++  }
++#endif
+   int n = framesToProcess;
+   float max = 0;
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   if (sourceStride == 1) {
+     // If the sourceP address is not 16-byte aligned, the first several frames
+     // (at most three) should be processed separately.
+@@ -832,6 +898,8 @@
+   *maxP = max;
+ }
+ 
++#ifndef BUILD_ONLY_THE_SSE2_PARTS
++
+ void vclip(const float* sourceP,
+            int sourceStride,
+            const float* lowThresholdP,
+@@ -889,6 +957,12 @@
+   }
+ }
+ 
++#endif
++
++#ifdef BUILD_ONLY_THE_SSE2_PARTS
++} // namespace SSE2
++#endif
++
+ #endif  // OS(MACOSX)
+ 
+ }  // namespace VectorMath
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2017-06-09 00:27:58.975582370 +0200
+@@ -27,6 +27,7 @@
+ #define VectorMath_h
+ 
+ #include "platform/PlatformExport.h"
++#include "wtf/CPU.h"
+ #include "wtf/build_config.h"
+ #include <cstddef>
+ 
+@@ -97,6 +98,62 @@
+                            int destStride,
+                            size_t framesToProcess);
+ 
++#if CPU(X86)
++namespace SSE2 {
++// Vector scalar multiply and then add.
++PLATFORM_EXPORT void vsma(const float* sourceP,
++                          int sourceStride,
++                          const float* scale,
++                          float* destP,
++                          int destStride,
++                          size_t framesToProcess);
++
++PLATFORM_EXPORT void vsmul(const float* sourceP,
++                           int sourceStride,
++                           const float* scale,
++                           float* destP,
++                           int destStride,
++                           size_t framesToProcess);
++PLATFORM_EXPORT void vadd(const float* source1P,
++                          int sourceStride1,
++                          const float* source2P,
++                          int sourceStride2,
++                          float* destP,
++                          int destStride,
++                          size_t framesToProcess);
++
++// Finds the maximum magnitude of a float vector.
++PLATFORM_EXPORT void vmaxmgv(const float* sourceP,
++                             int sourceStride,
++                             float* maxP,
++                             size_t framesToProcess);
++
++// Sums the squares of a float vector's elements.
++PLATFORM_EXPORT void vsvesq(const float* sourceP,
++                            int sourceStride,
++                            float* sumP,
++                            size_t framesToProcess);
++
++// For an element-by-element multiply of two float vectors.
++PLATFORM_EXPORT void vmul(const float* source1P,
++                          int sourceStride1,
++                          const float* source2P,
++                          int sourceStride2,
++                          float* destP,
++                          int destStride,
++                          size_t framesToProcess);
++
++// Multiplies two complex vectors.
++PLATFORM_EXPORT void zvmul(const float* real1P,
++                           const float* imag1P,
++                           const float* real2P,
++                           const float* imag2P,
++                           float* realDestP,
++                           float* imagDestP,
++                           size_t framesToProcess);
++}
++#endif
++
+ }  // namespace VectorMath
+ }  // namespace blink
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	2017-06-08 22:50:07.969098737 +0200
+@@ -0,0 +1,2 @@
++#define BUILD_ONLY_THE_SSE2_PARTS
++#include "VectorMath.cpp"
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2017-06-12 00:21:47.738315411 +0200
+@@ -1529,6 +1529,10 @@
+     deps += [ ":blink_x86_sse" ]
+   }
+ 
++  if (current_cpu == "x86") {
++    deps += [ ":blink_x86_sse2" ]
++  }
++
+   if (use_webaudio_ffmpeg) {
+     include_dirs += [ "//third_party/ffmpeg" ]
+     deps += [ "//third_party/ffmpeg" ]
+@@ -1914,6 +1918,26 @@
+     ]
+   }
+ }
++
++if (current_cpu == "x86") {
++  source_set("blink_x86_sse2") {
++    sources = [
++      "audio/DirectConvolverSSE2.cpp",
++      "audio/SincResamplerSSE2.cpp",
++      "audio/VectorMathSSE2.cpp",
++    ]
++    cflags = [ "-msse2", "-mfpmath=sse" ]
++    deps = [
++      ":blink_common",
++    ]
++    configs += [
++        # TODO(jschuh): crbug.com/167187 fix size_t to int truncations.
++        "//build/config/compiler:no_size_t_to_int_warning",
++        "//third_party/WebKit/Source:config",
++        "//third_party/WebKit/Source:non_test_config",
++    ]
++  }
++}
+ 
+ # This source set is used for fuzzers that need an environment similar to unit
+ # tests.
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2017-06-08 22:50:09.251079402 +0200
+@@ -5,7 +5,7 @@
+ #ifndef WebGLImageConversionSSE_h
+ #define WebGLImageConversionSSE_h
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+ 
+ #include <emmintrin.h>
+ 
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2017-06-09 00:33:14.375866479 +0200
+@@ -441,7 +441,7 @@
+   const uint32_t* source32 = reinterpret_cast_ptr<const uint32_t*>(source);
+   uint32_t* destination32 = reinterpret_cast_ptr<uint32_t*>(destination);
+ 
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::unpackOneRowOfBGRA8LittleToRGBA8(source32, destination32, pixelsPerRow);
+ #endif
+ #if HAVE(MIPS_MSA_INTRINSICS)
+@@ -467,7 +467,7 @@
+     const uint16_t* source,
+     uint8_t* destination,
+     unsigned pixelsPerRow) {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::unpackOneRowOfRGBA5551LittleToRGBA8(source, destination, pixelsPerRow);
+ #endif
+ #if HAVE(ARM_NEON_INTRINSICS)
+@@ -496,7 +496,7 @@
+     const uint16_t* source,
+     uint8_t* destination,
+     unsigned pixelsPerRow) {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::unpackOneRowOfRGBA4444LittleToRGBA8(source, destination, pixelsPerRow);
+ #endif
+ #if HAVE(ARM_NEON_INTRINSICS)
+@@ -711,7 +711,7 @@
+           uint8_t>(const uint8_t* source,
+                    uint8_t* destination,
+                    unsigned pixelsPerRow) {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::packOneRowOfRGBA8LittleToR8(source, destination, pixelsPerRow);
+ #endif
+ #if HAVE(MIPS_MSA_INTRINSICS)
+@@ -768,7 +768,7 @@
+           uint8_t>(const uint8_t* source,
+                    uint8_t* destination,
+                    unsigned pixelsPerRow) {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::packOneRowOfRGBA8LittleToRA8(source, destination, pixelsPerRow);
+ #endif
+ #if HAVE(MIPS_MSA_INTRINSICS)
+@@ -880,7 +880,7 @@
+           uint8_t>(const uint8_t* source,
+                    uint8_t* destination,
+                    unsigned pixelsPerRow) {
+-#if CPU(X86) || CPU(X86_64)
++#if (CPU(X86) && defined(__SSE2__)) || CPU(X86_64)
+   SIMD::packOneRowOfRGBA8LittleToRGBA8(source, destination, pixelsPerRow);
+ #endif
+ #if HAVE(MIPS_MSA_INTRINSICS)
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2017-06-08 22:50:09.434076641 +0200
+@@ -14,6 +14,7 @@
+ #include "webrtc/common_audio/real_fourier_ooura.h"
+ #include "webrtc/common_audio/real_fourier_openmax.h"
+ #include "webrtc/common_audio/signal_processing/include/signal_processing_library.h"
++#include "webrtc/system_wrappers/include/cpu_features_wrapper.h"
+ 
+ namespace webrtc {
+ 
+@@ -23,7 +24,15 @@
+ 
+ std::unique_ptr<RealFourier> RealFourier::Create(int fft_order) {
+ #if defined(RTC_USE_OPENMAX_DL)
++#if defined(WEBRTC_ARCH_X86_FAMILY) && !defined(__SSE2__)
++  // x86 CPU detection required.
++  if (WebRtc_GetCPUInfo(kSSE2))
++    return std::unique_ptr<RealFourier>(new RealFourierOpenmax(fft_order));
++  else
++    return std::unique_ptr<RealFourier>(new RealFourierOoura(fft_order));
++#else
+   return std::unique_ptr<RealFourier>(new RealFourierOpenmax(fft_order));
++#endif
+ #else
+   return std::unique_ptr<RealFourier>(new RealFourierOoura(fft_order));
+ #endif
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/BUILD.gn	2017-06-12 14:15:23.270523710 +0200
+@@ -117,7 +117,7 @@
+ 
+   include_dirs = [ "." ]
+ 
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "BUILDING_V8_SHARED" ]
+   }
+ }
+@@ -131,14 +131,14 @@
+ # This config should be applied to code using the libplatform.
+ config("libplatform_config") {
+   include_dirs = [ "include" ]
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "USING_V8_PLATFORM_SHARED" ]
+   }
+ }
+ 
+ # This config should be applied to code using the libbase.
+ config("libbase_config") {
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "USING_V8_BASE_SHARED" ]
+   }
+   libs = []
+@@ -155,7 +155,7 @@
+ # This config should only be applied to code using V8 and not any V8 code
+ # itself.
+ config("external_config") {
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "USING_V8_SHARED" ]
+   }
+   include_dirs = [ "include" ]
+@@ -331,6 +331,9 @@
+       cflags += [ "/arch:SSE2" ]
+     }
+   }
++  if (v8_current_cpu == "x87") {
++    defines += [ "V8_TARGET_ARCH_X87" ]
++  }
+   if (v8_current_cpu == "x64") {
+     defines += [ "V8_TARGET_ARCH_X64" ]
+     if (is_win) {
+@@ -2274,7 +2277,7 @@
+ 
+   defines = []
+ 
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "BUILDING_V8_BASE_SHARED" ]
+   }
+ 
+@@ -2364,7 +2367,7 @@
+ 
+   configs = [ ":internal_config_base" ]
+ 
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "BUILDING_V8_PLATFORM_SHARED" ]
+   }
+ 
+@@ -2507,7 +2510,26 @@
+   }
+ }
+ 
+-if (is_component_build) {
++if (v8_build_shared) {
++  shared_library("v8") {
++    sources = [
++      "src/v8dll-main.cc",
++    ]
++
++    deps = [
++      ":v8_dump_build_config",
++    ]
++
++    public_deps = [
++      ":v8_base",
++      ":v8_maybe_snapshot",
++    ]
++
++    configs += [ ":internal_config" ]
++
++    public_configs = [ ":external_config" ]
++  }
++} else if (is_component_build) {
+   v8_component("v8") {
+     sources = [
+       "src/v8dll-main.cc",
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/gni/v8.gni qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/gni/v8.gni	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni	2017-06-12 14:15:47.965158851 +0200
+@@ -30,6 +30,9 @@
+   # Enable ECMAScript Internationalization API. Enabling this feature will
+   # add a dependency on the ICU library.
+   v8_enable_i18n_support = true
++
++  # Whether to build V8 as a shared library
++  v8_build_shared = false
+ }
+ 
+ if (v8_use_external_startup_data == "") {
+@@ -42,6 +45,11 @@
+   v8_enable_backtrace = is_debug && !v8_optimized_debug
+ }
+ 
++if (v8_current_cpu == "x86" || v8_current_cpu == "x87") {
++  # build V8 shared on x86 so we can swap x87 vs. SSE2 builds
++  v8_build_shared = true
++}
++
+ # Points to // in v8 stand-alone or to //v8/ in chromium. We need absolute
+ # paths for all configs in templates as they are shared in different
+ # subdirectories.
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/make-v8-sse2-gyp.sh qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/make-v8-sse2-gyp.sh
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/make-v8-sse2-gyp.sh	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/make-v8-sse2-gyp.sh	2017-06-08 22:50:09.496075706 +0200
+@@ -0,0 +1,56 @@
++#!/bin/sh
++# This script renames the v8 targets to _sse2 names so that they do not conflict
++# with the non-SSE2 versions.
++
++# Copyright 2016 Kevin Kofler. All rights reserved.
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions are
++# met:
++#
++#     * Redistributions of source code must retain the above copyright
++#       notice, this list of conditions and the following disclaimer.
++#     * Redistributions in binary form must reproduce the above
++#       copyright notice, this list of conditions and the following
++#       disclaimer in the documentation and/or other materials provided
++#       with the distribution.
++#     * Neither the name of Google Inc. nor the names of its
++#       contributors may be used to endorse or promote products derived
++#       from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++# add comment noting that the file is generated
++echo "# Generated from v8.gyp by make-v8-sse2-gyp.sh" >v8_sse2.gyp
++# rename all target names
++SUBTARGETS=`grep "'target_name': '" v8.gyp | sed -e "s/^.*'target_name': '//g" -e "s/',$//g"`
++SEDS=
++for SUBTARGET in $SUBTARGETS ; do
++  SEDS=$SEDS\ -e\ "s/'$SUBTARGET\(['#]\)/'${SUBTARGET}_sse2\1/g"
++done
++# in addition:
++# * set v8_target_arch to "ia32" (instead of "x87")
++# * rename all actions
++# * fix mksnapshot_exec to match the renamed target
++# * rename the generated snapshot.cc (but not mksnapshot.cc) to snapshot_sse2.cc
++# * rename the generated *libraries.cc to *libraries_sse2.cc
++# * rename the generated *.bin to *_sse2.bin
++# * set product_name and product_dir for the v8_sse2 target
++sed -e "s/^\(  'variables': {\)/\1\n    'v8_target_arch': 'ia32',/g" \
++    -e "s/\('action_name': '\)/\1v8_sse2_/g" \
++    $SEDS \
++    -e "s/\('mksnapshot_exec': '.*mksnapshot\)/\1_sse2/g" \
++    -e "s#/snapshot\.cc#/snapshot_sse2.cc#g" \
++    -e "s/libraries\.cc/libraries_sse2.cc/g" \
++    -e "s/\.bin/_sse2.bin/g" \
++    -e "s#^\( *\)\('target_name': 'v8_sse2',\)#\1\2\n\1'product_name': 'v8',\n\1'product_dir': '<(PRODUCT_DIR)/lib/sse2',#g" \
++    v8.gyp >>v8_sse2.gyp
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/src/inspector/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2017-06-12 14:16:16.955730521 +0200
+@@ -106,7 +106,7 @@
+       "/wd4996",  # Deprecated function call.
+     ]
+   }
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     defines = [ "BUILDING_V8_SHARED" ]
+   }
+ }
+diff -Nur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/test/cctest/BUILD.gn qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2017-06-12 14:16:45.945302206 +0200
+@@ -335,7 +335,7 @@
+ 
+   defines = []
+ 
+-  if (is_component_build) {
++  if (is_component_build || v8_build_shared) {
+     # cctest can't be built against a shared library, so we
+     # need to depend on the underlying static target in that case.
+     deps += [ "../..:v8_maybe_snapshot" ]
+diff -Nur qtwebengine-opensource-src-5.9.0/src/core/core_module.pro qtwebengine-opensource-src-5.9.0-no-sse2/src/core/core_module.pro
+--- qtwebengine-opensource-src-5.9.0/src/core/core_module.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/core/core_module.pro	2017-06-12 00:25:07.241337485 +0200
+@@ -41,6 +41,31 @@
+ else: QMAKE_LFLAGS += $$NINJA_LFLAGS
+ POST_TARGETDEPS += $$NINJA_TARGETDEPS
+ 
++# go through the shared libraries that GN wants to link to
++# ignore the dummy convert_dict shared library used only to get a .pri file
++# add the ones NOT in lib/sse2 to LIBS_PRIVATE
++# don't add those in lib/sse2 that are only replacements for the normal ones
++# collect all shared libraries, non-SSE2 and SSE2, so they can be installed
++for(shlib, NINJA_SOLIBS) {
++    !contains(shlib, .*convert_dict.*) {
++        contains(shlib, .*/lib/sse2/.*) {
++            shlibs_sse2 += $$shlib
++        } else {
++            LIBS_PRIVATE += $$shlib
++            shlibs += $$shlib
++        }
++    }
++}
++
++# set the shared libraries to be installed
++# add an rpath to their installation location
++shlib_install_path = $$[QT_INSTALL_LIBS]/qtwebengine
++!isEmpty(shlibs) {
++    shlibs.files += $$shlibs
++    shlibs_sse2.files += $$shlibs_sse2
++    LIBS_PRIVATE += -Wl,--rpath,$$shlib_install_path
++}
++
+ 
+ LIBS_PRIVATE += -L$$api_library_path
+ CONFIG *= no_smart_library_merge
+@@ -100,7 +125,12 @@
+         locales.path = $$[QT_INSTALL_TRANSLATIONS]/qtwebengine_locales
+         resources.CONFIG += no_check_exist
+         resources.path = $$[QT_INSTALL_DATA]/resources
+-        INSTALLS += locales resources
++        # install the shared libraries
++        shlibs.CONFIG += no_check_exist
++        shlibs.path = $$shlib_install_path
++        shlibs_sse2.CONFIG += no_check_exist
++        shlibs_sse2.path = $$shlib_install_path/sse2
++        INSTALLS += locales resources shlibs shlibs_sse2
+ 
+         !use?(system_icu) {
+             icu.CONFIG += no_check_exist
+diff -Nur qtwebengine-opensource-src-5.9.0/src/process/process.pro qtwebengine-opensource-src-5.9.0-no-sse2/src/process/process.pro
+--- qtwebengine-opensource-src-5.9.0/src/process/process.pro	2017-05-19 06:22:04.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-no-sse2/src/process/process.pro	2017-06-12 16:36:03.823777310 +0200
+@@ -9,6 +9,8 @@
+ 
+ SOURCES = main.cpp
+ 
++QMAKE_LFLAGS += -Wl,-rpath-link,$$OUT_PWD/../core/Release
++
+ win32 {
+     SOURCES += \
+         support_win.cpp
