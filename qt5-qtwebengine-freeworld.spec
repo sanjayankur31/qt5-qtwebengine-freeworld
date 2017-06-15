@@ -23,6 +23,17 @@
 # FTBFS due to e.g. GCC bug https://bugzilla.redhat.com/show_bug.cgi?id=1282495
 %global arm_neon 1
 
+# the QMake CONFIG flags to force debugging information to be produced in
+# release builds, and for all parts of the code
+%ifarch %{arm}
+# the RPM Fusion ARM builder runs out of memory during linking with the full
+# setting below, so omit debugging information for the parts upstream deems it
+# dispensable for (webcore, v8base)
+%global debug_config force_debug_info
+%else
+%global debug_config webcore_debug v8base_debug force_debug_info
+%endif
+
 #global prerelease rc
 
 # exclude plugins (all architectures) and libv8.so (i686, it's static everywhere
@@ -365,7 +376,7 @@ export NINJA_PATH=%{_bindir}/ninja-build
 mkdir %{_target_platform}
 pushd %{_target_platform}
 
-%{qmake_qt5} CONFIG+="webcore_debug v8base_debug force_debug_info" \
+%{qmake_qt5} CONFIG+="%{debug_config}" \
   WEBENGINE_CONFIG+="use_system_icu %{?system_ffmpeg_flag} use_spellchecker use_proprietary_codecs" ..
 
 make %{?_smp_mflags}
@@ -417,6 +428,7 @@ echo "%{_libdir}/%{name}" \
 - Fix src/3rdparty/chromium/build/linux/unbundle/re2.gn
 - Delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn
 - arm-fpu-fix patch: Also build the host tools (i.e., GN) with the correct FPU
+- Omit debuginfo for webcore and v8base on ARM to avoid running out of memory
 
 * Sun Apr 30 2017 Leigh Scott <leigh123linux@googlemail.com> - 5.8.0-4
 - Rebuild for ffmpeg update
