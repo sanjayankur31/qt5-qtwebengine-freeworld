@@ -406,7 +406,7 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Tue Jun 13 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-1
+* Thu Jun 15 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-1
 - Update to 5.9.0
 - Update version numbers of bundled stuff
 - Use bundled libsrtp and protobuf, Chromium dropped unbundling support for them
