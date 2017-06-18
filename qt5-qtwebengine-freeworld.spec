@@ -27,9 +27,8 @@
 # release builds, and for all parts of the code
 %ifarch %{arm}
 # the RPM Fusion ARM builder runs out of memory during linking with the full
-# setting below, so omit debugging information for the parts upstream deems it
-# dispensable for (webcore, v8base)
-%global debug_config force_debug_info
+# setting below, and even with just force_debug_info, so omit all debuginfo
+%global debug_config %{nil}
 %else
 %global debug_config webcore_debug v8base_debug force_debug_info
 %endif
@@ -406,7 +405,7 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Thu Jun 15 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-1
+* Sun Jun 18 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-1
 - Update to 5.9.0
 - Update version numbers of bundled stuff
 - Use bundled libsrtp and protobuf, Chromium dropped unbundling support for them
@@ -428,7 +427,7 @@ echo "%{_libdir}/%{name}" \
 - Fix src/3rdparty/chromium/build/linux/unbundle/re2.gn
 - Delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn
 - arm-fpu-fix patch: Also build the host tools (i.e., GN) with the correct FPU
-- Omit debuginfo for webcore and v8base on ARM to avoid running out of memory
+- Omit all Chromium debuginfo on ARM to avoid running out of memory
 
 * Sun Apr 30 2017 Leigh Scott <leigh123linux@googlemail.com> - 5.8.0-4
 - Rebuild for ffmpeg update
