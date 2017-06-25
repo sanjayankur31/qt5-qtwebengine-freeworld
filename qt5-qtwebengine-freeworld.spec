@@ -44,7 +44,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.9.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -99,6 +99,9 @@ Patch20: qtwebengine-opensource-src-5.8.0-qt57.patch
 Patch21: qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose.patch
 # Fix src/3rdparty/chromium/build/linux/unbundle/re2.gn
 Patch22: qtwebengine-opensource-src-5.9.0-system-re2.patch
+# Fix broken binary compatibility for C memory management functions (incomplete
+# upstream fix for QTBUG-60565)
+Patch23: qtwebengine-opensource-src-5.9.0-qtbug-60565-c-symbols.patch
 # Backport upstream patch to fix GN FTBFS on aarch64 (QTBUG-61128)
 # https://codereview.qt-project.org/196178
 Patch100: qtwebengine-opensource-src-5.9.0-gn-aarch64.patch
@@ -329,6 +332,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch20 -p1 -b .qt57
 %patch21 -p1 -b .gn-bootstrap-verbose
 %patch22 -p1 -b .system-re2
+%patch23 -p1 -b .qtbug-60565-c-symbols
 %patch100 -p1 -b .gn-aarch64
 %patch101 -p1 -b .aarch64-gcc-toolchain
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
@@ -409,6 +413,10 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sun Jun 25 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-2
+- Fix broken binary compatibility for C memory management functions (incomplete
+  upstream fix for QTBUG-60565)
+
 * Sun Jun 18 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-1
 - Update to 5.9.0
 - Update version numbers of bundled stuff
