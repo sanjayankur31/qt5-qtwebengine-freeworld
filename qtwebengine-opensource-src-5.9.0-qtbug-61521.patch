@@ -1,6 +1,25 @@
-diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengine-opensource-src-5.9.0-qtbug-60565-c-symbols/src/core/api/qtbug-60565.cpp
+diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/process/memory_linux.cc qtwebengine-opensource-src-5.9.0-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc
+--- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/process/memory_linux.cc	2017-05-18 16:51:44.000000000 +0200
++++ qtwebengine-opensource-src-5.9.0-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc	2017-06-26 23:48:15.166464570 +0200
+@@ -60,6 +60,7 @@
+ #endif
+ void* __libc_memalign(size_t alignment, size_t size);
+ 
++#if !defined(TOOLKIT_QT) //QTBUG-61521,QTBUG-60565
+ // Overriding the system memory allocation functions:
+ //
+ // For security reasons, we want malloc failures to be fatal. Too much code
+@@ -129,6 +130,7 @@
+   *ptr = memalign(alignment, size);
+   return 0;
+ }
++#endif // TOOLKIT_QT
+ 
+ }  // extern C
+ 
+diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengine-opensource-src-5.9.0-qtbug-61521/src/core/api/qtbug-60565.cpp
 --- qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp	2017-05-19 06:22:04.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-qtbug-60565-c-symbols/src/core/api/qtbug-60565.cpp	2017-06-25 22:33:28.508223362 +0200
++++ qtwebengine-opensource-src-5.9.0-qtbug-61521/src/core/api/qtbug-60565.cpp	2017-06-25 22:33:28.508223362 +0200
 @@ -39,6 +39,8 @@
  
  #include <new>
