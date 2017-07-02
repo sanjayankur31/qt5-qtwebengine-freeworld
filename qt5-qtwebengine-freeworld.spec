@@ -43,8 +43,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.9.0
-Release: 3%{?dist}
+Version: 5.9.1
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -82,7 +82,7 @@ Patch5:  qtwebengine-opensource-src-5.9.0-system-icu-utf.patch
 # relevant to QtWebEngine only), 516543004, 1152053004 and 1161853008, along
 # with some custom fixes and improvements
 # also build V8 shared and twice on i686 (once for x87, once for SSE2)
-Patch6:  qtwebengine-opensource-src-5.9.0-no-sse2.patch
+Patch6:  qtwebengine-opensource-src-5.9.1-no-sse2.patch
 # fix missing ARM -mfpu setting
 Patch9:  qtwebengine-opensource-src-5.9.0-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
@@ -101,13 +101,7 @@ Patch21: qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose.patch
 Patch22: qtwebengine-opensource-src-5.9.0-system-re2.patch
 # Fix broken binary compatibility for C memory management functions (incomplete
 # upstream fix for QTBUG-60565) (QTBUG-61521)
-Patch23: qtwebengine-opensource-src-5.9.0-qtbug-61521.patch
-# Backport upstream patch to fix GN FTBFS on aarch64 (QTBUG-61128)
-# https://codereview.qt-project.org/196178
-Patch100: qtwebengine-opensource-src-5.9.0-gn-aarch64.patch
-# Backport patch to fix FTBFS with GCC on aarch64 from upstream Chromium
-# https://codereview.chromium.org/2545053002
-Patch101: qtwebengine-opensource-src-5.9.0-aarch64-gcc-toolchain.patch
+Patch23: qtwebengine-opensource-src-5.9.1-qtbug-61521.patch
 
 %if 0%{?fedora} && 0%{?fedora} < 25
 # work around missing qt5_qtwebengine_arches macro on F24
@@ -203,9 +197,9 @@ BuildRequires: pkgconfig(vpx) >= 1.6.0
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes (up to version 58.0.3029.96) are backported, see:
+# Some security fixes (up to version 59.0.3071.104) are backported, see:
 # http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=56-based
-# see dist/changes-5.9.0 for the version numbers (base, security fixes) and for
+# see dist/changes-5.9.1 for the version numbers (base, security fixes) and for
 # a list of CVEs fixed by the added security backports
 Provides: bundled(chromium) = 56.0.2924.122
 
@@ -333,8 +327,6 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch21 -p1 -b .gn-bootstrap-verbose
 %patch22 -p1 -b .system-re2
 %patch23 -p1 -b .qtbug-61521
-%patch100 -p1 -b .gn-aarch64
-%patch101 -p1 -b .aarch64-gcc-toolchain
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -413,6 +405,12 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sun Jul 02 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.1-1
+- Update to 5.9.1
+- Rebase qtbug-61521 patch (drop the parts that are already in 5.9.1)
+- Drop backported GN aarch64 patches already included in 5.9.1
+- no-sse2 patch: Upstream added 2 examples, add -Wl,-rpath-link to them too
+
 * Mon Jun 26 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.0-3
 - Add a hunk to the QTBUG-61521 fix according to the upstream review
 

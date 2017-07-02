@@ -1,6 +1,6 @@
-diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/process/memory_linux.cc qtwebengine-opensource-src-5.9.0-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc
---- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/process/memory_linux.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc	2017-06-26 23:48:15.166464570 +0200
+diff -ur qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/base/process/memory_linux.cc qtwebengine-opensource-src-5.9.1-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc
+--- qtwebengine-opensource-src-5.9.1/src/3rdparty/chromium/base/process/memory_linux.cc	2017-06-20 11:10:02.000000000 +0200
++++ qtwebengine-opensource-src-5.9.1-qtbug-61521/src/3rdparty/chromium/base/process/memory_linux.cc	2017-07-01 01:20:35.113886332 +0200
 @@ -60,6 +60,7 @@
  #endif
  void* __libc_memalign(size_t alignment, size_t size);
@@ -17,9 +17,9 @@ diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/base/process/mem
  
  }  // extern C
  
-diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengine-opensource-src-5.9.0-qtbug-61521/src/core/api/qtbug-60565.cpp
---- qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp	2017-05-19 06:22:04.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-qtbug-61521/src/core/api/qtbug-60565.cpp	2017-06-25 22:33:28.508223362 +0200
+diff -ur qtwebengine-opensource-src-5.9.1/src/core/api/qtbug-60565.cpp qtwebengine-opensource-src-5.9.1-qtbug-61521/src/core/api/qtbug-60565.cpp
+--- qtwebengine-opensource-src-5.9.1/src/core/api/qtbug-60565.cpp	2017-06-23 08:29:46.000000000 +0200
++++ qtwebengine-opensource-src-5.9.1-qtbug-61521/src/core/api/qtbug-60565.cpp	2017-07-01 01:22:27.626242360 +0200
 @@ -39,6 +39,8 @@
  
  #include <new>
@@ -29,15 +29,7 @@ diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengi
  
  #if defined(__LP64__)
  #  define SIZE_T_MANGLING  "m"
-@@ -47,6 +49,7 @@
- #endif
- 
- #define SHIM_ALIAS_SYMBOL(fn) __attribute__((weak, alias(#fn)))
-+#define SHIM_HIDDEN __attribute__ ((visibility ("hidden")))
- 
- extern "C" {
- 
-@@ -82,26 +85,100 @@
+@@ -83,10 +85,51 @@
  void __ShimCppDeleteArrayNoThrow(void* address, const std::nothrow_t&) noexcept
      SHIM_ALIAS_SYMBOL(ShimCppDeleteArray);
  
@@ -87,23 +79,10 @@ diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengi
 +static void* __shimPvalloc(size_t size) noexcept;
 +static void __shimFree(void* address) noexcept;
  
--static void* ShimCppNew(size_t size) {
-+SHIM_HIDDEN void* ShimCppNew(size_t size) {
+ SHIM_HIDDEN void* ShimCppNew(size_t size) {
      return __shimCppNew(size);
- }
- 
--static void* ShimCppNewArray(size_t size) {
-+SHIM_HIDDEN void* ShimCppNewArray(size_t size) {
-     return __shimCppNewArray(size);
- }
- 
--static void ShimCppDelete(void* address) {
-+SHIM_HIDDEN void ShimCppDelete(void* address) {
-     __shimCppDelete(address);
- }
- 
--static void ShimCppDeleteArray(void* address) {
-+SHIM_HIDDEN void ShimCppDeleteArray(void* address) {
+@@ -103,6 +146,39 @@
+ SHIM_HIDDEN void ShimCppDeleteArray(void* address) {
      __shimCppDeleteArray(address);
  }
 +
@@ -142,7 +121,7 @@ diff -ur qtwebengine-opensource-src-5.9.0/src/core/api/qtbug-60565.cpp qtwebengi
  } // extern "C"
  
  static void* __shimCppNew(size_t size) {
-@@ -119,3 +196,36 @@
+@@ -120,3 +196,36 @@
  static void __shimCppDeleteArray(void* address) {
      operator delete[](address);
  }
