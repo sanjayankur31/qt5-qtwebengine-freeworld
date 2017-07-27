@@ -44,7 +44,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.9.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -405,6 +405,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Thu Jul 27 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.1-2
+- Rebuild for Qt 5.9.1
+
 * Sun Jul 02 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.1-1
 - Update to 5.9.1
 - Rebase qtbug-61521 patch (drop the parts that are already in 5.9.1)
