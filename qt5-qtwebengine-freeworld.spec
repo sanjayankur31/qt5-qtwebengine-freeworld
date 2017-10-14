@@ -43,8 +43,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.9.1
-Release: 3%{?dist}
+Version: 5.9.2
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -55,8 +55,8 @@ Release: 3%{?dist}
 License: (LGPLv2 with exceptions or GPLv3 with exceptions) and BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and (MPLv1.1 or GPLv2 or LGPLv2)
 URL:     http://www.qt.io
 Source0: http://download.qt.io/official_releases/qt/%{major_minor}/%{version}/submodules/qtwebengine-opensource-src-%{version}.tar.xz
-# some tweaks to linux.pri (system libs, link libpci, run unbundling script)
-Patch0:  qtwebengine-opensource-src-5.9.0-linux-pri.patch
+# some tweaks to linux.pri (system yasm, link libpci, run unbundling script)
+Patch0:  qtwebengine-opensource-src-5.9.2-linux-pri.patch
 # quick hack to avoid checking for the nonexistent icudtl.dat and silence the
 # resulting warnings - not upstreamable as is because it removes the fallback
 # mechanism for the ICU data directory (which is not used in our builds because
@@ -84,7 +84,7 @@ Patch5:  qtwebengine-opensource-src-5.9.0-system-icu-utf.patch
 # also build V8 shared and twice on i686 (once for x87, once for SSE2)
 Patch6:  qtwebengine-opensource-src-5.9.1-no-sse2.patch
 # fix missing ARM -mfpu setting
-Patch9:  qtwebengine-opensource-src-5.9.0-arm-fpu-fix.patch
+Patch9:  qtwebengine-opensource-src-5.9.2-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
 # restore NEON runtime detection in Skia: revert upstream review 1952953004,
@@ -93,15 +93,8 @@ Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
 Patch11: qtwebengine-opensource-src-5.9.0-skia-neon.patch
 # webrtc: enable the CPU feature detection for ARM Linux also for Chromium
 Patch12: qtwebengine-opensource-src-5.9.0-webrtc-neon-detect.patch
-# FTBFS using qt < 5.8
-Patch20: qtwebengine-opensource-src-5.8.0-qt57.patch
 # Force verbose output from the GN bootstrap process
 Patch21: qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose.patch
-# Fix src/3rdparty/chromium/build/linux/unbundle/re2.gn
-Patch22: qtwebengine-opensource-src-5.9.0-system-re2.patch
-# Fix broken binary compatibility for C memory management functions (incomplete
-# upstream fix for QTBUG-60565) (QTBUG-61521)
-Patch23: qtwebengine-opensource-src-5.9.1-qtbug-61521.patch
 
 %if 0%{?fedora} && 0%{?fedora} < 25
 # work around missing qt5_qtwebengine_arches macro on F24
@@ -121,6 +114,8 @@ BuildRequires: qt5-qtlocation-devel
 BuildRequires: qt5-qtsensors-devel
 BuildRequires: qt5-qtwebchannel-devel
 BuildRequires: qt5-qttools-static
+# for examples?
+BuildRequires: qt5-qtquickcontrols2-devel
 BuildRequires: ninja-build
 BuildRequires: cmake
 BuildRequires: bison
@@ -323,10 +318,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch10 -p1 -b .openmax-dl-neon
 %patch11 -p1 -b .skia-neon
 %patch12 -p1 -b .webrtc-neon-detect
-%patch20 -p1 -b .qt57
 %patch21 -p1 -b .gn-bootstrap-verbose
-%patch22 -p1 -b .system-re2
-%patch23 -p1 -b .qtbug-61521
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -405,6 +397,17 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Oct 14 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.2-1
+- Update to 5.9.2
+- Add BuildRequires: qt5-qtquickcontrols2-devel for the examples
+- Rebase linux-pri patch
+- Drop qt57 and qtbug-61521 patches, fixed upstream
+- arm-fpu-fix patch: Drop the host tools hunk added in 5.9.0-2, fixed upstream
+- linux-pri patch: Do not call the Chromium unbundling script on re2,
+  QtWebEngine now auto-detects and uses the system re2 out of the box
+- Drop system-re2 patch (patching the no longer used unbundle/re2.gn), the
+  QtWebEngine re2/BUILD.gn is already correct
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 5.9.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
