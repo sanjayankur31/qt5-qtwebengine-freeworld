@@ -368,7 +368,7 @@ mkdir %{_target_platform}
 pushd %{_target_platform}
 
 %{qmake_qt5} CONFIG+="%{debug_config}" \
-  WEBENGINE_CONFIG+="use_system_icu %{?system_ffmpeg_flag} use_spellchecker use_proprietary_codecs" ..
+  WEBENGINE_CONFIG+="use_system_icu use_system_re2 %{?system_ffmpeg_flag} use_spellchecker use_proprietary_codecs" ..
 
 make %{?_smp_mflags}
 
@@ -407,6 +407,7 @@ echo "%{_libdir}/%{name}" \
   QtWebEngine now auto-detects and uses the system re2 out of the box
 - Drop system-re2 patch (patching the no longer used unbundle/re2.gn), the
   QtWebEngine re2/BUILD.gn is already correct
+- Explicitly force use_system_re2, the autodetection does not work on F25
 
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 5.9.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
