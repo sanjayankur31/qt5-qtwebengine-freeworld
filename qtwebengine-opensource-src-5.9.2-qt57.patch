@@ -1,0 +1,19 @@
+diff -ur qtwebengine-opensource-src-5.9.2/src/core/web_contents_adapter.cpp qtwebengine-opensource-src-5.9.2-qt57/src/core/web_contents_adapter.cpp
+--- qtwebengine-opensource-src-5.9.2/src/core/web_contents_adapter.cpp	2017-10-03 11:06:38.000000000 +0200
++++ qtwebengine-opensource-src-5.9.2-qt57/src/core/web_contents_adapter.cpp	2017-11-16 17:17:51.072511997 +0100
+@@ -1265,7 +1265,15 @@
+     }
+ 
+     const QString &fileName = toQt(dropData.file_description_filename);
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+     const QString &filePath = d->dndTmpDir->filePath(fileName);
++#else
++    QString filePath = d->dndTmpDir->path();
++    if (!filePath.isEmpty()) {
++        filePath += QLatin1Char('/');
++        filePath += fileName;
++    }
++#endif
+     QFile file(filePath);
+     if (!file.open(QIODevice::WriteOnly)) {
+         qWarning("Cannot write temporary file %s.", qUtf8Printable(filePath));
