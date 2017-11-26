@@ -43,7 +43,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.9.2
+Version: 5.9.3
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -194,9 +194,9 @@ BuildRequires: pkgconfig(vpx) >= 1.6.0
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes (up to version 59.0.3071.104) are backported, see:
+# Some security fixes (up to version 62.0.3202.89) are backported, see:
 # http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=56-based
-# see dist/changes-5.9.1 for the version numbers (base, security fixes) and for
+# see dist/changes-5.9.3 for the version numbers (base, security fixes) and for
 # a list of CVEs fixed by the added security backports
 Provides: bundled(chromium) = 56.0.2924.122
 
@@ -400,6 +400,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sun Nov 26 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.3-1
+- Update to 5.9.3
+
 * Sat Oct 14 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.2-1
 - Update to 5.9.2
 - Add BuildRequires: qt5-qtquickcontrols2-devel for the examples
