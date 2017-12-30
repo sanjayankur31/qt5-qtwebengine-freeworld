@@ -5,17 +5,16 @@
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
 
-%if 0%{?fedora} > 24
-# need libvpx >= 1.6.0
+%if 0
+# need libvpx >= 1.6.2
+# (The needed commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e was added after
+# 1.6.1, not released anywhere yet.)
 %global use_system_libvpx 1
 %endif
-%if 0%{?fedora} > 23
-# need libwebp >= 0.5.1
+# need libwebp >= 0.6.0
 %global use_system_libwebp 1
-%endif
-%if 0%{?use_system_libvpx} && 0%{?use_system_libwebp}
-# only supported when using also libvpx and libwebp from the system
-# (see configure.prf)
+%if 0%{?use_system_libwebp}
+# only supported when using also libwebp from the system (see configure.json)
 %global use_system_ffmpeg 1
 %endif
 
@@ -43,7 +42,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.9.3
+Version: 5.10.0
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -54,9 +53,9 @@ Release: 1%{?dist}
 # The other licenses are from Chromium and the code it bundles
 License: (LGPLv2 with exceptions or GPLv3 with exceptions) and BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and (MPLv1.1 or GPLv2 or LGPLv2)
 URL:     http://www.qt.io
-Source0: http://download.qt.io/official_releases/qt/%{major_minor}/%{version}/submodules/qtwebengine-opensource-src-%{version}.tar.xz
+Source0: http://download.qt.io/official_releases/qt/%{major_minor}/%{version}/submodules/qtwebengine-everywhere-src-%{version}.tar.xz
 # some tweaks to linux.pri (system yasm, link libpci, run unbundling script)
-Patch0:  qtwebengine-opensource-src-5.9.2-linux-pri.patch
+Patch0:  qtwebengine-everywhere-src-5.10.0-linux-pri.patch
 # quick hack to avoid checking for the nonexistent icudtl.dat and silence the
 # resulting warnings - not upstreamable as is because it removes the fallback
 # mechanism for the ICU data directory (which is not used in our builds because
@@ -71,18 +70,19 @@ Patch3:  qtwebengine-opensource-src-5.9.0-no-neon.patch
 # use the system NSPR prtime (based on Debian patch)
 # We already depend on NSPR, so it is useless to copy these functions here.
 # Debian uses this just fine, and I don't see relevant modifications either.
-Patch4:  qtwebengine-opensource-src-5.9.0-system-nspr-prtime.patch
+Patch4:  qtwebengine-everywhere-src-5.10.0-system-nspr-prtime.patch
 # use the system ICU UTF functions
 # We already depend on ICU, so it is useless to copy these functions here.
 # I checked the history of that directory, and other than the renames I am
 # undoing, there were no modifications at all. Must be applied after Patch4.
-Patch5:  qtwebengine-opensource-src-5.9.0-system-icu-utf.patch
+Patch5:  qtwebengine-everywhere-src-5.10.0-system-icu-utf.patch
 # do not require SSE2 on i686
-# cumulative revert of upstream reviews 187423002, 308003004, 511773002 (parts
-# relevant to QtWebEngine only), 516543004, 1152053004 and 1161853008, along
-# with some custom fixes and improvements
+# cumulative revert of Chromium reviews 187423002, 308003004, 511773002 (parts
+# relevant to QtWebEngine only), 516543004, 1152053004 and 1161853008, Chromium
+# Gerrit review 570351 and V8 Gerrit review 575756, along with some custom fixes
+# and improvements
 # also build V8 shared and twice on i686 (once for x87, once for SSE2)
-Patch6:  qtwebengine-opensource-src-5.9.1-no-sse2.patch
+Patch6:  qtwebengine-everywhere-src-5.10.0-no-sse2.patch
 # fix missing ARM -mfpu setting
 Patch9:  qtwebengine-opensource-src-5.9.2-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
@@ -90,18 +90,20 @@ Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
 # restore NEON runtime detection in Skia: revert upstream review 1952953004,
 # restore the non-Android Linux NEON runtime detection code lost in upstream
 # review 1890483002, also add VFPv4 runtime detection
-Patch11: qtwebengine-opensource-src-5.9.0-skia-neon.patch
+Patch11: qtwebengine-everywhere-src-5.10.0-skia-neon.patch
 # webrtc: enable the CPU feature detection for ARM Linux also for Chromium
 Patch12: qtwebengine-opensource-src-5.9.0-webrtc-neon-detect.patch
 # Force verbose output from the GN bootstrap process
-Patch21: qtwebengine-opensource-src-5.9.0-gn-bootstrap-verbose.patch
-# Fix FTBFS with Qt 5.7
-Patch22: qtwebengine-opensource-src-5.9.2-qt57.patch
-
-%if 0%{?fedora} && 0%{?fedora} < 25
-# work around missing qt5_qtwebengine_arches macro on F24
-%{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
-%endif
+Patch21: qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose.patch
+# Forward-port missing parts of build fix with system ICU >= 59 from 5.9:
+# https://codereview.qt-project.org/#/c/196922/
+# see QTBUG-60886 and QTBUG-65090
+Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
+# drop support for obsolete Unicode "aspirational scripts" (dropped in UTS 31),
+# fixes #error with ICU >= 60 (which was a reminder to double-check the list)
+# see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
+# backport of: https://chromium-review.googlesource.com/c/chromium/src/+/731871
+Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -121,6 +123,7 @@ BuildRequires: qt5-qtquickcontrols2-devel
 BuildRequires: ninja-build
 BuildRequires: cmake
 BuildRequires: bison
+BuildRequires: flex
 BuildRequires: git-core
 BuildRequires: gperf
 BuildRequires: libicu-devel
@@ -141,12 +144,12 @@ BuildRequires: pkgconfig(egl)
 BuildRequires: pkgconfig(libavcodec)
 BuildRequires: pkgconfig(libavformat)
 BuildRequires: pkgconfig(libavutil)
-%global system_ffmpeg_flag use_system_ffmpeg
+%global system_ffmpeg_flag -system-ffmpeg
 %endif
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(libudev)
 %if 0%{?use_system_libwebp}
-BuildRequires: pkgconfig(libwebp) >= 0.5.1
+BuildRequires: pkgconfig(libwebp) >= 0.6.0
 %endif
 BuildRequires: pkgconfig(harfbuzz)
 BuildRequires: pkgconfig(libdrm)
@@ -171,10 +174,11 @@ BuildRequires: pkgconfig(alsa)
 BuildRequires: pkgconfig(libpci)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: pkgconfig(nss)
-BuildRequires: perl
+BuildRequires: pkgconfig(lcms2)
+BuildRequires: perl-interpreter
 BuildRequires: python
 %if 0%{?use_system_libvpx}
-BuildRequires: pkgconfig(vpx) >= 1.6.0
+BuildRequires: pkgconfig(vpx) >= 1.6.2
 %endif
 
 # extra (non-upstream) functions needed, see
@@ -194,11 +198,11 @@ BuildRequires: pkgconfig(vpx) >= 1.6.0
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes (up to version 62.0.3202.89) are backported, see:
-# http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=56-based
-# see dist/changes-5.9.3 for the version numbers (base, security fixes) and for
+# Some security fixes (up to version 62.0.3202.94) are backported, see:
+# http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=61-based
+# see dist/changes-5.10.0 for the version numbers (base, security fixes) and for
 # a list of CVEs fixed by the added security backports
-Provides: bundled(chromium) = 56.0.2924.122
+Provides: bundled(chromium) = 61.0.3163.140
 
 # Bundled in src/3rdparty/chromium/third_party:
 # Check src/3rdparty/chromium/third_party/*/README.chromium for version numbers,
@@ -216,34 +220,34 @@ Provides: bundled(boringssl)
 Provides: bundled(brotli)
 %if !0%{?use_system_ffmpeg}
 # see src/3rdparty/chromium/third_party/ffmpeg/Changelog for the version number
-Provides: bundled(ffmpeg) = 3.1
+Provides: bundled(ffmpeg) = 3.3
 %endif
-Provides: bundled(hunspell) = 1.3.2
+Provides: bundled(hunspell) = 1.6.0
 Provides: bundled(iccjpeg)
 # bundled as "khronos", headers only
 Provides: bundled(khronos_headers)
 # bundled as "leveldatabase"
-Provides: bundled(leveldb)
-Provides: bundled(libjingle) = 12750
+Provides: bundled(leveldb) = 1.20
+# bundled as "libjingle_xmpp"
+Provides: bundled(libjingle)
 # see src/3rdparty/chromium/third_party/libsrtp/CHANGES for the version number
-Provides: bundled(libsrtp) = 1.5.2
+Provides: bundled(libsrtp) = 2.1.0
 %if !0%{?use_system_libvpx}
-Provides: bundled(libvpx) = 1.6.0
+# claims "Version: 1.6.0", but according to the fine print, this is actually a
+# snapshot from master from after the 1.6.1 release
+Provides: bundled(libvpx) = 1.6.1
 %endif
 %if !0%{?use_system_libwebp}
-Provides: bundled(libwebp) = 0.5.1
+Provides: bundled(libwebp) = 0.6.0
 %endif
+# bundled as "libxml"
 # see src/3rdparty/chromium/third_party/libxml/linux/include/libxml/xmlversion.h
 Provides: bundled(libxml2) = 2.9.4
-# see src/3rdparty/chromium/third_party/libxslt/libxslt/xsltconfig.h for version
+# see src/3rdparty/chromium/third_party/libxslt/linux/config.h for version
 Provides: bundled(libxslt) = 1.1.29
 Provides: bundled(libXNVCtrl) = 302.17
-Provides: bundled(libyuv) = 1634
+Provides: bundled(libyuv) = 1658
 Provides: bundled(modp_b64)
-Provides: bundled(mojo)
-# headers only
-Provides: bundled(npapi)
-Provides: bundled(openh264) = 1.6.0
 Provides: bundled(openmax_dl) = 1.0.2
 Provides: bundled(ots)
 # see src/3rdparty/chromium/third_party/protobuf/CHANGES.txt for the version
@@ -253,12 +257,14 @@ Provides: bundled(sfntly)
 Provides: bundled(skia)
 # bundled as "smhasher"
 Provides: bundled(SMHasher) = 0-0.1.svn147
-Provides: bundled(sqlite) = 3.10.2
+Provides: bundled(sqlite) = 3.20
 Provides: bundled(usrsctp)
 Provides: bundled(webrtc) = 90
+
 %ifarch %{ix86} x86_64
+# bundled by ffmpeg and libvpx:
 # header (for assembly) only
-Provides: bundled(x86inc) = 0
+Provides: bundled(x86inc)
 %endif
 
 # Bundled in src/3rdparty/chromium/base/third_party:
@@ -287,8 +293,9 @@ Provides: bundled(mozilla_security_manager) = 1.9.2
 Provides: bundled(nsURLParsers)
 
 # Bundled outside of third_party, apparently not considered as such by Chromium:
+Provides: bundled(mojo)
 # see src/3rdparty/chromium/v8/include/v8_version.h for the version number
-Provides: bundled(v8) = 5.6.326.55
+Provides: bundled(v8) = 6.1.534.44
 # bundled by v8 (src/3rdparty/chromium/v8/src/base/ieee754.cc)
 # The version number is 5.3, the last version that upstream released, years ago:
 # http://www.netlib.org/fdlibm/readme
@@ -306,7 +313,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 
 
 %prep
-%setup -q -n %{qt_module}-opensource-src-%{version}%{?prerelease:-%{prerelease}}
+%setup -q -n %{qt_module}-everywhere-src-%{version}%{?prerelease:-%{prerelease}}
 %patch0 -p1 -b .linux-pri
 %patch1 -p1 -b .no-icudtl-dat
 %patch2 -p1 -b .fix-extractcflag
@@ -321,7 +328,8 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch11 -p1 -b .skia-neon
 %patch12 -p1 -b .webrtc-neon-detect
 %patch21 -p1 -b .gn-bootstrap-verbose
-%patch22 -p1 -b .qt57
+%patch22 -p1 -b .icu59
+%patch100 -p1 -b .no-aspirational-scripts
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -371,7 +379,7 @@ mkdir %{_target_platform}
 pushd %{_target_platform}
 
 %{qmake_qt5} CONFIG+="%{debug_config}" \
-  WEBENGINE_CONFIG+="use_system_icu use_system_re2 %{?system_ffmpeg_flag} use_spellchecker use_proprietary_codecs" ..
+  QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" ..
 
 make %{?_smp_mflags}
 
@@ -400,6 +408,20 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
+- Update to 5.10.0
+- Update version numbers of bundled stuff
+- Drop support for Fedora < 26 (in particular, WEBENGINE_CONFIG F25 workarounds)
+- Drop qt57 patch, support for Qt 5.7 was completely dropped upstream
+- Use QMAKE_EXTRA_ARGS instead of the removed WEBENGINE_CONFIG
+- Rebase linux-pri, system-nspr-prtime, system-icu-utf, no-sse2, skia-neon and
+  gn-bootstrap-verbose patches
+- In particular, restore the removed V8 x87 backend in the no-sse2 patch
+- Disable system libvpx support for now, requires unreleased libvpx (1.6.2+)
+- Add new BuildRequires: flex (required) and pkgconfig(lcms2) (unbundled)
+- Forward-port missing parts of 5.9 ICU>=59 build fix (QTBUG-60886, QTBUG-65090)
+- Drop support for Unicode "aspirational scripts", fixes #error with ICU >= 60
+
 * Sun Nov 26 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.9.3-1
 - Update to 5.9.3
 

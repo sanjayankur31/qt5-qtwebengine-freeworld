@@ -1,0 +1,12 @@
+diff -ur qtwebengine-everywhere-src-5.10.0/src/buildtools/gn.pro qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose/src/buildtools/gn.pro
+--- qtwebengine-everywhere-src-5.10.0/src/buildtools/gn.pro	2017-11-29 09:42:29.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose/src/buildtools/gn.pro	2017-12-25 18:51:46.953799125 +0100
+@@ -25,7 +25,7 @@
+               gn_args = $$replace(gn_args, "use_incremental_linking=true ", "")
+             }
+ 
+-            gn_configure = $$system_quote($$gn_bootstrap) --shadow --gn-gen-args=$$gn_args $$ninja_path
++            gn_configure = $$system_quote($$gn_bootstrap) --verbose --shadow --gn-gen-args=$$gn_args $$ninja_path
+             !system("cd $$system_quote($$system_path($$dirname(out))) && $$pythonPathForSystem() $$gn_configure") {
+                 error("GN build error!")
+             }

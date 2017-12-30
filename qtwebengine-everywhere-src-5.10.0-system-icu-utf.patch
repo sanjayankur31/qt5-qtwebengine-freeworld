@@ -1,18 +1,18 @@
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2017-06-08 10:52:51.565409865 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn	2017-06-08 11:13:47.297983554 +0200
-@@ -834,8 +834,6 @@
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2017-12-25 12:16:23.250517752 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/BUILD.gn	2017-12-25 12:26:21.502411527 +0100
+@@ -859,8 +859,6 @@
      "third_party/dmg_fp/dmg_fp.h",
      "third_party/dmg_fp/dtoa_wrapper.cc",
      "third_party/dmg_fp/g_fmt.cc",
 -    "third_party/icu/icu_utf.cc",
 -    "third_party/icu/icu_utf.h",
      "third_party/superfasthash/superfasthash.c",
-     "threading/non_thread_safe.h",
-     "threading/non_thread_safe_impl.cc",
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc	2017-06-08 11:02:19.933803953 +0200
+     "third_party/valgrind/memcheck.h",
+     "threading/platform_thread.h",
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/files/file_path.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/files/file_path.cc	2017-12-25 12:26:21.503411511 +0100
 @@ -18,7 +18,7 @@
  
  #if defined(OS_MACOSX)
@@ -22,7 +22,7 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  #endif
  
  #if defined(OS_WIN)
-@@ -1156,9 +1156,9 @@
+@@ -1163,9 +1163,9 @@
                                              int* index) {
    int codepoint = 0;
    while (*index < length && codepoint == 0) {
@@ -34,9 +34,9 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
      DCHECK_GT(codepoint, 0);
      if (codepoint > 0) {
        // Check if there is a subtable for this upper byte.
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc	2017-06-08 11:05:52.045814002 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/json/json_parser.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/json/json_parser.cc	2017-12-25 12:29:56.210138445 +0100
 @@ -16,7 +16,7 @@
  #include "base/strings/stringprintf.h"
  #include "base/strings/utf_string_conversion_utils.h"
@@ -46,9 +46,9 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  #include "base/values.h"
  
  namespace base {
-@@ -630,21 +630,21 @@
- 
-   while (CanConsume(1)) {
+@@ -482,14 +482,14 @@
+   // string character and the terminating closing quote.
+   while (CanConsume(2)) {
      int start_index = index_;
 -    pos_ = start_pos_ + index_;  // CBU8_NEXT is postcrement.
 -    CBU8_NEXT(start_pos_, index_, length, next_char);
@@ -62,17 +62,18 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
 -      CBU8_NEXT(start_pos_, start_index, length, next_char);
 +      U8_NEXT(start_pos_, start_index, length, next_char);
        string.Convert();
-       string.AppendString(kUnicodeReplacementString);
-       continue;
+       string.AppendString(kUnicodeReplacementString,
+                           arraysize(kUnicodeReplacementString) - 1);
+@@ -497,7 +497,7 @@
      }
  
      if (next_char == '"') {
 -      --index_;  // Rewind by one because of CBU8_NEXT.
 +      --index_;  // Rewind by one because of U8_NEXT.
-       out->Swap(&string);
+       *out = std::move(string);
        return true;
      }
-@@ -774,10 +774,10 @@
+@@ -633,10 +633,10 @@
  
    // If this is a high surrogate, consume the next code unit to get the
    // low surrogate.
@@ -85,7 +86,7 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
        return false;
  
      // Make sure that the token has more characters to consume the
-@@ -794,24 +794,24 @@
+@@ -653,20 +653,20 @@
  
      NextNChars(3);
  
@@ -107,15 +108,19 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
      // Not a surrogate.
 -    DCHECK(CBU16_IS_SINGLE(code_unit16_high));
 +    DCHECK(U16_IS_SINGLE(code_unit16_high));
-     if (!IsValidCharacter(code_unit16_high))
-       return false;
+     if (!IsValidCharacter(code_unit16_high)) {
+       if ((options_ & JSON_REPLACE_INVALID_CHARACTERS) == 0) {
+         return false;
+@@ -675,7 +675,7 @@
+       return true;
+     }
  
 -    CBU8_APPEND_UNSAFE(code_unit8, offset, code_unit16_high);
 +    U8_APPEND_UNSAFE(code_unit8, offset, code_unit16_high);
    }
  
-   dest_string->append(code_unit8);
-@@ -828,9 +828,9 @@
+   dest_string->append(code_unit8, offset);
+@@ -692,9 +692,9 @@
    } else {
      char utf8_units[4] = { 0 };
      int offset = 0;
@@ -125,11 +130,11 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
 -    // CBU8_APPEND_UNSAFE can overwrite up to 4 bytes, so utf8_units may not be
 +    // U8_APPEND_UNSAFE can overwrite up to 4 bytes, so utf8_units may not be
      // zero terminated at this point.  |offset| contains the correct length.
-     dest->AppendString(std::string(utf8_units, offset));
+     dest->AppendString(utf8_units, offset);
    }
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc	2017-06-08 11:02:19.934803939 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/json/string_escape.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/json/string_escape.cc	2017-12-25 12:36:34.186118210 +0100
 @@ -14,7 +14,7 @@
  #include "base/strings/stringprintf.h"
  #include "base/strings/utf_string_conversion_utils.h"
@@ -139,9 +144,18 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  
  namespace base {
  
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc	2017-06-08 11:02:21.774778002 +0200
+@@ -92,7 +92,7 @@
+   for (int32_t i = 0; i < length; ++i) {
+     uint32_t code_point;
+     if (!ReadUnicodeCharacter(str.data(), length, &i, &code_point) ||
+-        code_point == static_cast<decltype(code_point)>(CBU_SENTINEL) ||
++        code_point == static_cast<decltype(code_point)>(U_SENTINEL) ||
+         !IsValidCharacter(code_point)) {
+       code_point = kReplacementCodePoint;
+       did_replacement = true;
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/pattern.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/pattern.cc	2017-12-25 12:26:21.545410871 +0100
 @@ -4,13 +4,13 @@
  
  #include "base/strings/pattern.h"
@@ -197,9 +211,9 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
      *p += offset;
      return c;
    }
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc	2017-06-08 11:02:21.774778002 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_split.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_split.cc	2017-12-25 12:26:21.545410871 +0100
 @@ -8,7 +8,7 @@
  
  #include "base/logging.h"
@@ -209,9 +223,9 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  
  namespace base {
  
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc	2017-06-08 11:02:21.775777988 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/string_util.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/string_util.cc	2017-12-25 12:26:21.546410856 +0100
 @@ -25,7 +25,7 @@
  #include "base/memory/singleton.h"
  #include "base/strings/utf_string_conversion_utils.h"
@@ -221,7 +235,7 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  #include "build/build_config.h"
  
  namespace base {
-@@ -357,19 +357,19 @@
+@@ -372,19 +372,19 @@
    }
    DCHECK_LE(byte_size,
              static_cast<uint32_t>(std::numeric_limits<int32_t>::max()));
@@ -245,7 +259,7 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
      if (!IsValidCharacter(code_point) ||
          !IsValidCodepoint(code_point)) {
        char_index = prev - 1;
-@@ -522,7 +522,7 @@
+@@ -537,7 +537,7 @@
  
    while (char_index < src_len) {
      int32_t code_point;
@@ -254,9 +268,9 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
      if (!IsValidCharacter(code_point))
        return false;
    }
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2017-06-08 11:02:21.775777988 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/base/strings/utf_string_conversion_utils.cc	2017-12-25 12:26:21.546410856 +0100
 @@ -4,7 +4,7 @@
  
  #include "base/strings/utf_string_conversion_utils.h"
@@ -335,30 +349,81 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
  }
  
  // Generalized Unicode converter -----------------------------------------------
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-06-08 10:55:05.945934291 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-06-08 11:14:16.956570568 +0200
-@@ -472,7 +472,6 @@
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/content/browser/devtools/devtools_io_context.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/content/browser/devtools/devtools_io_context.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/content/browser/devtools/devtools_io_context.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/content/browser/devtools/devtools_io_context.cc	2017-12-25 12:37:08.791629561 +0100
+@@ -10,7 +10,7 @@
+ #include "base/strings/string_number_conversions.h"
+ #include "base/strings/string_util.h"
+ #include "base/task_scheduler/post_task.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ #include "base/threading/thread_restrictions.h"
+ #include "content/public/browser/browser_thread.h"
+ 
+@@ -92,7 +92,7 @@
+     } else {
+       // Provided client has requested sufficient large block, make their
+       // life easier by not truncating in the middle of a UTF-8 character.
+-      if (size_got > 6 && !CBU8_IS_SINGLE(buffer[size_got - 1])) {
++      if (size_got > 6 && !U8_IS_SINGLE(buffer[size_got - 1])) {
+         base::TruncateUTF8ToByteSize(buffer, size_got, &buffer);
+         size_got = buffer.size();
+       } else {
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/net/cert/internal/parse_name.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/net/cert/internal/parse_name.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/net/cert/internal/parse_name.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/net/cert/internal/parse_name.cc	2017-12-25 12:34:58.610528544 +0100
+@@ -9,7 +9,7 @@
+ #include "base/strings/utf_string_conversion_utils.h"
+ #include "base/strings/utf_string_conversions.h"
+ #include "base/sys_byteorder.h"
+-#include "base/third_party/icu/icu_utf.h"
++#include <unicode/utf.h>
+ 
+ #if !defined(OS_NACL)
+ #include "net/base/net_string_util.h"
+@@ -38,7 +38,7 @@
+ 
+     // BMPString only supports codepoints in the Basic Multilingual Plane;
+     // surrogates are not allowed.
+-    if (CBU_IS_SURROGATE(c))
++    if (U_IS_SURROGATE(c))
+       return false;
+   }
+   return base::UTF16ToUTF8(in_16bit.data(), in_16bit.size(), out);
+@@ -58,7 +58,7 @@
+   for (const uint32_t c : in_32bit) {
+     // UniversalString is UCS-4 in big-endian order.
+     uint32_t codepoint = base::NetToHost32(c);
+-    if (!CBU_IS_UNICODE_CHAR(codepoint))
++    if (!U_IS_UNICODE_CHAR(codepoint))
+       return false;
+ 
+     base::WriteUnicodeCharacter(codepoint, out);
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-12-25 12:20:43.585562853 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-12-25 12:41:57.071558915 +0100
+@@ -526,7 +526,6 @@
        'base/task_scheduler/task_traits.cc',
        'base/third_party/dmg_fp/dtoa_wrapper.cc',
        'base/third_party/dmg_fp/g_fmt.cc',
 -      'base/third_party/icu/icu_utf.cc',
-       'base/threading/non_thread_safe_impl.cc',
        'base/threading/post_task_and_reply_impl.cc',
+       'base/threading/sequence_local_storage_map.cc',
        'base/threading/sequenced_task_runner_handle.cc',
-@@ -574,7 +573,7 @@
-     }
- 
-   if is_linux:
--    libs.extend(['-lrt', '-lnspr4'])
-+    libs.extend(['-lrt', '-lnspr4', '-licuuc'])
-     ldflags.extend(['-pthread'])
- 
-     static_libraries['xdg_user_dirs'] = {
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/tools/gn/BUILD.gn
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-06-10 22:18:26.863178931 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-06-10 22:18:30.168114045 +0200
-@@ -277,6 +277,7 @@
+@@ -679,7 +678,7 @@
+         'base/allocator/allocator_shim.cc',
+         'base/allocator/allocator_shim_default_dispatch_to_glibc.cc',
+       ])
+-      libs.extend(['-lrt', '-lnspr4'])
++      libs.extend(['-lrt', '-lnspr4', '-licuuc'])
+       static_libraries['libevent']['include_dirs'].extend([
+           os.path.join(SRC_ROOT, 'base', 'third_party', 'libevent', 'linux')
+       ])
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/tools/gn/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-12-25 12:16:48.744131902 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-12-25 12:26:21.547410841 +0100
+@@ -278,6 +278,7 @@
  
    libs = [
      "nspr4",
@@ -366,9 +431,20 @@ diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromi
    ]
  }
  
-diff -ur qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc
---- qtwebengine-opensource-src-5.9.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2017-06-08 11:02:21.776777974 +0200
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/ui/base/ime/input_method_chromeos.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/ui/base/ime/input_method_chromeos.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/ui/base/ime/input_method_chromeos.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/ui/base/ime/input_method_chromeos.cc	2017-12-25 12:40:50.356500963 +0100
+@@ -17,7 +17,6 @@
+ #include "base/logging.h"
+ #include "base/strings/string_util.h"
+ #include "base/strings/utf_string_conversions.h"
+-#include "base/third_party/icu/icu_utf.h"
+ #include "chromeos/system/devicemode.h"
+ #include "ui/base/ime/chromeos/ime_keyboard.h"
+ #include "ui/base/ime/chromeos/input_method_manager.h"
+diff -ur qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc
+--- qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-icu-utf/src/3rdparty/chromium/ui/gfx/utf16_indexing.cc	2017-12-25 12:26:21.547410841 +0100
 @@ -5,13 +5,13 @@
  #include "ui/gfx/utf16_indexing.h"
  

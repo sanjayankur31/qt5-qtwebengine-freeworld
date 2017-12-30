@@ -1,0 +1,80 @@
+diff -ur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/BUILD.gn qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/BUILD.gn	2017-12-25 12:16:23.250517752 +0100
+@@ -53,6 +53,9 @@
+       "-Wno-char-subscripts",
+     ]
+   }
++  ldflags = [
++    "-lnspr4",
++  ]
+ }
+ 
+ config("base_implementation") {
+@@ -858,8 +861,6 @@
+     "third_party/dmg_fp/g_fmt.cc",
+     "third_party/icu/icu_utf.cc",
+     "third_party/icu/icu_utf.h",
+-    "third_party/nspr/prtime.cc",
+-    "third_party/nspr/prtime.h",
+     "third_party/superfasthash/superfasthash.c",
+     "third_party/valgrind/memcheck.h",
+     "threading/platform_thread.h",
+diff -ur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/time/pr_time_unittest.cc	2017-12-25 12:16:23.250517752 +0100
+@@ -7,7 +7,7 @@
+ 
+ #include "base/compiler_specific.h"
+ #include "base/macros.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "base/time/time.h"
+ #include "build/build_config.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+diff -ur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/time/time.cc qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/base/time/time.cc	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/base/time/time.cc	2017-12-25 12:16:48.710132416 +0100
+@@ -14,7 +14,7 @@
+ #include "base/logging.h"
+ #include "base/macros.h"
+ #include "base/strings/stringprintf.h"
+-#include "base/third_party/nspr/prtime.h"
++#include <nspr4/prtime.h>
+ #include "build/build_config.h"
+ 
+ namespace base {
+diff -ur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2017-12-25 12:20:43.585562853 +0100
+@@ -527,7 +527,6 @@
+       'base/third_party/dmg_fp/dtoa_wrapper.cc',
+       'base/third_party/dmg_fp/g_fmt.cc',
+       'base/third_party/icu/icu_utf.cc',
+-      'base/third_party/nspr/prtime.cc',
+       'base/threading/post_task_and_reply_impl.cc',
+       'base/threading/sequence_local_storage_map.cc',
+       'base/threading/sequenced_task_runner_handle.cc',
+@@ -680,7 +679,7 @@
+         'base/allocator/allocator_shim.cc',
+         'base/allocator/allocator_shim_default_dispatch_to_glibc.cc',
+       ])
+-      libs.extend(['-lrt'])
++      libs.extend(['-lrt', '-lnspr4'])
+       static_libraries['libevent']['include_dirs'].extend([
+           os.path.join(SRC_ROOT, 'base', 'third_party', 'libevent', 'linux')
+       ])
+diff -ur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/BUILD.gn qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-system-nspr-prtime/src/3rdparty/chromium/tools/gn/BUILD.gn	2017-12-25 12:16:48.744131902 +0100
+@@ -275,6 +275,10 @@
+     "//build/config:exe_and_shlib_deps",
+     "//build/win:default_exe_manifest",
+   ]
++
++  libs = [
++    "nspr4",
++  ]
+ }
+ 
+ test("gn_unittests") {

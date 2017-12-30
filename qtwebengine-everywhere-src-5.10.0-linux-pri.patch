@@ -1,9 +1,9 @@
-diff -up qtwebengine-opensource-src-5.9.2/src/core/config/linux.pri.linux-pri qtwebengine-opensource-src-5.9.2/src/core/config/linux.pri
---- qtwebengine-opensource-src-5.9.2/src/core/config/linux.pri.linux-pri	2017-10-09 15:08:43.206663093 -0500
-+++ qtwebengine-opensource-src-5.9.2/src/core/config/linux.pri	2017-10-09 15:09:52.248208321 -0500
-@@ -153,3 +153,19 @@ host_build {
-     use?(system_re2):      gn_args += use_system_re2=true
-     #use?(system_protobuf): gn_args += use_system_protobuf=true
+diff -ur qtwebengine-everywhere-src-5.10.0/src/core/config/linux.pri qtwebengine-everywhere-src-5.10.0-linux-pri/src/core/config/linux.pri
+--- qtwebengine-everywhere-src-5.10.0/src/core/config/linux.pri	2017-11-29 09:42:29.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.0-linux-pri/src/core/config/linux.pri	2017-12-25 12:07:40.262411459 +0100
+@@ -157,3 +157,19 @@
+     #qtConfig(webengine-system-jsoncpp): gn_args += use_system_jsoncpp=true
+     #qtConfig(webengine-system-libsrtp: gn_args += use_system_libsrtp=true
  }
 +
 +# yasm is only used on x86, and passing use_system_yasm makes the build fail on
