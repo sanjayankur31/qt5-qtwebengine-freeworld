@@ -3,7 +3,9 @@
 %global _hardened_build 1
 
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
-%{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
+# disable %%{arm} for now because we keep running into build failures there
+#{!?qt5_qtwebengine_arches:#global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
+%global qt5_qtwebengine_arches %{ix86} x86_64 aarch64 mips mipsel mips64el
 
 %if 0
 # need libvpx >= 1.6.2
@@ -43,7 +45,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.10.0
-Release: 1%{?dist}
+Release: 1%{?dist}.1
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -408,6 +410,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Thu Jan 25 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1.1
+- Disable 32-bit ARM build until we can figure out why it keeps hanging up
+
 * Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
 - Update to 5.10.0
 - Update version numbers of bundled stuff
