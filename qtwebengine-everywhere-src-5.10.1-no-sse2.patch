@@ -1,6 +1,6 @@
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/customdialogs/customdialogs.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/customdialogs/customdialogs.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webengine/customdialogs/customdialogs.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/customdialogs/customdialogs.pro	2017-12-30 00:42:17.069800971 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webengine/customdialogs/customdialogs.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/customdialogs/customdialogs.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webengine/customdialogs/customdialogs.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/customdialogs/customdialogs.pro	2018-02-18 19:00:43.343577798 +0100
 @@ -1,5 +1,7 @@
  QT += webengine
  
@@ -9,9 +9,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/customdialogs/cus
  HEADERS += \
      server.h
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/minimal/minimal.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/minimal/minimal.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webengine/minimal/minimal.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/minimal/minimal.pro	2017-12-30 00:42:00.003067640 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webengine/minimal/minimal.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/minimal/minimal.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webengine/minimal/minimal.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/minimal/minimal.pro	2018-02-18 19:00:44.647558618 +0100
 @@ -2,6 +2,8 @@
  
  QT += webengine
@@ -21,9 +21,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/minimal/minimal.p
  SOURCES += main.cpp
  
  RESOURCES += qml.qrc
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/quicknanobrowser/quicknanobrowser.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2017-12-30 00:42:06.126971953 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webengine/quicknanobrowser/quicknanobrowser.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/quicknanobrowser/quicknanobrowser.pro	2018-02-18 19:00:51.606456259 +0100
 @@ -20,5 +20,7 @@
      QT += widgets # QApplication is required to get native styling with QtQuickControls
  }
@@ -32,9 +32,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/quicknanobrowser/
 +
  target.path = $$[QT_INSTALL_EXAMPLES]/webengine/quicknanobrowser
  INSTALLS += target
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/recipebrowser/recipebrowser.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webengine/recipebrowser/recipebrowser.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro	2017-12-30 00:42:11.598886454 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webengine/recipebrowser/recipebrowser.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webengine/recipebrowser/recipebrowser.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webengine/recipebrowser/recipebrowser.pro	2018-02-18 19:00:52.096449052 +0100
 @@ -2,6 +2,8 @@
  
  QT += quick qml quickcontrols2 webengine
@@ -44,9 +44,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webengine/recipebrowser/rec
  cross_compile {
    posix|qnx|linux: DEFINES += QTWEBENGINE_RECIPE_BROWSER_EMBEDDED
  }
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2017-12-30 00:41:54.676150874 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/contentmanipulation/contentmanipulation.pro	2018-02-18 19:00:52.381444860 +0100
 @@ -1,5 +1,7 @@
  QT      +=  webenginewidgets
  
@@ -55,9 +55,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/contentman
  HEADERS =   mainwindow.h
  SOURCES =   main.cpp \
              mainwindow.cpp
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2017-12-30 00:39:17.808601947 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/cookiebrowser/cookiebrowser.pro	2018-02-18 19:00:52.432444110 +0100
 @@ -3,6 +3,8 @@
  TEMPLATE = app
  CONFIG += c++11
@@ -67,9 +67,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/cookiebrow
  SOURCES += \
      main.cpp\
      mainwindow.cpp
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/html2pdf/html2pdf.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/html2pdf/html2pdf.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/html2pdf/html2pdf.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/html2pdf/html2pdf.pro	2017-12-30 00:39:29.007426964 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/html2pdf/html2pdf.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/html2pdf/html2pdf.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/html2pdf/html2pdf.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/html2pdf/html2pdf.pro	2018-02-18 19:00:52.563442183 +0100
 @@ -2,6 +2,8 @@
  
  QT += webenginewidgets
@@ -79,9 +79,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/html2pdf/h
  SOURCES += html2pdf.cpp
  
  target.path = $$[QT_INSTALL_EXAMPLES]/webenginewidgets/html2pdf
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/maps/maps.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/maps/maps.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/maps/maps.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/maps/maps.pro	2017-12-30 00:39:43.928193826 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/maps/maps.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/maps/maps.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/maps/maps.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/maps/maps.pro	2018-02-18 19:00:52.647440947 +0100
 @@ -2,6 +2,8 @@
  
  QT += webenginewidgets
@@ -91,9 +91,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/maps/maps.
  HEADERS += \
      mainwindow.h
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/markdowneditor/markdowneditor.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2017-12-30 00:41:37.256423059 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/markdowneditor/markdowneditor.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/markdowneditor/markdowneditor.pro	2018-02-18 19:00:52.710440020 +0100
 @@ -3,6 +3,8 @@
  QT += webenginewidgets webchannel
  CONFIG += c++11
@@ -103,9 +103,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/markdowned
  HEADERS += \
      mainwindow.h \
      previewpage.h \
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/minimal/minimal.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/minimal/minimal.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/minimal/minimal.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/minimal/minimal.pro	2017-12-30 00:39:11.992692822 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/minimal/minimal.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/minimal/minimal.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/minimal/minimal.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/minimal/minimal.pro	2018-02-18 19:00:52.766439197 +0100
 @@ -2,6 +2,8 @@
  
  QT += webenginewidgets
@@ -115,9 +115,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/minimal/mi
  SOURCES += main.cpp
  
  target.path = $$[QT_INSTALL_EXAMPLES]/webenginewidgets/minimal
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/simplebrowser/simplebrowser.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2017-12-30 00:39:37.644292012 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/simplebrowser/simplebrowser.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/simplebrowser/simplebrowser.pro	2018-02-18 19:00:52.844438049 +0100
 @@ -3,6 +3,8 @@
  QT += webenginewidgets
  CONFIG += c++11
@@ -127,9 +127,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/simplebrow
  HEADERS += \
      browser.h \
      browserwindow.h \
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/spellchecker/spellchecker.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/spellchecker/spellchecker.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro	2017-12-30 00:41:43.565324482 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/spellchecker/spellchecker.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/spellchecker/spellchecker.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/spellchecker/spellchecker.pro	2018-02-18 19:00:52.899437241 +0100
 @@ -9,6 +9,8 @@
      error("Spellcheck example can not be built when using native OS dictionaries.")
  }
@@ -139,9 +139,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/spellcheck
  HEADERS += \
      webview.h
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro	2017-12-30 00:41:49.055238701 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/stylesheetbrowser/stylesheetbrowser.pro	2018-02-18 19:00:52.963436299 +0100
 @@ -3,6 +3,8 @@
  QT += webenginewidgets
  CONFIG += c++11
@@ -151,9 +151,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/stylesheet
  HEADERS += \
      mainwindow.h \
      stylesheetdialog.h
-diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/videoplayer/videoplayer.pro qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro
---- qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/videoplayer/videoplayer.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro	2017-12-30 00:39:23.960505823 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/videoplayer/videoplayer.pro qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro
+--- qtwebengine-everywhere-src-5.10.1/examples/webenginewidgets/videoplayer/videoplayer.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/examples/webenginewidgets/videoplayer/videoplayer.pro	2018-02-18 19:00:53.022435432 +0100
 @@ -2,6 +2,8 @@
  
  QT += webenginewidgets
@@ -163,10 +163,10 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/examples/webenginewidgets/videoplaye
  HEADERS += \
      mainwindow.h \
      fullscreenwindow.h \
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/compiler/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2017-12-25 12:49:16.315356585 +0100
-@@ -600,13 +600,6 @@
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/config/compiler/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/config/compiler/BUILD.gn	2018-02-18 19:00:53.089434446 +0100
+@@ -604,13 +604,6 @@
      } else if (current_cpu == "x86") {
        cflags += [ "-m32" ]
        ldflags += [ "-m32" ]
@@ -180,9 +180,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/c
      } else if (current_cpu == "arm") {
        if (is_clang && !is_android && !is_nacl) {
          cflags += [ "--target=arm-linux-gnueabihf" ]
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/v8_target_cpu.gni qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2017-12-25 12:49:16.315356585 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/config/v8_target_cpu.gni qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/config/v8_target_cpu.gni	2018-02-18 19:00:53.089434446 +0100
 @@ -59,3 +59,11 @@
    # It should never be explicitly set by the user.
    v8_current_cpu = v8_target_cpu
@@ -195,9 +195,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/config/v
 +    v8_current_cpu = "x87"
 +  }
 +}
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2017-12-25 12:49:16.454354623 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/toolchain/gcc_toolchain.gni	2018-02-18 19:00:53.143433652 +0100
 @@ -266,6 +266,10 @@
      enable_linker_map = defined(invoker.enable_linker_map) &&
                          invoker.enable_linker_map && generate_linker_map
@@ -209,9 +209,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchai
      # These library switches can apply to all tools below.
      lib_switch = "-l"
      lib_dir_switch = "-L"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2017-12-25 12:49:16.454354623 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/build/toolchain/linux/BUILD.gn	2018-02-18 19:00:53.144433637 +0100
 @@ -110,6 +110,26 @@
    }
  }
@@ -239,9 +239,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/build/toolchai
  clang_toolchain("clang_x64") {
    # Output linker map files for binary size analysis.
    enable_linker_map = true
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_util.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/base/math_util.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_util.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/base/math_util.cc	2017-12-26 23:04:53.301868189 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/base/math_util.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/base/math_util.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/base/math_util.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/base/math_util.cc	2018-02-18 19:00:53.144433637 +0100
 @@ -7,7 +7,7 @@
  #include <algorithm>
  #include <cmath>
@@ -269,9 +269,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_u
    _mm_setcsr(orig_state_);
  #endif
  }
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_util.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/base/math_util.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_util.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/base/math_util.h	2017-12-26 23:04:53.301868189 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/base/math_util.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/base/math_util.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/base/math_util.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/base/math_util.h	2018-02-18 19:00:53.177433152 +0100
 @@ -11,7 +11,6 @@
  #include <vector>
  
@@ -289,9 +289,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/base/math_u
    unsigned int orig_state_;
  #endif
    DISALLOW_COPY_AND_ASSIGN(ScopedSubnormalFloatDisabler);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/cc/BUILD.gn	2017-12-25 13:16:20.896994372 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/cc/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/cc/BUILD.gn	2018-02-18 19:00:53.177433152 +0100
 @@ -445,13 +445,6 @@
      "trees/tree_synchronizer.h",
    ]
@@ -351,9 +351,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/cc/BUILD.gn qt
  cc_static_library("test_support") {
    testonly = true
    sources = [
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/content/renderer/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/content/renderer/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn	2017-12-25 12:49:16.454354623 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/content/renderer/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/content/renderer/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/content/renderer/BUILD.gn	2018-02-18 19:00:53.178433137 +0100
 @@ -514,6 +514,13 @@
      "//ui/surface",
      "//v8",
@@ -368,9 +368,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/content/render
    allow_circular_includes_from = []
  
    if (use_aura && !use_qt) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn	2017-12-25 13:30:14.473844548 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/BUILD.gn	2018-02-18 19:00:53.242432196 +0100
 @@ -344,6 +344,12 @@
      defines += [ "DISABLE_USER_INPUT_MONITOR" ]
    }
@@ -406,9 +406,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/BUI
  if (is_android) {
    java_cpp_enum("java_enums") {
      sources = [
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/media.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/media.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/media.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/media.cc	2017-12-25 13:32:19.234052101 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/media.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/media.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/media.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/media.cc	2018-02-18 19:00:53.299431357 +0100
 @@ -10,6 +10,8 @@
  #include "base/metrics/field_trial.h"
  #include "base/trace_event/trace_event.h"
@@ -428,9 +428,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/med
      libyuv::InitCpuFlags();
  
  #if !defined(MEDIA_DISABLE_FFMPEG)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc	2017-12-25 12:57:58.624478849 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.cc	2018-02-18 19:00:53.299431357 +0100
 @@ -81,17 +81,12 @@
  #include <cmath>
  #include <limits>
@@ -541,9 +541,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sin
  float SincResampler::Convolve_NEON(const float* input_ptr, const float* k1,
                                     const float* k2,
                                     double kernel_interpolation_factor) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h	2017-12-25 12:57:58.798476686 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler.h	2018-02-18 19:00:53.300431343 +0100
 @@ -36,6 +36,10 @@
      kKernelStorageSize = kKernelSize * (kKernelOffsetCount + 1),
    };
@@ -555,9 +555,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sin
    // Callback type for providing more data into the resampler.  Expects |frames|
    // of data to be rendered into |destination|; zero padded if not enough frames
    // are available to satisfy the request.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2017-12-25 12:57:58.798476686 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_perftest.cc	2018-02-18 19:00:53.300431343 +0100
 @@ -4,6 +4,7 @@
  
  #include "base/bind.h"
@@ -576,9 +576,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sin
    RunConvolveBenchmark(
        &resampler, SincResampler::CONVOLVE_FUNC, true, "optimized_aligned");
    RunConvolveBenchmark(
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc	2017-07-01 03:36:35.000000000 +0200
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_sse.cc	2018-02-18 19:00:53.300431343 +0100
 @@ -0,0 +1,50 @@
 +// Copyright 2013 The Chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -630,9 +630,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sin
 +}
 +
 +}  // namespace media
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2017-12-25 12:57:58.798476686 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/sinc_resampler_unittest.cc	2018-02-18 19:00:53.301431328 +0100
 @@ -10,6 +10,7 @@
  
  #include "base/bind.h"
@@ -652,9 +652,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/sin
    // Initialize a dummy resampler.
    MockSource mock_source;
    SincResampler resampler(
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc	2017-12-25 12:57:58.799476673 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math.cc	2018-02-18 19:00:53.301431328 +0100
 @@ -7,12 +7,17 @@
  
  #include <algorithm>
@@ -842,9 +842,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
  #if defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
  void FMAC_NEON(const float src[], float scale, int len, float dest[]) {
    const int rem = len % 4;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math.h	2017-12-25 12:57:58.799476673 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math.h	2018-02-18 19:00:53.301431328 +0100
 @@ -15,6 +15,11 @@
  // Required alignment for inputs and outputs to all vector math functions
  enum { kRequiredAlignment = 16 };
@@ -857,9 +857,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
  // Multiply each element of |src| (up to |len|) by |scale| and add to |dest|.
  // |src| and |dest| must be aligned by kRequiredAlignment.
  MEDIA_EXPORT void FMAC(const float src[], float scale, int len, float dest[]);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_perftest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2017-12-25 12:57:58.800476661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_perftest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_perftest.cc	2018-02-18 19:00:53.302431313 +0100
 @@ -5,6 +5,7 @@
  #include <memory>
  
@@ -952,9 +952,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
 +#undef EWMAAndMaxPower_FUNC
 +
  } // namespace media
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_sse.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_sse.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_sse.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_sse.cc	2017-07-01 03:36:35.000000000 +0200
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_sse.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_sse.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_sse.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_sse.cc	2018-02-18 19:00:53.302431313 +0100
 @@ -0,0 +1,118 @@
 +// Copyright 2013 The Chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -1074,9 +1074,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
 +
 +}  // namespace vector_math
 +}  // namespace media
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_testing.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_testing.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h	2017-12-25 12:57:58.800476661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_testing.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_testing.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_testing.h	2018-02-18 19:00:53.302431313 +0100
 @@ -19,7 +19,7 @@
  MEDIA_EXPORT std::pair<float, float> EWMAAndMaxPower_C(
      float initial_value, const float src[], int len, float smoothing_factor);
@@ -1086,9 +1086,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
  MEDIA_EXPORT void FMAC_SSE(const float src[], float scale, int len,
                             float dest[]);
  MEDIA_EXPORT void FMUL_SSE(const float src[], float scale, int len,
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2017-12-25 12:57:58.800476661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/base/vector_math_unittest.cc	2018-02-18 19:00:53.302431313 +0100
 @@ -9,6 +9,7 @@
  #include <memory>
  
@@ -1121,9 +1121,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/base/vec
        SCOPED_TRACE("EWMAAndMaxPower_SSE");
        const std::pair<float, float>& result = vector_math::EWMAAndMaxPower_SSE(
            initial_value_, data_.get(), data_len_, smoothing_factor_);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/BUILD.gn	2017-12-25 13:38:30.438718953 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/BUILD.gn	2018-02-18 19:00:53.303431298 +0100
 @@ -534,6 +534,26 @@
      "//base",
      "//ui/gfx/geometry",
@@ -1151,9 +1151,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/BUILD.gn
  }
  
  # TODO(watk): Refactor tests that could be made to run on Android. See
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/filters/wsola_internals.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/filters/wsola_internals.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc	2017-12-26 23:00:39.631753174 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/filters/wsola_internals.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/filters/wsola_internals.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/media/filters/wsola_internals.cc	2018-02-18 19:00:53.372430283 +0100
 @@ -15,7 +15,7 @@
  #include "base/logging.h"
  #include "media/base/audio_bus.h"
@@ -1163,9 +1163,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/media/filters/
  #define USE_SIMD 1
  #include <xmmintrin.h>
  #elif defined(ARCH_CPU_ARM_FAMILY) && defined(USE_NEON)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/BUILD.gn	2017-12-25 13:45:09.341998517 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/BUILD.gn	2018-02-18 19:00:53.444429225 +0100
 @@ -257,17 +257,6 @@
        "ext/platform_canvas.h",
      ]
@@ -1245,9 +1245,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/BUILD.gn 
      } else {
        sources = skia_opts.none_sources
      }
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convolver.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convolver.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc	2017-12-25 13:05:23.911940902 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/ext/convolver.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/ext/convolver.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/ext/convolver.cc	2018-02-18 19:00:53.510428253 +0100
 @@ -362,10 +362,13 @@
  
  void SetupSIMD(ConvolveProcs *procs) {
@@ -1266,9 +1266,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convo
  #elif defined SIMD_MIPS_DSPR2
    procs->extra_horizontal_reads = 3;
    procs->convolve_vertically = &ConvolveVertically_mips_dspr2;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convolver.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convolver.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h	2017-12-25 13:05:23.951940405 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/ext/convolver.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/skia/ext/convolver.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/skia/ext/convolver.h	2018-02-18 19:00:53.511428239 +0100
 @@ -11,6 +11,7 @@
  #include <vector>
  
@@ -1277,9 +1277,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/skia/ext/convo
  #include "third_party/skia/include/core/SkSize.h"
  #include "third_party/skia/include/core/SkTypes.h"
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn	2017-12-25 13:05:23.951940405 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/BUILD.gn	2018-02-18 19:00:53.511428239 +0100
 @@ -192,6 +192,26 @@
    public_deps = [
      ":angle_common",
@@ -1307,9 +1307,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/an
  }
  
  config("angle_gpu_info_util_config") {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2017-12-25 13:05:23.951940405 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/mathutil.h	2018-02-18 19:00:53.566427430 +0100
 @@ -124,9 +124,42 @@
      }
  }
@@ -1373,9 +1373,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/an
  #else  // defined(ANGLE_USE_SSE)
      return false;
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/common/platform.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2017-12-25 13:05:23.951940405 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/common/platform.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/common/platform.h	2018-02-18 19:00:53.566427430 +0100
 @@ -87,7 +87,9 @@
  #include <intrin.h>
  #define ANGLE_USE_SSE
@@ -1386,9 +1386,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/an
  #define ANGLE_USE_SSE
  #endif
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2017-12-25 13:05:23.952940392 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.cpp	2018-02-18 19:00:53.567427415 +0100
 @@ -12,9 +12,17 @@
  #include "common/platform.h"
  #include "image_util/imageformats.h"
@@ -1485,9 +1485,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/an
 +#endif
 +
  }  // namespace angle
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2017-12-25 13:05:24.018939571 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage.h	2018-02-18 19:00:53.567427415 +0100
 @@ -651,6 +651,32 @@
                              size_t outputRowPitch,
                              size_t outputDepthPitch);
@@ -1521,15 +1521,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/an
  }  // namespace angle
  
  #include "loadimage.inl"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	2017-12-25 13:05:24.018939571 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/angle/src/image_util/loadimage_SSE2.cpp	2018-02-18 19:00:53.567427415 +0100
 @@ -0,0 +1,2 @@
 +#define BUILD_ONLY_THE_SSE2_PARTS
 +#include "loadimage.cpp"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/qcms/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2017-12-25 13:51:32.804702578 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/qcms/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/qcms/BUILD.gn	2018-02-18 19:00:53.568427401 +0100
 @@ -34,8 +34,8 @@
      defines = []
  
@@ -1557,9 +1557,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/qc
 +    cflags = [ "-msse2" ]
 +  }
 +}
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2017-12-25 14:03:37.424681528 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/modules/webaudio/AudioParamTimeline.cpp	2018-02-18 19:00:53.599426945 +0100
 @@ -35,7 +35,7 @@
  #include "platform/wtf/MathExtras.h"
  #include "platform/wtf/PtrUtil.h"
@@ -1614,9 +1614,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
    if (fill_to_frame > write_index) {
      const __m128 v_curve_virtual_index = _mm_set_ps1(curve_virtual_index);
      const __m128 v_curve_points_per_frame = _mm_set_ps1(curve_points_per_frame);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2017-12-27 00:16:35.571877993 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.cpp	2018-02-18 19:00:53.600426930 +0100
 @@ -26,6 +26,9 @@
   * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   */
@@ -1709,9 +1709,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
 +#endif
 +
  }  // namespace blink
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2017-12-25 14:39:21.094641400 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolver.h	2018-02-18 19:00:53.600426930 +0100
 @@ -29,6 +29,7 @@
  #ifndef DirectConvolver_h
  #define DirectConvolver_h
@@ -1735,15 +1735,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  };
  
  }  // namespace blink
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	2017-12-25 13:05:24.021939534 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/DirectConvolverSSE2.cpp	2018-02-18 19:00:53.600426930 +0100
 @@ -0,0 +1,2 @@
 +#define BUILD_ONLY_THE_SSE2_PARTS
 +#include "DirectConvolver.cpp"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2017-12-25 14:41:03.697194334 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.cpp	2018-02-18 19:00:53.601426915 +0100
 @@ -26,16 +26,23 @@
   * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   */
@@ -1822,9 +1822,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
          // If the sourceP address is not 16-byte aligned, the first several
          // frames (at most three) should be processed seperately.
          while ((reinterpret_cast<uintptr_t>(input_p) & 0x0F) && n) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2017-12-25 14:40:36.454578552 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResampler.h	2018-02-18 19:00:53.601426915 +0100
 @@ -29,6 +29,7 @@
  #ifndef SincResampler_h
  #define SincResampler_h
@@ -1848,15 +1848,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  };
  
  }  // namespace blink
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	2017-12-25 13:05:24.022939522 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/SincResamplerSSE2.cpp	2018-02-18 19:00:53.601426915 +0100
 @@ -0,0 +1,2 @@
 +#define BUILD_ONLY_THE_SSE2_PARTS
 +#include "SincResampler.cpp"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2017-12-25 14:48:07.515216969 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.cpp	2018-02-18 19:00:53.602426901 +0100
 @@ -23,6 +23,9 @@
   * DAMAGE.
   */
@@ -2066,9 +2066,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  #endif  // defined(OS_MACOSX)
  
  }  // namespace VectorMath
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2017-12-25 14:51:17.547536826 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMath.h	2018-02-18 19:00:53.602426901 +0100
 @@ -27,6 +27,7 @@
  #define VectorMath_h
  
@@ -2140,16 +2140,16 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  }  // namespace VectorMath
  }  // namespace blink
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	2017-12-25 13:05:24.024939497 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/audio/VectorMathSSE2.cpp	2018-02-18 19:00:53.602426901 +0100
 @@ -0,0 +1,2 @@
 +#define BUILD_ONLY_THE_SSE2_PARTS
 +#include "VectorMath.cpp"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2017-12-26 01:28:56.946048732 +0100
-@@ -1693,6 +1693,10 @@
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/BUILD.gn	2018-02-18 19:00:53.603426886 +0100
+@@ -1695,6 +1695,10 @@
      deps += [ ":blink_x86_sse" ]
    }
  
@@ -2160,7 +2160,7 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
    if (use_webaudio_ffmpeg) {
      include_dirs += [ "//third_party/ffmpeg" ]
      deps += [ "//third_party/ffmpeg" ]
-@@ -2139,6 +2143,23 @@
+@@ -2142,6 +2146,23 @@
    }
  }
  
@@ -2184,9 +2184,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  # This source set is used for fuzzers that need an environment similar to unit
  # tests.
  source_set("blink_fuzzer_test_support") {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2017-12-25 17:01:28.182182131 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/cpu/x86/WebGLImageConversionSSE.h	2018-02-18 19:00:53.603426886 +0100
 @@ -7,7 +7,7 @@
  
  #include "build/build_config.h"
@@ -2196,9 +2196,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
  #include <emmintrin.h>
  
  namespace blink {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2017-12-25 17:03:30.477435712 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/WebKit/Source/platform/graphics/gpu/WebGLImageConversion.cpp	2018-02-18 19:00:53.604426871 +0100
 @@ -444,7 +444,7 @@
    const uint32_t* source32 = reinterpret_cast_ptr<const uint32_t*>(source);
    uint32_t* destination32 = reinterpret_cast_ptr<uint32_t*>(destination);
@@ -2253,9 +2253,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/We
    SIMD::PackOneRowOfRGBA8LittleToRGBA8(source, destination, pixels_per_row);
  #endif
  #if HAVE(MIPS_MSA_INTRINSICS)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2017-12-25 17:05:49.957443890 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/common_audio/real_fourier.cc	2018-02-18 19:00:53.605426856 +0100
 @@ -14,6 +14,7 @@
  #include "webrtc/common_audio/real_fourier_openmax.h"
  #include "webrtc/common_audio/signal_processing/include/signal_processing_library.h"
@@ -2280,9 +2280,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  #else
    return std::unique_ptr<RealFourier>(new RealFourierOoura(fft_order));
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc	2017-12-29 20:06:31.389287437 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.cc	2018-02-18 19:00:53.644426283 +0100
 @@ -14,7 +14,7 @@
  #include <arm_neon.h>
  #endif
@@ -2355,9 +2355,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
      case Aec3Optimization::kSse2:
        aec3::UpdateFrequencyResponse_SSE2(H_, &H2_);
        aec3::UpdateErlEstimator_SSE2(H2_, &erl_);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h	2017-12-29 20:07:57.631963762 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter.h	2018-02-18 19:00:53.644426283 +0100
 @@ -34,7 +34,7 @@
      rtc::ArrayView<const FftData> H,
      std::vector<std::array<float, kFftLengthBy2Plus1>>* H2);
@@ -2394,9 +2394,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  void ApplyFilter_SSE2(const RenderBuffer& render_buffer,
                        rtc::ArrayView<const FftData> H,
                        FftData* S);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc	2017-12-29 20:07:08.465718378 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_unittest.cc	2018-02-18 19:00:53.644426283 +0100
 @@ -15,7 +15,7 @@
  #include <numeric>
  #include <string>
@@ -2415,9 +2415,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  // Verifies that the optimized methods for filter adaptation are bitexact to
  // their reference counterparts.
  TEST(AdaptiveFirFilter, FilterAdaptationSse2Optimizations) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc	2017-12-29 20:08:45.048236004 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/aec3_common.cc	2018-02-18 19:00:53.645426268 +0100
 @@ -16,10 +16,8 @@
  namespace webrtc {
  
@@ -2431,9 +2431,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  #endif
  
  #if defined(WEBRTC_HAS_NEON)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc	2017-12-29 20:07:45.343152374 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.cc	2018-02-18 19:00:53.645426268 +0100
 @@ -11,7 +11,7 @@
  #include "webrtc/modules/audio_processing/aec3/comfort_noise_generator.h"
  
@@ -2461,9 +2461,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
      case Aec3Optimization::kSse2:
        aec3::EstimateComfortNoise_SSE2(N2, &seed_, lower_band_noise,
                                        upper_band_noise);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h	2017-12-29 20:06:55.919910934 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator.h	2018-02-18 19:00:53.645426268 +0100
 @@ -21,7 +21,7 @@
  
  namespace webrtc {
@@ -2473,9 +2473,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  
  void EstimateComfortNoise_SSE2(const std::array<float, kFftLengthBy2Plus1>& N2,
                                 uint32_t* seed,
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc	2017-12-29 20:06:11.867587061 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/comfort_noise_generator_unittest.cc	2018-02-18 19:00:53.646426253 +0100
 @@ -50,7 +50,7 @@
  
  #endif
@@ -2485,9 +2485,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  // Verifies that the optimized methods are bitexact to their reference
  // counterparts.
  TEST(ComfortNoiseGenerator, TestOptimizations) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h	2017-12-29 20:06:23.495408594 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data.h	2018-02-18 19:00:53.646426253 +0100
 @@ -12,7 +12,7 @@
  #define WEBRTC_MODULES_AUDIO_PROCESSING_AEC3_FFT_DATA_H_
  
@@ -2506,9 +2506,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
        case Aec3Optimization::kSse2: {
          constexpr int kNumFourBinBands = kFftLengthBy2 / 4;
          constexpr int kLimit = kNumFourBinBands * 4;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc	2017-12-29 20:06:45.873065136 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/fft_data_unittest.cc	2018-02-18 19:00:53.646426253 +0100
 @@ -16,7 +16,7 @@
  
  namespace webrtc {
@@ -2518,9 +2518,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  // Verifies that the optimized methods are bitexact to their reference
  // counterparts.
  TEST(FftData, TestOptimizations) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc	2017-12-29 20:05:54.793849113 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.cc	2018-02-18 19:00:53.647426239 +0100
 @@ -13,7 +13,7 @@
  #include <arm_neon.h>
  #endif
@@ -2548,9 +2548,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
        case Aec3Optimization::kSse2:
          aec3::MatchedFilterCore_SSE2(x_start_index, x2_sum_threshold,
                                       render_buffer.buffer, y, filters_[n],
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h	2017-12-29 20:08:03.879867867 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter.h	2018-02-18 19:00:53.647426239 +0100
 @@ -36,7 +36,7 @@
  
  #endif
@@ -2560,9 +2560,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  
  // Filter core for the matched filter that is optimized for SSE2.
  void MatchedFilterCore_SSE2(size_t x_start_index,
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc	2017-12-29 20:07:38.935250724 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/matched_filter_unittest.cc	2018-02-18 19:00:53.647426239 +0100
 @@ -11,7 +11,7 @@
  #include "webrtc/modules/audio_processing/aec3/matched_filter.h"
  
@@ -2581,9 +2581,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  // Verifies that the optimized methods for SSE2 are bitexact to their reference
  // counterparts.
  TEST(MatchedFilter, TestSse2Optimizations) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc	2017-12-29 20:07:51.472058305 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/suppression_gain.cc	2018-02-18 19:00:53.648426224 +0100
 @@ -11,7 +11,7 @@
  #include "webrtc/modules/audio_processing/aec3/suppression_gain.h"
  
@@ -2593,9 +2593,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  #include <emmintrin.h>
  #endif
  #include <math.h>
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h	2017-12-29 20:07:15.035617541 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math.h	2018-02-18 19:00:53.648426224 +0100
 @@ -15,7 +15,7 @@
  #if defined(WEBRTC_HAS_NEON)
  #include <arm_neon.h>
@@ -2632,9 +2632,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
        case Aec3Optimization::kSse2: {
          const int x_size = static_cast<int>(x.size());
          const int vector_limit = x_size >> 2;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc	2017-12-29 20:06:38.812173509 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/aec3/vector_math_unittest.cc	2018-02-18 19:00:53.648426224 +0100
 @@ -77,7 +77,7 @@
  }
  #endif
@@ -2644,9 +2644,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/third_party/we
  
  TEST(VectorMath, Sqrt) {
    if (WebRtc_GetCPUInfo(kSSE2) != 0) {
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/BUILD.gn	2017-12-26 01:32:06.842303361 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/BUILD.gn	2018-02-18 19:00:53.649426209 +0100
 @@ -116,9 +116,9 @@
    v8_experimental_extra_library_files =
        [ "//test/cctest/test-experimental-extra.js" ]
@@ -2822,9 +2822,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/BUILD.gn qt
    v8_component("v8") {
      sources = [
        "src/v8dll-main.cc",
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gni/v8.gni qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gni/v8.gni	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni	2017-12-25 18:02:06.095884970 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gni/v8.gni qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gni/v8.gni	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gni/v8.gni	2018-02-18 19:00:53.705425385 +0100
 @@ -42,6 +42,9 @@
    # add a dependency on the ICU library.
    v8_enable_i18n_support = true
@@ -2847,9 +2847,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gni/v8.gni 
  # Points to // in v8 stand-alone or to //v8/ in chromium. We need absolute
  # paths for all configs in templates as they are shared in different
  # subdirectories.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/standalone.gypi qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gypfiles/standalone.gypi
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/standalone.gypi	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gypfiles/standalone.gypi	2017-12-25 17:42:57.200465867 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gypfiles/standalone.gypi qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gypfiles/standalone.gypi
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gypfiles/standalone.gypi	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gypfiles/standalone.gypi	2018-02-18 19:00:53.777424326 +0100
 @@ -262,14 +262,14 @@
          # goma doesn't support PDB yet.
          'fastbuild%': 1,
@@ -2876,9 +2876,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/st
                  # The x86 toolchain currently has problems with stack-protector.
                  'cflags!': [
                    '-fstack-protector',
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi	2017-12-25 17:42:57.200465867 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/gypfiles/toolchain.gypi	2018-02-18 19:00:53.778424312 +0100
 @@ -144,7 +144,7 @@
          'host_cxx_is_biarch%': 0,
        },
@@ -2913,9 +2913,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/gypfiles/to
          'target_conditions': [
            ['_toolset=="host"', {
              'conditions': [
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/Makefile qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/Makefile
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/Makefile	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/Makefile	2017-12-25 17:42:57.200465867 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/Makefile qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/Makefile
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/Makefile	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/Makefile	2018-02-18 19:00:53.778424312 +0100
 @@ -255,13 +255,14 @@
  
  # Architectures and modes to be compiled. Consider these to be internal
@@ -2934,9 +2934,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/Makefile qt
  
  # List of files that trigger Makefile regeneration:
  GYPFILES = third_party/icu/icu.gypi third_party/icu/icu.gyp \
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembler.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/assembler.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembler.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/assembler.cc	2017-12-25 17:42:57.201465852 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/assembler.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/assembler.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/assembler.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/assembler.cc	2018-02-18 19:00:53.779424297 +0100
 @@ -85,6 +85,8 @@
  #include "src/regexp/mips64/regexp-macro-assembler-mips64.h"  // NOLINT
  #elif V8_TARGET_ARCH_S390
@@ -2955,9 +2955,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembl
  #else
    UNREACHABLE();
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembler-inl.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/assembler-inl.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembler-inl.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/assembler-inl.h	2017-12-25 17:42:57.201465852 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/assembler-inl.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/assembler-inl.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/assembler-inl.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/assembler-inl.h	2018-02-18 19:00:53.864423047 +0100
 @@ -23,6 +23,8 @@
  #include "src/mips64/assembler-mips64-inl.h"
  #elif V8_TARGET_ARCH_S390
@@ -2967,9 +2967,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/assembl
  #else
  #error Unknown architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/base/build_config.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/base/build_config.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/base/build_config.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/base/build_config.h	2017-12-25 17:42:57.201465852 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/base/build_config.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/base/build_config.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/base/build_config.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/base/build_config.h	2018-02-18 19:00:53.864423047 +0100
 @@ -76,9 +76,9 @@
  // Target architecture detection. This may be set externally. If not, detect
  // in the same way as the host architecture, that is, target the native
@@ -3011,9 +3011,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/base/bu
  #define V8_TARGET_ARCH_STORES_RETURN_ADDRESS_ON_STACK 1
  #else
  #define V8_TARGET_ARCH_STORES_RETURN_ADDRESS_ON_STACK 0
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc	2017-12-29 01:00:28.359896864 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/builtins-x87.cc	2018-02-18 19:00:53.934422017 +0100
 @@ -0,0 +1,3008 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -6023,15 +6023,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/builtin
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS	2017-12-25 17:42:57.201465852 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/builtins/x87/OWNERS	2018-02-18 19:00:53.934422017 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/codegen.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/codegen.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/codegen.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/codegen.h	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/codegen.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/codegen.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/codegen.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/codegen.h	2018-02-18 19:00:53.934422017 +0100
 @@ -59,6 +59,8 @@
  #include "src/mips64/codegen-mips64.h"  // NOLINT
  #elif V8_TARGET_ARCH_S390
@@ -6041,9 +6041,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/codegen
  #else
  #error Unsupported target architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/code-stubs.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/code-stubs.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/code-stubs.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/code-stubs.h	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/code-stubs.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/code-stubs.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/code-stubs.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/code-stubs.h	2018-02-18 19:00:53.935422002 +0100
 @@ -514,6 +514,8 @@
  #include "src/mips64/code-stubs-mips64.h"
  #elif V8_TARGET_ARCH_S390
@@ -6053,9 +6053,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/code-st
  #else
  #error Unsupported target architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/c-linkage.cc	2018-02-18 19:00:53.935422002 +0100
 @@ -50,6 +50,12 @@
    rbx.bit() | r12.bit() | r13.bit() | r14.bit() | r15.bit()
  #endif
@@ -6078,9 +6078,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
    for (size_t i = 0; i < msig->return_count(); i++) {
      MachineRepresentation rep = msig->GetReturn(i).representation();
      CHECK_NE(MachineRepresentation::kFloat32, rep);
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/instruction-codes.h	2018-02-18 19:00:54.010420900 +0100
 @@ -23,6 +23,8 @@
  #include "src/compiler/ppc/instruction-codes-ppc.h"
  #elif V8_TARGET_ARCH_S390
@@ -6090,9 +6090,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
  #else
  #define TARGET_ARCH_OPCODE_LIST(V)
  #define TARGET_ADDRESSING_MODE_LIST(V)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/wasm-linkage.cc	2018-02-18 19:00:54.011420885 +0100
 @@ -69,6 +69,14 @@
  #define FP_PARAM_REGISTERS xmm1, xmm2, xmm3, xmm4, xmm5, xmm6
  #define FP_RETURN_REGISTERS xmm1, xmm2
@@ -6108,9 +6108,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
  #elif V8_TARGET_ARCH_ARM
  // ===========================================================================
  // == arm ====================================================================
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc	2017-12-28 03:58:53.829141647 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/code-generator-x87.cc	2018-02-18 19:00:54.012420870 +0100
 @@ -0,0 +1,2878 @@
 +// Copyright 2013 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -8990,9 +8990,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
 +}  // namespace compiler
 +}  // namespace internal
 +}  // namespace v8
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h	2017-12-28 04:01:21.688880592 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-codes-x87.h	2018-02-18 19:00:54.013420855 +0100
 @@ -0,0 +1,141 @@
 +// Copyright 2014 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -9135,9 +9135,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
 +}  // namespace v8
 +
 +#endif  // V8_COMPILER_X87_INSTRUCTION_CODES_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc	2017-12-25 17:42:57.208465749 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-scheduler-x87.cc	2018-02-18 19:00:54.013420855 +0100
 @@ -0,0 +1,26 @@
 +// Copyright 2015 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -9165,9 +9165,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
 +}  // namespace compiler
 +}  // namespace internal
 +}  // namespace v8
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc	2017-12-28 04:08:42.202144307 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/instruction-selector-x87.cc	2018-02-18 19:00:54.014420841 +0100
 @@ -0,0 +1,2031 @@
 +// Copyright 2014 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -11200,15 +11200,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compile
 +}  // namespace compiler
 +}  // namespace internal
 +}  // namespace v8
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS	2017-12-25 17:42:57.205465793 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/compiler/x87/OWNERS	2018-02-18 19:00:54.014420841 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc	2017-12-28 03:21:22.149118881 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/debug-x87.cc	2018-02-18 19:00:54.014420841 +0100
 @@ -0,0 +1,141 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -11351,15 +11351,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/debug/x
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/debug/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/debug/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/OWNERS	2017-12-25 17:42:57.210465720 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/debug/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/debug/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/debug/x87/OWNERS	2018-02-18 19:00:54.015420826 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/frames-inl.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/frames-inl.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/frames-inl.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/frames-inl.h	2017-12-25 17:42:57.210465720 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/frames-inl.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/frames-inl.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/frames-inl.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/frames-inl.h	2018-02-18 19:00:54.015420826 +0100
 @@ -26,6 +26,8 @@
  #include "src/mips64/frames-mips64.h"  // NOLINT
  #elif V8_TARGET_ARCH_S390
@@ -11369,9 +11369,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/frames-
  #else
  #error Unsupported target architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h	2017-12-25 17:42:57.211465705 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/full-codegen.h	2018-02-18 19:00:54.015420826 +0100
 @@ -45,7 +45,7 @@
    static const int kMaxBackEdgeWeight = 127;
  
@@ -11381,9 +11381,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-co
    static const int kCodeSizeMultiplier = 105;
  #elif V8_TARGET_ARCH_X64
    static const int kCodeSizeMultiplier = 165;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc	2017-12-28 03:52:59.410562490 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/full-codegen-x87.cc	2018-02-18 19:00:54.100419575 +0100
 @@ -0,0 +1,2410 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -13795,15 +13795,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-co
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS	2017-12-25 17:42:57.211465705 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/full-codegen/x87/OWNERS	2018-02-18 19:00:54.100419575 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/gdb-jit.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/gdb-jit.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/gdb-jit.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/gdb-jit.cc	2017-12-25 17:42:57.213465676 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/gdb-jit.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/gdb-jit.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/gdb-jit.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/gdb-jit.cc	2018-02-18 19:00:54.101419561 +0100
 @@ -199,7 +199,7 @@
  struct MachOSectionHeader {
    char sectname[16];
@@ -13878,9 +13878,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/gdb-jit
        w->Write<uint8_t>(DW_OP_reg5);  // The frame pointer's here on ia32
  #elif V8_TARGET_ARCH_X64
        w->Write<uint8_t>(DW_OP_reg6);  // and here on x64.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/globals.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/globals.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/globals.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/globals.h	2017-12-25 17:42:57.214465661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/globals.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/globals.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/globals.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/globals.h	2018-02-18 19:00:54.102419546 +0100
 @@ -167,7 +167,7 @@
  const int kPCOnStackSize = kRegisterSize;
  const int kFPOnStackSize = kRegisterSize;
@@ -13908,9 +13908,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/globals
  const uint32_t kHoleNanUpper32 = 0xFFFF7FFF;
  const uint32_t kHoleNanLower32 = 0xFFFF7FFF;
  #else
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc	2017-12-25 17:42:57.214465661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/access-compiler-x87.cc	2018-02-18 19:00:54.102419546 +0100
 @@ -0,0 +1,40 @@
 +// Copyright 2014 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -13952,9 +13952,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc	2017-12-28 03:55:18.870428775 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/handler-compiler-x87.cc	2018-02-18 19:00:54.102419546 +0100
 @@ -0,0 +1,447 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -14403,9 +14403,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc	2017-12-25 17:42:57.215465646 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/ic-x87.cc	2018-02-18 19:00:54.103419531 +0100
 @@ -0,0 +1,84 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -14491,15 +14491,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/ic/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/OWNERS	2017-12-25 17:42:57.214465661 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/ic/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/ic/x87/OWNERS	2018-02-18 19:00:54.103419531 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/inspector/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2017-12-25 13:05:24.029939435 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/inspector/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/inspector/BUILD.gn	2018-02-18 19:00:54.103419531 +0100
 @@ -106,7 +106,7 @@
        "/wd4996",  # Deprecated function call.
      ]
@@ -14509,9 +14509,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/inspect
      defines = [ "BUILDING_V8_SHARED" ]
    }
  }
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interface-descriptors.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/interface-descriptors.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interface-descriptors.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/interface-descriptors.h	2017-12-25 17:42:57.215465646 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/interface-descriptors.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/interface-descriptors.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/interface-descriptors.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/interface-descriptors.h	2018-02-18 19:00:54.103419531 +0100
 @@ -392,7 +392,7 @@
    static const Register ValueRegister();
    static const Register SlotRegister();
@@ -14521,9 +14521,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interfa
    static const bool kPassLastArgsOnStack = true;
  #else
    static const bool kPassLastArgsOnStack = false;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc	2017-12-25 17:42:57.215465646 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/interpreter/interpreter-assembler.cc	2018-02-18 19:00:54.104419517 +0100
 @@ -1367,8 +1367,9 @@
  bool InterpreterAssembler::TargetSupportsUnalignedAccess() {
  #if V8_TARGET_ARCH_MIPS || V8_TARGET_ARCH_MIPS64
@@ -14536,9 +14536,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/interpr
    return true;
  #else
  #error "Unknown Architecture"
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/log.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/log.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/log.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/log.cc	2017-12-25 17:42:57.216465632 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/log.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/log.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/log.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/log.cc	2018-02-18 19:00:54.104419517 +0100
 @@ -370,6 +370,8 @@
    const char arch[] = "ppc";
  #elif V8_TARGET_ARCH_MIPS
@@ -14548,9 +14548,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/log.cc 
  #elif V8_TARGET_ARCH_ARM64
    const char arch[] = "arm64";
  #elif V8_TARGET_ARCH_S390
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/macro-assembler.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/macro-assembler.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/macro-assembler.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/macro-assembler.h	2017-12-25 17:42:57.216465632 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/macro-assembler.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/macro-assembler.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/macro-assembler.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/macro-assembler.h	2018-02-18 19:00:54.105419502 +0100
 @@ -52,6 +52,8 @@
  #elif V8_TARGET_ARCH_S390
  #include "src/s390/constants-s390.h"
@@ -14560,9 +14560,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/macro-a
  #else
  #error Unsupported target architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc	2017-12-25 17:42:57.217465617 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/jsregexp.cc	2018-02-18 19:00:54.106419487 +0100
 @@ -48,6 +48,8 @@
  #include "src/regexp/mips/regexp-macro-assembler-mips.h"
  #elif V8_TARGET_ARCH_MIPS64
@@ -14582,15 +14582,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/
  #else
  #error "Unsupported architecture"
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS	2017-12-25 17:42:57.217465617 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/OWNERS	2018-02-18 19:00:54.189418266 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc	2017-12-28 04:38:12.986938239 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.cc	2018-02-18 19:00:54.190418252 +0100
 @@ -0,0 +1,1273 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -15865,9 +15865,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/regexp/x87/regexp-macro-assembler-x87.h	2018-02-18 19:00:54.190418252 +0100
 @@ -0,0 +1,204 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -16073,9 +16073,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/regexp/
 +}  // namespace v8
 +
 +#endif  // V8_REGEXP_X87_REGEXP_MACRO_ASSEMBLER_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/register-configuration.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/register-configuration.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.cc	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/register-configuration.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/register-configuration.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.cc	2018-02-18 19:00:54.190418252 +0100
 @@ -74,6 +74,9 @@
  #if V8_TARGET_ARCH_IA32
              kMaxAllocatableGeneralRegisterCount,
@@ -16086,9 +16086,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/registe
  #elif V8_TARGET_ARCH_X64
              kMaxAllocatableGeneralRegisterCount,
              kMaxAllocatableDoubleRegisterCount,
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/register-configuration.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/register-configuration.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.h	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/register-configuration.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/register-configuration.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/register-configuration.h	2018-02-18 19:00:54.190418252 +0100
 @@ -28,7 +28,8 @@
    static const int kMaxFPRegisters = 32;
  
@@ -16099,9 +16099,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/registe
    static const RegisterConfiguration* Crankshaft();
    static const RegisterConfiguration* Turbofan();
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/simulator.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/simulator.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/simulator.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/simulator.h	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/simulator.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/simulator.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/simulator.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/simulator.h	2018-02-18 19:00:54.191418237 +0100
 @@ -21,6 +21,8 @@
  #include "src/mips64/simulator-mips64.h"
  #elif V8_TARGET_ARCH_S390
@@ -16111,9 +16111,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/simulat
  #else
  #error Unsupported target architecture.
  #endif
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/strtod.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/strtod.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/strtod.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/strtod.cc	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/strtod.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/strtod.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/strtod.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/strtod.cc	2018-02-18 19:00:54.191418237 +0100
 @@ -154,7 +154,8 @@
  static bool DoubleStrtod(Vector<const char> trimmed,
                           int exponent,
@@ -16124,9 +16124,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/strtod.
    // On x86 the floating-point stack can be 64 or 80 bits wide. If it is
    // 80 bits wide (as is the case on Linux) then double-rounding occurs and the
    // result is not accurate.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/utils.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.cc	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/utils.cc	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/utils.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/utils.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/utils.cc	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/utils.cc	2018-02-18 19:00:54.191418237 +0100
 @@ -356,7 +356,8 @@
    }
  }
@@ -16146,9 +16146,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.c
    MemMoveFunction generated_memmove = CreateMemMoveFunction(isolate);
    if (generated_memmove != NULL) {
      memmove_function = generated_memmove;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/utils.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.h	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/utils.h	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/utils.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/utils.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/utils.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/utils.h	2018-02-18 19:00:54.192418222 +0100
 @@ -431,7 +431,7 @@
  // Initializes the codegen support that depends on CPU features.
  void init_memcopy_functions(Isolate* isolate);
@@ -16158,9 +16158,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/utils.h
  // Limit below which the extra overhead of the MemCopy function is likely
  // to outweigh the benefits of faster copying.
  const int kMinComplexMemCopy = 64;
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/v8.gyp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/v8.gyp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/v8.gyp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/v8.gyp	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/v8.gyp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/v8.gyp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/v8.gyp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/v8.gyp	2018-02-18 19:00:54.193418208 +0100
 @@ -279,6 +279,11 @@
              'builtins/s390/builtins-s390.cc',
            ],
@@ -16212,9 +16212,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/v8.gyp 
          ['v8_target_arch=="mips" or v8_target_arch=="mipsel"', {
            'sources': [  ### gcmole(arch:mipsel) ###
              'mips/assembler-mips.cc',
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc	2017-12-28 04:40:51.665451092 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.cc	2018-02-18 19:00:54.194418193 +0100
 @@ -0,0 +1,2258 @@
 +// Copyright (c) 1994-2006 Sun Microsystems Inc.
 +// All Rights Reserved.
@@ -18474,9 +18474,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/ass
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.h	2017-12-28 05:24:49.899521687 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87.h	2018-02-18 19:00:54.195418178 +0100
 @@ -0,0 +1,1140 @@
 +// Copyright (c) 1994-2006 Sun Microsystems Inc.
 +// All Rights Reserved.
@@ -19618,9 +19618,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/ass
 +}  // namespace v8
 +
 +#endif  // V8_X87_ASSEMBLER_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h	2017-12-28 01:52:55.041936208 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/assembler-x87-inl.h	2018-02-18 19:00:54.195418178 +0100
 @@ -0,0 +1,528 @@
 +// Copyright (c) 1994-2006 Sun Microsystems Inc.
 +// All Rights Reserved.
@@ -20150,9 +20150,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/ass
 +}  // namespace v8
 +
 +#endif  // V8_X87_ASSEMBLER_X87_INL_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc	2017-12-28 04:52:57.450203610 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.cc	2018-02-18 19:00:54.195418178 +0100
 @@ -0,0 +1,381 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -20535,9 +20535,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cod
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/codegen-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/codegen-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.h	2017-12-25 17:42:57.221465559 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/codegen-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/codegen-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/codegen-x87.h	2018-02-18 19:00:54.195418178 +0100
 @@ -0,0 +1,33 @@
 +// Copyright 2011 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -20572,9 +20572,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cod
 +}  // namespace v8
 +
 +#endif  // V8_X87_CODEGEN_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc	2017-12-28 04:50:57.144052671 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.cc	2018-02-18 19:00:54.197418149 +0100
 @@ -0,0 +1,2668 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -23244,9 +23244,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cod
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h	2017-12-25 17:42:57.221465559 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/code-stubs-x87.h	2018-02-18 19:00:54.197418149 +0100
 @@ -0,0 +1,351 @@
 +// Copyright 2011 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -23599,9 +23599,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cod
 +}  // namespace v8
 +
 +#endif  // V8_X87_CODE_STUBS_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc	2017-12-25 17:42:57.221465559 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/cpu-x87.cc	2018-02-18 19:00:54.197418149 +0100
 @@ -0,0 +1,43 @@
 +// Copyright 2011 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -23646,9 +23646,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/cpu
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc	2017-12-28 04:55:52.791508679 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/deoptimizer-x87.cc	2018-02-18 19:00:54.198418134 +0100
 @@ -0,0 +1,412 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -24062,9 +24062,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/deo
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc	2017-12-25 17:42:57.222465544 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/disasm-x87.cc	2018-02-18 19:00:54.199418119 +0100
 @@ -0,0 +1,1874 @@
 +// Copyright 2011 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -25940,9 +25940,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/dis
 +}  // namespace disasm
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/frames-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/frames-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.cc	2017-12-25 17:42:57.222465544 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/frames-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/frames-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.cc	2018-02-18 19:00:54.199418119 +0100
 @@ -0,0 +1,27 @@
 +// Copyright 2006-2008 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -25971,9 +25971,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/fra
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/frames-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/frames-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.h	2017-12-25 17:42:57.222465544 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/frames-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/frames-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/frames-x87.h	2018-02-18 19:00:54.199418119 +0100
 @@ -0,0 +1,78 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -26053,9 +26053,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/fra
 +}  // namespace v8
 +
 +#endif  // V8_X87_FRAMES_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc	2017-12-29 01:59:03.000000000 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/interface-descriptors-x87.cc	2018-02-18 19:00:54.199418119 +0100
 @@ -0,0 +1,450 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -26507,9 +26507,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/int
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc	2017-12-29 02:00:17.837154172 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.cc	2018-02-18 19:00:54.200418105 +0100
 @@ -0,0 +1,2584 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -29095,9 +29095,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/mac
 +}  // namespace v8
 +
 +#endif  // V8_TARGET_ARCH_X87
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h	2017-12-29 01:59:56.457468424 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/macro-assembler-x87.h	2018-02-18 19:00:54.200418105 +0100
 @@ -0,0 +1,923 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -30022,15 +30022,15 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/mac
 +}  // namespace v8
 +
 +#endif  // V8_X87_MACRO_ASSEMBLER_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/OWNERS qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/OWNERS
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/OWNERS	2017-12-25 17:42:57.218465603 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/OWNERS qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/OWNERS
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/OWNERS	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/OWNERS	2018-02-18 19:00:54.200418105 +0100
 @@ -0,0 +1,2 @@
 +weiliang.lin@intel.com
 +chunyang.dai@intel.com
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc	2017-12-25 17:42:57.224465515 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.cc	2018-02-18 19:00:54.200418105 +0100
 @@ -0,0 +1,7 @@
 +// Copyright 2008 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -30039,9 +30039,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/sim
 +#include "src/x87/simulator-x87.h"
 +
 +// Since there is no simulator for the ia32 architecture this file is empty.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/simulator-x87.h qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.h
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/simulator-x87.h	1970-01-01 01:00:00.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.h	2017-12-25 17:42:57.224465515 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/simulator-x87.h qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/src/x87/simulator-x87.h	1970-01-01 01:00:00.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/src/x87/simulator-x87.h	2018-02-18 19:00:54.200418105 +0100
 @@ -0,0 +1,52 @@
 +// Copyright 2012 the V8 project authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
@@ -30095,9 +30095,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/src/x87/sim
 +}  // namespace v8
 +
 +#endif  // V8_X87_SIMULATOR_X87_H_
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest/BUILD.gn qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2017-12-25 17:42:57.224465515 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/test/cctest/BUILD.gn qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/test/cctest/BUILD.gn	2018-02-18 19:00:54.200418105 +0100
 @@ -287,6 +287,17 @@
        "test-macro-assembler-x64.cc",
        "test-run-wasm-relocation-x64.cc",
@@ -30125,9 +30125,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest
      # cctest can't be built against a shared library, so we
      # need to depend on the underlying static target in that case.
      deps += [ "../..:v8_maybe_snapshot" ]
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest/cctest.gyp qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/cctest.gyp
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest/cctest.gyp	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/test/cctest/cctest.gyp	2017-12-25 17:43:10.318273560 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/test/cctest/cctest.gyp qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/test/cctest/cctest.gyp
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/test/cctest/cctest.gyp	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/test/cctest/cctest.gyp	2018-02-18 19:00:54.289416795 +0100
 @@ -308,6 +308,16 @@
        'test-disasm-mips64.cc',
        'test-macro-assembler-mips64.cc',
@@ -30157,9 +30157,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/test/cctest
          [ 'OS=="linux" or OS=="qnx"', {
            'sources': [
              'test-platform-linux.cc',
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/gen-tags.py qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/dev/gen-tags.py
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/gen-tags.py	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/dev/gen-tags.py	2017-12-25 17:43:15.534197094 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/dev/gen-tags.py qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/dev/gen-tags.py
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/dev/gen-tags.py	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/dev/gen-tags.py	2018-02-18 19:00:54.289416795 +0100
 @@ -20,7 +20,7 @@
  import sys
  
@@ -30169,9 +30169,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/g
  
  def PrintHelpAndExit():
    print(__doc__)
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/gm.py qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/dev/gm.py
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/gm.py	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/dev/gm.py	2017-12-25 17:43:15.534197094 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/dev/gm.py qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/dev/gm.py
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/dev/gm.py	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/dev/gm.py	2018-02-18 19:00:54.366415663 +0100
 @@ -33,7 +33,7 @@
  
  # All arches that this script understands.
@@ -30181,9 +30181,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/dev/g
  # Arches that get built/run when you don't specify any.
  DEFAULT_ARCHES = ["ia32", "x64", "arm", "arm64"]
  # Modes that this script understands.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/run-tests.py qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/run-tests.py
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/run-tests.py	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/run-tests.py	2017-12-25 17:43:15.534197094 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/run-tests.py qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/run-tests.py
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/run-tests.py	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/run-tests.py	2018-02-18 19:00:54.366415663 +0100
 @@ -187,6 +187,7 @@
                     "android_x64",
                     "arm",
@@ -30200,9 +30200,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/run-t
                "arm64"]
  
  
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py	2017-12-25 17:43:15.534197094 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/testrunner/local/statusfile.py	2018-02-18 19:00:54.443414530 +0100
 @@ -59,10 +59,10 @@
  # Support arches, modes to be written as keywords instead of strings.
  VARIABLES = {ALWAYS: True}
@@ -30218,9 +30218,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/testr
    VARIABLES[var] = var
  
  # Allow using variants as keywords.
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/verify_source_deps.py qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/verify_source_deps.py
---- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/verify_source_deps.py	2017-11-28 14:06:53.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/3rdparty/chromium/v8/tools/verify_source_deps.py	2017-12-25 17:43:15.535197080 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/verify_source_deps.py qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/verify_source_deps.py
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/v8/tools/verify_source_deps.py	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/3rdparty/chromium/v8/tools/verify_source_deps.py	2018-02-18 19:00:54.514413486 +0100
 @@ -82,6 +82,7 @@
    'solaris',
    'vtune',
@@ -30229,11 +30229,11 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/v8/tools/verif
  ]
  
  ALL_GN_PREFIXES = [
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/core/core_module.pro qtwebengine-everywhere-src-5.10.0-no-sse2/src/core/core_module.pro
---- qtwebengine-everywhere-src-5.10.0/src/core/core_module.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/core/core_module.pro	2017-12-25 13:05:24.093938639 +0100
-@@ -44,6 +44,31 @@
- else: QMAKE_LFLAGS += $$NINJA_LFLAGS
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/core/core_module.pro qtwebengine-everywhere-src-5.10.1-no-sse2/src/core/core_module.pro
+--- qtwebengine-everywhere-src-5.10.1/src/core/core_module.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/core/core_module.pro	2018-02-18 19:00:54.514413486 +0100
+@@ -53,6 +53,31 @@
+ 
  POST_TARGETDEPS += $$NINJA_TARGETDEPS
  
 +# go through the shared libraries that GN wants to link to
@@ -30264,7 +30264,7 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/core/core_module.pro qtwebengine
  
  LIBS_PRIVATE += -L$$api_library_path
  CONFIG *= no_smart_library_merge
-@@ -113,7 +138,12 @@
+@@ -122,7 +147,12 @@
          locales.path = $$[QT_INSTALL_TRANSLATIONS]/qtwebengine_locales
          resources.CONFIG += no_check_exist
          resources.path = $$[QT_INSTALL_DATA]/resources
@@ -30278,9 +30278,9 @@ diff -Nur qtwebengine-everywhere-src-5.10.0/src/core/core_module.pro qtwebengine
  
          !qtConfig(webengine-system-icu) {
              icu.CONFIG += no_check_exist
-diff -Nur qtwebengine-everywhere-src-5.10.0/src/process/process.pro qtwebengine-everywhere-src-5.10.0-no-sse2/src/process/process.pro
---- qtwebengine-everywhere-src-5.10.0/src/process/process.pro	2017-11-29 09:42:29.000000000 +0100
-+++ qtwebengine-everywhere-src-5.10.0-no-sse2/src/process/process.pro	2017-12-30 00:42:27.968630675 +0100
+diff -Nur qtwebengine-everywhere-src-5.10.1/src/process/process.pro qtwebengine-everywhere-src-5.10.1-no-sse2/src/process/process.pro
+--- qtwebengine-everywhere-src-5.10.1/src/process/process.pro	2018-02-09 05:07:39.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-no-sse2/src/process/process.pro	2018-02-18 19:00:54.515413471 +0100
 @@ -9,6 +9,8 @@
  
  SOURCES = main.cpp

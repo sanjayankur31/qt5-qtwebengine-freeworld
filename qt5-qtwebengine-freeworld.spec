@@ -5,10 +5,8 @@
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
 
-%if 0
-# need libvpx >= 1.6.2
-# (The needed commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e was added after
-# 1.6.1, not released anywhere yet.)
+%if 0%{?fedora} > 27
+# need libvpx >= 1.7.0 (need commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e)
 %global use_system_libvpx 1
 %endif
 # need libwebp >= 0.6.0
@@ -42,7 +40,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.10.0
+Version: 5.10.1
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -82,7 +80,7 @@ Patch5:  qtwebengine-everywhere-src-5.10.0-system-icu-utf.patch
 # Gerrit review 570351 and V8 Gerrit review 575756, along with some custom fixes
 # and improvements
 # also build V8 shared and twice on i686 (once for x87, once for SSE2)
-Patch6:  qtwebengine-everywhere-src-5.10.0-no-sse2.patch
+Patch6:  qtwebengine-everywhere-src-5.10.1-no-sse2.patch
 # fix missing ARM -mfpu setting
 Patch9:  qtwebengine-opensource-src-5.9.2-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
@@ -99,6 +97,9 @@ Patch21: qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose.patch
 # https://codereview.qt-project.org/#/c/196922/
 # see QTBUG-60886 and QTBUG-65090
 Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
+# workaround FTBFS with GCC 8 (#1546255, gcc#84286, #1545918, QTBUG-64759)
+# build GN with -fabi-version=11 for now
+Patch23: qtwebengine-everywhere-src-5.10.0-QTBUG-64759.patch
 # drop support for obsolete Unicode "aspirational scripts" (dropped in UTS 31),
 # fixes #error with ICU >= 60 (which was a reminder to double-check the list)
 # see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
@@ -178,7 +179,7 @@ BuildRequires: pkgconfig(lcms2)
 BuildRequires: perl-interpreter
 BuildRequires: python
 %if 0%{?use_system_libvpx}
-BuildRequires: pkgconfig(vpx) >= 1.6.2
+BuildRequires: pkgconfig(vpx) >= 1.7.0
 %endif
 
 # extra (non-upstream) functions needed, see
@@ -198,9 +199,9 @@ BuildRequires: pkgconfig(vpx) >= 1.6.2
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes (up to version 62.0.3202.94) are backported, see:
+# Some security fixes (up to version 64.0.3282.140) are backported, see:
 # http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=61-based
-# see dist/changes-5.10.0 for the version numbers (base, security fixes) and for
+# see dist/changes-5.10.1 for the version numbers (base, security fixes) and for
 # a list of CVEs fixed by the added security backports
 Provides: bundled(chromium) = 61.0.3163.140
 
@@ -329,6 +330,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch12 -p1 -b .webrtc-neon-detect
 %patch21 -p1 -b .gn-bootstrap-verbose
 %patch22 -p1 -b .icu59
+%if 0%{?fedora} > 27
+%patch23 -p1 -b .QTBUG-64759
+%endif
 %patch100 -p1 -b .no-aspirational-scripts
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
@@ -408,6 +412,12 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sun Feb 18 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-1
+- Update to 5.10.1
+- Rediff (unfuzz) no-sse2 patch
+- Workaround FTBFS with GCC 8, build with -fabi-version=11 on F28+ (rh#1545918)
+- Reenable system libvpx on F28+, Rawhide (future F28) has libvpx 1.7.0 now
+
 * Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
 - Update to 5.10.0
 - Update version numbers of bundled stuff

@@ -1,0 +1,13 @@
+diff -up qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py.QTBUG-64759 qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py
+--- qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py.QTBUG-64759	2018-02-16 12:52:27.991861536 -0600
++++ qtwebengine-everywhere-src-5.10.0/src/3rdparty/chromium/tools/gn/bootstrap/bootstrap.py	2018-02-16 13:16:30.778130158 -0600
+@@ -331,6 +331,9 @@ def write_gn_ninja(path, root_gen_dir, o
+   cflags_cc = []
+   ldflags = []
+ 
++  cflags.extend(['-fabi-version=11'])
++  cflags_cc.extend(['-fabi-version=11'])
++
+   include_dirs = [root_gen_dir, SRC_ROOT]
+   libs = []
+ 
