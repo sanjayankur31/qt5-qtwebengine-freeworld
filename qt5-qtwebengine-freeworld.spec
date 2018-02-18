@@ -45,7 +45,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.10.0
-Release: 1%{?dist}.2
+Release: 1%{?dist}.1
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -410,9 +410,6 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Tue Feb 06 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1.2
-- Rebuild for Qt 5.9.4 (F26/F27)
-
 * Thu Jan 25 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1.1
 - Disable 32-bit ARM build until we can figure out why it keeps hanging up
 
