@@ -105,6 +105,9 @@ Patch23: qtwebengine-everywhere-src-5.10.0-QTBUG-64759.patch
 # see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/731871
 Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
+# fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
+# backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
+Patch101: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -334,6 +337,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch23 -p1 -b .QTBUG-64759
 %endif
 %patch100 -p1 -b .no-aspirational-scripts
+%if 0%{?fedora} > 27
+%patch101 -p1 -b .ffmpeg35
+%endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -417,6 +423,7 @@ echo "%{_libdir}/%{name}" \
 - Rediff (unfuzz) no-sse2 patch
 - Workaround FTBFS with GCC 8, build with -fabi-version=11 on F28+ (rh#1545918)
 - Reenable system libvpx on F28+, Rawhide (future F28) has libvpx 1.7.0 now
+- Fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
 
 * Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
 - Update to 5.10.0
