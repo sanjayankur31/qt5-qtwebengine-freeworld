@@ -1,3 +1,15 @@
+diff -ur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/decoder_buffer.h qtwebengine-everywhere-src-5.10.1-ffmpeg35/src/3rdparty/chromium/media/base/decoder_buffer.h
+--- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/base/decoder_buffer.h	2018-02-02 11:39:52.000000000 +0100
++++ qtwebengine-everywhere-src-5.10.1-ffmpeg35/src/3rdparty/chromium/media/base/decoder_buffer.h	2018-02-20 03:30:04.193950423 +0100
+@@ -37,7 +37,7 @@
+     : public base::RefCountedThreadSafe<DecoderBuffer> {
+  public:
+   enum {
+-    kPaddingSize = 32,
++    kPaddingSize = 64,
+ #if defined(ARCH_CPU_ARM_FAMILY)
+     kAlignmentSize = 16
+ #else
 diff -ur qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/cdm/ppapi/external_clear_key/ffmpeg_cdm_audio_decoder.cc qtwebengine-everywhere-src-5.10.1-ffmpeg35/src/3rdparty/chromium/media/cdm/ppapi/external_clear_key/ffmpeg_cdm_audio_decoder.cc
 --- qtwebengine-everywhere-src-5.10.1/src/3rdparty/chromium/media/cdm/ppapi/external_clear_key/ffmpeg_cdm_audio_decoder.cc	2018-02-02 11:39:52.000000000 +0100
 +++ qtwebengine-everywhere-src-5.10.1-ffmpeg35/src/3rdparty/chromium/media/cdm/ppapi/external_clear_key/ffmpeg_cdm_audio_decoder.cc	2018-02-20 00:36:46.538199224 +0100

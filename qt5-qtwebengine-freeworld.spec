@@ -107,6 +107,7 @@ Patch23: qtwebengine-everywhere-src-5.10.0-QTBUG-64759.patch
 Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
 # fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
+#              https://chromium-review.googlesource.com/c/chromium/src/+/889686
 Patch101: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
