@@ -370,6 +370,10 @@ cp -bv /usr/include/re2/*.h src/3rdparty/chromium/third_party/re2/src/re2/
 sed -i -e 's/symbol_level=1/symbol_level=2/g' src/core/config/common.pri
 %endif
 
+%ifarch aarch64
+sed -i -e 's/jumbo_file_merge_limit=50/jumbo_file_merge_limit=20/g' src/core/config/common.pri
+%endif
+
 # generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
 pushd src/3rdparty
 python chromium/tools/licenses.py \
@@ -425,6 +429,7 @@ echo "%{_libdir}/%{name}" \
 - Workaround FTBFS with GCC 8, build with -fabi-version=11 on F28+ (rh#1545918)
 - Reenable system libvpx on F28+, Rawhide (future F28) has libvpx 1.7.0 now
 - Fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
+- Reduce jumbo_file_merge_limit from 50 to 20 on aarch64
 
 * Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
 - Update to 5.10.0
