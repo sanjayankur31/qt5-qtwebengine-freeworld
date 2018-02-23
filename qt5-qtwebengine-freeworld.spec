@@ -371,7 +371,7 @@ sed -i -e 's/symbol_level=1/symbol_level=2/g' src/core/config/common.pri
 %endif
 
 %ifarch aarch64
-sed -i -e 's/jumbo_file_merge_limit=50/jumbo_file_merge_limit=10/g' src/core/config/common.pri
+sed -i -e 's/use_jumbo_build=true/use_jumbo_build=false/g' src/core/config/common.pri
 %endif
 
 # generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
@@ -429,7 +429,7 @@ echo "%{_libdir}/%{name}" \
 - Workaround FTBFS with GCC 8, build with -fabi-version=11 on F28+ (rh#1545918)
 - Reenable system libvpx on F28+, Rawhide (future F28) has libvpx 1.7.0 now
 - Fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
-- Reduce jumbo_file_merge_limit from 50 to 10 on aarch64
+- Disable use_jumbo_build on aarch64
 
 * Sat Dec 30 2017 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.0-1
 - Update to 5.10.0
