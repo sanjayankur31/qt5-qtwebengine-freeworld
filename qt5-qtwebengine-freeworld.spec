@@ -41,7 +41,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.10.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -97,9 +97,6 @@ Patch21: qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose.patch
 # https://codereview.qt-project.org/#/c/196922/
 # see QTBUG-60886 and QTBUG-65090
 Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
-# workaround FTBFS with GCC 8 (#1546255, gcc#84286, #1545918, QTBUG-64759)
-# build GN with -fabi-version=11 for now
-Patch23: qtwebengine-everywhere-src-5.10.0-QTBUG-64759.patch
 # drop support for obsolete Unicode "aspirational scripts" (dropped in UTS 31),
 # fixes #error with ICU >= 60 (which was a reminder to double-check the list)
 # see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
@@ -334,9 +331,6 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch12 -p1 -b .webrtc-neon-detect
 %patch21 -p1 -b .gn-bootstrap-verbose
 %patch22 -p1 -b .icu59
-%if 0%{?fedora} > 27
-%patch23 -p1 -b .QTBUG-64759
-%endif
 %patch100 -p1 -b .no-aspirational-scripts
 %if 0%{?fedora} > 27
 %patch101 -p1 -b .ffmpeg35
@@ -423,6 +417,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Thu Mar 01 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-2
+- Drop -fabi-version=11 workaround, gcc-8.0.1-0.16.fc28 should fix this
+
 * Sun Feb 18 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-1
 - Update to 5.10.1
 - Rediff (unfuzz) no-sse2 patch
