@@ -41,7 +41,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.10.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -97,15 +97,20 @@ Patch21: qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose.patch
 # https://codereview.qt-project.org/#/c/196922/
 # see QTBUG-60886 and QTBUG-65090
 Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
+## Upstream patches:
 # drop support for obsolete Unicode "aspirational scripts" (dropped in UTS 31),
 # fixes #error with ICU >= 60 (which was a reminder to double-check the list)
 # see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/731871
 Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
+# forward-port security backports from 5.9.5 LTS (up to Chromium 65.0.3325.146)
+# see the patch metadata for the list of fixed CVEs and Chromium bug IDs
+# omit the Chromium bug 806122 fix because we use the system FFmpeg
+Patch101: qtwebengine-everywhere-src-5.10.1-security-5.9.5.patch
 # fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
 #              https://chromium-review.googlesource.com/c/chromium/src/+/889686
-Patch101: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
+Patch102: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -204,6 +209,7 @@ BuildRequires: pkgconfig(vpx) >= 1.7.0
 # http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=61-based
 # see dist/changes-5.10.1 for the version numbers (base, security fixes) and for
 # a list of CVEs fixed by the added security backports
+# See Patch101 for additional fixes applied (up to version 65.0.3325.146)
 Provides: bundled(chromium) = 61.0.3163.140
 
 # Bundled in src/3rdparty/chromium/third_party:
@@ -332,8 +338,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch21 -p1 -b .gn-bootstrap-verbose
 %patch22 -p1 -b .icu59
 %patch100 -p1 -b .no-aspirational-scripts
+%patch101 -p1 -b .security-5.9.5
 %if 0%{?fedora} > 27
-%patch101 -p1 -b .ffmpeg35
+%patch102 -p1 -b .ffmpeg35
 %endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
@@ -417,6 +424,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Mar 17 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-3
+- Forward-port security backports from 5.9.5 LTS (up to Chromium 65.0.3325.146)
+
 * Thu Mar 01 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-2
 - Drop -fabi-version=11 workaround, gcc-8.0.1-0.16.fc28 should fix this
 
