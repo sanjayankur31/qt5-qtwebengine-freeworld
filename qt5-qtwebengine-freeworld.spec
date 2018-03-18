@@ -41,7 +41,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.10.1
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -107,10 +107,13 @@ Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
 # see the patch metadata for the list of fixed CVEs and Chromium bug IDs
 # omit the Chromium bug 806122 fix because we use the system FFmpeg
 Patch101: qtwebengine-everywhere-src-5.10.1-security-5.9.5.patch
+# fix incomplete (and thus having no effect) fix for CVE-2018-6033 in 5.10.1
+# (forward-ported from 5.9.5, will also be included in 5.11)
+Patch102: qtwebengine-everywhere-src-5.10.1-CVE-2018-6033.patch
 # fix build with FFmpeg 3.5 (apply conditionally because it breaks older FFmpeg)
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
 #              https://chromium-review.googlesource.com/c/chromium/src/+/889686
-Patch102: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
+Patch103: qtwebengine-everywhere-src-5.10.1-ffmpeg35.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -339,8 +342,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch22 -p1 -b .icu59
 %patch100 -p1 -b .no-aspirational-scripts
 %patch101 -p1 -b .security-5.9.5
+%patch102 -p1 -b .CVE-2018-6033
 %if 0%{?fedora} > 27
-%patch102 -p1 -b .ffmpeg35
+%patch103 -p1 -b .ffmpeg35
 %endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
@@ -424,6 +428,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sun Mar 18 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-4
+- Fix (from 5.9.5) for incomplete, ineffective fix for CVE-2018-6033 in 5.10.1
+
 * Sat Mar 17 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-3
 - Forward-port security backports from 5.9.5 LTS (up to Chromium 65.0.3325.146)
 
