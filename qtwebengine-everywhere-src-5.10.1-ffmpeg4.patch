@@ -1,7 +1,7 @@
-diff --git a/chromium/media/base/decoder_buffer.h b/chromium/media/base/decoder_buffer.h
+diff --git a/src/3rdparty/chromium/media/base/decoder_buffer.h b/src/3rdparty/chromium/media/base/decoder_buffer.h
 index 0341e5784f..60ffba708b 100644
---- a/chromium/media/base/decoder_buffer.h
-+++ b/chromium/media/base/decoder_buffer.h
+--- a/src/3rdparty/chromium/media/base/decoder_buffer.h
++++ b/src/3rdparty/chromium/media/base/decoder_buffer.h
 @@ -37,7 +37,7 @@ class MEDIA_EXPORT DecoderBuffer
      : public base::RefCountedThreadSafe<DecoderBuffer> {
   public:
@@ -11,10 +11,10 @@ index 0341e5784f..60ffba708b 100644
  #if defined(ARCH_CPU_ARM_FAMILY)
      kAlignmentSize = 16
  #else
-diff --git a/chromium/media/ffmpeg/ffmpeg_common.cc b/chromium/media/ffmpeg/ffmpeg_common.cc
+diff --git a/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc b/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
 index 61d0bc341c..d79c694555 100644
---- a/chromium/media/ffmpeg/ffmpeg_common.cc
-+++ b/chromium/media/ffmpeg/ffmpeg_common.cc
+--- a/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
++++ b/src/3rdparty/chromium/media/ffmpeg/ffmpeg_common.cc
 @@ -30,10 +30,10 @@ EncryptionScheme GetEncryptionScheme(const AVStream* stream) {
  
  }  // namespace
@@ -56,10 +56,10 @@ index 61d0bc341c..d79c694555 100644
    }
  }
  
-diff --git a/chromium/media/filters/ffmpeg_audio_decoder.cc b/chromium/media/filters/ffmpeg_audio_decoder.cc
+diff --git a/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc b/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc
 index b4020b001d..41da2d3939 100644
---- a/chromium/media/filters/ffmpeg_audio_decoder.cc
-+++ b/chromium/media/filters/ffmpeg_audio_decoder.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_audio_decoder.cc
 @@ -368,7 +368,7 @@ void FFmpegAudioDecoder::ResetTimestampState(const AudioDecoderConfig& config) {
  int FFmpegAudioDecoder::GetAudioBuffer(struct AVCodecContext* s,
                                         AVFrame* frame,
@@ -69,10 +69,10 @@ index b4020b001d..41da2d3939 100644
    DCHECK_EQ(s->codec_type, AVMEDIA_TYPE_AUDIO);
  
    // Since this routine is called by FFmpeg when a buffer is required for audio
-diff --git a/chromium/media/filters/ffmpeg_video_decoder.cc b/chromium/media/filters/ffmpeg_video_decoder.cc
+diff --git a/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc b/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc
 index 42d044dd69..32f5c7b79d 100644
---- a/chromium/media/filters/ffmpeg_video_decoder.cc
-+++ b/chromium/media/filters/ffmpeg_video_decoder.cc
+--- a/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc
++++ b/src/3rdparty/chromium/media/filters/ffmpeg_video_decoder.cc
 @@ -427,12 +427,11 @@ bool FFmpegVideoDecoder::ConfigureDecoder(const VideoDecoderConfig& config,
    codec_context_->thread_type =
        FF_THREAD_SLICE | (low_delay ? 0 : FF_THREAD_FRAME);
