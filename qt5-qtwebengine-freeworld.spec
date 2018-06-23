@@ -40,8 +40,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.10.1
-Release: 5%{?dist}
+Version: 5.11.1
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -58,7 +58,7 @@ Patch0:  qtwebengine-everywhere-src-5.10.0-linux-pri.patch
 # resulting warnings - not upstreamable as is because it removes the fallback
 # mechanism for the ICU data directory (which is not used in our builds because
 # we use the system ICU, which embeds the data statically) completely
-Patch1:  qtwebengine-opensource-src-5.6.0-no-icudtl-dat.patch
+Patch1:  qtwebengine-everywhere-src-5.11.0-no-icudtl-dat.patch
 # fix extractCFlag to also look in QMAKE_CFLAGS_RELEASE, needed to detect the
 # ARM flags with our %%qmake_qt5 macro, including for the next patch
 Patch2:  qtwebengine-opensource-src-5.9.0-fix-extractcflag.patch
@@ -103,18 +103,6 @@ Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
 # to get the value we expect (and chromium checks for). Patch by spot.
 Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 ## Upstream patches:
-# drop support for obsolete Unicode "aspirational scripts" (dropped in UTS 31),
-# fixes #error with ICU >= 60 (which was a reminder to double-check the list)
-# see: http://www.unicode.org/reports/tr31/#Aspirational_Use_Scripts
-# backport of: https://chromium-review.googlesource.com/c/chromium/src/+/731871
-Patch100: qtwebengine-everywhere-src-5.10.0-no-aspirational-scripts.patch
-# forward-port security backports from 5.9.5 LTS (up to Chromium 65.0.3325.146)
-# see the patch metadata for the list of fixed CVEs and Chromium bug IDs
-# omit the Chromium bug 806122 fix because we use the system FFmpeg
-Patch101: qtwebengine-everywhere-src-5.10.1-security-5.9.5.patch
-# fix incomplete (and thus having no effect) fix for CVE-2018-6033 in 5.10.1
-# (forward-ported from 5.9.5, will also be included in 5.11)
-Patch102: qtwebengine-everywhere-src-5.10.1-CVE-2018-6033.patch
 # fix build with FFmpeg 4 (apply conditionally because it breaks older FFmpeg)
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
 #              https://chromium-review.googlesource.com/c/chromium/src/+/889686
@@ -337,22 +325,23 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %if !0%{?arm_neon}
 %patch3 -p1 -b .no-neon
 %endif
-%patch4 -p1 -b .system-nspr-prtime
-%patch5 -p1 -b .system-icu-utf
-%patch6 -p1 -b .no-sse2
+#patch4 -p1 -b .system-nspr-prtime
+#patch5 -p1 -b .system-icu-utf
+#patch6 -p1 -b .no-sse2
+%ifarch %{ix86}
+#global sse2 1
+%endif
 %patch9 -p1 -b .arm-fpu-fix
 %patch10 -p1 -b .openmax-dl-neon
-%patch11 -p1 -b .skia-neon
+#patch11 -p1 -b .skia-neon
 %patch12 -p1 -b .webrtc-neon-detect
 %patch21 -p1 -b .gn-bootstrap-verbose
-%patch22 -p1 -b .icu59
+#patch22 -p1 -b .icu59
 %patch23 -p1 -b .gcc8
-%patch100 -p1 -b .no-aspirational-scripts
-%patch101 -p1 -b .security-5.9.5
-%patch102 -p1 -b .CVE-2018-6033
-%if 0%{?fedora} > 27
-%patch103 -p1 -b .ffmpeg4
-%endif
+## keep around in case it needs reverting for older ffmpeg
+#if 0%{?fedora} > 27
+#patch103 -p1 -b .ffmpeg4
+#endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -399,16 +388,13 @@ cp -p src/3rdparty/chromium/LICENSE LICENSE.Chromium
 
 %build
 export STRIP=strip
-export NINJAFLAGS="-v %{_smp_mflags}"
-export NINJA_PATH=%{_bindir}/ninja-build
-
-mkdir %{_target_platform}
-pushd %{_target_platform}
+export NINJAFLAGS="%{__ninja_common_opts}"
+export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} CONFIG+="%{debug_config}" \
-  QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" ..
+  QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" .
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 # install the libraries to a special directory to avoid conflict with official
@@ -416,7 +402,7 @@ make %{?_smp_mflags}
 # qt5-qtwebengine for them instead)
 mkdir -p %{buildroot}%{_libdir}/%{name}
 for i in libQt5WebEngineCore libQt5WebEngine libQt5WebEngineWidgets ; do
-  install -m 755 -p %{_target_platform}/lib/$i.so.%{version} %{buildroot}%{_libdir}/%{name}/
+  install -m 755 -p lib/$i.so.%{version} %{buildroot}%{_libdir}/%{name}/
   ln -sf $i.so.%{version} %{buildroot}%{_libdir}/%{name}/$i.so.%{major}
   ln -sf $i.so.%{version} %{buildroot}%{_libdir}/%{name}/$i.so.%{major_minor}
 done
@@ -426,8 +412,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/%{name}" \
      >%{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSE.* src/webengine/doc/src/qtwebengine-3rdparty.qdoc
@@ -435,6 +420,14 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Sat Jun 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
+- 5.11.1
+- drop shadow build (to match other qt5 packages where it has been problematic)
+- drop upstreamed patches
+- rebase no-icudtl-dat.patch
+- patches needswork: system-nspr-prtime,system-icu-utf,no-sse2,skia-neon,icu59
+- use macros %%make_build %%ldconfig_scriptlets %%__ninja %%__ninja_common_opts
+
 * Mon May 21 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-5
 - Use the FFmpeg 4 patch from Arch Linux, the previous one crashed (rh#1563446)
 - Add patch by spot from the Fedora Chromium RPM for FTBFS with GCC 8 on i686

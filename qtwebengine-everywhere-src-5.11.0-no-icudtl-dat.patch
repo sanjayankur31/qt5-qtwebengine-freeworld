@@ -1,12 +1,17 @@
-diff -ur qtwebengine-opensource-src-5.6.0/src/core/web_engine_library_info.cpp qtwebengine-opensource-src-5.6.0-no-icudtl-dat/src/core/web_engine_library_info.cpp
---- qtwebengine-opensource-src-5.6.0/src/core/web_engine_library_info.cpp	2016-03-03 17:02:28.000000000 +0100
-+++ qtwebengine-opensource-src-5.6.0-no-icudtl-dat/src/core/web_engine_library_info.cpp	2016-03-18 03:08:24.385444415 +0100
-@@ -207,24 +207,7 @@
- #if defined(OS_MACOSX) && defined(QT_MAC_FRAMEWORK_BUILD)
-     return getResourcesPath(frameworkBundle());
- #else
+diff -up qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp.no-icudtl-dat qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp
+--- qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp.no-icudtl-dat	2018-06-14 09:23:48.931195271 -0500
++++ qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp	2018-06-14 09:27:26.248014325 -0500
+@@ -258,28 +258,12 @@ QString dictionariesPath()
+ 
+ QString icuDataPath()
+ {
 -    static bool initialized = false;
-     static QString potentialResourcesPath = QLibraryInfo::location(QLibraryInfo::DataPath) % QLatin1String("/resources");
+     static QString potentialResourcesPath =
+ #if defined(OS_MACOSX) && defined(QT_MAC_FRAMEWORK_BUILD)
+             getResourcesPath(frameworkBundle());
+ #else
+             QLibraryInfo::location(QLibraryInfo::DataPath) % QLatin1String("/resources");
+ #endif
 -    if (!initialized) {
 -        initialized = true;
 -        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/icudtl.dat"))) {
@@ -22,7 +27,6 @@ diff -ur qtwebengine-opensource-src-5.6.0/src/core/web_engine_library_info.cpp q
 -            potentialResourcesPath = fallbackDir();
 -        }
 -    }
--
+ 
      return potentialResourcesPath;
- #endif
  }
