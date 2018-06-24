@@ -13,7 +13,8 @@
 %global use_system_libwebp 1
 %if 0%{?use_system_libwebp}
 # only supported when using also libwebp from the system (see configure.json)
-%global use_system_ffmpeg 1
+# FTBFS: appears to be https://bugreports.qt.io/browse/QTBUG-65086
+#global use_system_ffmpeg 1
 %endif
 
 # NEON support on ARM (detected at runtime) - disable this if you are hitting
@@ -427,6 +428,7 @@ echo "%{_libdir}/%{name}" \
 - rebase no-icudtl-dat.patch
 - patches needswork: system-nspr-prtime,system-icu-utf,no-sse2,skia-neon,icu59
 - use macros %%make_build %%ldconfig_scriptlets %%__ninja %%__ninja_common_opts
+- drop use_system_ffmpeg (QTBUG-65086)
 
 * Mon May 21 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-5
 - Use the FFmpeg 4 patch from Arch Linux, the previous one crashed (rh#1563446)
