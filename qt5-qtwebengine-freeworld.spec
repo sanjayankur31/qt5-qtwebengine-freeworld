@@ -14,7 +14,7 @@
 %if 0%{?use_system_libwebp}
 # only supported when using also libwebp from the system (see configure.json)
 # FTBFS: appears to be https://bugreports.qt.io/browse/QTBUG-65086
-#global use_system_ffmpeg 1
+%global use_system_ffmpeg 1
 %endif
 
 # NEON support on ARM (detected at runtime) - disable this if you are hitting
@@ -23,7 +23,7 @@
 
 # the QMake CONFIG flags to force debugging information to be produced in
 # release builds, and for all parts of the code
-%ifarch %{arm}
+%ifarch %{arm} aarch64
 # the RPM Fusion ARM builder runs out of memory during linking with the full
 # setting below, and even with just force_debug_info, so omit all debuginfo
 %global debug_config %{nil}
@@ -108,7 +108,7 @@ Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
 #              https://chromium-review.googlesource.com/c/chromium/src/+/889686
 # courtesy of Arch Linux
-Patch103: qtwebengine-everywhere-src-5.10.1-ffmpeg4.patch
+Patch103: https://git.archlinux.org/svntogit/packages.git/plain/trunk/qtwebengine-ffmpeg4.patch
 
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -341,7 +341,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch23 -p1 -b .gcc8
 ## keep around in case it needs reverting for older ffmpeg
 #if 0%{?fedora} > 27
-#patch103 -p1 -b .ffmpeg4
+pushd src/3rdparty
+%patch103 -p1 -b .ffmpeg4
+popd
 #endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
@@ -395,7 +397,7 @@ export NINJA_PATH=%{__ninja}
 %{qmake_qt5} CONFIG+="%{debug_config}" \
   QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" .
 
-%make_build
+%make_build || make -j2 -O
 
 %install
 # install the libraries to a special directory to avoid conflict with official
@@ -421,14 +423,14 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Sat Jun 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
+* Wed Sep 12 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
 - 5.11.1
 - drop shadow build (to match other qt5 packages where it has been problematic)
 - drop upstreamed patches
 - rebase no-icudtl-dat.patch
 - patches needswork: system-nspr-prtime,system-icu-utf,no-sse2,skia-neon,icu59
 - use macros %%make_build %%ldconfig_scriptlets %%__ninja %%__ninja_common_opts
-- drop use_system_ffmpeg (QTBUG-65086)
+- reduce debuginfo on aarch64 to workaround FTBFS
 
 * Mon May 21 2018 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.10.1-5
 - Use the FFmpeg 4 patch from Arch Linux, the previous one crashed (rh#1563446)
