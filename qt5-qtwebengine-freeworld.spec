@@ -2,6 +2,8 @@
 
 %global _hardened_build 1
 
+%global bootstrap 1
+
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
 
@@ -110,8 +112,12 @@ Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 # courtesy of Arch Linux
 Patch103: https://git.archlinux.org/svntogit/packages.git/plain/trunk/qtwebengine-ffmpeg4.patch
 
+%if 0%{?bootstrap}
+ExclusiveArch: %{ix86} x86_64
+%else
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
+%endif
 
 BuildRequires: qt5-qtbase-devel
 BuildRequires: qt5-qtbase-private-devel
@@ -423,6 +429,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Thu Sep 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
+- enable bootstrap mode, to build only known good/fast archs
+
 * Wed Sep 12 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
 - 5.11.1
 - drop shadow build (to match other qt5 packages where it has been problematic)
