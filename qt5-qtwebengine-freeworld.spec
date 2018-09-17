@@ -113,7 +113,7 @@ Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 Patch103: https://git.archlinux.org/svntogit/packages.git/plain/trunk/qtwebengine-ffmpeg4.patch
 
 %if 0%{?bootstrap}
-ExclusiveArch: %{ix86} x86_64
+ExclusiveArch: %{arm} %{ix86} x86_64
 %else
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -435,6 +435,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Mon Sep 17 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-2
+- enable %%arm in bootstrap too
+
 * Thu Sep 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-1
 - enable bootstrap mode, to build only known good/fast archs
 
