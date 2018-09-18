@@ -167,12 +167,13 @@ BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(opus)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(zlib)
-BuildRequires: pkgconfig(minizip)
 # make sure we get the right minizip
+# this conditional should only be temporary, see also:
+# https://bugzilla.redhat.com/show_bug.cgi?id=1630448
 %if 0%{?fedora} > 29
-BuildRequires:	minizip-compat-devel
+BuildRequires: minizip-compat-devel
 %else
-BuildRequires:	minizip-devel
+BuildRequires: pkgconfig(minizip)
 %endif
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xi)
