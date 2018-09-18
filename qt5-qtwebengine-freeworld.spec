@@ -110,7 +110,7 @@ Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 # backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
 #              https://chromium-review.googlesource.com/c/chromium/src/+/889686
 # courtesy of Arch Linux
-Patch103: https://git.archlinux.org/svntogit/packages.git/plain/trunk/qtwebengine-ffmpeg4.patch
+Patch103: https://git.archlinux.org/svntogit/packages.git/plain/qt5-webengine/trunk/qtwebengine-ffmpeg4.patch
 
 %if 0%{?bootstrap}
 ExclusiveArch: %{arm} %{ix86} x86_64
