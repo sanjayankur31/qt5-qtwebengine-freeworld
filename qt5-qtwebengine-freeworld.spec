@@ -44,7 +44,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.11.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -167,13 +167,10 @@ BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(opus)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(zlib)
-# make sure we get the right minizip
-# this conditional should only be temporary, see also:
-# https://bugzilla.redhat.com/show_bug.cgi?id=1630448
-%if 0%{?fedora} > 29
-BuildRequires: minizip-compat-devel
-%else
+%if 0%{?fedora} && 0%{?fedora} < 30
 BuildRequires: pkgconfig(minizip)
+%else
+Provides: bundled(minizip) = 1.2
 %endif
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xi)
@@ -436,6 +433,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Mon Sep 24 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-3
+- use bundled minizip on f30+ (rhbz#1632196)
+
 * Mon Sep 17 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-2
 - enable %%arm in bootstrap too
 
