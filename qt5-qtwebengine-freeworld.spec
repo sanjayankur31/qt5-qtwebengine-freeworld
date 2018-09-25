@@ -43,8 +43,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.11.1
-Release: 3%{?dist}
+Version: 5.11.2
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -106,11 +106,6 @@ Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
 # to get the value we expect (and chromium checks for). Patch by spot.
 Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 ## Upstream patches:
-# fix build with FFmpeg 4 (apply conditionally because it breaks older FFmpeg)
-# backport of: https://chromium-review.googlesource.com/c/chromium/src/+/754261
-#              https://chromium-review.googlesource.com/c/chromium/src/+/889686
-# courtesy of Arch Linux
-Patch103: https://git.archlinux.org/svntogit/packages.git/plain/qt5-webengine/trunk/qtwebengine-ffmpeg4.patch
 
 %if 0%{?bootstrap}
 ExclusiveArch: %{arm} %{ix86} x86_64
@@ -349,12 +344,6 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch21 -p1 -b .gn-bootstrap-verbose
 #patch22 -p1 -b .icu59
 %patch23 -p1 -b .gcc8
-## keep around in case it needs reverting for older ffmpeg
-#if 0%{?fedora} > 27
-pushd src/3rdparty
-%patch103 -p1 -b .ffmpeg4
-popd
-#endif
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
@@ -433,6 +422,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Tue Sep 25 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.2-1
+- 5.11.2
+
 * Mon Sep 24 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-3
 - use bundled minizip on f30+ (rhbz#1632196)
 
