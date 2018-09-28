@@ -396,7 +396,7 @@ export NINJA_PATH=%{__ninja}
 %{qmake_qt5} CONFIG+="%{debug_config}" \
   QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" .
 
-%make_build || make -j2 -O
+make %{?_smp_mflags}
 
 %install
 # install the libraries to a special directory to avoid conflict with official
@@ -425,6 +425,7 @@ echo "%{_libdir}/%{name}" \
 * Thu Sep 27 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.2-1
 - 5.11.2
 - exclude %%arm from bootstrap again
+- revert use of %%make_build, it buffers too much output
 
 * Mon Sep 24 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-3
 - use bundled minizip on f30+ (rhbz#1632196)
