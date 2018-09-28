@@ -108,7 +108,7 @@ Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
 ## Upstream patches:
 
 %if 0%{?bootstrap}
-ExclusiveArch: %{arm} %{ix86} x86_64
+ExclusiveArch: %{ix86} x86_64
 %else
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -422,8 +422,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Tue Sep 25 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.2-1
+* Thu Sep 27 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.2-1
 - 5.11.2
+- exclude %%arm from bootstrap again
 
 * Mon Sep 24 2018 Rex Dieter <rdieter@fedoraproject.org> - 5.11.1-3
 - use bundled minizip on f30+ (rhbz#1632196)
