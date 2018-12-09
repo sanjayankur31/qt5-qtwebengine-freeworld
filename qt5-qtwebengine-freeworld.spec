@@ -105,6 +105,8 @@ Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
 # alignment. This means int64_t is now 4 on i686 (instead of 8). Use __alignof__
 # to get the value we expect (and chromium checks for). Patch by spot.
 Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
+# Fix/workaround FTBFS on aarch64 with newer glibc
+Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 ## Upstream patches:
 
 %if 0%{?bootstrap}
@@ -344,6 +346,7 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %patch21 -p1 -b .gn-bootstrap-verbose
 #patch22 -p1 -b .icu59
 %patch23 -p1 -b .gcc8
+%patch24 -p1 -b .aarch64-new-stat
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
 sed -i -e 's!gpu//!gpu/!g' \
   src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
