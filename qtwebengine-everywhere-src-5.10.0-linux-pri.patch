@@ -19,5 +19,5 @@ diff -ur qtwebengine-everywhere-src-5.10.0/src/core/config/linux.pri qtwebengine
 +CHROMIUM_SRC_DIR = "$$QTWEBENGINE_ROOT/$$getChromiumSrcDir()"
 +R_G_F_PY = "$$CHROMIUM_SRC_DIR/build/linux/unbundle/replace_gn_files.py"
 +R_G_F_PY_ARGS = "--system-libraries yasm"
-+log("Running python $$R_G_F_PY $$R_G_F_PY_ARGS$${EOL}")
-+!system("python $$R_G_F_PY $$R_G_F_PY_ARGS"): error("-- unbundling failed")
++log("Running python2 $$R_G_F_PY $$R_G_F_PY_ARGS$${EOL}")
++!system("python2 $$R_G_F_PY $$R_G_F_PY_ARGS"): error("-- unbundling failed")

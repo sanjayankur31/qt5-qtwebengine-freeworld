@@ -43,8 +43,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.11.3
-Release: 2%{?dist}.1
+Version: 5.12.1
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -64,50 +64,18 @@ Patch0:  qtwebengine-everywhere-src-5.10.0-linux-pri.patch
 Patch1:  qtwebengine-everywhere-src-5.11.0-no-icudtl-dat.patch
 # fix extractCFlag to also look in QMAKE_CFLAGS_RELEASE, needed to detect the
 # ARM flags with our %%qmake_qt5 macro, including for the next patch
-Patch2:  qtwebengine-opensource-src-5.9.0-fix-extractcflag.patch
+Patch2:  qtwebengine-opensource-src-5.12.1-fix-extractcflag.patch
 # disable NEON vector instructions on ARM where the NEON code FTBFS due to
 # GCC bug https://bugzilla.redhat.com/show_bug.cgi?id=1282495
 Patch3:  qtwebengine-opensource-src-5.9.0-no-neon.patch
-# use the system NSPR prtime (based on Debian patch)
-# We already depend on NSPR, so it is useless to copy these functions here.
-# Debian uses this just fine, and I don't see relevant modifications either.
-Patch4:  qtwebengine-everywhere-src-5.10.0-system-nspr-prtime.patch
-# use the system ICU UTF functions
-# We already depend on ICU, so it is useless to copy these functions here.
-# I checked the history of that directory, and other than the renames I am
-# undoing, there were no modifications at all. Must be applied after Patch4.
-Patch5:  qtwebengine-everywhere-src-5.10.0-system-icu-utf.patch
-# do not require SSE2 on i686
-# cumulative revert of Chromium reviews 187423002, 308003004, 511773002 (parts
-# relevant to QtWebEngine only), 516543004, 1152053004 and 1161853008, Chromium
-# Gerrit review 570351 and V8 Gerrit review 575756, along with some custom fixes
-# and improvements
-# also build V8 shared and twice on i686 (once for x87, once for SSE2)
-Patch6:  qtwebengine-everywhere-src-5.10.1-no-sse2.patch
-# fix missing ARM -mfpu setting
-Patch9:  qtwebengine-opensource-src-5.9.2-arm-fpu-fix.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
-# restore NEON runtime detection in Skia: revert upstream review 1952953004,
-# restore the non-Android Linux NEON runtime detection code lost in upstream
-# review 1890483002, also add VFPv4 runtime detection
-Patch11: qtwebengine-everywhere-src-5.10.0-skia-neon.patch
-# webrtc: enable the CPU feature detection for ARM Linux also for Chromium
-Patch12: qtwebengine-opensource-src-5.9.0-webrtc-neon-detect.patch
 # Force verbose output from the GN bootstrap process
-Patch21: qtwebengine-everywhere-src-5.10.0-gn-bootstrap-verbose.patch
-# Forward-port missing parts of build fix with system ICU >= 59 from 5.9:
-# https://codereview.qt-project.org/#/c/196922/
-# see QTBUG-60886 and QTBUG-65090
-Patch22: qtwebengine-everywhere-src-5.10.0-icu59.patch
-# Fix FTBFS with GCC 8 on i686: GCC8 has changed the alignof operator to return
-# the minimal alignment required by the target ABI instead of the preferred
-# alignment. This means int64_t is now 4 on i686 (instead of 8). Use __alignof__
-# to get the value we expect (and chromium checks for). Patch by spot.
-Patch23: qtwebengine-everywhere-src-5.10.1-gcc8-alignof.patch
+Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 # Fix/workaround FTBFS on aarch64 with newer glibc
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
-## Upstream patches:
+# borrow fix from chromium packaging
+Patch26: qtwebengine-gcc9-drop-rsp-clobber.patch
 
 %if 0%{?bootstrap}
 ExclusiveArch: %{ix86} x86_64
@@ -132,8 +100,12 @@ BuildRequires: ninja-build
 BuildRequires: cmake
 BuildRequires: bison
 BuildRequires: flex
+BuildRequires: gcc-c++
+# gn links statically (for now)
+BuildRequires: libstdc++-static
 BuildRequires: git-core
 BuildRequires: gperf
+BuildRequires: krb5-devel
 BuildRequires: libicu-devel
 BuildRequires: libjpeg-devel
 BuildRequires: re2-devel
@@ -148,6 +120,7 @@ BuildRequires: pkgconfig(fontconfig)
 BuildRequires: pkgconfig(freetype2)
 BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(egl)
+BuildRequires: pkgconfig(jsoncpp)
 %if 0%{?use_system_ffmpeg}
 BuildRequires: pkgconfig(libavcodec)
 BuildRequires: pkgconfig(libavformat)
@@ -162,6 +135,7 @@ BuildRequires: pkgconfig(libwebp) >= 0.6.0
 BuildRequires: pkgconfig(harfbuzz)
 BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(opus)
+BuildRequires: pkgconfig(protobuf)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(zlib)
 %if 0%{?fedora} && 0%{?fedora} < 30
@@ -188,7 +162,7 @@ BuildRequires: pkgconfig(dbus-1)
 BuildRequires: pkgconfig(nss)
 BuildRequires: pkgconfig(lcms2)
 BuildRequires: perl-interpreter
-BuildRequires: python
+BuildRequires: python2-devel
 %if 0%{?use_system_libvpx}
 BuildRequires: pkgconfig(vpx) >= 1.7.0
 %endif
@@ -333,23 +307,24 @@ This version is compiled with support for patent-encumbered codecs enabled.
 %if !0%{?arm_neon}
 %patch3 -p1 -b .no-neon
 %endif
-#patch4 -p1 -b .system-nspr-prtime
-#patch5 -p1 -b .system-icu-utf
-#patch6 -p1 -b .no-sse2
-%ifarch %{ix86}
-#global sse2 1
-%endif
-%patch9 -p1 -b .arm-fpu-fix
+
+## upstream patches
+
 %patch10 -p1 -b .openmax-dl-neon
-#patch11 -p1 -b .skia-neon
-%patch12 -p1 -b .webrtc-neon-detect
-%patch21 -p1 -b .gn-bootstrap-verbose
-#patch22 -p1 -b .icu59
-%patch23 -p1 -b .gcc8
+## NEEDSWORK
+#patch21 -p1 -b .gn-bootstrap-verbose
 %patch24 -p1 -b .aarch64-new-stat
+%patch26 -p1 -b .gcc9-drop-rsp-clobber
+
+# the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
+# when building on older Qt releases
+%if "%{_qt5_version}" < "5.12.0"
+sed -i -e 's|QT_CONFIG(xkbcommon)|QT_CONFIG(xkbcommon_evdev)|g' src/core/web_event_factory.cpp
+%endif
+
 # fix // in #include in content/renderer/gpu to avoid debugedit failure
-sed -i -e 's!gpu//!gpu/!g' \
-  src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
+#sed -i -e 's!gpu//!gpu/!g' \
+#  src/3rdparty/chromium/content/renderer/gpu/compositor_forwarding_message_filter.cc
 # and another one in 2 files in WebRTC
 sed -i -e 's!audio_processing//!audio_processing/!g' \
   src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/utility/ooura_fft.cc \
@@ -382,7 +357,7 @@ sed -i -e 's/use_jumbo_build=true/use_jumbo_build=false/g' src/core/config/commo
 
 # generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
 pushd src/3rdparty
-python chromium/tools/licenses.py \
+%{__python2} chromium/tools/licenses.py \
   --file-template ../../tools/about_credits.tmpl \
   --entry-template ../../tools/about_credits_entry.tmpl \
   credits >../webengine/doc/src/qtwebengine-3rdparty.qdoc
@@ -396,9 +371,13 @@ export STRIP=strip
 export NINJAFLAGS="%{__ninja_common_opts}"
 export NINJA_PATH=%{__ninja}
 
-%{qmake_qt5} CONFIG+="%{debug_config}" \
-  QMAKE_EXTRA_ARGS+="-system-webengine-icu %{?system_ffmpeg_flag} -proprietary-codecs" .
+%{qmake_qt5} \
+  CONFIG+="%{debug_config}" \
+  QMAKE_EXTRA_ARGS+="-system-webengine-icu" \
+  QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
+  .
 
+# avoid %%make_build for now, the -O flag buffers output from intermediate build steps done via ninja
 make %{?_smp_mflags}
 
 %install
@@ -425,6 +404,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Tue Mar 12 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.1-1
+- 5.12.1, sync changes from fedora packaging (deps, patches, etc...)
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.11.3-2.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
