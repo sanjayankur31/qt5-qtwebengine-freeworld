@@ -373,6 +373,8 @@ export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} \
   CONFIG+="%{debug_config}" \
+  %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
+  QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
   QMAKE_EXTRA_ARGS+="-system-webengine-icu" \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
   .
