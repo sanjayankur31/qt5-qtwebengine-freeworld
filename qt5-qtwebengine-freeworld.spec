@@ -43,7 +43,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.12.1
+Version: 5.12.2
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -161,6 +161,7 @@ BuildRequires: pkgconfig(libpci)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: pkgconfig(nss)
 BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
 BuildRequires: perl-interpreter
 BuildRequires: python2-devel
 %if 0%{?use_system_libvpx}
@@ -406,6 +407,10 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Mon Mar 25 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.2-1
+- 5.12.2
+- use system libxml2/libxslt
+
 * Tue Mar 12 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.1-1
 - 5.12.1, sync changes from fedora packaging (deps, patches, etc...)
 
