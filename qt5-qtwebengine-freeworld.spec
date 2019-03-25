@@ -161,7 +161,8 @@ BuildRequires: pkgconfig(libpci)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: pkgconfig(nss)
 BuildRequires: pkgconfig(lcms2)
-BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
+## https://bugreports.qt.io/browse/QTBUG-59094
+#BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
 BuildRequires: perl-interpreter
 BuildRequires: python2-devel
 %if 0%{?use_system_libvpx}
@@ -409,7 +410,6 @@ echo "%{_libdir}/%{name}" \
 %changelog
 * Mon Mar 25 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.2-1
 - 5.12.2
-- use system libxml2/libxslt
 
 * Tue Mar 12 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.1-1
 - 5.12.1, sync changes from fedora packaging (deps, patches, etc...)
