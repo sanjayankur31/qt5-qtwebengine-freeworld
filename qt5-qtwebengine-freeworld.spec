@@ -43,7 +43,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.12.3
+Version: 5.12.4
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -64,7 +64,7 @@ Patch0:  qtwebengine-everywhere-src-5.10.0-linux-pri.patch
 Patch1:  qtwebengine-everywhere-src-5.11.0-no-icudtl-dat.patch
 # fix extractCFlag to also look in QMAKE_CFLAGS_RELEASE, needed to detect the
 # ARM flags with our %%qmake_qt5 macro, including for the next patch
-Patch2:  qtwebengine-opensource-src-5.12.1-fix-extractcflag.patch
+Patch2:  qtwebengine-opensource-src-5.12.4-fix-extractcflag.patch
 # disable NEON vector instructions on ARM where the NEON code FTBFS due to
 # GCC bug https://bugzilla.redhat.com/show_bug.cgi?id=1282495
 Patch3:  qtwebengine-opensource-src-5.9.0-no-neon.patch
@@ -410,6 +410,7 @@ echo "%{_libdir}/%{name}" \
 %changelog
 * Mon Apr 22 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.3-1
 - 5.12.3
+- rebase fix-extractcflag.patch
 
 * Thu Apr 18 2019 Vasiliy N. Glazov <vascom2@gmail.com> - 5.12.2-2
 - Bump release for rebuild
