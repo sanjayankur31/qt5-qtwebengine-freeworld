@@ -44,7 +44,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.12.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -76,6 +76,12 @@ Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # borrow fix from chromium packaging
 Patch26: qtwebengine-gcc9-drop-rsp-clobber.patch
+
+## Upstream patches:
+# qtwebengine-chromium
+Patch101: 0001-Fix-changing-should_override_user_agent_in_new_tabs_.patch
+Patch102: 0002-Bump-V8-patch-level.patch
+Patch103: 0003-Fix-segfaults-with-arm-32bit-on-metrics.patch
 
 %if 0%{?bootstrap}
 ExclusiveArch: %{ix86} x86_64
@@ -303,6 +309,13 @@ This version is compiled with support for patent-encumbered codecs enabled.
 
 %prep
 %setup -q -n %{qt_module}-everywhere-src-%{version}%{?prerelease:-%{prerelease}}
+
+pushd src/3rdparty/chromium
+%patch101 -p2 -b .0001
+%patch102 -p2 -b .0002
+%patch103 -p2 -b .0003
+popd
+
 %patch0 -p1 -b .linux-pri
 %patch1 -p1 -b .no-icudtl-dat
 %patch2 -p1 -b .fix-extractcflag
@@ -408,6 +421,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Thu Jun 27 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.4-2
+- pull in some upstream fixes
+
 * Mon Apr 22 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.3-1
 - 5.12.3
 - rebase fix-extractcflag.patch
