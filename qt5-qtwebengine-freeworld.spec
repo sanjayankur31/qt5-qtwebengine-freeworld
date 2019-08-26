@@ -55,6 +55,10 @@ Release: 3%{?dist}
 License: (LGPLv2 with exceptions or GPLv3 with exceptions) and BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and (MPLv1.1 or GPLv2 or LGPLv2)
 URL:     http://www.qt.io
 Source0: http://download.qt.io/official_releases/qt/%{major_minor}/%{version}/submodules/qtwebengine-everywhere-src-%{version}.tar.xz
+
+# pulseaudio headers
+Source20: pulseaudio-12.2-headers.tar.gz
+
 # some tweaks to linux.pri (system yasm, link libpci, run unbundling script)
 Patch0:  qtwebengine-everywhere-src-5.10.0-linux-pri.patch
 # quick hack to avoid checking for the nonexistent icudtl.dat and silence the
@@ -310,7 +314,9 @@ This version is compiled with support for patent-encumbered codecs enabled.
 
 
 %prep
-%setup -q -n %{qt_module}-everywhere-src-%{version}%{?prerelease:-%{prerelease}}
+%setup -q -n %{qt_module}-everywhere-src-%{version}%{?prerelease:-%{prerelease}} -a20
+
+mv pulse src/3rdparty/chromium/
 
 pushd src/3rdparty/chromium
 %patch101 -p2 -b .0001
@@ -424,6 +430,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Mon Aug 26 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.4-3
+- build using bundled pulse headers, workaround FTBFS bug rh#1729806
+
 * Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.12.4-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
