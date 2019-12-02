@@ -43,7 +43,7 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.12.5
+Version: 5.12.6
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -424,6 +424,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Mon Dec 02 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.6-1
+- 5.12.6
+
 * Thu Sep 26 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.5-1
 - 5.12.5
 
