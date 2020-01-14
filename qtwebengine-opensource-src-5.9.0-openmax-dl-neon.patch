@@ -1,19 +1,24 @@
-diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn
---- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn	2017-06-10 02:41:10.317340598 +0200
-@@ -196,9 +196,6 @@
+diff --git a/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn b/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn
+index 96a59c7c7..d5470f284 100644
+--- a/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn
++++ b/src/3rdparty/chromium/third_party/openmax_dl/dl/BUILD.gn
+@@ -208,12 +208,6 @@ if (current_cpu == "arm") {
      ]
      if (arm_optionally_use_neon) {
        # Run-time NEON detection.
--      deps = [ "//third_party/android_tools:cpu_features" ]
+-      deps = [
+-        "//third_party/android_tools:cpu_features",
+-      ]
+-
 -      # To get the __android_log_print routine
 -      libs = [ "log" ]
+ 
        # Detection routine
        sources += [ "sp/src/arm/detect.c" ]
-     }
-diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
---- qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2017-05-18 16:51:44.000000000 +0200
-+++ qtwebengine-opensource-src-5.9.0-openmax-dl-neon/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c	2017-06-10 02:38:30.593809570 +0200
+diff --git a/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c b/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
+index 57bfe4089..94a3f7ddc 100644
+--- a/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
++++ b/src/3rdparty/chromium/third_party/openmax_dl/dl/sp/src/arm/detect.c
 @@ -9,13 +9,57 @@
   *
   */
@@ -76,7 +81,7 @@ diff -ur qtwebengine-opensource-src-5.9.0/src/3rdparty/chromium/third_party/open
  }
  
  static void SetFFTRoutines() {
-@@ -24,13 +68,9 @@
+@@ -24,13 +68,9 @@ static void SetFFTRoutines() {
     * forward and inverse FFTs
     */
    if (omxSP_HasArmNeon()) {

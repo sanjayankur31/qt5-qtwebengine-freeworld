@@ -1,12 +1,13 @@
-diff -up qtwebengine-everywhere-src-5.12.0/src/buildtools/gn.pro.gn-bootstrap-verbose qtwebengine-everywhere-src-5.12.0/src/buildtools/gn.pro
---- qtwebengine-everywhere-src-5.12.0/src/buildtools/gn.pro.gn-bootstrap-verbose	2018-12-07 09:53:18.262171677 -0600
-+++ qtwebengine-everywhere-src-5.12.0/src/buildtools/gn.pro	2018-12-07 09:57:53.246646133 -0600
+diff --git a/src/buildtools/gn.pro b/src/buildtools/gn.pro
+index b6bf9cfc4..30f92e6ac 100644
+--- a/src/buildtools/gn.pro
++++ b/src/buildtools/gn.pro
 @@ -18,7 +18,7 @@ build_pass|!debug_and_release {
              src_3rd_party_dir = $$absolute_path("$${getChromiumSrcDir()}/../", "$$QTWEBENGINE_ROOT")
              gn_bootstrap = $$system_path($$absolute_path(gn/build/gen.py, $$src_3rd_party_dir))
  
--            gn_configure = $$system_quote($$gn_bootstrap) --no-last-commit-position --out-path $$out_path
-+            gn_configure = $$system_quote($$gn_bootstrap) --verbose --no-last-commit-position --out-path $$out_path
-             !system("$$pythonPathForSystem() $$gn_configure") {
-                 error("GN generation error!")
-             }
+-            gn_gen_args = --no-last-commit-position --out-path $$out_path \
++            gn_gen_args = --no-last-commit-position --verbose --out-path $$out_path \
+                           --cc \"$$which($$QMAKE_CC)\" --cxx \"$$which($$QMAKE_CXX)\" \
+                           --ld \"$$which($$QMAKE_LINK)\"
+ 

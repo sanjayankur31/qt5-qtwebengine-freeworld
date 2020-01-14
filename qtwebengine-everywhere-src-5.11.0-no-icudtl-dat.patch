@@ -1,9 +1,10 @@
-diff -up qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp.no-icudtl-dat qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp
---- qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp.no-icudtl-dat	2018-06-14 09:23:48.931195271 -0500
-+++ qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp	2018-06-14 09:27:26.248014325 -0500
-@@ -258,28 +258,12 @@ QString dictionariesPath()
+diff --git a/src/core/web_engine_library_info.cpp b/src/core/web_engine_library_info.cpp
+index 1c8316430..a1c27d28f 100644
+--- a/src/core/web_engine_library_info.cpp
++++ b/src/core/web_engine_library_info.cpp
+@@ -259,29 +259,12 @@ QString dictionariesPath()
  
- QString icuDataPath()
+ QString resourcesDataPath()
  {
 -    static bool initialized = false;
      static QString potentialResourcesPath =
@@ -14,19 +15,20 @@ diff -up qtwebengine-everywhere-src-5.11.0/src/core/web_engine_library_info.cpp.
  #endif
 -    if (!initialized) {
 -        initialized = true;
--        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/icudtl.dat"))) {
--            qWarning("Qt WebEngine ICU data not found at %s. Trying parent directory...", qPrintable(potentialResourcesPath));
+-        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/qtwebengine_resources.pak"))) {
+-            qWarning("Qt WebEngine resources not found at %s. Trying parent directory...", qPrintable(potentialResourcesPath));
 -            potentialResourcesPath = QLibraryInfo::location(QLibraryInfo::DataPath);
 -        }
--        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/icudtl.dat"))) {
--            qWarning("Qt WebEngine ICU data not found at %s. Trying application directory...", qPrintable(potentialResourcesPath));
+-        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/qtwebengine_resources.pak"))) {
+-            qWarning("Qt WebEngine resources not found at %s. Trying application directory...", qPrintable(potentialResourcesPath));
 -            potentialResourcesPath = QCoreApplication::applicationDirPath();
 -        }
--        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/icudtl.dat"))) {
--            qWarning("Qt WebEngine ICU data not found at %s. Trying fallback directory... The application MAY NOT work.", qPrintable(potentialResourcesPath));
+-        if (!QFileInfo::exists(potentialResourcesPath % QLatin1String("/qtwebengine_resources.pak"))) {
+-            qWarning("Qt WebEngine resources not found at %s. Trying fallback directory... The application MAY NOT work.", qPrintable(potentialResourcesPath));
 -            potentialResourcesPath = fallbackDir();
 -        }
 -    }
- 
+-
      return potentialResourcesPath;
  }
+ } // namespace
