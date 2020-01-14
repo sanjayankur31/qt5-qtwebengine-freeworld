@@ -434,7 +434,7 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
-* Tue Jan 14 2019 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.13.2-1
+* Tue Jan 14 2020 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.13.2-1
 - 5.13.2, sync changes from fedora packaging (deps, patches, etc...)
 
 * Mon Dec 02 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.6-1
