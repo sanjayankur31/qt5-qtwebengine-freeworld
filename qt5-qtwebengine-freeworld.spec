@@ -7,8 +7,8 @@
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
 
-%if 0%{?fedora} > 27
-# need libvpx >= 1.7.0 (need commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e)
+%if 0%{?fedora} > 29
+# need libvpx >= 1.8.0 (need commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e)
 %global use_system_libvpx 1
 %endif
 # need libwebp >= 0.6.0
@@ -21,7 +21,7 @@
 
 # NEON support on ARM (detected at runtime) - disable this if you are hitting
 # FTBFS due to e.g. GCC bug https://bugzilla.redhat.com/show_bug.cgi?id=1282495
-%global arm_neon 1
+#global arm_neon 1
 
 # the QMake CONFIG flags to force debugging information to be produced in
 # release builds, and for all parts of the code
@@ -30,20 +30,18 @@
 # setting below, and even with just force_debug_info, so omit all debuginfo
 %global debug_config %{nil}
 %else
-%global debug_config webcore_debug v8base_debug force_debug_info
+%global debug_config force_debug_info
+# webcore_debug v8base_debug
 %endif
 
 #global prerelease rc
 
-# exclude plugins (all architectures) and libv8.so (i686, it's static everywhere
-# else)
-%global __provides_exclude ^lib.*plugin\\.so.*|libv8\\.so$
-# exclude libv8.so (i686, it's static everywhere else)
-%global __requires_exclude ^libv8\\.so$
+# exclude plugins
+%global __provides_exclude ^lib.*plugin\\.so.*$
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.12.6
+Version: 5.13.2
 Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
@@ -80,8 +78,10 @@ Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
 Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 # Fix/workaround FTBFS on aarch64 with newer glibc
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
-# borrow fix from chromium packaging
-Patch26: qtwebengine-gcc9-drop-rsp-clobber.patch
+# Fix missing semicolon in Blink
+Patch25: qtwebengine-everywhere-5.13.2-missing-semicolon-in-blink.patch
+# Use Python2
+Patch26: qtwebengine-everywhere-5.13.2-use-python2.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -173,7 +173,15 @@ BuildRequires: pkgconfig(lcms2)
 ## https://bugreports.qt.io/browse/QTBUG-59094
 #BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
 BuildRequires: perl-interpreter
-BuildRequires: python2-devel
+# fesco exception to allow python2 use: https://pagure.io/fesco/issue/2208
+# per https://fedoraproject.org/wiki/Changes/RetirePython2#FESCo_exceptions
+# Only the interpreter is needed
+%if 0%{?fedora} > 29 || 0%{?rhel} > 8
+BuildRequires: %{__python2}
+%else
+BuildRequires: python2
+BuildRequires: python2-rpm-macros
+%endif
 %if 0%{?use_system_libvpx}
 BuildRequires: pkgconfig(vpx) >= 1.7.0
 %endif
@@ -249,7 +257,7 @@ Provides: bundled(modp_b64)
 Provides: bundled(openmax_dl) = 1.0.2
 Provides: bundled(ots)
 # see src/3rdparty/chromium/third_party/protobuf/CHANGES.txt for the version
-Provides: bundled(protobuf) = 3.0.0-0.1.beta3
+#Provides: bundled(protobuf) = 3.0.0-0.1.beta3
 Provides: bundled(qcms) = 4
 Provides: bundled(sfntly)
 Provides: bundled(skia)
@@ -332,7 +340,8 @@ popd
 ## NEEDSWORK
 #patch21 -p1 -b .gn-bootstrap-verbose
 %patch24 -p1 -b .aarch64-new-stat
-%patch26 -p1 -b .gcc9-drop-rsp-clobber
+%patch25 -p1 -b .missing-semicolon-in-blink
+%patch26 -p1 -b .use-python2
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -390,7 +399,8 @@ export NINJAFLAGS="%{__ninja_common_opts}"
 export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} \
-  CONFIG+="%{debug_config}" \
+  %{?debug_config:CONFIG+="%{debug_config}}" \
+  CONFIG+="link_pulseaudio" \
   %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
   QMAKE_EXTRA_ARGS+="-system-webengine-icu" \
@@ -424,6 +434,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Tue Jan 14 2019 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.13.2-1
+- 5.13.2, sync changes from fedora packaging (deps, patches, etc...)
+
 * Mon Dec 02 2019 Rex Dieter <rdieter@fedoraproject.org> - 5.12.6-1
 - 5.12.6
 
