@@ -1,0 +1,129 @@
+diff -ur ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+--- ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc	2020-03-25 12:57:05.214021490 +0000
++++ ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc	2020-03-25 12:58:35.813396054 +0000
+@@ -137,7 +137,7 @@
+     return Allow();
+ #endif
+ 
+-  if (sysno == __NR_clock_gettime) {
++  if (sysno == __NR_clock_gettime || sysno == __NR_clock_nanosleep) {
+     return RestrictClockID();
+   }
+ 
+diff -ur ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy_unittest.cc ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy_unittest.cc
+--- ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy_unittest.cc	2020-03-25 12:57:05.214021490 +0000
++++ ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy_unittest.cc	2020-03-25 13:01:05.971702078 +0000
+@@ -393,6 +393,18 @@
+   syscall(SYS_clock_gettime, CLOCK_MONOTONIC_RAW, &ts);
+ }
+ 
++BPF_DEATH_TEST_C(BaselinePolicy,
++                 ClockNanosleepWithDisallowedClockCrashes,
++                 DEATH_SEGV_MESSAGE(GetErrorMessageContentForTests()),
++                 BaselinePolicy) {
++  struct timespec ts;
++  struct timespec out_ts;
++  ts.tv_sec = 0;
++  ts.tv_nsec = 0;
++  syscall(SYS_clock_nanosleep, (~0) | CLOCKFD, 0, &ts, &out_ts);
++}
++
++
+ #if !defined(GRND_RANDOM)
+ #define GRND_RANDOM 2
+ #endif
+diff -ur ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h
+--- ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h	2020-03-25 12:57:05.213021508 +0000
++++ ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.h	2020-03-25 13:03:32.058081155 +0000
+@@ -86,12 +86,13 @@
+ // process).
+ SANDBOX_EXPORT bpf_dsl::ResultExpr RestrictGetrusage();
+ 
+-// Restrict |clk_id| for clock_getres(), clock_gettime() and clock_settime().
+-// We allow accessing only CLOCK_MONOTONIC, CLOCK_PROCESS_CPUTIME_ID,
+-// CLOCK_REALTIME, and CLOCK_THREAD_CPUTIME_ID.  In particular, this disallows
+-// access to arbitrary per-{process,thread} CPU-time clock IDs (such as those
+-// returned by {clock,pthread}_getcpuclockid), which can leak information
+-// about the state of the host OS.
++// Restrict |clk_id| for clock_getres(), clock_gettime(), clock_settime(), and
++// clock_nanosleep(). We allow accessing only CLOCK_BOOTTIME,
++// CLOCK_MONOTONIC{,_RAW,_COARSE}, CLOCK_PROCESS_CPUTIME_ID,
++// CLOCK_REALTIME{,_COARSE}, and CLOCK_THREAD_CPUTIME_ID.  In particular, on
++// non-Android platforms this disallows access to arbitrary per-{process,thread}
++// CPU-time clock IDs (such as those returned by {clock,pthread}_getcpuclockid),
++// which can leak information about the state of the host OS.
+ SANDBOX_EXPORT bpf_dsl::ResultExpr RestrictClockID();
+ 
+ // Restrict the flags argument to getrandom() to allow only no flags, or
+diff -ur ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions_unittests.cc ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions_unittests.cc
+--- ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions_unittests.cc	2020-03-25 12:57:05.213021508 +0000
++++ ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions_unittests.cc	2020-03-25 13:06:05.643325692 +0000
+@@ -59,6 +59,7 @@
+     switch (sysno) {
+       case __NR_clock_gettime:
+       case __NR_clock_getres:
++      case __NR_clock_nanosleep:
+         return RestrictClockID();
+       default:
+         return Allow();
+@@ -99,6 +100,25 @@
+ #endif
+ }
+ 
++void CheckClockNanosleep(clockid_t clockid) {
++  struct timespec ts;
++  struct timespec out_ts;
++  ts.tv_sec = 0;
++  ts.tv_nsec = 0;
++  clock_nanosleep(clockid, 0, &ts, &out_ts);
++}
++
++BPF_TEST_C(ParameterRestrictions,
++           clock_nanosleep_allowed,
++           RestrictClockIdPolicy) {
++  CheckClockNanosleep(CLOCK_MONOTONIC);
++  CheckClockNanosleep(CLOCK_MONOTONIC_COARSE);
++  CheckClockNanosleep(CLOCK_MONOTONIC_RAW);
++  CheckClockNanosleep(CLOCK_BOOTTIME);
++  CheckClockNanosleep(CLOCK_REALTIME);
++  CheckClockNanosleep(CLOCK_REALTIME_COARSE);
++}
++
+ BPF_DEATH_TEST_C(ParameterRestrictions,
+                  clock_gettime_crash_monotonic_raw,
+                  DEATH_SEGV_MESSAGE(sandbox::GetErrorMessageContentForTests()),
+@@ -107,6 +127,17 @@
+   syscall(SYS_clock_gettime, CLOCK_MONOTONIC_RAW, &ts);
+ }
+ 
++BPF_DEATH_TEST_C(ParameterRestrictions,
++                 clock_nanosleep_crash_clock_fd,
++                 DEATH_SEGV_MESSAGE(sandbox::GetErrorMessageContentForTests()),
++                 RestrictClockIdPolicy) {
++  struct timespec ts;
++  struct timespec out_ts;
++  ts.tv_sec = 0;
++  ts.tv_nsec = 0;
++  syscall(SYS_clock_nanosleep, (~0) | CLOCKFD, 0, &ts, &out_ts);
++}
++
+ #if !defined(OS_ANDROID)
+ BPF_DEATH_TEST_C(ParameterRestrictions,
+                  clock_gettime_crash_cpu_clock,
+diff -ur ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+--- ../qtwebengine-everywhere-src-5.13.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc	2020-03-25 12:57:05.213021508 +0000
++++ ./src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc	2020-03-25 13:06:50.881514077 +0000
+@@ -35,9 +35,10 @@
+       return true;
+     case __NR_adjtimex:         // Privileged.
+     case __NR_clock_adjtime:    // Privileged.
+-    case __NR_clock_getres:     // Could be allowed.
+-    case __NR_clock_gettime:
+-    case __NR_clock_nanosleep:  // Could be allowed.
++    case __NR_clock_getres:     // Allowed only on Android with parameters
++                                // filtered by RestrictClokID().
++    case __NR_clock_gettime:    // Parameters filtered by RestrictClockID().
++    case __NR_clock_nanosleep:  // Parameters filtered by RestrictClockID().
+     case __NR_clock_settime:    // Privileged.
+ #if defined(__i386__) || \
+     (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))

@@ -42,7 +42,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.13.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -82,6 +82,15 @@ Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 Patch25: qtwebengine-everywhere-5.13.2-missing-semicolon-in-blink.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.13.2-use-python2.patch
+# Fix missing include in chromium
+Patch27: qtwebengine-everywhere-5.13.2-fix-chromium-headers.patch
+# Fix for clock_nanosleep
+# https://bugreports.qt.io/browse/QTBUG-81313
+# https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/292352
+# Qt: https://codereview.qt-project.org/gitweb?p=qt/qtwebengine-chromium.git;a=patch;h=2c37da9ad4fe7d5b1911ba991798e508c81ba5ef
+# Chromium: https://chromium.googlesource.com/chromium/src/+/54407b422a9cbf775a68c1d57603c0ecac8ce0d7%5E%21/#F0
+# Didn't apply cleanly, manually ported
+Patch28: qtwebengine-everywhere-5.13.2-allow-restricted-clock_nanosleep-in-Linux-sandbox-manual.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -342,6 +351,9 @@ popd
 %patch24 -p1 -b .aarch64-new-stat
 %patch25 -p1 -b .missing-semicolon-in-blink
 %patch26 -p1 -b .use-python2
+%patch27 -p1 -b .fix-chromium
+
+%patch28 -p0 -b .allow-clock_nanosleep
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -434,6 +446,9 @@ echo "%{_libdir}/%{name}" \
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
 %changelog
+* Wed Mar 25 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.13.2-3
+- sync patches from fedora
+
 * Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.13.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
