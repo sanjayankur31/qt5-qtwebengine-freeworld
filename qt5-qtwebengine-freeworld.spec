@@ -356,6 +356,7 @@ popd
 %patch24 -p1 -b .aarch64-new-stat
 %patch26 -p1 -b .use-python2
 %patch27 -p1 -b .fix-chromium
+%patch29 -p1 -b .gcc10
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
