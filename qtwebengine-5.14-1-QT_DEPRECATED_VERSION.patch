@@ -1,0 +1,17 @@
+diff -up qtwebengine-everywhere-src-5.14.1.orig/src/webenginewidgets/api/qwebenginedownloaditem.h.QT_DEPRECATED qtwebengine-everywhere-src-5.14.1.orig/src/webenginewidgets/api/qwebenginedownloaditem.h
+--- qtwebengine-everywhere-src-5.14.1.orig/src/webenginewidgets/api/qwebenginedownloaditem.h.QT_DEPRECATED	2020-01-20 05:17:16.000000000 -0600
++++ qtwebengine-everywhere-src-5.14.1.orig/src/webenginewidgets/api/qwebenginedownloaditem.h	2020-03-24 15:42:03.558394148 -0500
+@@ -119,9 +119,13 @@ public:
+     QUrl url() const;
+     QString mimeType() const;
+ #if QT_DEPRECATED_SINCE(5, 14)
++#if QT_VERSION >= QT_VERSION_CHECK(5,14,0)
+     QT_DEPRECATED_VERSION_X(5, 14, "Use downloadDirectory() and downloadFileName() instead")
++#endif
+     QString path() const;
++#if QT_VERSION >= QT_VERSION_CHECK(5,14,0)
+     QT_DEPRECATED_VERSION_X(5, 14, "Use setDownloadDirectory() and setDownloadFileName() instead")
++#endif
+     void setPath(QString path);
+ #endif
+     bool isFinished() const;

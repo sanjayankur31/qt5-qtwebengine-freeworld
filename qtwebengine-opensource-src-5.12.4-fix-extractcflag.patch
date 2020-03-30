@@ -1,7 +1,7 @@
-diff --git a/src/core/config/functions.pri b/src/core/config/functions.pri
+diff --git a/src/buildtools/config/functions.pri b/src/buildtools/config/functions.pri
 index 8c11faa16..191d3d623 100644
---- a/src/core/config/functions.pri
-+++ b/src/core/config/functions.pri
+--- a/src/buildtools/config/functions.pri
++++ b/src/buildrools/config/functions.pri
 @@ -1,5 +1,5 @@
  defineReplace(qtwebengine_extractCFlag) {
 -    CFLAGS = $$QMAKE_CC $$QMAKE_CFLAGS

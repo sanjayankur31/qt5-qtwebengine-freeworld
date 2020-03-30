@@ -19,6 +19,11 @@
 %global use_system_ffmpeg 1
 %endif
 
+%if 0%{?fedora} > 31
+# need libicu >= 64, only currently available on f32+
+%global use_system_libicu 1
+%endif
+
 # NEON support on ARM (detected at runtime) - disable this if you are hitting
 # FTBFS due to e.g. GCC bug https://bugzilla.redhat.com/show_bug.cgi?id=1282495
 #global arm_neon 1
@@ -41,8 +46,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.13.2
-Release: 3%{?dist}
+Version: 5.14.1
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -72,25 +77,20 @@ Patch2:  qtwebengine-opensource-src-5.12.4-fix-extractcflag.patch
 Patch3:  qtwebengine-opensource-src-5.9.0-no-neon.patch
 # workaround FTBFS against kernel-headers-5.2.0+
 Patch4:  qtwebengine-SIOCGSTAMP.patch
+#  fix build when using qt < 5.14
+Patch5:  qtwebengine-5.14-1-QT_DEPRECATED_VERSION.patch
 # remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
 Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
 # Force verbose output from the GN bootstrap process
 Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 # Fix/workaround FTBFS on aarch64 with newer glibc
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
-# Fix missing semicolon in Blink
-Patch25: qtwebengine-everywhere-5.13.2-missing-semicolon-in-blink.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.13.2-use-python2.patch
 # Fix missing include in chromium
 Patch27: qtwebengine-everywhere-5.13.2-fix-chromium-headers.patch
-# Fix for clock_nanosleep
-# https://bugreports.qt.io/browse/QTBUG-81313
-# https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/292352
-# Qt: https://codereview.qt-project.org/gitweb?p=qt/qtwebengine-chromium.git;a=patch;h=2c37da9ad4fe7d5b1911ba991798e508c81ba5ef
-# Chromium: https://chromium.googlesource.com/chromium/src/+/54407b422a9cbf775a68c1d57603c0ecac8ce0d7%5E%21/#F0
-# Didn't apply cleanly, manually ported
-Patch28: qtwebengine-everywhere-5.13.2-allow-restricted-clock_nanosleep-in-Linux-sandbox-manual.patch
+# Fix gcc10 FTBFS
+Patch29: qtwebengine-everywhere-5.14.1-gcc10.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -124,7 +124,9 @@ BuildRequires: libstdc++-static
 BuildRequires: git-core
 BuildRequires: gperf
 BuildRequires: krb5-devel
-BuildRequires: libicu-devel
+%if 0%{?use_system_libicu}
+BuildRequires: libicu-devel >= 64
+%endif
 BuildRequires: libjpeg-devel
 BuildRequires: re2-devel
 BuildRequires: snappy-devel
@@ -336,24 +338,24 @@ pushd src/3rdparty/chromium
 popd
 
 %patch0 -p1 -b .linux-pri
+%if 0%{?use_system_libicu}
 %patch1 -p1 -b .no-icudtl-dat
+%endif
 %patch2 -p1 -b .fix-extractcflag
 %if !0%{?arm_neon}
 %patch3 -p1 -b .no-neon
 %endif
 %patch4 -p1 -b .SIOCGSTAMP
+%patch5 -p1 -b .QT_DEPRECATED_VERSION
 
 ## upstream patches
 
-%patch10 -p1 -b .openmax-dl-neon
+#patch10 -p1 -b .openmax-dl-neon
 ## NEEDSWORK
 #patch21 -p1 -b .gn-bootstrap-verbose
 %patch24 -p1 -b .aarch64-new-stat
-%patch25 -p1 -b .missing-semicolon-in-blink
 %patch26 -p1 -b .use-python2
 %patch27 -p1 -b .fix-chromium
-
-%patch28 -p0 -b .allow-clock_nanosleep
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -415,7 +417,7 @@ export NINJA_PATH=%{__ninja}
   CONFIG+="link_pulseaudio" \
   %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
-  QMAKE_EXTRA_ARGS+="-system-webengine-icu" \
+  %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
   .
 
@@ -438,6 +440,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/%{name}" \
      >%{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
+
 %ldconfig_scriptlets
 
 %files
@@ -445,7 +448,11 @@ echo "%{_libdir}/%{name}" \
 %{_libdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/%{name}-%{_arch}.conf
 
+
 %changelog
+* Mon Mar 30 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.14.1-1
+- 5.14.1
+
 * Wed Mar 25 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.13.2-3
 - sync patches from fedora
 
