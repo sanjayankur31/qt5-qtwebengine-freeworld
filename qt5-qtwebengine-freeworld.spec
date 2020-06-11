@@ -19,7 +19,7 @@
 %global use_system_ffmpeg 1
 %endif
 
-%if 0%{?fedora} > 31
+%if 0%{?fedora} > 31 && 0%{?fedora} < 33
 # need libicu >= 64, only currently available on f32+
 %global use_system_libicu 1
 %endif
@@ -46,8 +46,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.14.2
-Release: 2%{?dist}
+Version: 5.15.0
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -87,10 +87,6 @@ Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.13.2-use-python2.patch
-# Fix missing include in chromium
-Patch27: qtwebengine-everywhere-5.13.2-fix-chromium-headers.patch
-# Fix gcc10 FTBFS
-Patch29: qtwebengine-everywhere-5.14.1-gcc10.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -346,7 +342,7 @@ popd
 %patch3 -p1 -b .no-neon
 %endif
 %patch4 -p1 -b .SIOCGSTAMP
-%patch5 -p1 -b .QT_DEPRECATED_VERSION
+#patch5 -p1 -b .QT_DEPRECATED_VERSION
 
 ## upstream patches
 
@@ -355,8 +351,6 @@ popd
 #patch21 -p1 -b .gn-bootstrap-verbose
 %patch24 -p1 -b .aarch64-new-stat
 %patch26 -p1 -b .use-python2
-%patch27 -p1 -b .fix-chromium
-%patch29 -p1 -b .gcc10
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -372,9 +366,9 @@ sed -i -e 's!audio_processing//!audio_processing/!g' \
   src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/utility/ooura_fft.cc \
   src/3rdparty/chromium/third_party/webrtc/modules/audio_processing/utility/ooura_fft_sse2.cc
 # remove ./ from #line commands in ANGLE to avoid debugedit failure (?)
-sed -i -e 's!\./!!g' \
-  src/3rdparty/chromium/third_party/angle/src/compiler/preprocessor/Tokenizer.cpp \
-  src/3rdparty/chromium/third_party/angle/src/compiler/translator/glslang_lex.cpp
+#sed -i -e 's!\./!!g' \
+#  src/3rdparty/chromium/third_party/angle/src/compiler/preprocessor/Tokenizer.cpp \
+#  src/3rdparty/chromium/third_party/angle/src/compiler/translator/glslang_lex.cpp
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
 sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
@@ -451,6 +445,10 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Thu Jun 11 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.15.0-1
+- 5.15.0
+- f33's icu-67.x currently not compatible, use bundled icu
+
 * Fri Apr 24 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.14.2-2
 - rebuild (qt5)
 
