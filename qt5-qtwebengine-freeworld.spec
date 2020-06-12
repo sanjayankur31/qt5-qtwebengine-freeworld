@@ -106,6 +106,7 @@ BuildRequires: qt5-qtdeclarative-devel
 BuildRequires: qt5-qtxmlpatterns-devel
 BuildRequires: qt5-qtlocation-devel
 BuildRequires: qt5-qtsensors-devel
+BuildRequires: qt5-qtsvg-devel
 BuildRequires: qt5-qtwebchannel-devel
 BuildRequires: qt5-qttools-static
 # for examples?
