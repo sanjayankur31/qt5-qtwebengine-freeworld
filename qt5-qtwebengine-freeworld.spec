@@ -46,8 +46,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.15.0
-Release: 2%{?dist}
+Version: 5.15.1
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -446,6 +446,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Wed Sep 30 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.15.1-1
+- 5.15.1
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.15.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
