@@ -178,6 +178,7 @@ BuildRequires: pkgconfig(libpci)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: pkgconfig(nss)
 BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(xkbcommon)
 ## https://bugreports.qt.io/browse/QTBUG-59094
 #BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
 BuildRequires: perl-interpreter
