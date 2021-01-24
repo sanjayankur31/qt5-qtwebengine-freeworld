@@ -19,7 +19,7 @@
 %global use_system_ffmpeg 1
 %endif
 
-%if 0%{?fedora} > 31 && 0%{?fedora} < 33
+%if 0%{?fedora} > 31
 # need libicu >= 64, only currently available on f32+
 %global use_system_libicu 1
 %endif
@@ -47,7 +47,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -87,6 +87,12 @@ Patch21: qtwebengine-everywhere-src-5.12.0-gn-bootstrap-verbose.patch
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.13.2-use-python2.patch
+# Missing #includes for gcc-11
+Patch27: qtwebengine-gcc11.patch
+# Fix sandbox issue breaking text rendering with glibc >= 2.33 (#1904652)
+Patch28: qtwebengine-everywhere-src-5.15.2-#1904652.patch
+# Fix sandbox issue on 32-bit architectures with glibc >= 2.31 (from Debian)
+Patch29: qtwebengine-everywhere-src-5.15.2-sandbox-time64-syscalls.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -98,6 +104,7 @@ ExclusiveArch: %{ix86} x86_64
 ExclusiveArch: %{qt5_qtwebengine_arches}
 %endif
 
+BuildRequires: make
 BuildRequires: qt5-qtbase-devel
 BuildRequires: qt5-qtbase-private-devel
 # TODO: check of = is really needed or if >= would be good enough -- rex
@@ -353,6 +360,9 @@ popd
 #patch21 -p1 -b .gn-bootstrap-verbose
 %patch24 -p1 -b .aarch64-new-stat
 %patch26 -p1 -b .use-python2
+%patch27 -p1 -b .gcc11
+%patch28 -p1 -b .rh#1904652
+%patch29 -p1 -b .sandbox-time64-syscalls
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -447,6 +457,13 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sun Jan 24 2021 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.2-2
+- Fix missing #includes for gcc-11 (patch by Jeff Law)
+- Add missing BuildRequires: make
+- Fix sandbox issue breaking text rendering with glibc 2.33 (rh#1904652)
+- Reenable system ICU on F33+, ICU 67 supported since 5.15.1 according to Debian
+- Fix sandbox issue on 32-bit architectures with glibc >= 2.31 (from Debian)
+
 * Sat Nov 28 2020 Rex Dieter <rdieter@fedoraproject.org> - 5.15.2-1
 - 5.15.2
 
