@@ -47,7 +47,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -457,6 +457,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sun Feb 07 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.15.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Sun Jan 24 2021 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.2-2
 - Fix missing #includes for gcc-11 (patch by Jeff Law)
 - Add missing BuildRequires: make
