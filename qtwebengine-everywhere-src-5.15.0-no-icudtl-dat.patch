@@ -1,15 +1,15 @@
-diff --git a/src/core/web_engine_library_info.cpp b/src/core/web_engine_library_info.cpp
-index 1c8316430..a1c27d28f 100644
---- a/src/core/web_engine_library_info.cpp
-+++ b/src/core/web_engine_library_info.cpp
-@@ -259,29 +259,12 @@ QString dictionariesPath()
+diff -up qtwebengine-everywhere-src-5.15.5/src/core/web_engine_library_info.cpp.no-icudtl-dat qtwebengine-everywhere-src-5.15.5/src/core/web_engine_library_info.cpp
+--- qtwebengine-everywhere-src-5.15.5/src/core/web_engine_library_info.cpp.no-icudtl-dat	2021-06-24 07:26:58.976486102 -0500
++++ qtwebengine-everywhere-src-5.15.5/src/core/web_engine_library_info.cpp	2021-06-24 07:32:19.272863523 -0500
+@@ -273,7 +273,6 @@ QString dictionariesPath()
  
  QString resourcesDataPath()
  {
 -    static bool initialized = false;
      static QString potentialResourcesPath =
- #if defined(OS_MACOSX) && defined(QT_MAC_FRAMEWORK_BUILD)
+ #if defined(OS_MAC) && defined(QT_MAC_FRAMEWORK_BUILD)
              getResourcesPath(frameworkBundle());
+@@ -282,21 +281,6 @@ QString resourcesDataPath()
  #else
              QLibraryInfo::location(QLibraryInfo::DataPath) % QLatin1String("/resources");
  #endif
@@ -28,7 +28,6 @@ index 1c8316430..a1c27d28f 100644
 -            potentialResourcesPath = fallbackDir();
 -        }
 -    }
--
+ 
      return potentialResourcesPath;
  }
- } // namespace

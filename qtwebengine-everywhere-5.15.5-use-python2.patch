@@ -1,0 +1,24 @@
+diff -up qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py.use-python2 qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py
+--- qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py.use-python2	2021-05-28 07:05:45.000000000 -0500
++++ qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py	2021-06-23 15:27:45.771765298 -0500
+@@ -83,7 +83,7 @@ def _MinifyJS(input_js):
+ 
+   with tempfile.NamedTemporaryFile() as _:
+     args = [
+-        'python',
++        'python2',
+         rjsmin_path
+     ]
+     p = subprocess.Popen(args,
+diff -up qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2 qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro
+--- qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2	2021-06-11 00:31:04.000000000 -0500
++++ qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro	2021-06-23 15:26:48.897435095 -0500
+@@ -76,7 +76,7 @@ qtConfig(webengine-testsupport) {
+     python = $$pythonPathForShell()
+     chromium_attributions.commands = \
+         cd $$shell_quote($$shell_path($$PWD/../3rdparty)) && \
+-        $$python chromium/tools/licenses.py \
++        python2 chromium/tools/licenses.py \
+         --file-template ../../tools/about_credits.tmpl \
+         --entry-template ../../tools/about_credits_entry.tmpl credits \
+         $$shell_quote($$shell_path($$OUT_PWD/chromium_attributions.qdoc))
