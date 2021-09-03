@@ -1,0 +1,16 @@
+diff -up qtwebengine-everywhere-src-5.15.6/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc.1213452 qtwebengine-everywhere-src-5.15.6/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+--- qtwebengine-everywhere-src-5.15.6/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc.1213452	2021-09-03 10:35:33.069779845 -0500
++++ qtwebengine-everywhere-src-5.15.6/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc	2021-09-03 10:36:43.891325411 -0500
+@@ -172,6 +172,12 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+     return RestrictCloneToThreadsAndEPERMFork();
+   }
+ 
++  // clone3 takes a pointer argument which we cannot examine, so return ENOSYS
++  // to force the libc to use clone. See https://crbug.com/1213452.
++  if (sysno == __NR_clone3) {
++    return Error(ENOSYS);
++  }
++
+   if (sysno == __NR_fcntl)
+     return RestrictFcntlCommands();
+ 
