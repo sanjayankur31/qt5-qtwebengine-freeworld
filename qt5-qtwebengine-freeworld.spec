@@ -50,8 +50,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.15.5
-Release: 2%{?dist}
+Version: 5.15.6
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -97,6 +97,9 @@ Patch29: qtwebengine-everywhere-src-5.15.5-sandbox-time64-syscalls.patch
 Patch30: qtwebengine-everywhere-src-5.15.5-SIGSTKSZ.patch
 # FTBFS TRUE/FALSE undeclared
 Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
+# Issue 1213452: Sandbox doesn't work with clone3
+# https://bugs.chromium.org/p/chromium/issues/detail?id=1213452
+Patch32: qtwebengine-everywhere-src-5.15.6-clone3.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -373,6 +376,7 @@ popd
 %patch29 -p1 -b .sandbox-time64-syscalls
 %patch30 -p1 -b .SIGSTKSZ
 %patch31 -p1 -b .TRUE
+%patch32 -p1 -b .clone3
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -464,6 +468,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Fri Sep 03 2021 Rex Dieter <rdieter@fedoraproject.org> - 5.15.6-1
+- 5.15.6
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.15.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
