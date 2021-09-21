@@ -51,7 +51,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.6
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -100,6 +100,8 @@ Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
 # Issue 1213452: Sandbox doesn't work with clone3
 # https://bugs.chromium.org/p/chromium/issues/detail?id=1213452
 Patch32: qtwebengine-everywhere-src-5.15.6-clone3.patch
+# Fix use of deprecated harfbuzz api's
+Patch33: qtwebengine-harfbuzz.patch
 
 ## Upstream patches:
 # qtwebengine-chromium
@@ -377,6 +379,7 @@ popd
 %patch30 -p1 -b .SIGSTKSZ
 %patch31 -p1 -b .TRUE
 %patch32 -p1 -b .clone3
+%patch33 -p1 -b .harfbuzz
 
 # the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
 # when building on older Qt releases
@@ -468,6 +471,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Tue Sep 21 2021 Rex Dieter <rdieter@fedoraproject.org> - 5.15.6-2
+- patch use of deprecated harfbuzz apis
+
 * Fri Sep 03 2021 Rex Dieter <rdieter@fedoraproject.org> - 5.15.6-1
 - 5.15.6
 
