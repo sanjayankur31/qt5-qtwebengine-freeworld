@@ -1,6 +1,7 @@
-diff -up qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py.use-python2 qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py
---- qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py.use-python2	2021-05-28 07:05:45.000000000 -0500
-+++ qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py	2021-06-23 15:27:45.771765298 -0500
+diff --git a/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py b/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py
+index 8af373102..b551c0fe2 100644
+--- a/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py
++++ b/src/3rdparty/chromium/third_party/catapult/common/py_vulcanize/py_vulcanize/generate.py
 @@ -83,7 +83,7 @@ def _MinifyJS(input_js):
  
    with tempfile.NamedTemporaryFile() as _:
@@ -10,7 +11,7 @@ diff -up qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/cat
          rjsmin_path
      ]
      p = subprocess.Popen(args,
-@@ -203,7 +203,7 @@
+@@ -203,7 +203,7 @@ def _MinifyCSS(css_text):
        os.path.join(py_vulcanize_path, 'third_party', 'rcssmin', 'rcssmin.py'))
  
    with tempfile.NamedTemporaryFile() as _:
@@ -19,9 +20,10 @@ diff -up qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/cat
      p = subprocess.Popen(rcssmin_args,
                           stdin=subprocess.PIPE,
                           stdout=subprocess.PIPE,
-diff -up qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2 qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro
---- qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2	2021-06-11 00:31:04.000000000 -0500
-+++ qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro	2021-06-23 15:26:48.897435095 -0500
+diff --git a/src/webengine/module.pro b/src/webengine/module.pro
+index 49a1086b2..afc89d49e 100644
+--- a/src/webengine/module.pro
++++ b/src/webengine/module.pro
 @@ -76,7 +76,7 @@ qtConfig(webengine-testsupport) {
      python = $$pythonPathForShell()
      chromium_attributions.commands = \
