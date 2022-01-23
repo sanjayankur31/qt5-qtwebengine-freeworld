@@ -5,7 +5,7 @@
 # package-notes causes FTBFS (#2043178)
 %undefine _package_note_file
 
-%global bootstrap 1
+%global bootstrap 0
 
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
@@ -55,7 +55,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.8
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -462,6 +462,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-2
+- Try enabling ARM builds
+
 * Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-1
 - 5.15.8
 - Sync packaging fixes from Fedora (comment fixes, EL7 support, removed an old
