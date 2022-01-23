@@ -2,6 +2,9 @@
 
 %global _hardened_build 1
 
+# package-notes causes FTBFS (#2043178)
+%undefine _package_note_file
+
 %global bootstrap 1
 
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
@@ -12,6 +15,7 @@
 %global use_system_libvpx 1
 %endif
 %if 0%{?fedora} > 30 || 0%{?epel} > 7
+# need libwebp >= 0.6.0
 %global use_system_libwebp 1
 %global use_system_jsoncpp 1
 %global use_system_re2 1
@@ -50,8 +54,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.15.6
-Release: 2%{?dist}
+Version: 5.15.8
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -61,7 +65,10 @@ Release: 2%{?dist}
 # The other licenses are from Chromium and the code it bundles
 License: (LGPLv2 with exceptions or GPLv3 with exceptions) and BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and (MPLv1.1 or GPLv2 or LGPLv2)
 URL:     http://www.qt.io
-Source0: http://download.qt.io/official_releases/qt/%{major_minor}/%{version}/submodules/qtwebengine-everywhere-src-%{version}.tar.xz
+# generated using qtwebengine-release.sh
+Source0: qtwebengine-everywhere-src-%{version}.tar.xz
+# release script used above
+Source1: qtwebengine-release.sh
 
 # pulseaudio headers
 Source20: pulseaudio-12.2-headers.tar.gz
@@ -81,30 +88,17 @@ Patch3:  qtwebengine-opensource-src-5.9.0-no-neon.patch
 Patch4:  qtwebengine-SIOCGSTAMP.patch
 #  fix build when using qt < 5.14
 Patch5:  qtwebengine-5.15.0-QT_DEPRECATED_VERSION.patch
-# remove Android dependencies from openmax_dl ARM NEON detection (detect.c)
-Patch10: qtwebengine-opensource-src-5.9.0-openmax-dl-neon.patch
+# gcc-12 FTBFS "use of deleted function"
+Patch6:  chromium-angle-nullptr.patch
+Patch7:  chromium-hunspell-nullptr.patch
 # Fix/workaround FTBFS on aarch64 with newer glibc
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.15.5-use-python2.patch
-# Fix sandbox issue breaking text rendering with glibc >= 2.33 (#1904652)
-# https://bugs.chromium.org/p/chromium/issues/detail?id=1164975
-Patch28: qtwebengine-everywhere-src-5.15.5-#1904652.patch
-# Fix sandbox issue on 32-bit architectures with glibc >= 2.31 (from Debian)
-Patch29: qtwebengine-everywhere-src-5.15.5-sandbox-time64-syscalls.patch
-# don't assume type-ness of SIGSTKSZ,
-# https://bugzilla.redhat.com/show_bug.cgi?id=1945595
-Patch30: qtwebengine-everywhere-src-5.15.5-SIGSTKSZ.patch
 # FTBFS TRUE/FALSE undeclared
 Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
-# Issue 1213452: Sandbox doesn't work with clone3
-# https://bugs.chromium.org/p/chromium/issues/detail?id=1213452
-Patch32: qtwebengine-everywhere-src-5.15.6-clone3.patch
-# Fix use of deprecated harfbuzz api's
-Patch33: qtwebengine-harfbuzz.patch
 
 ## Upstream patches:
-# qtwebengine-chromium
 
 %if 0%{?bootstrap}
 ExclusiveArch: %{ix86} x86_64
@@ -138,7 +132,7 @@ BuildRequires: git-core
 BuildRequires: gperf
 BuildRequires: krb5-devel
 %if 0%{?use_system_libicu}
-BuildRequires: libicu-devel >= 64
+BuildRequires: libicu-devel >= 65
 %endif
 BuildRequires: libjpeg-devel
 BuildRequires: nodejs
@@ -146,9 +140,6 @@ BuildRequires: nodejs
 BuildRequires: re2-devel
 %endif
 BuildRequires: snappy-devel
-%ifarch %{ix86} x86_64
-BuildRequires: yasm
-%endif
 BuildRequires: pkgconfig(expat)
 BuildRequires: pkgconfig(gobject-2.0)
 BuildRequires: pkgconfig(glib-2.0)
@@ -175,6 +166,7 @@ BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(opus)
 BuildRequires: pkgconfig(protobuf)
 BuildRequires: pkgconfig(libevent)
+BuildRequires: pkgconfig(poppler-cpp)
 BuildRequires: pkgconfig(zlib)
 %if 0%{?fedora} && 0%{?fedora} < 30
 BuildRequires: pkgconfig(minizip)
@@ -203,6 +195,7 @@ BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbfile)
 ## https://bugreports.qt.io/browse/QTBUG-59094
+## requires libxml2 built with icu support
 #BuildRequires: pkgconfig(libxslt) pkgconfig(libxml-2.0)
 BuildRequires: perl-interpreter
 # fesco exception to allow python2 use: https://pagure.io/fesco/issue/2208
@@ -214,10 +207,8 @@ BuildRequires: %{__python2}
 BuildRequires: python2
 BuildRequires: python2-rpm-macros
 %endif
-## HACK, seems patch26 is not 100% complete
-BuildRequires: %{_bindir}/python
 %if 0%{?use_system_libvpx}
-BuildRequires: pkgconfig(vpx) >= 1.7.0
+BuildRequires: pkgconfig(vpx) >= 1.8.0
 %endif
 
 # extra (non-upstream) functions needed, see
@@ -237,16 +228,18 @@ BuildRequires: pkgconfig(vpx) >= 1.7.0
 
 # Of course, Chromium itself is bundled. It cannot be unbundled because it is
 # not a library, but forked (modified) application code.
-# Some security fixes (up to version 64.0.3282.140) are backported, see:
-# http://code.qt.io/cgit/qt/qtwebengine-chromium.git/log/?h=61-based
-# see dist/changes-5.10.1 for the version numbers (base, security fixes) and for
-# a list of CVEs fixed by the added security backports
-# See Patch101 for additional fixes applied (up to version 65.0.3325.146)
-Provides: bundled(chromium) = 61.0.3163.140
+Provides: bundled(chromium) = 87.0.4280.144
 
 # Bundled in src/3rdparty/chromium/third_party:
 # Check src/3rdparty/chromium/third_party/*/README.chromium for version numbers,
 # except where specified otherwise.
+# Note that many of those libraries are git snapshots, so version numbers are
+# necessarily approximate.
+# Also note that the list is probably not complete anymore due to Chromium
+# adding more and more bundled stuff at every release, some of which (but not
+# all) is actually built in QtWebEngine.
+# src/3rdparty/chromium/third_party/angle/doc/ChoosingANGLEBranch.md points to
+# http://omahaproxy.appspot.com/deps.json?version=87.0.4280.144 chromium_branch
 Provides: bundled(angle) = 2422
 # Google's fork of OpenSSL
 # We cannot build against NSS instead because it no longer works with NSS 3.21:
@@ -260,44 +253,41 @@ Provides: bundled(boringssl)
 Provides: bundled(brotli)
 %if !0%{?use_system_ffmpeg}
 # see src/3rdparty/chromium/third_party/ffmpeg/Changelog for the version number
-Provides: bundled(ffmpeg) = 3.3
+Provides: bundled(ffmpeg) = 4.3
 %endif
 Provides: bundled(hunspell) = 1.6.0
 Provides: bundled(iccjpeg)
 # bundled as "khronos", headers only
 Provides: bundled(khronos_headers)
 # bundled as "leveldatabase"
-Provides: bundled(leveldb) = 1.20
+Provides: bundled(leveldb) = 1.22
 # bundled as "libjingle_xmpp"
 Provides: bundled(libjingle)
 # see src/3rdparty/chromium/third_party/libsrtp/CHANGES for the version number
-Provides: bundled(libsrtp) = 2.1.0
+Provides: bundled(libsrtp) = 2.2.0
 %if !0%{?use_system_libvpx}
-# claims "Version: 1.6.0", but according to the fine print, this is actually a
-# snapshot from master from after the 1.6.1 release
-Provides: bundled(libvpx) = 1.6.1
+Provides: bundled(libvpx) = 1.8.2
 %endif
 %if !0%{?use_system_libwebp}
-Provides: bundled(libwebp) = 0.6.0
+Provides: bundled(libwebp) = 1.1.0-28-g55a080e5
 %endif
 # bundled as "libxml"
 # see src/3rdparty/chromium/third_party/libxml/linux/include/libxml/xmlversion.h
-Provides: bundled(libxml2) = 2.9.4
+# post 2.9.9 snapshot?, 2.9.9-0b3c64d9f2f3e9ce1a98d8f19ee7a763c87e27d5
+Provides: bundled(libxml2) = 2.9.10
 # see src/3rdparty/chromium/third_party/libxslt/linux/config.h for version
-Provides: bundled(libxslt) = 1.1.29
+Provides: bundled(libxslt) = 1.1.34
 Provides: bundled(libXNVCtrl) = 302.17
-Provides: bundled(libyuv) = 1658
+Provides: bundled(libyuv) = 1768
 Provides: bundled(modp_b64)
-Provides: bundled(openmax_dl) = 1.0.2
 Provides: bundled(ots)
 # see src/3rdparty/chromium/third_party/protobuf/CHANGES.txt for the version
-#Provides: bundled(protobuf) = 3.0.0-0.1.beta3
+Provides: bundled(protobuf) = 3.9.0
 Provides: bundled(qcms) = 4
-Provides: bundled(sfntly)
 Provides: bundled(skia)
 # bundled as "smhasher"
-Provides: bundled(SMHasher) = 0-0.1.svn147
-Provides: bundled(sqlite) = 3.20
+Provides: bundled(SMHasher) = 0-147
+Provides: bundled(sqlite) = 3.35.5
 Provides: bundled(usrsctp)
 Provides: bundled(webrtc) = 90
 
@@ -310,7 +300,6 @@ Provides: bundled(x86inc)
 # Bundled in src/3rdparty/chromium/base/third_party:
 # Check src/3rdparty/chromium/third_party/base/*/README.chromium for version
 # numbers, except where specified otherwise.
-Provides: bundled(dmg_fp)
 Provides: bundled(dynamic_annotations) = 4384
 Provides: bundled(superfasthash) = 0
 Provides: bundled(symbolize)
@@ -335,7 +324,7 @@ Provides: bundled(nsURLParsers)
 # Bundled outside of third_party, apparently not considered as such by Chromium:
 Provides: bundled(mojo)
 # see src/3rdparty/chromium/v8/include/v8_version.h for the version number
-Provides: bundled(v8) = 6.1.534.44
+Provides: bundled(v8) = 8.7.220.35
 # bundled by v8 (src/3rdparty/chromium/v8/src/base/ieee754.cc)
 # The version number is 5.3, the last version that upstream released, years ago:
 # http://www.netlib.org/fdlibm/readme
@@ -345,6 +334,9 @@ Provides: bundled(fdlibm) = 5.3
 # depend on the official version for data files
 Requires: qt5-qtwebengine%{?_isa} = %{version}
 
+%if 0%{?rhel} == 7
+BuildRequires: devtoolset-7-toolchain	
+%endif
 
 %description
 %{summary}.
@@ -368,24 +360,19 @@ popd
 %patch3 -p1 -b .no-neon
 %endif
 %patch4 -p1 -b .SIOCGSTAMP
-#patch5 -p1 -b .QT_DEPRECATED_VERSION
+%patch5 -p1 -b .QT_DEPRECATED_VERSION
+%patch6 -p1 -b .angle_nullptr
+%patch7 -p1 -b .hunspell_nullptr
 
 ## upstream patches
-#patch10 -p1 -b .openmax-dl-neon
 %patch24 -p1 -b .aarch64-new-stat
 %patch26 -p1 -b .use-python2
-%patch28 -p1 -b .rh#1904652
-%patch29 -p1 -b .sandbox-time64-syscalls
-%patch30 -p1 -b .SIGSTKSZ
 %patch31 -p1 -b .TRUE
-%patch32 -p1 -b .clone3
-%patch33 -p1 -b .harfbuzz
 
-# the xkbcommon config/feature was renamed in 5.12, so need to adjust QT_CONFIG references
-# when building on older Qt releases
-%if "%{_qt5_version}" < "5.12.0"
-sed -i -e 's|QT_CONFIG(xkbcommon)|QT_CONFIG(xkbcommon_evdev)|g' src/core/web_event_factory.cpp
-%endif
+# delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
+# never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
+sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
+  src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
 
 %if 0%{?use_system_re2}
 # http://bugzilla.redhat.com/1337585
@@ -429,13 +416,17 @@ test -f "./include/QtWebEngineCore/qtwebenginecoreglobal.h"
 
 
 %build
+%if 0%{?rhel} == 7
+. /opt/rh/devtoolset-7/enable
+%endif
+
 export STRIP=strip
 export NINJAFLAGS="%{__ninja_common_opts}"
 export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} \
   %{?debug_config:CONFIG+="%{debug_config}}" \
-  CONFIG+="link_pulseaudio" \
+  CONFIG+="link_pulseaudio use_gold_linker" \
   %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
   %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
@@ -471,6 +462,14 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-1
+- 5.15.8
+- Sync packaging fixes from Fedora (comment fixes, EL7 support, removed an old
+  workaround in %%prep and added a new one, enabled use_gold_linker, new
+  qtwebengine-release.sh script, added and removed patches, updated Provides:
+  bundled(*), added BuildRequires: poppler-cpp, removed BuildRequires: yasm and
+  pkgconfig(protobuf), %%undefine _package_note_file)
+
 * Tue Sep 21 2021 Rex Dieter <rdieter@fedoraproject.org> - 5.15.6-2
 - patch use of deprecated harfbuzz apis
 
