@@ -10,6 +10,15 @@ diff -up qtwebengine-everywhere-src-5.15.5/src/3rdparty/chromium/third_party/cat
          rjsmin_path
      ]
      p = subprocess.Popen(args,
+@@ -203,7 +203,7 @@
+       os.path.join(py_vulcanize_path, 'third_party', 'rcssmin', 'rcssmin.py'))
+ 
+   with tempfile.NamedTemporaryFile() as _:
+-    rcssmin_args = ['python', rcssmin_path]
++    rcssmin_args = ['python2', rcssmin_path]
+     p = subprocess.Popen(rcssmin_args,
+                          stdin=subprocess.PIPE,
+                          stdout=subprocess.PIPE,
 diff -up qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2 qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro
 --- qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro.use-python2	2021-06-11 00:31:04.000000000 -0500
 +++ qtwebengine-everywhere-src-5.15.5/src/webengine/module.pro	2021-06-23 15:26:48.897435095 -0500
