@@ -5,7 +5,7 @@
 # package-notes causes FTBFS (#2043178)
 %undefine _package_note_file
 
-%global bootstrap 0
+%global bootstrap 1
 
 # work around missing macro in the RPM Fusion build system (matches list in macros.qt5-srpm)
 %{!?qt5_qtwebengine_arches:%global qt5_qtwebengine_arches %{ix86} x86_64 %{arm} aarch64 mips mipsel mips64el}
@@ -101,7 +101,7 @@ Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
 ## Upstream patches:
 
 %if 0%{?bootstrap}
-ExclusiveArch: %{ix86} x86_64
+ExclusiveArch: x86_64 aarch64
 %else
 # handled by qt5-srpm-macros, which defines %%qt5_qtwebengine_arches
 ExclusiveArch: %{qt5_qtwebengine_arches}
@@ -463,7 +463,7 @@ echo "%{_libdir}/%{name}" \
 
 %changelog
 * Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-2
-- Try enabling ARM builds
+- Try enabling aarch64 builds
 
 * Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-1
 - 5.15.8
