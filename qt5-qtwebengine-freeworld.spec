@@ -389,10 +389,6 @@ cp -bv /usr/include/re2/*.h src/3rdparty/chromium/third_party/re2/src/re2/
 sed -i -e 's/symbol_level=1/symbol_level=2/g' src/core/config/common.pri
 %endif
 
-%ifarch aarch64
-sed -i -e 's/use_jumbo_build=true/use_jumbo_build=false/g' src/core/config/common.pri
-%endif
-
 # generate qtwebengine-3rdparty.qdoc, it is missing from the tarball
 pushd src/3rdparty
 %{__python2} chromium/tools/licenses.py \
