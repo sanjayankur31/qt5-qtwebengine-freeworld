@@ -42,6 +42,7 @@
 # the RPM Fusion ARM builder runs out of memory during linking with the full
 # setting below, and even with just force_debug_info, so omit all debuginfo
 %global debug_config %{nil}
+%global optflags %(echo %{optflags} | sed 's/-g /-g0 /')
 %else
 %global debug_config force_debug_info
 # webcore_debug v8base_debug
