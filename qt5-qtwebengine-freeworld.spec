@@ -45,7 +45,7 @@
 # reduce debug info even for the Qt parts to a minimum
 %global optflags %(echo %{optflags} | sed 's/-g /-g1 /')
 # tune down SMP to reduce memory use further
-%global _smp_build_ncpus 2
+%global _smp_build_ncpus 6
 %else
 %global debug_config force_debug_info
 # webcore_debug v8base_debug
