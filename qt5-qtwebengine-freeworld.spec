@@ -59,7 +59,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.8
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -462,6 +462,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sat Jan 29 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-3
+- Rebuild for libvpx 1.11.0 in Rawhide
+
 * Sun Jan 23 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-2
 - Try enabling aarch64 builds
 
