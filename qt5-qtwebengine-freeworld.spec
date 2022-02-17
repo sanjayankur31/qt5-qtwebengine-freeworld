@@ -59,7 +59,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.8
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -431,6 +431,7 @@ export NINJA_PATH=%{__ninja}
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
   %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
+  QMAKE_EXTRA_ARGS+="-webengine-webrtc-pipewire" \
   .
 
 # avoid %%make_build for now, the -O flag buffers output from intermediate build steps done via ninja
@@ -462,6 +463,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Thu Feb 17 2022 Rex Dieter <rdieter@fedoraproject.org> - 5.15.8-4
+- Screen sharing support under Wayland (#2054690)
+
 * Sat Jan 29 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-3
 - Rebuild for libvpx 1.11.0 in Rawhide
 
