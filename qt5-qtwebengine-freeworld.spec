@@ -23,8 +23,10 @@
 
 %if 0%{?use_system_libwebp}
 # only supported when using also libwebp from the system (see configure.json)
-# FTBFS: appears to be https://bugreports.qt.io/browse/QTBUG-65086
+%if 0%{?fedora} < 36
+# only FFmpeg 4.4 is currently supported, not 5.0
 %global use_system_ffmpeg 1
+%endif
 %endif
 
 %if 0%{?fedora} > 32
@@ -59,7 +61,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.8
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -462,6 +464,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sat Feb 28 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-4
+- Switch to bundled FFmpeg on F36+, FFmpeg 5 not currently supported
+
 * Sat Jan 29 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-3
 - Rebuild for libvpx 1.11.0 in Rawhide
 
