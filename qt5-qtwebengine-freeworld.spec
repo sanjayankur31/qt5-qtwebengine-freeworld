@@ -464,7 +464,7 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
-* Sat Feb 28 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-4
+* Sat Feb 26 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-4
 - Switch to bundled FFmpeg on F36+, FFmpeg 5 not currently supported
 
 * Sat Jan 29 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-3
