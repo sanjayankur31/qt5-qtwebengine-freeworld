@@ -29,8 +29,8 @@
 %endif
 %endif
 
-%if 0%{?fedora} > 32
-# need libicu >= 65, only currently available on f33+
+%if 0%{?fedora} > 32 || 0%{?rhel} > 8
+# need libicu >= 65, only currently available on f33+ and EL9+
 %global use_system_libicu 1
 %endif
 
@@ -61,7 +61,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.8
-Release: 4%{?dist}
+Release: 5%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -464,6 +464,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Fri Apr 01 2022 Xavier Bachelot <xavier@bachelot.org> - 5.15.8-5
+- Enable libicu on EL9+
+
 * Sat Feb 26 2022 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.8-4
 - Switch to bundled FFmpeg on F36+, FFmpeg 5 not currently supported
 
