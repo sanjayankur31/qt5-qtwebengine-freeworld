@@ -1,0 +1,15 @@
+diff --git a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
+index 7260365..503ed08 100644
+--- a/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
++++ b/src/3rdparty/chromium/third_party/skia/src/utils/SkParseColor.cpp
+@@ -8,6 +8,10 @@
+ 
+ #include "include/utils/SkParse.h"
+ 
++#include <string.h>
++#include <algorithm>
++#include <iterator>
++
+ static constexpr const char* gColorNames[] = {
+     "aliceblue",
+     "antiquewhite",

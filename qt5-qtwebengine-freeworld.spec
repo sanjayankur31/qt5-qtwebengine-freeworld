@@ -13,6 +13,8 @@
 %if 0%{?fedora}
 # need libvpx >= 1.8.0 (need commit 297dfd869609d7c3c5cd5faa3ebc7b43a394434e)
 %global use_system_libvpx 1
+# For screen sharing on Wayland, currently Fedora only thing - no epel
+#global pipewire 1
 %endif
 %if 0%{?fedora} > 30 || 0%{?epel} > 7
 # need libwebp >= 0.6.0
@@ -60,8 +62,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.15.8
-Release: 5%{?dist}
+Version: 5.15.9
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -79,11 +81,6 @@ Source1: qtwebengine-release.sh
 # pulseaudio headers
 Source20: pulseaudio-12.2-headers.tar.gz
 
-# quick hack to avoid checking for the nonexistent icudtl.dat and silence the
-# resulting warnings - not upstreamable as is because it removes the fallback
-# mechanism for the ICU data directory (which is not used in our builds because
-# we use the system ICU, which embeds the data statically) completely
-Patch1:  qtwebengine-everywhere-src-5.15.0-no-icudtl-dat.patch
 # fix extractCFlag to also look in QMAKE_CFLAGS_RELEASE, needed to detect the
 # ARM flags with our %%qmake_qt5 macro, including for the next patch
 Patch2:  qtwebengine-opensource-src-5.12.4-fix-extractcflag.patch
@@ -97,12 +94,14 @@ Patch5:  qtwebengine-5.15.0-QT_DEPRECATED_VERSION.patch
 # gcc-12 FTBFS "use of deleted function"
 Patch6:  chromium-angle-nullptr.patch
 Patch7:  chromium-hunspell-nullptr.patch
+Patch8:  qtwebengine-everywhere-5.15.8-libpipewire-0.3.patch
 # Fix/workaround FTBFS on aarch64 with newer glibc
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.15.5-use-python2.patch
 # FTBFS TRUE/FALSE undeclared
 Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
+Patch32: qtwebengine-skia-missing-includes.patch
 
 ## Upstream patches:
 
@@ -144,6 +143,9 @@ BuildRequires: libjpeg-devel
 BuildRequires: nodejs
 %if 0%{?use_system_re2}
 BuildRequires: re2-devel
+%endif
+%if 0%{?pipewire}
+BuildRequires:  pkgconfig(libpipewire-0.3)
 %endif
 BuildRequires: snappy-devel
 BuildRequires: pkgconfig(expat)
@@ -358,9 +360,6 @@ mv pulse src/3rdparty/chromium/
 pushd src/3rdparty/chromium
 popd
 
-%if 0%{?use_system_libicu}
-%patch1 -p1 -b .no-icudtl-dat
-%endif
 %patch2 -p1 -b .fix-extractcflag
 %if !0%{?arm_neon}
 %patch3 -p1 -b .no-neon
@@ -369,11 +368,15 @@ popd
 %patch5 -p1 -b .QT_DEPRECATED_VERSION
 %patch6 -p1 -b .angle_nullptr
 %patch7 -p1 -b .hunspell_nullptr
+#if 0%{?pipewire}
+%patch8 -p1 -b .libpipewire-0.3
+#endif
 
 ## upstream patches
 %patch24 -p1 -b .aarch64-new-stat
 %patch26 -p1 -b .use-python2
 %patch31 -p1 -b .TRUE
+%patch32 -p1 -b .skia-missing-includes
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -433,6 +436,7 @@ export NINJA_PATH=%{__ninja}
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
   %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
+  %{?pipewire:QMAKE_EXTRA_ARGS+="-webengine-webrtc-pipewire"} \
   .
 
 # avoid %%make_build for now, the -O flag buffers output from intermediate build steps done via ninja
@@ -464,6 +468,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Wed Jul 27 2022 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.9-1
+- Updated to version 5.15.9.
+
 * Fri Apr 01 2022 Xavier Bachelot <xavier@bachelot.org> - 5.15.8-5
 - Enable libicu on EL9+
 

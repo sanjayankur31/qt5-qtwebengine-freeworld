@@ -1,6 +1,6 @@
 #!/bin/sh
 set -x
-VERSION=5.15.8
+VERSION=5.15.9
 CHROMIUMHASH=`wget https://code.qt.io/cgit/qt/qtwebengine.git/tree/src/3rdparty?h=$VERSION -q --content-on-error -O - | grep "Bad object name: " | sed 's/^.*Bad object name: \([0-9a-f]\{40\}\).*$/\1/g'`
 rm -rf qtwebengine-$VERSION qtwebengine-$VERSION.tar.gz qtwebengine-chromium-$CHROMIUMHASH qtwebengine-chromium-$CHROMIUMHASH.tar.gz qtwebengine-everywhere-src-$VERSION
 wget https://github.com/qt/qtwebengine/archive/$VERSION.tar.gz -O qtwebengine-$VERSION.tar.gz || exit $?
