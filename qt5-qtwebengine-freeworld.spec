@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.10
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -468,6 +468,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Thu Nov 17 2022 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.10-3
+- Rebuilt due to Qt update.
+
 * Wed Sep 28 2022 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.10-2
 - Rebuild (qt5)
 
