@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.10
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -102,6 +102,11 @@ Patch26: qtwebengine-everywhere-5.15.5-use-python2.patch
 # FTBFS TRUE/FALSE undeclared
 Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
 Patch32: qtwebengine-skia-missing-includes.patch
+# Fix QtWebEngine on Apple M1 hardware (patch from Arch Linux ARM)
+## Cf. https://bugreports.qt.io/browse/QTBUG-108674
+## Cf. https://bugzilla.redhat.com/show_bug.cgi?id=2144200
+## From: https://chromium-review.googlesource.com/c/chromium/src/+/3545665
+Patch33: qtwebengine-5.15-Backport-of-16k-page-support-on-aarch64.patch
 
 ## Upstream patches:
 
@@ -377,6 +382,7 @@ popd
 %patch26 -p1 -b .use-python2
 %patch31 -p1 -b .TRUE
 %patch32 -p1 -b .skia-missing-includes
+%patch33 -p1 -b .aarch64-16kb-support
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -468,6 +474,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sat Nov 26 2022 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.10-4
+- Added backported patch with 16k pages support on aarch64.
+
 * Thu Nov 17 2022 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.10-3
 - Rebuilt due to Qt update.
 
