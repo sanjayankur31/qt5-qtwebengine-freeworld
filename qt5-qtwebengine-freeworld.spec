@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.10
-Release: 4%{?dist}
+Release: 5%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -474,6 +474,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Thu Jan 12 2023 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.10-5
+- Rebuilt due to Qt 5.15.8 update.
+
 * Sat Nov 26 2022 Vitaly Zaitsev <vitaly@easycoding.org> - 5.15.10-4
 - Added backported patch with 16k pages support on aarch64.
 
