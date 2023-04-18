@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.12
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -110,6 +110,8 @@ Patch33: qtwebengine-5.15-Backport-of-16k-page-support-on-aarch64.patch
 # Fixes for GCC 13
 # https://bugzilla.redhat.com/show_bug.cgi?id=2164993
 Patch34: qtwebengine-fix-build.patch
+# https://src.fedoraproject.org/rpms/qt5-qtwebengine/c/628adfbb0613c892b91689d0db85de631d04fdae?branch=rawhide
+Patch35: qt5-qtwebengine-c99.patch
 
 ## Upstream patches:
 
@@ -387,6 +389,7 @@ popd
 %patch -P 32 -p1 -b .skia-missing-includes
 %patch -P 33 -p1 -b .aarch64-16kb-support
 %patch -P 34 -p1 -b .gcc-13
+%patch -P 35 -p1 -b .c99
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -478,6 +481,10 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Tue Apr 18 2023 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.12-3
+- Port bundled libsync to C99
+- https://src.fedoraproject.org/rpms/qt5-qtwebengine/c/628adfbb0613c892b91689d0db85de631d04fdae?branch=rawhide
+
 * Tue Apr 18 2023 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.12-2
 - Rebuild (Qt 5.15.9)
 
