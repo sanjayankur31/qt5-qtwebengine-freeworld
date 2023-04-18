@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.12
-Release: 1%{?dist}.1
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -368,25 +368,25 @@ mv pulse src/3rdparty/chromium/
 pushd src/3rdparty/chromium
 popd
 
-%patch2 -p1 -b .fix-extractcflag
+%patch -P 2 -p1 -b .fix-extractcflag
 %if !0%{?arm_neon}
-%patch3 -p1 -b .no-neon
+%patch -P 3 -p1 -b .no-neon
 %endif
-%patch4 -p1 -b .SIOCGSTAMP
-%patch5 -p1 -b .QT_DEPRECATED_VERSION
-%patch6 -p1 -b .angle_nullptr
-%patch7 -p1 -b .hunspell_nullptr
+%patch -P 4 -p1 -b .SIOCGSTAMP
+%patch -P 5 -p1 -b .QT_DEPRECATED_VERSION
+%patch -P 6 -p1 -b .angle_nullptr
+%patch -P 7 -p1 -b .hunspell_nullptr
 #if 0%{?pipewire}
-%patch8 -p1 -b .libpipewire-0.3
+%patch -P 8 -p1 -b .libpipewire-0.3
 #endif
 
 ## upstream patches
-%patch24 -p1 -b .aarch64-new-stat
-%patch26 -p1 -b .use-python2
-%patch31 -p1 -b .TRUE
-%patch32 -p1 -b .skia-missing-includes
-%patch33 -p1 -b .aarch64-16kb-support
-%patch34 -p1 -b .gcc-13
+%patch -P 24 -p1 -b .aarch64-new-stat
+%patch -P 26 -p1 -b .use-python2
+%patch -P 31 -p1 -b .TRUE
+%patch -P 32 -p1 -b .skia-missing-includes
+%patch -P 33 -p1 -b .aarch64-16kb-support
+%patch -P 34 -p1 -b .gcc-13
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -478,6 +478,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Tue Apr 18 2023 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.12-2
+- Rebuild (Qt 5.15.9)
+
 * Tue Mar 07 2023 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.12-1.fc36.1
 - Rebuild for Qt 5.15.8 update in Fedora 36.
 
