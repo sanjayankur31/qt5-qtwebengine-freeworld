@@ -481,6 +481,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Mon Jun 19 2023 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.12-4
+- Rebuild for Qt 5.15.10 update in Fedora 38+
+
 * Fri Apr 28 2023 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.12-3.fc38.1
 - Rebuild for Qt 5.15.9 update in Fedora 38. (#6658)
 
