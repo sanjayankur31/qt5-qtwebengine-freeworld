@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.12
-Release: 7%{?dist}
+Release: 8%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -486,6 +486,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Thu Feb 01 2024 Nicolas Chauvet <kwizart@gmail.com> - 5.15.12-8
+- Sync patch with fedora
+
 * Thu Feb 01 2024 Nicolas Chauvet <kwizart@gmail.com> - 5.15.12-7
 - rebuilt
 
