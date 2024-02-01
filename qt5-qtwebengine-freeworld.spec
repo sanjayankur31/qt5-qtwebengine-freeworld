@@ -113,6 +113,9 @@ Patch34: qtwebengine-fix-build.patch
 # https://src.fedoraproject.org/rpms/qt5-qtwebengine/c/628adfbb0613c892b91689d0db85de631d04fdae?branch=rawhide
 Patch35: qt5-qtwebengine-c99.patch
 
+# Fix assembly with binutils 2.41 https://fftrac-bg.ffmpeg.org/ticket/10405
+Patch50: 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+
 ## Upstream patches:
 
 %if 0%{?bootstrap}
@@ -390,6 +393,8 @@ popd
 %patch -P 33 -p1 -b .aarch64-16kb-support
 %patch -P 34 -p1 -b .gcc-13
 %patch -P 35 -p1 -b .c99
+
+%patch -P 50 -p1 -b .0001-avcodec-x86-mathops-clip-constants-used-with-shift-i
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
