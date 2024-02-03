@@ -62,8 +62,8 @@
 
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
-Version: 5.15.12
-Release: 8%{?dist}
+Version: 5.15.16
+Release: 1%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -99,14 +99,7 @@ Patch8:  qtwebengine-everywhere-5.15.8-libpipewire-0.3.patch
 Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.15.5-use-python2.patch
-# FTBFS TRUE/FALSE undeclared
-Patch31: qtwebengine-everywhere-src-5.15.5-TRUE.patch
 Patch32: qtwebengine-skia-missing-includes.patch
-# Fix QtWebEngine on Apple M1 hardware (patch from Arch Linux ARM)
-## Cf. https://bugreports.qt.io/browse/QTBUG-108674
-## Cf. https://bugzilla.redhat.com/show_bug.cgi?id=2144200
-## From: https://chromium-review.googlesource.com/c/chromium/src/+/3545665
-Patch33: qtwebengine-5.15-Backport-of-16k-page-support-on-aarch64.patch
 # Fixes for GCC 13
 # https://bugzilla.redhat.com/show_bug.cgi?id=2164993
 Patch34: qtwebengine-fix-build.patch
@@ -115,6 +108,7 @@ Patch35: qt5-qtwebengine-c99.patch
 
 # Fix assembly with binutils 2.41 https://fftrac-bg.ffmpeg.org/ticket/10405
 Patch50: 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+Patch51: qtwebengine-icu-74.patch
 
 ## Upstream patches:
 
@@ -185,7 +179,6 @@ BuildRequires: pkgconfig(libwebp) >= 0.6.0
 BuildRequires: pkgconfig(harfbuzz)
 BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(opus)
-BuildRequires: pkgconfig(protobuf)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(poppler-cpp)
 BuildRequires: pkgconfig(zlib)
@@ -302,6 +295,7 @@ Provides: bundled(libXNVCtrl) = 302.17
 Provides: bundled(libyuv) = 1768
 Provides: bundled(modp_b64)
 Provides: bundled(ots)
+Provides: bundled(re2)
 # see src/3rdparty/chromium/third_party/protobuf/CHANGES.txt for the version
 Provides: bundled(protobuf) = 3.9.0
 Provides: bundled(qcms) = 4
@@ -388,13 +382,12 @@ popd
 ## upstream patches
 %patch -P 24 -p1 -b .aarch64-new-stat
 %patch -P 26 -p1 -b .use-python2
-%patch -P 31 -p1 -b .TRUE
 %patch -P 32 -p1 -b .skia-missing-includes
-%patch -P 33 -p1 -b .aarch64-16kb-support
 %patch -P 34 -p1 -b .gcc-13
 %patch -P 35 -p1 -b .c99
 
 %patch -P 50 -p1 -b .0001-avcodec-x86-mathops-clip-constants-used-with-shift-i
+%patch -P 51 -p1 -b .icu-74
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -486,6 +479,12 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sat Feb 03 2024 Kevin Kofler <Kevin@tigcc.ticalc.org> - 5.15.16-1
+- 5.15.16
+- Sync patches from Fedora (2 removed as fixed upstream, 1 ICU 74 fix added)
+- Remove obsolete and unused BuildRequires: pkgconfig(protobuf) (as in Fedora)
+- Add missing Provides: bundled(re2) (as in Fedora)
+
 * Thu Feb 01 2024 Nicolas Chauvet <kwizart@gmail.com> - 5.15.12-8
 - Sync patch with fedora
 
