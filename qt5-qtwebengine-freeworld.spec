@@ -63,7 +63,7 @@
 Summary: Qt5 - QtWebEngine components (freeworld version)
 Name:    qt5-qtwebengine-freeworld
 Version: 5.15.16
-Release: 1%{?dist}.1
+Release: 2%{?dist}
 
 %global major_minor %(echo %{version} | cut -d. -f-2)
 %global major %(echo %{version} | cut -d. -f1)
@@ -479,6 +479,9 @@ echo "%{_libdir}/%{name}" \
 
 
 %changelog
+* Sun Apr 07 2024 Sérgio Basto <sergio@serjux.com> - 5.15.16-2
+- Rebuild for qt-5.15.13
+
 * Tue Mar 12 2024 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.16-1.1
 - correctly bump release (required to keep upgrade path because F38 needs to be re-built)
 
