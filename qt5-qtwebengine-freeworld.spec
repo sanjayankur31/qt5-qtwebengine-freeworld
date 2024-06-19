@@ -25,10 +25,7 @@
 
 %if 0%{?use_system_libwebp}
 # only supported when using also libwebp from the system (see configure.json)
-%if 0%{?fedora} < 36
-# only FFmpeg 4.4 is currently supported, not 5.0
 %global use_system_ffmpeg 1
-%endif
 %endif
 
 %if 0%{?fedora} > 32 || 0%{?rhel} > 8
@@ -100,15 +97,19 @@ Patch24: qtwebengine-everywhere-src-5.11.3-aarch64-new-stat.patch
 # Use Python2
 Patch26: qtwebengine-everywhere-5.15.5-use-python2.patch
 Patch32: qtwebengine-skia-missing-includes.patch
-# Fixes for GCC 13
-# https://bugzilla.redhat.com/show_bug.cgi?id=2164993
 Patch34: qtwebengine-fix-build.patch
-# https://src.fedoraproject.org/rpms/qt5-qtwebengine/c/628adfbb0613c892b91689d0db85de631d04fdae?branch=rawhide
 Patch35: qt5-qtwebengine-c99.patch
 
 # Fix assembly with binutils 2.41 https://fftrac-bg.ffmpeg.org/ticket/10405
 Patch50: 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 Patch51: qtwebengine-icu-74.patch
+
+# Working with ffmpeg
+Patch60: qtwebengine-ffmpeg5.patch
+
+# riscv64 support patch from https://github.com/felixonmars/archriscv-packages/tree/master/qt5-webengine
+Patch100: v8.patch
+Patch101: riscv.patch
 
 ## Upstream patches:
 
@@ -367,27 +368,35 @@ mv pulse src/3rdparty/chromium/
 pushd src/3rdparty/chromium
 popd
 
-%patch -P 2 -p1 -b .fix-extractcflag
+%patch -P2 -p1 -b .fix-extractcflag
 %if !0%{?arm_neon}
-%patch -P 3 -p1 -b .no-neon
+%patch -P3 -p1 -b .no-neon
 %endif
-%patch -P 4 -p1 -b .SIOCGSTAMP
-%patch -P 5 -p1 -b .QT_DEPRECATED_VERSION
-%patch -P 6 -p1 -b .angle_nullptr
-%patch -P 7 -p1 -b .hunspell_nullptr
+%patch -P4 -p1 -b .SIOCGSTAMP
+%patch -P5 -p1 -b .QT_DEPRECATED_VERSION
+%patch -P6 -p1 -b .angle_nullptr
+%patch -P7 -p1 -b .hunspell_nullptr
 #if 0%{?pipewire}
-%patch -P 8 -p1 -b .libpipewire-0.3
+%patch -P8 -p1 -b .libpipewire-0.3
 #endif
 
 ## upstream patches
-%patch -P 24 -p1 -b .aarch64-new-stat
-%patch -P 26 -p1 -b .use-python2
-%patch -P 32 -p1 -b .skia-missing-includes
-%patch -P 34 -p1 -b .gcc-13
-%patch -P 35 -p1 -b .c99
+%patch -P24 -p1 -b .aarch64-new-stat
+%patch -P26 -p1 -b .use-python2
+%patch -P32 -p1 -b .skia-missing-includes
+%patch -P34 -p1 -b .fix-build
 
-%patch -P 50 -p1 -b .0001-avcodec-x86-mathops-clip-constants-used-with-shift-i
-%patch -P 51 -p1 -b .icu-74
+%patch -P35 -p1 -b .c99
+
+%patch -P50 -p1 -b .0001-avcodec-x86-mathops-clip-constants-used-with-shift-i
+%patch -P51 -p1 -b .icu-74
+
+%patch -P60 -p1 -b .ffmpeg5
+
+%ifarch riscv64
+%patch -P100 -p1 -b .riscv64-v8
+%patch -P101 -p1 -b .riscv64
+%endif
 
 # delete all "toolprefix = " lines from build/toolchain/linux/BUILD.gn, as we
 # never cross-compile in native Fedora RPMs, fixes ARM and aarch64 FTBFS
@@ -442,11 +451,15 @@ export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} \
   %{?debug_config:CONFIG+="%{debug_config}}" \
+%ifarch riscv64
+  CONFIG+="link_pulseaudio" \
+%else
   CONFIG+="link_pulseaudio use_gold_linker" \
+%endif
   %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
-  %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
+  %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   %{?pipewire:QMAKE_EXTRA_ARGS+="-webengine-webrtc-pipewire"} \
   .
 
@@ -481,6 +494,8 @@ echo "%{_libdir}/%{name}" \
 %changelog
 * Thu Jun 13 2024 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.16-3
 - Rebuild for qt-5.15.14
+- sync patches
+- remove use of gold linker
 
 * Sun Apr 07 2024 Sérgio Basto <sergio@serjux.com> - 5.15.16-2
 - Rebuild for qt-5.15.13
