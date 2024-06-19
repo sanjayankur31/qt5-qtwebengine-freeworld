@@ -25,10 +25,7 @@
 
 %if 0%{?use_system_libwebp}
 # only supported when using also libwebp from the system (see configure.json)
-%if 0%{?fedora} < 36
-# only FFmpeg 4.4 is currently supported, not 5.0
 %global use_system_ffmpeg 1
-%endif
 %endif
 
 %if 0%{?fedora} > 32 || 0%{?rhel} > 8
@@ -394,7 +391,7 @@ popd
 %patch -P50 -p1 -b .0001-avcodec-x86-mathops-clip-constants-used-with-shift-i
 %patch -P51 -p1 -b .icu-74
 
-%patch -P60 -p1
+%patch -P60 -p1 -b .ffmpeg5
 
 %ifarch riscv64
 %patch -P100 -p1 -b .riscv64-v8
@@ -454,11 +451,15 @@ export NINJA_PATH=%{__ninja}
 
 %{qmake_qt5} \
   %{?debug_config:CONFIG+="%{debug_config}}" \
+%ifarch riscv64
+  CONFIG+="link_pulseaudio" \
+%else
   CONFIG+="link_pulseaudio use_gold_linker" \
+%endif
   %{?system_ffmpeg_flag:QMAKE_EXTRA_ARGS+="%{?system_ffmpeg_flag}"} \
   QMAKE_EXTRA_ARGS+="-proprietary-codecs" \
-  %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   QMAKE_EXTRA_ARGS+="-webengine-kerberos" \
+  %{?use_system_libicu:QMAKE_EXTRA_ARGS+="-system-webengine-icu"} \
   %{?pipewire:QMAKE_EXTRA_ARGS+="-webengine-webrtc-pipewire"} \
   .
 
@@ -493,6 +494,8 @@ echo "%{_libdir}/%{name}" \
 %changelog
 * Thu Jun 13 2024 Ankur Sinha <ankursinha AT fedoraproject DOT org> - 5.15.16-3
 - Rebuild for qt-5.15.14
+- sync patches
+- remove use of gold linker
 
 * Sun Apr 07 2024 Sérgio Basto <sergio@serjux.com> - 5.15.16-2
 - Rebuild for qt-5.15.13
